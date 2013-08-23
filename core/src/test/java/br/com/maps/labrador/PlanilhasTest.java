@@ -6,17 +6,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.impl.exception.PersistenceException;
 import jmine.tec.services.impl.ServicesIntegrationTestCase;
 import jmine.tec.services.impl.junitx.IntegrationTestSuite;
+import junit.framework.Test;
+
 /**
- * 
  * @author renan.oliveira
- *
  */
-public class PlanilhasTest extends ServicesIntegrationTestCase {
+public abstract class PlanilhasTest extends ServicesIntegrationTestCase {
 
     /**
      * Resources para base subir base de referência.
@@ -52,7 +51,7 @@ public class PlanilhasTest extends ServicesIntegrationTestCase {
     protected void afterTest() throws Throwable {
         this.getEnvironment().restart();
     }
-	
+
     public PlanilhasTest() {
         super();
     }

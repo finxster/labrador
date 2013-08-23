@@ -8,7 +8,7 @@
             <bean class="jmine.tec.services.api.factory.ServiceClassListFactoryBean">
                 <property name="mappingResources">
                     <list>
-                        <value>br.com.maps.labrador.services.CorreService</value>
+                      
                     </list>
                 </property> 
             </bean>

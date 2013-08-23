@@ -11,7 +11,7 @@
     <groupId>br.com.maps.labrador</groupId>
     <artifactId>labrador-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Jmine Web App - Parent Pom</name>
+    <name>Labrador - Parent Pom</name>
     <url>http://www.jmine.com.br</url>
     <packaging>pom</packaging>
 
@@ -22,7 +22,7 @@
         <jetty.version>6.1.25</jetty.version>
         <jmine-tec-version>3.0.1.2</jmine-tec-version>
         
-        <!-- Configura??es do refdb -->
+        <!-- Configurações do refdb -->
         <refDbPluginVersion>1.1.13</refDbPluginVersion>
     </properties>
     
@@ -105,6 +105,8 @@
     </dependencyManagement>
 
   <modules>
+    <module>config</module>
+    <module>database</module>
     <module>core</module>
     <module>web</module>
   </modules>

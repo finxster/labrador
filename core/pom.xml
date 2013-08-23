@@ -9,7 +9,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>labrador-core</artifactId>
-    <name>Jmine Web App - Core</name>
+    <name>Labrador - Core</name>
     <url>http://www.jmine.com.br</url>
     <packaging>jar</packaging>
 
@@ -53,98 +53,4 @@
 			<scope>test</scope>
 		</dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>jmine.plugins</groupId>
-                <artifactId>maven-refdb-plugin</artifactId>
-                <version>${refDbPluginVersion}</version>
-                <configuration>
-                    <descriptors>
-                        <descriptor>core-db.xml</descriptor>
-                    </descriptors>
-                    <beanFactory>core-refdb-beans.xml</beanFactory>
-                    <includeActions>true</includeActions>
-                    <dbResources>src/db/resources/</dbResources>
-                    <hibernateDrop>false</hibernateDrop>
-
-                    <converterClass>${converterClass}</converterClass>
-                    <executorClass>${executorClass}</executorClass>
-                    <driverClassName>${driverClassName}</driverClassName>
-                    <hibernateDialect>${hibernateDialect}</hibernateDialect>
-                    <schemaDialect>${schemaDialect}</schemaDialect>
-
-                    <properties>
-                        <database.url>${databaseUrl}</database.url>
-                        <database.driver>${driverClassName}</database.driver>
-                        <database.username>${username}</database.username>
-                        <database.password>${password}</database.password>
-                        <database.hibernate.dialect>${hibernateDialect}</database.hibernate.dialect>
-                        <database.hibernate.default_schema>public</database.hibernate.default_schema>
-                        <hibernate.schemaUpdate>false</hibernate.schemaUpdate>
-                    </properties>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-    <profiles>
-        <profile>
-            <id>h2</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <converterClass>jmine.tec.utils.db.converter.OracleToH2Converter</converterClass>
-                <executorClass>jmine.tec.utils.db.executor.HsqlDbExecutor</executorClass>
-                <driverClassName>org.h2.Driver</driverClassName>
-                <hibernateDialect>jmine.tec.persist.environment.db.dialect.H2SequenceDialect</hibernateDialect>
-                <schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.H2Dialect</schemaDialect>
-                <databaseUrl>jdbc:h2:file:target/loadeddb;LOCK_MODE=3;MVCC=TRUE;AUTO_SERVER=TRUE;LOG=0</databaseUrl>
-                <username>sa</username>
-                <password>a</password>
-            </properties>
-        </profile>
-        <profile>
-            <id>postgresql</id>
-            <properties>
-                <converterClass>jmine.tec.utils.db.converter.OracleToPostgreSQLDbConverter</converterClass>
-                <executorClass>jmine.tec.utils.db.executor.PostgreSQLDbExecutor</executorClass>
-                <driverClassName>org.postgresql.Driver</driverClassName>
-                <hibernateDialect>org.hibernate.dialect.PostgreSQLDialect</hibernateDialect>
-                <schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.PostgreSQLDialect</schemaDialect>
-                <databaseUrl>jdbc:postgresql://localhost:5432/jmine</databaseUrl>
-                <username>jmine</username>
-                <password>jmine</password>
-            </properties>
-
-            <dependencies>
-                <dependency>
-                    <groupId>postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>oracle</id>
-            <properties>
-                <converterClass>jmine.tec.utils.db.converter.OracleConverter</converterClass>
-                <executorClass>jmine.tec.utils.db.executor.OracleDbExecutor</executorClass>
-                <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
-                <hibernateDialect>org.hibernate.dialect.Oracle10gDialect</hibernateDialect>
-                <schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.Oracle10gDialect</schemaDialect>
-                <databaseUrl>jdbc:oracle:thin:@localhost:1521/SID</databaseUrl>
-                <username>scott</username>
-                <password>tiger</password>
-            </properties>
-            <dependencies>
-                <dependency>
-                    <groupId>com.oracle</groupId>
-                    <artifactId>ojdbc5</artifactId>
-                    <scope>provided</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
 </project>

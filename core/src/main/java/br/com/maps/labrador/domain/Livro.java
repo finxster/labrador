@@ -18,7 +18,6 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
  * @author laercio.duarte
  * @created 23/08/2013
  */
-
 @Entity
 @Alias("LIVRO")
 @Table(name = "LIVRO")
@@ -88,5 +87,4 @@ public class Livro extends PersistableBusinessObject {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-
 }
