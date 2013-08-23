@@ -55,19 +55,19 @@
         <dependencies>
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
-                <artifactId>labrador-core</artifactId>
+                <artifactId>labrador-base</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
-                <artifactId>labrador-core</artifactId>
+                <artifactId>labrador-base</artifactId>
                 <version>${project.version}</version>
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
-                <artifactId>labrador-core</artifactId>
+                <artifactId>labrador-base</artifactId>
                 <version>${project.version}</version>
                 <type>test-jar</type>  
                 <scope>test</scope>
@@ -107,7 +107,7 @@
   <modules>
     <module>config</module>
     <module>database</module>
-    <module>core</module>
+    <module>base</module>
     <module>web</module>
   </modules>
 </project>

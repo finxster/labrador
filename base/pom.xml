@@ -8,8 +8,8 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>labrador-core</artifactId>
-    <name>Labrador - Core</name>
+    <artifactId>labrador-base</artifactId>
+    <name>Labrador - Base</name>
     <url>http://www.jmine.com.br</url>
     <packaging>jar</packaging>
 
