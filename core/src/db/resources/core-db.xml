@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ref-db xmlns="http://www.maps.com.br/ref-db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.maps.com.br/ref-db ref-db.xsd">
+    <dependencies>
+        <dependency>services-driver-db.xml</dependency>
+        <dependency>jmine-tec-security-impl-db.xml</dependency>
+    </dependencies>
+    <post basePath="postscript">
+        <entry type="SERVICE">security/metacredentials.xml</entry>
+        <entry type="SERVICE">security/credentials_user.xml</entry>
+        <entry type="SERVICE">security/credentials_admin.xml</entry>
+    </post>
+    <ref basePath="referencia">
+        <entry type="SQL">security/users.sql</entry>
+    </ref>
+</ref-db>
