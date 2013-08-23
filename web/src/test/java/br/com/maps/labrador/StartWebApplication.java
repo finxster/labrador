@@ -12,15 +12,14 @@ import java.net.Socket;
 import jmine.tec.persist.environment.db.DBEnvironment;
 import jmine.tec.persist.environment.db.DBEnvironmentHolder;
 import jmine.tec.services.impl.environment.RefDBEnvironment;
+import jmine.tec.utils.db.descriptor.FlatReferenceDatabaseBuilder.ReferenceDatabaseDescriptionType;
+import jmine.tec.utils.loader.ResourceLoader;
+import jmine.tec.utils.log.LogManager;
 
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.bio.SocketConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
-
-import jmine.tec.utils.db.descriptor.FlatReferenceDatabaseBuilder.ReferenceDatabaseDescriptionType;
-import jmine.tec.utils.loader.ResourceLoader;
-import jmine.tec.utils.log.LogManager;
 
 /**
  * Classe principal para iniciar o aplicativo para testes
@@ -32,6 +31,8 @@ public final class StartWebApplication {
     private static final int CONNECTOR_PORT = 8888;
 
     private static final int MAX_IDLE_TIME = 1000 * 60 * 60;
+
+    private static final String CONTEXT_PATH = "/labrador";
 
     private static Server server;
 
@@ -60,7 +61,7 @@ public final class StartWebApplication {
 
         WebAppContext bb = new WebAppContext();
         bb.setServer(server);
-        bb.setContextPath("");
+        bb.setContextPath(CONTEXT_PATH);
         bb.setWar("src/main/webapp");
 
         server.addHandler(bb);
