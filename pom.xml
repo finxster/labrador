@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>jmine.tec.pom</groupId>
+        <artifactId>jmine-tec-pom</artifactId>
+        <version>3.0.1.2</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.com.maps.labrador</groupId>
+    <artifactId>labrador-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Jmine Web App - Parent Pom</name>
+    <url>http://www.jmine.com.br</url>
+    <packaging>pom</packaging>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compile.encoding>UTF-8</maven.compile.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jetty.version>6.1.25</jetty.version>
+        <jmine-tec-version>3.0.1.2</jmine-tec-version>
+        
+        <!-- Configura??es do refdb -->
+        <refDbPluginVersion>1.1.13</refDbPluginVersion>
+    </properties>
+    
+    <repositories>
+        <repository>
+            <id>jmine</id>
+            <url>http://repo.jmine.com.br/repo</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jmine-plugins</id>
+            <url>http://repo.jmine.com.br/repo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/db/resources</directory>
+            </testResource>
+        </testResources>
+    </build>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-core</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-core</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>  
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.jms</groupId>
+                <artifactId>jms</artifactId>
+                <version>1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>jmine.tec</groupId>
+                <artifactId>jmine-tec-all</artifactId>
+                <version>${jmine-tec-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+  <modules>
+    <module>core</module>
+    <module>web</module>
+  </modules>
+</project>

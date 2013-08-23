@@ -1,0 +1,189 @@
+/* Autores: Cassiano dos Santos Alves e Lilian Perillo */
+/* BACKGROUND BODY LOGIN */
+body {
+  background: #f4f4f4 !important;
+}
+
+/* HEADER LOGIN */
+.login {
+  border-bottom: 1px solid #9baab3;
+  box-shadow: 0px 0px 4px white inset;
+  height: 50px;
+  width: 100%;
+  background-color: #edeaea;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDEAEA', endColorstr='#FFA5A5A5');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #edeaea), color-stop(7%, #e8e8e8), color-stop(50%, #e2e2e2), color-stop(53%, #e2e2e2), color-stop(90%, #c6c6c6), color-stop(95%, #bcbcbc), color-stop(100%, #a5a5a5));
+  background-image: -webkit-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
+  background-image: -moz-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
+  background-image: -o-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
+  background-image: linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
+}
+
+/* LOGIN LOGO */
+.login_logo {
+  background: url(../images/logo_produto.png) no-repeat scroll center center transparent;
+  float: left;
+  height: 100%;
+  margin: 0px 10px;
+  width: 5%;
+}
+
+/* LOGIN FORM */
+/* APP NAME */
+.app_name {
+  float: left;
+  height: 15px;
+  padding-bottom: 17px;
+  padding-top: 15px;
+  width: 40%;
+}
+.app_name span {
+  color: #004267;
+  font: bold 14px Arial, Helvetica, Verdana, Geneva, sans-serif;
+}
+
+/* USER INFORMATION */
+.user_info {
+  float: left;
+  width: 50%;
+}
+
+/* USER FIELD */
+.login_user {
+  float: left;
+  height: 50px;
+  width: 40%;
+}
+.login_user span {
+  color: #004267;
+  float: left;
+  font: bold 14px Arial, Helvetica, Verdana, Geneva, sans-serif;
+  padding: 15px 5px 15px 0px;
+}
+.login_user input {
+  font: bold 12px Arial, Helvetica, Verdana, Geneva, sans-serif;
+  float: left;
+  margin: 12px 0;
+  width: 60%;
+}
+
+/* PASSWORD FIELD */
+.password {
+  float: left;
+  height: 50px;
+  margin-right: 5px;
+  width: 30%;
+}
+.password span {
+  color: #004267;
+  float: left;
+  font: bold 14px Arial, Helvetica, Verdana, Geneva, sans-serif;
+  padding: 15px 5px 15px 0px;
+}
+.password input {
+  float: left;
+  margin: 12px 0px;
+  width: 50%;
+}
+
+/* LOGIN BUTTON */
+.login_button {
+  float: left;
+  height: 50px;
+  width: 15%;
+}
+.login_button input {
+  float: left;
+  width: 70%;
+  box-shadow: 0px 1px 2px rgba(49, 57, 63, 0.4), 0px 1px 0px rgba(255, 255, 255, 0.3) inset;
+  color: white;
+  font: bold 12px Arial, Helvetica, Verdana, Geneva, sans-serif;
+  height: 24px;
+  margin: 12px 0;
+  padding: 1px;
+  text-align: center;
+  text-shadow: -1px -1px 0px rgba(130, 60, 10, 0.6);
+  background-color: #00a4e5;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00A4E5', endColorstr='#FF004267');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00a4e5), color-stop(51%, #002082), color-stop(52%, #001142), color-stop(100%, #004267));
+  background-image: -webkit-linear-gradient(top, #00a4e5 0%, #002082 51%, #001142 52%, #004267 100%);
+  background-image: -moz-linear-gradient(top, #00a4e5 0%, #002082 51%, #001142 52%, #004267 100%);
+  background-image: -o-linear-gradient(top, #00a4e5 0%, #002082 51%, #001142 52%, #004267 100%);
+  background-image: linear-gradient(top, #00a4e5 0%, #002082 51%, #001142 52%, #004267 100%);
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -khtml-border-radius: 4px;
+}
+.login_button input:HOVER {
+  background-color: #00d8ff;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF00D8FF', endColorstr='#FF00AFCE');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #00d8ff), color-stop(50%, #000b89), color-stop(51%, #000c99), color-stop(100%, #00afce));
+  background-image: -webkit-linear-gradient(top, #00d8ff 0%, #000b89 50%, #000c99 51%, #00afce 100%);
+  background-image: -moz-linear-gradient(top, #00d8ff 0%, #000b89 50%, #000c99 51%, #00afce 100%);
+  background-image: -o-linear-gradient(top, #00d8ff 0%, #000b89 50%, #000c99 51%, #00afce 100%);
+  background-image: linear-gradient(top, #00d8ff 0%, #000b89 50%, #000c99 51%, #00afce 100%);
+}
+
+/* FEEDBACK PANEL LOGIN */
+.feedback_login {
+  text-align: center;
+}
+
+/* LOGIN FEED CONTENT */
+.feed_login {
+  font: bold 12px Arial, Helvetica, Verdana, Geneva, sans-serif;
+  border: 1px solid #9baab3;
+  height: 400px;
+  margin: 43px 10px 10px;
+  width: 700px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -o-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -khtml-border-radius: 15px;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDEDED', endColorstr='#FFEDEDED');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(237, 237, 237, 0.75)), color-stop(3%, rgba(255, 255, 255, 0.75)), color-stop(97%, rgba(255, 255, 255, 0.75)), color-stop(100%, rgba(237, 237, 237, 0.75)));
+  background-image: -webkit-linear-gradient(top, rgba(237, 237, 237, 0.75) 0%, rgba(255, 255, 255, 0.75) 3%, rgba(255, 255, 255, 0.75) 97%, rgba(237, 237, 237, 0.75) 100%);
+  background-image: -moz-linear-gradient(top, rgba(237, 237, 237, 0.75) 0%, rgba(255, 255, 255, 0.75) 3%, rgba(255, 255, 255, 0.75) 97%, rgba(237, 237, 237, 0.75) 100%);
+  background-image: -o-linear-gradient(top, rgba(237, 237, 237, 0.75) 0%, rgba(255, 255, 255, 0.75) 3%, rgba(255, 255, 255, 0.75) 97%, rgba(237, 237, 237, 0.75) 100%);
+  background-image: linear-gradient(top, rgba(237, 237, 237, 0.75) 0%, rgba(255, 255, 255, 0.75) 3%, rgba(255, 255, 255, 0.75) 97%, rgba(237, 237, 237, 0.75) 100%);
+}
+.feed_login .content_feed {
+  height: 370px;
+  margin: 10px;
+  overflow-y: auto;
+  width: 680px;
+}
+.feed_login .content_feed h1 {
+  color: red;
+  font-size: 20px;
+  margin: 20px;
+}
+.feed_login .content_feed h3 {
+  color: #004267;
+  font-size: 16px;
+  margin: 20px;
+}
+.feed_login .content_feed p {
+  font-size: 14px;
+  font-weight: normal;
+  margin: 10px 25px;
+  text-align: justify;
+}
+.feed_login .content_feed ul {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 2;
+  margin: 15px 5px;
+}
+.feed_login .content_feed li {
+  list-style: disc;
+}
