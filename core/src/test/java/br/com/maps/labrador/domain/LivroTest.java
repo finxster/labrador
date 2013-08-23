@@ -1,6 +1,5 @@
 package br.com.maps.labrador.domain;
 
-import br.com.maps.labrador.domain.Livro;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.test.testcase.BOBaseTestCase;
 
@@ -10,7 +9,6 @@ import jmine.tec.persist.test.testcase.BOBaseTestCase;
  * @author laercio.duarte
  * @created 23/08/2013
  */
-
 public class LivroTest extends BOBaseTestCase<Livro> {
 
     private static String[] NOME;
@@ -49,5 +47,4 @@ public class LivroTest extends BOBaseTestCase<Livro> {
     protected String[] getResourcesBaseReferencia() {
         return new String[]{ "core-db.xml" };
     }
-
 }
