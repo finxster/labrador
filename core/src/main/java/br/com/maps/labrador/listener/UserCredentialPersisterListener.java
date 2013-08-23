@@ -1,5 +1,6 @@
 package br.com.maps.labrador.listener;
 
+import jmine.tec.component.annotations.Unmodifiable;
 import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.impl.persister.listener.AbstractPersisterListener;
@@ -12,6 +13,7 @@ import jmine.tec.security.impl.domain.User;
  * 
  * @author jrenaut
  */
+@Unmodifiable
 public class UserCredentialPersisterListener extends AbstractPersisterListener<User> {
 
     private BaseDAO<MetaCredential> metaCredentialDAO;
