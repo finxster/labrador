@@ -106,8 +106,8 @@
 
   <modules>
     <module>config</module>
-    <module>database</module>
     <module>base</module>
     <module>web</module>
+    <module>database</module>
   </modules>
 </project>
