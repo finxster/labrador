@@ -28,7 +28,7 @@ import jmine.tec.security.web.WebSecurityContext;
  * 
  * @author takeshi
  */
-public class WebApplication extends JMineWicketWebApplication {
+public class LabradorApplication extends JMineWicketWebApplication {
     private SecurityManager<WebSecurityContext> securityManager;
 
     private RtmController rtmController;

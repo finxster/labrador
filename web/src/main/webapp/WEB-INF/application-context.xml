@@ -26,9 +26,9 @@
         </constructor-arg>
     </bean>
 
-    <bean id="menuApplicationBase" class="br.com.maps.labrador.WebApplicationMenuCreator" />
+    <bean id="menuApplicationBase" class="br.com.maps.labrador.LabradorMenuCreator" />
 
-    <bean id="applicationBean" class="br.com.maps.labrador.WebApplication">
+    <bean id="applicationBean" class="br.com.maps.labrador.LabradorApplication">
         <property name="authorizationStrategy" ref="securityServiceAuthorizationStrategy" />
         <property name="securityManager" ref="securityManager"></property>
         <property name="rtmController" ref="rtmController"></property>
