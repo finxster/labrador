@@ -24,7 +24,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
 /**
  * Classe principal para iniciar o aplicativo para testes
  */
-public final class StartWebApplication {
+public final class StartLabradorApplication {
 
     private static final int START_WAIT_MILLIS = 5000;
 
@@ -39,7 +39,7 @@ public final class StartWebApplication {
     /**
      * Construtor privado
      */
-    private StartWebApplication() {
+    private StartLabradorApplication() {
     }
 
     /**

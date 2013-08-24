@@ -16,7 +16,7 @@ import jmine.tec.web.wicket.component.menu.cfg.MenuConfig;
  * 
  * @author takeshi
  */
-public class WebApplicationMenuCreator extends AbstractMenuConfigFactoryBean {
+public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
 
     /**
      * {@inheritDoc}
