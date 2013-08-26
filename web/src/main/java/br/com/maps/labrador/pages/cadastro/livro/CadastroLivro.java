@@ -31,8 +31,10 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
-        components.add(ComponentHelper.createTextField("nome"));
-        components.add(ComponentHelper.createTextField("descricao"));
+        components.add(ComponentHelper.createTextField("isbn"));
+        components.add(ComponentHelper.createTextField("titulo"));
+        components.add(ComponentHelper.createTextField("autor"));
+        components.add(ComponentHelper.createTextField("editora"));
         return components;
     }
 
