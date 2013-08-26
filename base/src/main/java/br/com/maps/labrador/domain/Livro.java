@@ -27,9 +27,13 @@ public class Livro extends PersistableBusinessObject {
 
     private Long id;
 
-    private String nome;
+    private String isbn;
 
-    private String descricao;
+    private String titulo;
+
+    private String autor;
+
+    private String editora;
 
     /**
      * Construtor
@@ -46,7 +50,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("ESSA E NOSSA CHAVE PRIMARIA")
     @Column(name = "COD_LIVRO")
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -59,32 +63,64 @@ public class Livro extends PersistableBusinessObject {
     /**
      * @return the nome
      */
-    @Documentation("NOME DO LIVRO")
-    @Column(name = "NOME")
-    public String getNome() {
-        return this.nome;
+    @Documentation("TITULO DO LIVRO")
+    @Column(name = "TITULO")
+    public String getTitulo() {
+        return titulo;
     }
 
     /**
      * @param nome the nome to set
      */
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     /**
-     * @return the descricao
+     * @return the isbn
      */
-    @Documentation("DESCRICAO DO LIVRO")
-    @Column(name = "DESCRICAO")
-    public String getDescricao() {
-        return this.descricao;
+    @Documentation("ISBN DO LIVRO")
+    @Column(name = "ISBN")
+    public String getIsbn() {
+        return isbn;
     }
 
     /**
-     * @param descricao the descricao to set
+     * @param isbn the isbn to set
      */
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    /**
+     * @return the autor
+     */
+    @Documentation("AUTOR DO LIVRO")
+    @Column(name = "AUTOR")
+    public String getAutor() {
+        return autor;
+    }
+
+    /**
+     * @param autor the autor to set
+     */
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    /**
+     * @return the editora
+     */
+    @Documentation("EDITORA DO LIVRO")
+    @Column(name = "EDITORA")
+    public String getEditora() {
+        return editora;
+    }
+
+    /**
+     * @param editora the editora to set
+     */
+    public void setEditora(String editora) {
+        this.editora = editora;
     }
 }
