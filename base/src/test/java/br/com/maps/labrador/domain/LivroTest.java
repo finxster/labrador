@@ -1,7 +1,7 @@
 package br.com.maps.labrador.domain;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
-import jmine.tec.persist.test.testcase.BOBaseTestCase;
+import br.com.maps.labrador.BOBaseTestCase;
 
 /**
  * Um teste para o domínio de {@link Livro}.
@@ -19,6 +19,9 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
     private static String[] EDITORA;
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void initializeTestData() throws BeanNotFoundException {
         ISBN = new String[]{ "ISBN_1", "ISBN_2" };
@@ -27,11 +30,9 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         EDITORA = new String[]{ "Editora_1", "Editora_2" };
     }
 
-    @Override
-    protected int getTestDataSize() {
-        return 2;
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void fillData(int idx, Livro bo) {
         bo.setIsbn(ISBN[idx]);
@@ -40,6 +41,9 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         bo.setEditora(EDITORA[idx]);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected void compareData(int idx, Livro bo) throws BeanNotFoundException {
         assertEquals(ISBN[idx], bo.getIsbn());
@@ -48,13 +52,4 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         assertEquals(EDITORA[idx], bo.getEditora());
     }
 
-    @Override
-    protected String getSpringMainXMLFilename() {
-        return "core-test-beans.xml";
-    }
-
-    @Override
-    protected String[] getResourcesBaseReferencia() {
-        return new String[]{ "core-db.xml" };
-    }
 }
