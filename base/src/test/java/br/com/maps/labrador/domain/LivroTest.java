@@ -11,14 +11,20 @@ import jmine.tec.persist.test.testcase.BOBaseTestCase;
  */
 public class LivroTest extends BOBaseTestCase<Livro> {
 
-    private static String[] NOME;
+    private static String[] ISBN;
 
-    private static String[] DESCRICAO;
+    private static String[] TITULO;
+
+    private static String[] AUTOR;
+
+    private static String[] EDITORA;
 
     @Override
     protected void initializeTestData() throws BeanNotFoundException {
-        NOME = new String[]{ "Laercio", "Finx" };
-        DESCRICAO = new String[]{ "Apocalipse", "Bela e Fera" };
+        ISBN = new String[]{ "ISBN_1", "ISBN_2" };
+        TITULO = new String[]{ "Apocalipse", "Bela e Fera" };
+        AUTOR = new String[]{ "Autor_1", "Autor_1" };
+        EDITORA = new String[]{ "Editora_1", "Editora_2" };
     }
 
     @Override
@@ -28,14 +34,18 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
     @Override
     protected void fillData(int idx, Livro bo) {
-        bo.setNome(NOME[idx]);
-        bo.setDescricao(DESCRICAO[idx]);
+        bo.setIsbn(ISBN[idx]);
+        bo.setTitulo(TITULO[idx]);
+        bo.setAutor(AUTOR[idx]);
+        bo.setEditora(EDITORA[idx]);
     }
 
     @Override
     protected void compareData(int idx, Livro bo) throws BeanNotFoundException {
-        assertEquals(NOME[idx], bo.getNome());
-        assertEquals(DESCRICAO[idx], bo.getDescricao());
+        assertEquals(ISBN[idx], bo.getIsbn());
+        assertEquals(TITULO[idx], bo.getTitulo());
+        assertEquals(AUTOR[idx], bo.getAutor());
+        assertEquals(EDITORA[idx], bo.getEditora());
     }
 
     @Override
