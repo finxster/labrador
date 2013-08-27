@@ -9,6 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import jmine.tec.component.Documentation;
+import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
@@ -63,6 +64,7 @@ public class Livro extends PersistableBusinessObject {
     /**
      * @return the nome
      */
+    @NaturalKey
     @Documentation("TITULO DO LIVRO")
     @Column(name = "TITULO")
     public String getTitulo() {
