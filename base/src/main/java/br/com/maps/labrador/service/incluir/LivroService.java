@@ -44,13 +44,13 @@ public class LivroService {
     @Output(propertyName = IDENTIFICADOR)
     @Execution
     public Livro execute() {
-        Livro livro = dao.createBean();
-        livro.setIsbn(isbn);
-        livro.setTitulo(titulo);
-        livro.setAutor(autor);
-        livro.setEditora(editora);
+        Livro livro = this.dao.createBean();
+        livro.setIsbn(this.isbn);
+        // livro.setTitulo(titulo);
+        livro.setAutor(this.autor);
+        livro.setEditora(this.editora);
 
-        persister.save(livro);
+        this.persister.save(livro);
         return livro;
     }
 

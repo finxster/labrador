@@ -13,6 +13,10 @@ import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.map.annotate.JsonRootName;
+
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.
  * 
@@ -22,6 +26,8 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 @Entity
 @Alias("LIVRO")
 @Table(name = "LIVRO")
+@JsonRootName("data")
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Documentation("TABELA QUE ARMAZENA OS LIVROS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO")
 public class Livro extends PersistableBusinessObject {
@@ -30,7 +36,7 @@ public class Livro extends PersistableBusinessObject {
 
     private String isbn;
 
-    private String titulo;
+    private String title;
 
     private String autor;
 
@@ -51,7 +57,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("ESSA E NOSSA CHAVE PRIMARIA")
     @Column(name = "COD_LIVRO")
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -62,20 +68,21 @@ public class Livro extends PersistableBusinessObject {
     }
 
     /**
-     * @return the nome
+     * @return the title
      */
     @NaturalKey
     @Documentation("TITULO DO LIVRO")
     @Column(name = "TITULO")
-    public String getTitulo() {
-        return titulo;
+    public String getTitle() {
+        return this.title;
     }
 
     /**
-     * @param nome the nome to set
+     * @param title the title to set
      */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    @JsonProperty("title")
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
@@ -84,7 +91,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("ISBN DO LIVRO")
     @Column(name = "ISBN")
     public String getIsbn() {
-        return isbn;
+        return this.isbn;
     }
 
     /**
@@ -100,7 +107,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("AUTOR DO LIVRO")
     @Column(name = "AUTOR")
     public String getAutor() {
-        return autor;
+        return this.autor;
     }
 
     /**
@@ -116,7 +123,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("EDITORA DO LIVRO")
     @Column(name = "EDITORA")
     public String getEditora() {
-        return editora;
+        return this.editora;
     }
 
     /**
