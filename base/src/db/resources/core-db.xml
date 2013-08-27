@@ -11,5 +11,6 @@
     </post>
     <ref basePath="referencia">
         <entry type="SQL">security/users.sql</entry>
+        <entry type="INTEGRACAO-XML">livros.xml</entry>
     </ref>
 </ref-db>

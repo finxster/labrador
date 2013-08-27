@@ -2,17 +2,17 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
 
-    <bean id="coreServices" class="jmine.tec.utils.register.Registrar">
-        <property name="receiver" ref="serviceFactory" />
-        <property name="registers">
-            <bean class="jmine.tec.services.api.factory.ServiceClassListFactoryBean">
-                <property name="mappingResources">
-                    <list>
-                      
-                    </list>
-                </property> 
-            </bean>
-        </property>
-    </bean>
+	<bean id="coreServices" class="jmine.tec.utils.register.Registrar">
+		<property name="receiver" ref="serviceFactory" />
+		<property name="registers">
+			<bean class="jmine.tec.services.api.factory.ServiceClassListFactoryBean">
+				<property name="mappingResources">
+					<list>
+						<value>br.com.maps.labrador.service.incluir.LivroService</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+	</bean>
 
 </beans>
