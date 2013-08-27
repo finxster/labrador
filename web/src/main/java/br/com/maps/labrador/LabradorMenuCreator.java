@@ -11,6 +11,7 @@ import br.com.maps.labrador.pages.AlterarSenhaPage;
 import br.com.maps.labrador.pages.CrudUsuarioPage;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
+import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 
 /**
  * Starting point menu creator
@@ -29,6 +30,9 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         // add menu here
         config.addPage(CadastroLivro.class, "Cadastros", "Livros");
         config.addPage(CadastroEmprestimo.class, "Cadastros", "Empréstimos");
+
+        config.addPage(PesquisaEmprestimo.class, "Pesquisas", "Empréstimos");
+
         config.addPage(Authorization.class, "Autorização", "Autorizar");
         config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Auditoria");
         config.addPage(ConsultaDiagnosticador.class, "Infra", "Diagnosticador");

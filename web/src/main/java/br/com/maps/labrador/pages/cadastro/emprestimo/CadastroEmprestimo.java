@@ -15,6 +15,7 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.domain.Emprestimo;
 import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 
 /**
  * Tela que cadastra empréstimos.
@@ -24,18 +25,40 @@ import br.com.maps.labrador.domain.Livro;
  */
 public class CadastroEmprestimo extends FormPage<Emprestimo> {
 
-    public CadastroEmprestimo(Class<? extends Page> source, PageParameters sourcePageParameters) {
-        super(source, sourcePageParameters);
+    /**
+     * Construtor.
+     * 
+     * @param pageParameters {@link PageParameters}
+     * @param pageInstance página de origem.
+     */
+    public CadastroEmprestimo(PageParameters pageParameters, Page pageInstance) {
+        super(pageParameters, pageInstance);
     }
 
-    public CadastroEmprestimo(Class<? extends Page> source, PageParameters sourcePageParameters, Emprestimo entity, FormType formType) {
-        super(source, sourcePageParameters, entity, formType);
+    /**
+     * Construtor.
+     * 
+     * @param sourcePage página de origem
+     * @param sourcePageParameters page parameters da pagina de origem
+     * @param entity entidade que deve ser associado a página
+     * @param formType tipo do formulario da página
+     */
+    public CadastroEmprestimo(Page sourcePage, PageParameters sourcePageParameters, Emprestimo entity, FormType formType) {
+        super(sourcePage, sourcePageParameters, entity, formType);
     }
 
+    /**
+     * Construtor.
+     * 
+     * @param sourcePageParameters {@link PageParameters}
+     */
     public CadastroEmprestimo(PageParameters sourcePageParameters) {
         super(sourcePageParameters);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
@@ -44,6 +67,9 @@ public class CadastroEmprestimo extends FormPage<Emprestimo> {
         return components;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
