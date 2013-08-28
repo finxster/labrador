@@ -21,7 +21,9 @@ public class LivroService {
 
     private static final String IDENTIFICADOR = "Identificador";
 
-    private static final String ISBN = "ISBN";
+    private static final String ISBN_10 = "ISBN 10";
+
+    private static final String ISBN_13 = "ISBN 13";
 
     private static final String TITULO = "Título";
 
@@ -33,7 +35,9 @@ public class LivroService {
 
     private StatelessPersister<Livro> persister;
 
-    private String isbn;
+    private String isbn10;
+
+    private String isbn13;
 
     private String titulo;
 
@@ -45,8 +49,9 @@ public class LivroService {
     @Execution
     public Livro execute() {
         Livro livro = this.dao.createBean();
-       // livro.setIsbn(this.isbn);
-        // livro.setTitulo(titulo);
+        livro.setIsbn10(this.isbn10);
+        livro.setIsbn13(this.isbn13);
+        livro.setTitulo(titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
 
@@ -71,11 +76,19 @@ public class LivroService {
     }
 
     /**
-     * @param isbn the isbn to set
+     * @param isbn10 the isbn10 to set
      */
-    @Input(fieldName = ISBN)
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    @Input(fieldName = ISBN_10)
+    public void setIsbn10(String isbn10) {
+        this.isbn10 = isbn10;
+    }
+
+    /**
+     * @param isbn13 the isbn13 to set
+     */
+    @Input(fieldName = ISBN_13)
+    public void setIsbn13(String isbn13) {
+        this.isbn13 = isbn13;
     }
 
     /**
