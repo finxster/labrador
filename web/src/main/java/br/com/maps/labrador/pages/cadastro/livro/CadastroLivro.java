@@ -10,20 +10,25 @@ import java.util.Map;
 
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.web.wicket.ComponentHelper;
+import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.WicketRuntimeException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.form.OnChangeAjaxBehavior;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
+import br.com.maps.labrador.LabradorWebException;
+import br.com.maps.labrador.LabradorWebMessages;
 import br.com.maps.labrador.domain.Livro;
 
 public class CadastroLivro extends FormPage<Livro> {
@@ -46,24 +51,37 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
-        final TextField<Object> isbnTextField = ComponentHelper.createTextField("isbn");
-        components.add(isbnTextField);
-        components.add(ComponentHelper.createTextField("nome"));
-        components.add(ComponentHelper.createTextField("descricao"));
-        isbnTextField.add(new OnChangeAjaxBehavior() {
-
+        final TextField<Object> isbnTextField = ComponentHelper.createTextField("isbn10");
+        final TextField<Object> isbn13 = ComponentHelper.createTextField("isbn13");
+        final TextField<Object> titulo = ComponentHelper.createTextField("titulo");
+        final TextField<Object> autor = ComponentHelper.createTextField("autor");
+        final TextField<Object> editora = ComponentHelper.createTextField("editora");
+        
+        //components.add(ComponentHelper.createTextField("nome"));
+       // components.add(ComponentHelper.createTextField("descricao"));
+        isbnTextField.add(new OnBlurAjaxBehavior() {
+			
             @Override
             protected void onUpdate(AjaxRequestTarget target) {
                 try {
-                    CadastroLivro.this.parseJsonObject((Livro) isbnTextField.getModelObject());
-                    target.add(CadastroLivro.this.get("nome"));
-                    target.add(CadastroLivro.this.get("descricao"));
-                } catch (Exception e) {
-                    CadastroLivro.this.info("Não foi possível obter as informações");
+                    CadastroLivro.this.parseJsonObject(isbnTextField);
+                    target.add(isbn13);
+                    target.add(titulo);
+                    target.add(autor);
+                    target.add(editora);
+                } catch (LabradorWebException e) {
+                	Component feedBackMessage = get("feedback");
+                	feedBackMessage.warn(e.getLocalizedMessageHolder().getMessage());
+                    target.add(feedBackMessage);
                 }
             }
         });
-
+  
+        components.add(isbnTextField.setOutputMarkupId(true));
+        components.add(isbn13.setOutputMarkupId(true));
+        components.add(titulo.setOutputMarkupId(true));
+        components.add(autor.setOutputMarkupId(true));
+		components.add(editora.setOutputMarkupId(true));
         return components;
     }
 
@@ -72,55 +90,41 @@ public class CadastroLivro extends FormPage<Livro> {
         return null;
     }
 
-    private void parseJsonObject(Livro livro) {
+    private void parseJsonObject(TextField textField) {
+    	String isbn10 = ((String) textField.getModelObject()).toUpperCase();
         try {
             ObjectMapper mapper = new ObjectMapper();
-            URL url = new URL("http://wwwb.isbndb.com/api/v2/json/" + MAPS_ISBNDB_COD + "/book/0132350882").toURI().toURL();
+            URL url = new URL("http://wwwb.isbndb.com/api/v2/json/" + MAPS_ISBNDB_COD + "/book/"+isbn10+"").toURI().toURL();
             try {
                 Map<String, Object> mp = mapper.readValue(url, new TypeReference<Map<String, Object>>() {
                 });
-                System.out.println("oi");
+                
+            	if(mp.get("error") != null){
+            		 throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
+        		}
+                
+                hidrateEntity(mp, getEntity());
             } catch (JsonParseException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
+                throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
             } catch (JsonMappingException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            	throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
             } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            	throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
             }
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
         } catch (URISyntaxException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        	throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
         }
     }
-    // @JsonIgnoreProperties(ignoreUnknown = true)
-    // public class Livro {
-    //
-    // private String title;
-    //
-    // @JsonCreator
-    // public Livro() {
-    // super();
-    // }
-    //
-    // /**
-    // * @return the title
-    // */
-    // public String getTitle() {
-    // return this.title;
-    // }
-    //
-    // /**
-    // * @param title the title to set
-    // */
-    // public void setTitle(String title) {
-    // this.title = title;
-    // }
-    // }
 
+	private void hidrateEntity(Map<String, Object> mp, Livro livro) {
+		Map<String, Object>  map =  ( Map<String, Object>) ((List) mp.get("data")).get(0);
+		livro.setIsbn10(map.get("isbn10").toString());
+		livro.setIsbn13(map.get("isbn13").toString());
+		livro.setEditora(map.get("publisher_text").toString());
+		livro.setTitulo(map.get("title").toString());
+		livro.setAutor(((Map<String, Object>)((List) map.get("author_data")).get(0)).get("name").toString());
+	}
 }
