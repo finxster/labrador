@@ -45,7 +45,7 @@ public class LivroService {
     @Execution
     public Livro execute() {
         Livro livro = this.dao.createBean();
-        livro.setIsbn(this.isbn);
+       // livro.setIsbn(this.isbn);
         // livro.setTitulo(titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);

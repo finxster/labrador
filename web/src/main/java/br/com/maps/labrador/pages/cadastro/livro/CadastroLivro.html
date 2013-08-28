@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:wicket="http://wicket.apache.org/">
 <head>
-	<title></title>
+<title></title>
 </head>
 <body>
-    <wicket:extend>    	
-			Nome: <input type="text" wicket:id="isbn"/>
-    </wicket:extend>
+	<wicket:extend>   
+		<div class="labeled_fields">	
+			ISBN 10: <input type="text" wicket:id="isbn10"/><br/>
+			ISBN 13: <input type="text" wicket:id="isbn13"/><br/>
+			Titulo: <input type="text" wicket:id="titulo" /><br/>
+			Autor: <input type="text" wicket:id="autor" /><br/>
+			Editora: <input type="text" wicket:id="editora" /><br/>
+		</div>
+	</wicket:extend>
 </body>
 </html>
