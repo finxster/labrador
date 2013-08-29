@@ -2,7 +2,6 @@ package br.com.maps.labrador.pages.consulta.livro;
 
 import java.io.Serializable;
 
-import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 import jmine.tec.web.wicket.component.injection.FormInputProvider;
 import jmine.tec.web.wicket.component.injection.composite.LabeledFormInput;
 
