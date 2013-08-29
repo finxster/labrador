@@ -6,7 +6,9 @@ import jmine.tec.component.exception.MessageCreatorHelper;
 
 public enum LabradorWebMessages implements MessageCreator{
 	
-	FALHA_OBTER_DADOS_ISBN(1,"falha.ao.obter.dados.a.partir.do.isbn");
+	FALHA_OBTER_DADOS_ISBN(1,"falha.ao.obter.dados.a.partir.do.isbn"),
+	
+	FALHA_OBTER_DADOS_ISBN_REDE_INDISPONIVEL(1,"falha.ao.obter.dados.a.partir.do.isbn.rede.indisponivel");
 	
 	private final MessageCreator delegate;
 	

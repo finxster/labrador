@@ -11,45 +11,49 @@ import br.com.maps.labrador.BOBaseTestCase;
  */
 public class LivroTest extends BOBaseTestCase<Livro> {
 
-    private static String[] ISBN;
+	private static String[] ISBN10;
 
-    private static String[] TITULO;
+	private static String[] ISBN13;
 
-    private static String[] AUTOR;
+	private static String[] TITULO;
 
-    private static String[] EDITORA;
+	private static String[] AUTOR;
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void initializeTestData() throws BeanNotFoundException {
-        ISBN = new String[]{ "ISBN_1", "ISBN_2" };
-        TITULO = new String[]{ "Apocalipse", "Bela e Fera" };
-        AUTOR = new String[]{ "Autor_1", "Autor_1" };
-        EDITORA = new String[]{ "Editora_1", "Editora_2" };
-    }
+	private static String[] EDITORA;
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void fillData(int idx, Livro bo) {
-        //bo.setIsbn(ISBN[idx]);
-        // bo.setTitulo(TITULO[idx]);
-        bo.setAutor(AUTOR[idx]);
-        bo.setEditora(EDITORA[idx]);
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void initializeTestData() throws BeanNotFoundException {
+		ISBN10 = new String[] { "ISBN_1", "ISBN_2" };
+		ISBN13 = new String[] { "ISBN_3", "ISBN_4" };
+		TITULO = new String[] { "Apocalipse", "Bela e Fera" };
+		AUTOR = new String[] { "Autor_1", "Autor_1" };
+		EDITORA = new String[] { "Editora_1", "Editora_2" };
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void compareData(int idx, Livro bo) throws BeanNotFoundException {
-       // assertEquals(ISBN[idx], bo.getIsbn());
-        // assertEquals(TITULO[idx], bo.getTitulo());
-        assertEquals(AUTOR[idx], bo.getAutor());
-        assertEquals(EDITORA[idx], bo.getEditora());
-    }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void fillData(int idx, Livro bo) {
+		bo.setIsbn10(ISBN10[idx]);
+		bo.setIsbn13(ISBN13[idx]);
+		bo.setTitulo(TITULO[idx]);
+		bo.setAutor(AUTOR[idx]);
+		bo.setEditora(EDITORA[idx]);
+	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void compareData(int idx, Livro bo) throws BeanNotFoundException {
+		assertEquals(ISBN10[idx], bo.getIsbn10());
+		assertEquals(ISBN13[idx], bo.getIsbn13());
+		assertEquals(TITULO[idx], bo.getTitulo());
+		assertEquals(AUTOR[idx], bo.getAutor());
+		assertEquals(EDITORA[idx], bo.getEditora());
+	}
 }

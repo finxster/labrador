@@ -14,8 +14,6 @@ import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonRootName;
 
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.
@@ -26,7 +24,6 @@ import org.codehaus.jackson.map.annotate.JsonRootName;
 @Entity
 @Alias("LIVRO")
 @Table(name = "LIVRO")
-@JsonRootName("data")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Documentation("TABELA QUE ARMAZENA OS LIVROS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO")
