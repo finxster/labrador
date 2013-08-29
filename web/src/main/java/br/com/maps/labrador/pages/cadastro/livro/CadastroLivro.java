@@ -30,6 +30,7 @@ import org.codehaus.jackson.type.TypeReference;
 import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.LabradorWebMessages;
 import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.helper.IsbnDBHelper;
 
 /**
  * Tela que cadastra livros.
@@ -146,33 +147,7 @@ public class CadastroLivro extends FormPage<Livro> {
      */
     private void parseJsonObject(TextField<String> textField) {
         String isbn10 = textField.getModelObject().toUpperCase();
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            URL url = new URL("http://wwwb.isbndb.com/api/v2/json/" + MAPS_ISBNDB_COD + "/book/" + isbn10 + "").toURI().toURL();
-            try {
-                Map<String, Object> mp = mapper.readValue(url, new TypeReference<Map<String, Object>>() {
-                });
-
-                if (mp.get("error") != null) {
-                    throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-                }
-                this.hidrateEntity(mp, this.getEntity());
-            } catch (JsonParseException e) {
-                e.printStackTrace();
-                throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-            } catch (JsonMappingException e) {
-                throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-            } catch (IOException e) {
-                if (e instanceof UnknownHostException || e instanceof SocketException) {
-                    throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN_REDE_INDISPONIVEL.create(isbn10));
-                }
-                throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-            }
-        } catch (MalformedURLException e) {
-            throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-        } catch (URISyntaxException e) {
-            throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(isbn10));
-        }
+        IsbnDBHelper.getLivroByISBN10(isbn10, getEntity());
     }
 
     /**
