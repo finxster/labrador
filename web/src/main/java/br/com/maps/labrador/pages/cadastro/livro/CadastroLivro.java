@@ -29,26 +29,54 @@ import org.codehaus.jackson.type.TypeReference;
 
 import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.LabradorWebMessages;
+import br.com.maps.labrador.domain.Emprestimo;
 import br.com.maps.labrador.domain.Livro;
 
+/**
+ * Tela que cadastra livros.
+ * 
+ * @author diego.ferreira
+ * @created Aug 28, 2013
+ */
 public class CadastroLivro extends FormPage<Livro> {
 
     // XXX (diego.ferreira) este parâmetro deverá ser configurado em um ".properties" e injetado via spring
     private static final String MAPS_ISBNDB_COD = "SQGBZAKH";
-
-    public CadastroLivro(Class<? extends Page> source, PageParameters sourcePageParameters) {
-        super(source, sourcePageParameters);
+    
+    /**
+     * Construtor.
+     * 
+     * @param sourcePage página de origem
+     * @param sourcePageParameters page parameters da pagina de origem
+     * @param entity entidade que deve ser associado a página
+     * @param formType tipo do formulario da página
+     */
+    public CadastroLivro(Page sourcePage, PageParameters sourcePageParameters, Livro entity, FormType formType) {
+        super(sourcePage, sourcePageParameters, entity, formType);
     }
 
-    public CadastroLivro(Class<? extends Page> source, PageParameters sourcePageParameters, br.com.maps.labrador.domain.Livro entity,
-            FormType formType) {
-        super(source, sourcePageParameters, entity, formType);
-    }
-
+    /**
+     * Construtor.
+     * 
+     * @param sourcePageParameters {@link PageParameters}
+     */
     public CadastroLivro(PageParameters sourcePageParameters) {
         super(sourcePageParameters);
     }
 
+    /**
+     * Construtor.
+     * 
+     * @param pageParameters {@link PageParameters}
+     * @param pageInstance página de origem.
+     */
+    public CadastroLivro(PageParameters pageParameters, Page pageInstance) {
+        super(pageParameters, pageInstance);
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
@@ -84,6 +112,9 @@ public class CadastroLivro extends FormPage<Livro> {
         return components;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
