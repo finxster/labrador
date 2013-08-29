@@ -10,12 +10,10 @@ import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.domain.Emprestimo;
 import br.com.maps.labrador.domain.Livro;
-import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 
 /**
  * Tela que cadastra empréstimos.
@@ -24,16 +22,6 @@ import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
  * @created Aug 26, 2013
  */
 public class CadastroEmprestimo extends FormPage<Emprestimo> {
-
-    /**
-     * Construtor.
-     * 
-     * @param pageParameters {@link PageParameters}
-     * @param pageInstance página de origem.
-     */
-    public CadastroEmprestimo(PageParameters pageParameters, Page pageInstance) {
-        super(pageParameters, pageInstance);
-    }
 
     /**
      * Construtor.
@@ -54,6 +42,16 @@ public class CadastroEmprestimo extends FormPage<Emprestimo> {
      */
     public CadastroEmprestimo(PageParameters sourcePageParameters) {
         super(sourcePageParameters);
+    }
+
+    /**
+     * Construtor.
+     * 
+     * @param pageParameters {@link PageParameters}
+     * @param pageInstance página de origem.
+     */
+    public CadastroEmprestimo(PageParameters pageParameters, Page pageInstance) {
+        super(pageParameters, pageInstance);
     }
 
     /**
