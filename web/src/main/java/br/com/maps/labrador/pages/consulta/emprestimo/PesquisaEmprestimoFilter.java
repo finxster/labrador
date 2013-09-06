@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import jmine.tec.web.wicket.component.injection.FormInputProvider;
 import jmine.tec.web.wicket.component.injection.composite.LabeledFormInput;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * Filtro para a tela de empréstimos.

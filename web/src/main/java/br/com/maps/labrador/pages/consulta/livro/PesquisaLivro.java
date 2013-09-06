@@ -12,7 +12,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.dao.LivroDAO;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 
 /**

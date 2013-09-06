@@ -1,9 +1,12 @@
-package br.com.maps.labrador.domain;
+package br.com.maps.labrador.domain.emprestimo;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.utils.date.Date;
 import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.BOBaseTestCase;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
+import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.livro.LivroTest;
 
 /**
  * Teste de domínio de {@link Emprestimo}.

@@ -8,7 +8,7 @@ import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * Serviço de inclusão de livros.

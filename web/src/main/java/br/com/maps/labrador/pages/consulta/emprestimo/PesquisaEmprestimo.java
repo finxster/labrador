@@ -12,7 +12,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.dao.EmprestimoDAO;
-import br.com.maps.labrador.domain.Emprestimo;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 
 /**

@@ -17,7 +17,7 @@ import org.codehaus.jackson.type.TypeReference;
 
 import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.LabradorWebMessages;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
 
 public class IsbnDBHelper {
 

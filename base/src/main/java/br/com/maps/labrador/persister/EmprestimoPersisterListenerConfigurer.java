@@ -2,7 +2,7 @@ package br.com.maps.labrador.persister;
 
 import jmine.tec.persist.impl.di.PersisterListenerConfigurer;
 import jmine.tec.persist.impl.di.PersisterListeners;
-import br.com.maps.labrador.domain.Emprestimo;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 
 /**
  * {@link PersisterListenerConfigurer} para {@link Emprestimo}.

@@ -1,4 +1,4 @@
-package br.com.maps.labrador.domain;
+package br.com.maps.labrador.domain.emprestimo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,6 +20,8 @@ import jmine.tec.utils.date.Timestamp;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
+
+import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * Representa um empréstimo no sistema.

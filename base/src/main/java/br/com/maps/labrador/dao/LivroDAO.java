@@ -7,8 +7,8 @@ import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
 
-import br.com.maps.labrador.domain.Emprestimo;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
+import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * DAO para {@link Livro}.

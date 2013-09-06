@@ -12,8 +12,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
-import br.com.maps.labrador.domain.Emprestimo;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
+import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * Tela que cadastra empréstimos.
