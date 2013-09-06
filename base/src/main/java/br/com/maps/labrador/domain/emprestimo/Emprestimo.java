@@ -21,6 +21,7 @@ import jmine.tec.utils.date.Timestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -44,6 +45,8 @@ public class Emprestimo extends PersistableBusinessObject {
     private Timestamp data;
 
     private Date dataDevolucao;
+
+    private StatusEmprestimo status = StatusEmprestimo.EFETUADO;
 
     private LabradorUsuario tomador;
 
@@ -124,6 +127,23 @@ public class Emprestimo extends PersistableBusinessObject {
      */
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
+    }
+
+    /**
+     * @return the status
+     */
+    @NotNull
+    @Column(name = "STATUS", nullable = false)
+    @Documentation("STATUS DO EMPRESTIMO.")
+    public StatusEmprestimo getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(StatusEmprestimo status) {
+        this.status = status;
     }
 
     /**

@@ -8,6 +8,6 @@ package br.com.maps.labrador.domain.emprestimo.enumx;
  */
 public enum StatusEmprestimo {
 
-    DISPONIVEL, EMPRESTADO;
+    EFETUADO, DEVOLVIDO;
 
 }
