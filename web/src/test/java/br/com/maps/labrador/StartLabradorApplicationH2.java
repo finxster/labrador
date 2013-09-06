@@ -24,7 +24,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
 /**
  * Classe principal para iniciar o aplicativo para testes
  */
-public final class StartLabradorApplication {
+public final class StartLabradorApplicationH2 {
 
     private static final int START_WAIT_MILLIS = 5000;
 
@@ -39,7 +39,7 @@ public final class StartLabradorApplication {
     /**
      * Construtor privado
      */
-    private StartLabradorApplication() {
+    private StartLabradorApplicationH2() {
     }
 
     /**
@@ -49,6 +49,8 @@ public final class StartLabradorApplication {
      * @throws Exception e
      */
     public static void main(String[] args) throws Exception {
+        prepareEnvironment("core-test-beans.xml", "core-db.xml", ReferenceDatabaseDescriptionType.POSTSCRIPT);
+
         stopPreviousServer();
         server = new Server();
         SocketConnector connector = new SocketConnector();
