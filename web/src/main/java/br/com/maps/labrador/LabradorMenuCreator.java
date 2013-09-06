@@ -9,6 +9,7 @@ import jmine.tec.web.wicket.component.menu.cfg.AbstractMenuConfigFactoryBean;
 import jmine.tec.web.wicket.component.menu.cfg.MenuConfig;
 import br.com.maps.labrador.pages.AlterarSenhaPage;
 import br.com.maps.labrador.pages.CrudUsuarioPage;
+import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroDevolucaoEmprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
@@ -30,7 +31,9 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
 
         // add menu here
         config.addPage(CadastroLivro.class, "Base", "Cadastros", "Livros");
-        config.addPage(CadastroEmprestimo.class, "Base", "Cadastros", "Empréstimos");
+
+        config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
+        config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
 
         config.addPage(PesquisaLivro.class, "Base","Pesquisas", "Livros");
         config.addPage(PesquisaEmprestimo.class, "Base","Pesquisas", "Empréstimos");

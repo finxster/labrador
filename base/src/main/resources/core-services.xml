@@ -9,6 +9,7 @@
 				<property name="mappingResources">
 					<list>
 						<value>br.com.maps.labrador.service.incluir.LivroService</value>
+						<value>br.com.maps.labrador.service.incluir.LabradorUsuarioService</value>
 					</list>
 				</property>
 			</bean>

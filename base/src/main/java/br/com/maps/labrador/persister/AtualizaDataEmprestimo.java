@@ -3,7 +3,7 @@ package br.com.maps.labrador.persister;
 import jmine.tec.component.Action;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.utils.date.Clock;
-import br.com.maps.labrador.domain.Emprestimo;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 
 /**
  * Atualiza a data de um emprestimo.

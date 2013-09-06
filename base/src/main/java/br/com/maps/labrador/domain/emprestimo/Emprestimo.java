@@ -1,4 +1,4 @@
-package br.com.maps.labrador.domain;
+package br.com.maps.labrador.domain.emprestimo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +21,10 @@ import jmine.tec.utils.date.Timestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
+import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
+
 /**
  * Representa um empréstimo no sistema.
  * 
@@ -41,6 +45,10 @@ public class Emprestimo extends PersistableBusinessObject {
     private Timestamp data;
 
     private Date dataDevolucao;
+
+    private StatusEmprestimo status = StatusEmprestimo.EFETUADO;
+
+    private LabradorUsuario tomador;
 
     /**
      * Construtor.
@@ -74,7 +82,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @Index(suffix = "0")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_LIVRO")
-    @Documentation("CODIGO DO USUARIO DO JAMON DESSE MUSICO.")
+    @Documentation("CODIGO DO LIVRO.")
     public Livro getLivro() {
         return livro;
     }
@@ -121,4 +129,39 @@ public class Emprestimo extends PersistableBusinessObject {
         this.dataDevolucao = dataDevolucao;
     }
 
+    /**
+     * @return the status
+     */
+    @NotNull
+    @Column(name = "STATUS", nullable = false)
+    @Documentation("STATUS DO EMPRESTIMO.")
+    public StatusEmprestimo getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(StatusEmprestimo status) {
+        this.status = status;
+    }
+
+    /**
+     * @return the tomador
+     */
+    @NotNull
+    @Index(suffix = "1")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_TOMADOR")
+    @Documentation("CODIGO DO TOMADOR.")
+    public LabradorUsuario getTomador() {
+        return tomador;
+    }
+
+    /**
+     * @param tomador the tomador to set
+     */
+    public void setTomador(LabradorUsuario tomador) {
+        this.tomador = tomador;
+    }
 }

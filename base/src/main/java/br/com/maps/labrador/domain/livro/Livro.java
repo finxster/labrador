@@ -1,10 +1,13 @@
-package br.com.maps.labrador.domain;
+package br.com.maps.labrador.domain.livro;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,13 +19,18 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.validator.NotNull;
 
-import br.com.maps.labrador.domain.enumx.StatusEmprestimo;
+import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.
  * 
  * @author laercio.duarte
  * @created 23/08/2013
+ */
+/**
+ * @author diego.ferreira
+ * @created Sep 6, 2013
  */
 @Entity
 @Alias("LIVRO")
@@ -44,7 +52,9 @@ public class Livro extends PersistableBusinessObject {
 
     private String editora;
 
-    private StatusEmprestimo status = StatusEmprestimo.DISPONIVEL;
+    private LabradorUsuario usuario;
+
+    private StatusLivro status = StatusLivro.DISPONIVEL;
 
     /**
      * Construtor
@@ -78,7 +88,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("TITULO DO LIVRO")
     @Column(name = "TITULO")
     public String getTitulo() {
-        return titulo;
+        return this.titulo;
     }
 
     /**
@@ -94,7 +104,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("ISBN10 DO LIVRO")
     @Column(name = "ISBN10")
     public String getIsbn10() {
-        return isbn10;
+        return this.isbn10;
     }
 
     /**
@@ -110,7 +120,7 @@ public class Livro extends PersistableBusinessObject {
     @Documentation("ISBN10 DO LIVRO")
     @Column(name = "ISBN13")
     public String getIsbn13() {
-        return isbn13;
+        return this.isbn13;
     }
 
     /**
@@ -153,19 +163,36 @@ public class Livro extends PersistableBusinessObject {
     }
 
     /**
+     * @return the usuario
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_USUARIO")
+    @Documentation("CODIGO DO USUARIO QUE E O PROPRIETARIO DO LIVRO")
+    public LabradorUsuario getUsuario() {
+        return this.usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(LabradorUsuario usuario) {
+        this.usuario = usuario;
+    }
+
+    /**
      * @return the status
      */
     @NotNull
     @Column(name = "STATUS", nullable = false)
-    @Documentation("STATUS DO EMPRESTIMO.")
-    public StatusEmprestimo getStatus() {
+    @Documentation("STATUS DO EMPRESTIMO DO LIVRO.")
+    public StatusLivro getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(StatusEmprestimo status) {
+    public void setStatus(StatusLivro status) {
         this.status = status;
     }
 }

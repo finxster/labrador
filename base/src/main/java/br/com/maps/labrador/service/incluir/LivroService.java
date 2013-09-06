@@ -8,7 +8,8 @@ import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Serviço de inclusão de livros.
@@ -31,6 +32,8 @@ public class LivroService {
 
     private static final String EDITORA = "Editora";
 
+    private static final String USUARIO = "Usuário";
+
     private DAO<Livro> dao;
 
     private StatelessPersister<Livro> persister;
@@ -45,6 +48,8 @@ public class LivroService {
 
     private String editora;
 
+    private LabradorUsuario usuario;
+
     @Output(propertyName = IDENTIFICADOR)
     @Execution
     public Livro execute() {
@@ -54,6 +59,7 @@ public class LivroService {
         livro.setTitulo(titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
+        livro.setUsuario(usuario);
 
         this.persister.save(livro);
         return livro;
@@ -113,6 +119,14 @@ public class LivroService {
     @Input(fieldName = EDITORA)
     public void setEditora(String editora) {
         this.editora = editora;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    @Input(fieldName = USUARIO)
+    public void setUsuario(LabradorUsuario usuario) {
+        this.usuario = usuario;
     }
 
 }

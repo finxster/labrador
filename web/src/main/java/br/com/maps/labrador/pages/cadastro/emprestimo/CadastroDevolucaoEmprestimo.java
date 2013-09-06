@@ -17,17 +17,9 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorBaseController;
-import br.com.maps.labrador.domain.livro.Livro;
-import br.com.maps.labrador.domain.usuario.LabradorUsuario;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 
-/**
- * Tela que cadastra empréstimos.
- * 
- * @author finx
- * @created Aug 26, 2013
- */
-public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
+public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Emprestimo> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
@@ -38,7 +30,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
     /**
      * Construtor
      */
-    public CadastroEmprestimo() {
+    public CadastroDevolucaoEmprestimo() {
         super();
     }
 
@@ -47,12 +39,12 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
      * 
      * @param pageParameters {@link PageParameters}
      */
-    public CadastroEmprestimo(PageParameters pageParameters) {
+    public CadastroDevolucaoEmprestimo(PageParameters pageParameters) {
         super(pageParameters);
     }
 
-    public List<Livro> search(DAOFactory daoFactory) {
-        DAO<Livro> dao = daoFactory.getDAOByEntityType(Livro.class);
+    public List<Emprestimo> search(DAOFactory daoFactory) {
+        DAO<Emprestimo> dao = daoFactory.getDAOByEntityType(Emprestimo.class);
         return dao.findAll();
     }
 
@@ -68,9 +60,11 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
      * {@inheritDoc}
      */
     @Override
-    protected void addResultTableColumns(ReportTableBuilder<Livro> table) {
-        table.addStringColumn("livro", "Livro", "titulo");
-        table.addStringColumn("donoLivro", "Dono do livro", "usuario.nome");
+    protected void addResultTableColumns(ReportTableBuilder<Emprestimo> table) {
+        table.addStringColumn("livro", "Livro", "livro.titulo");
+        table.addStringColumn("donoLivro", "Dono do livro", "livro.usuario.nome");
+        table.addTimestampColumn("dataEmprestimo", "Data do empréstimo", "data");
+        table.addDateColumn("dataDevolucao", "Data da devolução", "dataDevolucao");
         table.addStringColumn("status", "Status", "status");
     }
 
@@ -89,24 +83,22 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
     protected List<ButtonCommand> getPageCommands() {
         List<ButtonCommand> pageCommands = super.getPageCommands();
 
-        final LabradorUsuario user = UserHelper.getUser(daoFactory);
-
-        pageCommands.add(new SingleEntityExecutionButton<Livro>() {
+        pageCommands.add(new SingleEntityExecutionButton<Emprestimo>() {
 
             /**
              * {@inheritDoc}
              */
             @Override
             public String getLabel() {
-                return "Tomar emprestado";
+                return "Devolver empréstimo";
             }
 
             /**
              * {@inheritDoc}
              */
             @Override
-            protected void doExecute(Livro entity) {
-                controller.executarEmprestimo(user, entity);
+            protected void doExecute(Emprestimo entity) {
+                controller.devolverEmprestimo(entity);
             }
 
             /**
@@ -114,19 +106,20 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, Livro> {
              */
             @Override
             protected Set<Serializable> getSelected() {
-                return CadastroEmprestimo.this.getSelectedItens();
+                return CadastroDevolucaoEmprestimo.this.getSelectedItens();
             }
 
             /**
              * {@inheritDoc}
              */
             @Override
-            protected Livro loadEntity(Serializable entityId) throws BeanNotFoundException {
-                return CadastroEmprestimo.this.loadEntity(entityId);
+            protected Emprestimo loadEntity(Serializable entityId) throws BeanNotFoundException {
+                return CadastroDevolucaoEmprestimo.this.loadEntity(entityId);
             }
 
         });
 
         return pageCommands;
     }
+
 }
