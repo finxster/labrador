@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jmine.tec.component.exception.MessageCreator;
+import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
@@ -11,9 +12,11 @@ import jmine.tec.web.wicket.pages.form.FormType;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.helper.UserHelper;
 
 /**
  * Tela que cadastra empréstimos.
@@ -22,6 +25,9 @@ import br.com.maps.labrador.domain.livro.Livro;
  * @created Aug 26, 2013
  */
 public class CadastroEmprestimo extends FormPage<Emprestimo> {
+
+    @SpringBean(name = "daoFactory")
+    private DAOFactory daoFactory;
 
     /**
      * Construtor.
@@ -60,8 +66,8 @@ public class CadastroEmprestimo extends FormPage<Emprestimo> {
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
-        components.add(ComponentHelper.createLabeledField("livro", "Livro", Livro.class, this.getEntity(), true));
-        components.add(ComponentHelper.createLabeledDateField("dataDevolucao", "Data de Devolução", this.getEntity(), false));
+        components.add(ComponentHelper.createLabeledField("livro", "Livro", Livro.class, getEntity(), true));
+        components.add(ComponentHelper.createLabeledDateField("dataDevolucao", "Data de Devolução", getEntity(), false));
         return components;
     }
 
@@ -71,6 +77,13 @@ public class CadastroEmprestimo extends FormPage<Emprestimo> {
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
+    }
+
+    @Override
+    protected boolean beforeSave(Emprestimo target) {
+        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
+        target.setTomador(UserHelper.getUser(daoFactory));
+        return super.beforeSave(target);
     }
 
 }

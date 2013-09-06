@@ -35,7 +35,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     public List<Emprestimo> search(DAOFactory daoFactory) {
         EmprestimoDAO dao = daoFactory.getDAOByClass(EmprestimoDAO.class);
-        PesquisaEmprestimoFilter m = this.getModel();
+        PesquisaEmprestimoFilter m = getModel();
         return dao.findByLivro(m.getLivro());
     }
 
@@ -60,7 +60,9 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Emprestimo> table) {
+        table.addStringColumn("tomador", "Tomador", "tomador.nome");
         table.addStringColumn("livro", "Livro", "livro.titulo");
+        table.addStringColumn("donoLivro", "Dono do livro", "livro.usuario.nome");
         table.addStringColumn("data", "Data", "data");
         table.addStringColumn("dataDevolucao", "Data da devolução", "dataDevolucao");
     }

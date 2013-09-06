@@ -22,6 +22,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Representa um empréstimo no sistema.
@@ -43,6 +44,8 @@ public class Emprestimo extends PersistableBusinessObject {
     private Timestamp data;
 
     private Date dataDevolucao;
+
+    private LabradorUsuario tomador;
 
     /**
      * Construtor.
@@ -76,7 +79,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @Index(suffix = "0")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_LIVRO")
-    @Documentation("CODIGO DO USUARIO DO JAMON DESSE MUSICO.")
+    @Documentation("CODIGO DO LIVRO.")
     public Livro getLivro() {
         return livro;
     }
@@ -123,4 +126,22 @@ public class Emprestimo extends PersistableBusinessObject {
         this.dataDevolucao = dataDevolucao;
     }
 
+    /**
+     * @return the tomador
+     */
+    @NotNull
+    @Index(suffix = "1")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_TOMADOR")
+    @Documentation("CODIGO DO TOMADOR.")
+    public LabradorUsuario getTomador() {
+        return tomador;
+    }
+
+    /**
+     * @param tomador the tomador to set
+     */
+    public void setTomador(LabradorUsuario tomador) {
+        this.tomador = tomador;
+    }
 }

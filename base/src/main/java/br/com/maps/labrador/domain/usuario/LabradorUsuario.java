@@ -51,7 +51,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
     /**
      * Construtor.
      */
-    protected LabradorUsuario() {
+    public LabradorUsuario() {
         super();
     }
 
@@ -63,7 +63,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
     @GeneratedValue(generator = "SEQ_LAUSR", strategy = GenerationType.AUTO)
     @Column(name = "ID", updatable = false, nullable = false)
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     /**
@@ -80,7 +80,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_USER", nullable = false)
     public User getUser() {
-        return this.user;
+        return user;
     }
 
     /**
@@ -115,7 +115,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
     @Documentation("EMAIL DO USUARIO.")
     @Column(name = "EMAIL", nullable = false)
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
     /**
@@ -130,7 +130,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
      */
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     public List<Livro> getLivros() {
-        return this.livros;
+        return livros;
     }
 
     /**
@@ -145,7 +145,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
      */
     @Transient
     public String getUserName() {
-        return this.getUser().getUsername();
+        return getUser().getUsername();
     }
 
     /**
@@ -153,6 +153,6 @@ public class LabradorUsuario extends PersistableBusinessObject {
      */
     @Transient
     public String getPassword() {
-        return this.getUser().getPassword();
+        return getUser().getPassword();
     }
 }
