@@ -17,7 +17,9 @@ import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -51,6 +53,8 @@ public class Livro extends PersistableBusinessObject {
     private String editora;
 
     private LabradorUsuario usuario;
+
+    private StatusEmprestimo status = StatusEmprestimo.DISPONIVEL;
 
     /**
      * Construtor
@@ -173,5 +177,22 @@ public class Livro extends PersistableBusinessObject {
      */
     public void setUsuario(LabradorUsuario usuario) {
         this.usuario = usuario;
+    }
+
+    /**
+     * @return the status
+     */
+    @NotNull
+    @Column(name = "STATUS", nullable = false)
+    @Documentation("STATUS DO EMPRESTIMO.")
+    public StatusEmprestimo getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(StatusEmprestimo status) {
+        this.status = status;
     }
 }
