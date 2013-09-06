@@ -65,6 +65,7 @@ public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro>  {
         table.addStringColumn("titulo", "Título", "titulo");
         table.addStringColumn("autor", "Autor", "autor");
         table.addStringColumn("editora", "Editora", "editora");
+        table.addStringColumn("status", "Status", "status");
     }
 
     /**

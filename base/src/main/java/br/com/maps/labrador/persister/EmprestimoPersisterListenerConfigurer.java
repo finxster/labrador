@@ -17,6 +17,7 @@ public class EmprestimoPersisterListenerConfigurer implements PersisterListenerC
      */
     public void configure(PersisterListeners listeners) {
         listeners.beforeInsert(Emprestimo.class, AtualizaDataEmprestimo.class);
+        listeners.beforeInsert(Emprestimo.class, AtualizaStatusLivro.class);
     }
 
 }
