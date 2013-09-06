@@ -49,7 +49,7 @@ public final class StartLabradorApplicationH2 {
      * @throws Exception e
      */
     public static void main(String[] args) throws Exception {
-        prepareEnvironment("core-test-beans.xml", "core-db.xml", ReferenceDatabaseDescriptionType.POSTSCRIPT);
+        prepareEnvironment("core-test-beans.xml", "core-db.xml", ReferenceDatabaseDescriptionType.REFERENCE);
 
         stopPreviousServer();
         server = new Server();
