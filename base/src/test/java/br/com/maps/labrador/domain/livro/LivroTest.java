@@ -2,7 +2,7 @@ package br.com.maps.labrador.domain.livro;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import br.com.maps.labrador.BOBaseTestCase;
-import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
+import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.domain.usuario.LabradorUsuarioTest;
 
@@ -26,7 +26,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
     private static LabradorUsuario[] LABRADOR_USUARIO;
 
-    private static StatusEmprestimo[] STATUS;
+    private static StatusLivro[] STATUS;
 
     /**
      * {@inheritDoc}
@@ -39,7 +39,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         AUTOR = new String[]{ "Autor_1", "Autor_1" };
         EDITORA = new String[]{ "Editora_1", "Editora_2" };
         LABRADOR_USUARIO = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
-        STATUS = new StatusEmprestimo[]{ StatusEmprestimo.DISPONIVEL, StatusEmprestimo.EMPRESTADO };
+        STATUS = new StatusLivro[]{ StatusLivro.DISPONIVEL, StatusLivro.EMPRESTADO };
     }
 
     /**

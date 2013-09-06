@@ -27,7 +27,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      * {@inheritDoc}
      */
     public Page createNewPage() {
-        return new CadastroEmprestimo(new PageParameters(), this);
+        return new PesquisaEmprestimo();
     }
 
     /**
@@ -44,7 +44,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     @Override
     protected Page createFormPage(Emprestimo entity, FormType formType) {
-        return new CadastroEmprestimo(this, new PageParameters(), entity, formType);
+        return new PesquisaEmprestimo();
     }
 
     /**

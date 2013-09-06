@@ -6,6 +6,7 @@ import jmine.tec.persist.api.persister.StatelessPersister;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
 
 /**
  * Atualiza o status de empréstimo de um {@link Livro}.
@@ -23,7 +24,7 @@ public class AtualizaStatusLivro implements Action<Emprestimo> {
      */
     public void act(Emprestimo target) {
         Livro livro = target.getLivro();
-        livro.setStatus(StatusEmprestimo.EMPRESTADO);
+        livro.setStatus(StatusLivro.EMPRESTADO);
         this.persister.save(livro);
     }
 
