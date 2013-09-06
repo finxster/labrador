@@ -2,6 +2,7 @@ package br.com.maps.labrador.domain;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import br.com.maps.labrador.BOBaseTestCase;
+import br.com.maps.labrador.domain.enumx.StatusEmprestimo;
 
 /**
  * Um teste para o domínio de {@link Livro}.
@@ -21,6 +22,8 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
 	private static String[] EDITORA;
 
+    private static StatusEmprestimo[] STATUS;
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -31,6 +34,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 		TITULO = new String[] { "Apocalipse", "Bela e Fera" };
 		AUTOR = new String[] { "Autor_1", "Autor_1" };
 		EDITORA = new String[] { "Editora_1", "Editora_2" };
+        STATUS = new StatusEmprestimo[]{ StatusEmprestimo.DISPONIVEL, StatusEmprestimo.EMPRESTADO };
 	}
 
 	/**
@@ -43,6 +47,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 		bo.setTitulo(TITULO[idx]);
 		bo.setAutor(AUTOR[idx]);
 		bo.setEditora(EDITORA[idx]);
+        bo.setStatus(STATUS[idx]);
 	}
 
 	/**
@@ -55,5 +60,6 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 		assertEquals(TITULO[idx], bo.getTitulo());
 		assertEquals(AUTOR[idx], bo.getAutor());
 		assertEquals(EDITORA[idx], bo.getEditora());
+        assertEquals(STATUS[idx], bo.getStatus());
 	}
 }
