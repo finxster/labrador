@@ -29,19 +29,20 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         MenuConfig config = new MenuConfig();
 
         // add menu here
-        config.addPage(CadastroLivro.class, "Cadastros", "Livros");
-        config.addPage(CadastroEmprestimo.class, "Cadastros", "Empréstimos");
+        config.addPage(CadastroLivro.class, "Base", "Cadastros", "Livros");
+        config.addPage(CadastroEmprestimo.class, "Base", "Cadastros", "Empréstimos");
 
-        config.addPage(PesquisaLivro.class, "Pesquisas", "Livros");
-        config.addPage(PesquisaEmprestimo.class, "Pesquisas", "Empréstimos");
+        config.addPage(PesquisaLivro.class, "Base","Pesquisas", "Livros");
+        config.addPage(PesquisaEmprestimo.class, "Base","Pesquisas", "Empréstimos");
 
-        config.addPage(Authorization.class, "Autorização", "Autorizar");
-        config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Auditoria");
-        config.addPage(ConsultaDiagnosticador.class, "Infra", "Diagnosticador");
-        config.addPage(ConsultaExceptionRecord.class, "Infra", "Exceptions");
-        config.addPage(Importacao.class, "Infra", "Importacao");
-        config.addPage(AlterarSenhaPage.class, "Infra", "Alterar senha");
-        config.addPage(CrudUsuarioPage.class, "Infra", "Controle de acesso");
+        config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
+        config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Autorização", "Auditoria");
+        
+        config.addPage(ConsultaDiagnosticador.class, "Infra", "Infra", "Diagnosticador");
+        config.addPage(ConsultaExceptionRecord.class, "Infra", "Infra", "Exceptions");
+        config.addPage(Importacao.class, "Infra", "Infra", "Importacao");
+        config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
+        config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
 
         return config;
     }
