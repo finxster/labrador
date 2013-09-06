@@ -11,9 +11,7 @@
 	<import resource="core-mapping.xml" />
 	<import resource="core-services.xml" />
 
-	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
-		<property name="persister" ref="hotPersister" />
-	</bean>
+	<bean id="simpleController" class="jmine.tec.persist.impl.PlainPersistenceEnabledController" parent="abstractController"></bean>
 
 	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
 		<property name="authorizationManager" ref="boAuthorizationManager" />
@@ -36,6 +34,12 @@
 			<value>jmine.tec.security.impl.dao.UserDAO</value>
 		</constructor-arg>
 	</bean>
+	
+	<bean id="livroDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>br.com.maps.labrador.dao.LivroDAO</value>
+		</constructor-arg>
+	</bean>
 
 	<bean id="metaCredentialDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
 		<constructor-arg>
@@ -54,15 +58,6 @@
 		</property>
 	</bean>
 
-	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.EmprestimoPersisterListenerConfigurer" />
-
-	<bean id="labradorBaseValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
-		<property name="receiver" ref="validatorRegistry"></property>
-		<property name="registers">
-			<list>
-				<bean class="br.com.maps.labrador.validator.EmprestimoValidator" />
-			</list>
-		</property>
-	</bean>
-
+	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestimoPersisterListenerConfigurer" />
+	<bean id="labradorUsuarioPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.LabradorUsuarioPersisterListenerConfigurer" />
 </beans>

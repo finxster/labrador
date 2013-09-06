@@ -8,6 +8,10 @@ import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
+
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -17,6 +21,7 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @author finx
  * @created Aug 26, 2013
  */
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 @ServiceImplementor(action = ActionsEnum.INCLUIR)
 public class LivroService {
 
@@ -56,10 +61,10 @@ public class LivroService {
         Livro livro = this.dao.createBean();
         livro.setIsbn10(this.isbn10);
         livro.setIsbn13(this.isbn13);
-        livro.setTitulo(titulo);
+        livro.setTitulo(this.titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
-        livro.setUsuario(usuario);
+        livro.setUsuario(this.usuario);
 
         this.persister.save(livro);
         return livro;

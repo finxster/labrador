@@ -5,7 +5,7 @@ import jmine.tec.test.runner.TestRunnerStarter;
 /**
  * @author renan.oliveira
  */
-public class PlanilhasTestRunner {
+public class LabradorCenariosTestRunner {
 
     /**
      * Starts the test runner
