@@ -1,16 +1,11 @@
 package br.com.maps.labrador.pages.cadastro.livro;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.SocketException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import jmine.tec.component.exception.MessageCreator;
+import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
 import jmine.tec.web.wicket.pages.form.FormPage;
@@ -22,15 +17,12 @@ import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
-import org.codehaus.jackson.JsonParseException;
-import org.codehaus.jackson.map.JsonMappingException;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorWebException;
-import br.com.maps.labrador.LabradorWebMessages;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.helper.IsbnDBHelper;
+import br.com.maps.labrador.helper.UserHelper;
 
 /**
  * Tela que cadastra livros.
@@ -40,9 +32,12 @@ import br.com.maps.labrador.helper.IsbnDBHelper;
  */
 public class CadastroLivro extends FormPage<Livro> {
 
+    @SpringBean(name = "daoFactory")
+    private DAOFactory daoFactory;
+
     // XXX (diego.ferreira) este parâmetro deverá ser configurado em um ".properties" e injetado via spring
     private static final String MAPS_ISBNDB_COD = "SQGBZAKH";
-    
+
     /**
      * Construtor.
      * 
@@ -73,7 +68,7 @@ public class CadastroLivro extends FormPage<Livro> {
     public CadastroLivro(PageParameters pageParameters, Page pageInstance) {
         super(pageParameters, pageInstance);
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -118,6 +113,13 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
+    }
+
+    @Override
+    protected boolean beforeSave(Livro target) {
+        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
+        target.setUsuario(UserHelper.getUser(daoFactory));
+        return super.beforeSave(target);
     }
 
     /**

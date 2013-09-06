@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
+import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 import jmine.tec.security.impl.domain.User;
@@ -40,6 +41,8 @@ public class LabradorUsuario extends PersistableBusinessObject {
     private Long id;
 
     private User user;
+
+    private String nome;
 
     private String email;
 
@@ -74,7 +77,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
      * @return the user
      */
     @NotNull
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_USER", nullable = false)
     public User getUser() {
         return this.user;
@@ -88,10 +91,28 @@ public class LabradorUsuario extends PersistableBusinessObject {
     }
 
     /**
+     * @return the nome
+     */
+    @NotNull
+    @NaturalKey
+    @Documentation("NOME DO USUARIO.")
+    @Column(name = "NOME", nullable = false)
+    public String getNome() {
+        return nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
      * @return the email
      */
     @NotNull
-    @Documentation("EMAIL DO USUARIO ")
+    @Documentation("EMAIL DO USUARIO.")
     @Column(name = "EMAIL", nullable = false)
     public String getEmail() {
         return this.email;
