@@ -1,4 +1,4 @@
-package br.com.maps.labrador.domain.enumx;
+package br.com.maps.labrador.domain.emprestimo.enumx;
 
 /**
  * Status dos empréstimos dos livros.
@@ -8,6 +8,6 @@ package br.com.maps.labrador.domain.enumx;
  */
 public enum StatusEmprestimo {
 
-    DISPONIVEL, EMPRESTADO;
+    EFETUADO, DEVOLVIDO;
 
 }

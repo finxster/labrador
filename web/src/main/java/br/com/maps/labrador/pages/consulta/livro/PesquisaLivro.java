@@ -12,7 +12,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.dao.LivroDAO;
-import br.com.maps.labrador.domain.Livro;
+import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 
 /**
@@ -60,6 +60,7 @@ public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro>  {
      */
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Livro> table) {
+        table.addStringColumn("user", "Usuário", "usuario.nome");
         table.addStringColumn("isbn13", "ISBN 13", "isbn13");
         table.addStringColumn("isbn10", "ISBN 10", "isbn10");
         table.addStringColumn("titulo", "Título", "titulo");

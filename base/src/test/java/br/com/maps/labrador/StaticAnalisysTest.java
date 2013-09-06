@@ -24,7 +24,7 @@ public class StaticAnalisysTest extends AbstractBOStaticAnalysisTest {
      */
     @Override
     protected String getControllerSpringId() {
-        return "simpleController";
+        return "labradorBaseController";
     }
 
     /**

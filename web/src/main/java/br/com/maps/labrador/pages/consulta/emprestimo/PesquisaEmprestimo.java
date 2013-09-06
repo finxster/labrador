@@ -12,7 +12,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.dao.EmprestimoDAO;
-import br.com.maps.labrador.domain.Emprestimo;
+import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 
 /**
@@ -27,7 +27,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      * {@inheritDoc}
      */
     public Page createNewPage() {
-        return new CadastroEmprestimo(new PageParameters(), this);
+        return new PesquisaEmprestimo();
     }
 
     /**
@@ -35,7 +35,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     public List<Emprestimo> search(DAOFactory daoFactory) {
         EmprestimoDAO dao = daoFactory.getDAOByClass(EmprestimoDAO.class);
-        PesquisaEmprestimoFilter m = this.getModel();
+        PesquisaEmprestimoFilter m = getModel();
         return dao.findByLivro(m.getLivro());
     }
 
@@ -44,7 +44,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     @Override
     protected Page createFormPage(Emprestimo entity, FormType formType) {
-        return new CadastroEmprestimo(this, new PageParameters(), entity, formType);
+        return new PesquisaEmprestimo();
     }
 
     /**
@@ -60,7 +60,9 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Emprestimo> table) {
+        table.addStringColumn("tomador", "Tomador", "tomador.nome");
         table.addStringColumn("livro", "Livro", "livro.titulo");
+        table.addStringColumn("donoLivro", "Dono do livro", "livro.usuario.nome");
         table.addStringColumn("data", "Data", "data");
         table.addStringColumn("dataDevolucao", "Data da devolução", "dataDevolucao");
     }

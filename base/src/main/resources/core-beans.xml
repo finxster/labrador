@@ -11,7 +11,9 @@
 	<import resource="core-mapping.xml" />
 	<import resource="core-services.xml" />
 
-	<bean id="simpleController" class="jmine.tec.persist.impl.PlainPersistenceEnabledController" parent="abstractController"></bean>
+	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
+		<property name="persister" ref="hotPersister" />
+	</bean>
 
 	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
 		<property name="authorizationManager" ref="boAuthorizationManager" />
@@ -53,5 +55,14 @@
 	</bean>
 
 	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.EmprestimoPersisterListenerConfigurer" />
+
+	<bean id="labradorBaseValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="validatorRegistry"></property>
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.validator.EmprestimoValidator" />
+			</list>
+		</property>
+	</bean>
 
 </beans>
