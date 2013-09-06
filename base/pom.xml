@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>br.com.maps.labrador</groupId>
+        <artifactId>labrador-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>labrador-base</artifactId>
+    <name>Labrador - Base</name>
+    <url>http://www.jmine.com.br</url>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-security-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-services-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-report</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-security-impl</artifactId>
+            <type>db</type>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-services-impl</artifactId>
+            <type>db</type>
+        </dependency>
+		<dependency>
+			<groupId>jmine.tec</groupId>
+			<artifactId>jmine-tec-services-impl</artifactId>
+			<scope>test</scope>
+			<type>test-jar</type>
+		</dependency>        
+		<dependency>
+			<groupId>jmine.tec</groupId>
+			<artifactId>jmine-tec-test-runner</artifactId>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+</project>
