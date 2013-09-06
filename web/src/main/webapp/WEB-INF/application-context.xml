@@ -9,7 +9,7 @@
 		<property name="menu" ref="menuApplication" />
 	</bean>
 
-	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigBootstrapMenuAdapter">
+	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMegaMenuAdapter">
 		<constructor-arg>
 			<bean class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMergerFactoryBean">
 				<constructor-arg>
@@ -18,9 +18,6 @@
 					</list>
 				</constructor-arg>
 			</bean>
-		</constructor-arg>
-		<constructor-arg>
-			<value type="java.lang.Boolean">true</value>
 		</constructor-arg>
 	</bean>
 
