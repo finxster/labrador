@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+
+    <display-name>web</display-name>
+
+    <filter>
+        <filter-name>transactionFilter</filter-name>
+        <filter-class>jmine.tec.web.servlet.filter.TransactionFilter</filter-class>
+        <init-param>
+            <param-name>transactionManagerBeanName</param-name>
+            <param-value>transactionManager</param-value>
+        </init-param>
+    </filter>
+
+    <filter>
+        <filter-name>rtmFilter</filter-name>
+        <filter-class>jmine.tec.web.servlet.filter.RtmFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>securityFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+        <init-param>
+            <param-name>targetBeanName</param-name>
+            <param-value>securityFilter</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>transactionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>securityFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>rtmFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>wicket.web</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>br.com.maps.labrador.WebApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>applicationFactoryClassName</param-name>
+            <param-value>org.apache.wicket.spring.SpringWebApplicationFactory</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>wicket.web</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/application-context.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>locatorFactorySelector</param-name>
+        <param-value>classpath:parentBeanRefContext.xml</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>parentContextKey</param-name>
+        <param-value>parentBeanFactory</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+</web-app>

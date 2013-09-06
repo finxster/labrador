@@ -1,0 +1,10 @@
+^target$
+/target$
+.classpath
+.settings
+.project
+\.orig$
+velocity.log
+^bin$
+/bin$
+rebel.xml
