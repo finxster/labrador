@@ -8,18 +8,16 @@ import jmine.tec.persist.test.testcase.AbstractBOStaticAnalysisTest;
 public class StaticAnalisysTest extends AbstractBOStaticAnalysisTest {
 
     /**
-     * {@inheritDoc}
-     *
-     * @return {@inheritDoc}
+     * @return boolean
      */
     @Override
-    protected String getSpringMainXMLFilename() {
-        return "core-test-beans.xml";
+    protected boolean failOnSchemaWarnings() {
+        return false;
     }
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @return {@inheritDoc}
      */
     @Override
@@ -29,21 +27,22 @@ public class StaticAnalisysTest extends AbstractBOStaticAnalysisTest {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @return {@inheritDoc}
      */
     @Override
     protected String[] getResourcesBaseReferencia() {
-        return new String[]{"core-db.xml"};
+        return new String[]{ "base-db.xml" };
     }
-    
 
     /**
-     * @return boolean
+     * {@inheritDoc}
+     * 
+     * @return {@inheritDoc}
      */
     @Override
-    protected boolean failOnSchemaWarnings() {
-        return false;
+    protected String getSpringMainXMLFilename() {
+        return "base-test-beans.xml";
     }
-    
+
 }

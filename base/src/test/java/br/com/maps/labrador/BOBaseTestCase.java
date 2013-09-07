@@ -6,10 +6,12 @@ public abstract class BOBaseTestCase<T extends PersistableBusinessObject> extend
 
     /**
      * {@inheritDoc}
+     * 
+     * @return
      */
     @Override
-    protected int getTestDataSize() {
-        return 2;
+    protected String[] getResourcesBaseReferencia() {
+        return new String[]{ "base-db.xml" };
     }
 
     /**
@@ -19,17 +21,15 @@ public abstract class BOBaseTestCase<T extends PersistableBusinessObject> extend
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "core-test-beans.xml";
+        return "base-test-beans.xml";
     }
 
     /**
      * {@inheritDoc}
-     * 
-     * @return
      */
     @Override
-    protected String[] getResourcesBaseReferencia() {
-        return new String[]{ "core-db.xml" };
+    protected int getTestDataSize() {
+        return 2;
     }
 
 }

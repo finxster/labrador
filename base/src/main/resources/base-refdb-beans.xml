@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-    <import resource="classpath:core-beans.xml" />
-    <import resource="classpath:core-mapping.xml" />
+    <import resource="classpath:base-beans.xml" />
+    <import resource="classpath:base-mapping.xml" />
     <import resource="transaction-beans.xml" />
     <bean id="transactionManager" class="jmine.tec.persist.impl.spring.transaction.PartitionTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
