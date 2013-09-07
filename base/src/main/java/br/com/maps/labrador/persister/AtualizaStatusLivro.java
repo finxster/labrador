@@ -4,7 +4,6 @@ import jmine.tec.component.Action;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
-import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
 

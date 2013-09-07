@@ -8,8 +8,8 @@
 	<import resource="jmine-tec-rtm-impl.xml" />
 	<import resource="jmine-tec-report.xml" />
 
-	<import resource="core-mapping.xml" />
-	<import resource="core-services.xml" />
+	<import resource="base-mapping.xml" />
+	<import resource="base-services.xml" />
 
 	<bean id="simpleController" class="jmine.tec.persist.impl.PlainPersistenceEnabledController" parent="abstractController"></bean>
 

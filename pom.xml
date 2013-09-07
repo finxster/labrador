@@ -65,6 +65,13 @@
                 <type>test-jar</type>
                 <scope>test</scope>
             </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
+                <type>db</type>
+                <scope>test</scope>
+            </dependency>
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
                 <artifactId>labrador-base</artifactId>
@@ -80,6 +87,11 @@
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
                 <artifactId>labrador-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-testes</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -107,7 +119,8 @@
   <modules>
     <module>config</module>
     <module>base</module>
-    <module>web</module>
     <module>database</module>
+    <module>web</module>
+    <module>testes</module>
   </modules>
 </project>

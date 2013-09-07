@@ -3,6 +3,7 @@ package br.com.maps.labrador.service.excluir;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.api.persister.StatelessPersister;
+import jmine.tec.persist.impl.validator.ValidationException;
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
@@ -33,6 +34,9 @@ public class LivroService {
 
     private StatelessPersister<Livro> persister;
 
+    /**
+     * Execução do serviço de exclusão do {@link Livro} para o {@link LabradorUsuario} informado.
+     */
     @Execution
     public void execute() {
         try {
@@ -42,22 +46,25 @@ public class LivroService {
             // Validado!
         }
     }
-
+    
+    /**
+     * {@inheritDoc}
+     */
     @Validation
     public void validate() {
         try {
             this.livroDAO.findByLivroUsuario(this.livro, this.labradorUsuario);
         } catch (BeanNotFoundException e) {
-            // tratar a exception! Não é possivel excluir um livro que o usuário não tem!!!
+            throw new ValidationException(e.getLocalizedMessageHolder());
         }
     }
 
     /**
-     * @param livro the livro to set
+     * @param dao the dao to set
      */
-    @Input(fieldName = LIVRO)
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    @Injected(name = "livroDAO")
+    public void setDao(LivroDAO dao) {
+        this.livroDAO = dao;
     }
 
     /**
@@ -69,11 +76,11 @@ public class LivroService {
     }
 
     /**
-     * @param dao the dao to set
+     * @param livro the livro to set
      */
-    @Injected(name = "livroDAO")
-    public void setDao(LivroDAO dao) {
-        this.livroDAO = dao;
+    @Input(fieldName = LIVRO)
+    public void setLivro(Livro livro) {
+        this.livro = livro;
     }
 
     /**

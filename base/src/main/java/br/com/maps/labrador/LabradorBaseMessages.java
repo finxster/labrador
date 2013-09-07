@@ -14,7 +14,9 @@ public enum LabradorBaseMessages implements MessageCreator {
 
     NAO_EH_POSSIVEL_EMPRESTAR_UM_LIVRO_PROPRIO(0, "nao.eh.possivel.emprestar.um.livro.proprio"),
 
-    LIVRO_NAO_DISPONIVEL_PARA_EMPRESTIMO(1, "livro.nao.disponivel.para.emprestimo");
+    LIVRO_NAO_DISPONIVEL_PARA_EMPRESTIMO(1, "livro.nao.disponivel.para.emprestimo"),
+
+    LIVR_NAO_ENCONTRADO_PARA_USUARIO(2, "livro.nao.encontrado.para.o.usuario.informado");
 
     private final MessageCreator delegate;
 

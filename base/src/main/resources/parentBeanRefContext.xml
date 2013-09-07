@@ -5,7 +5,7 @@
     <bean id="parentBeanFactory" class="jmine.tec.utils.spring.CachingClassPathXmlApplicationContext">
         <constructor-arg>
             <list>
-                <value>core-beans.xml</value>
+                <value>base-beans.xml</value>
                 <value>transaction-beans.xml</value>
                 <value>jmine-tec-report.xml</value>
                 <value>application-config-beans.xml</value>
