@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<parent>
 		<groupId>br.com.maps.labrador</groupId>
@@ -21,11 +20,35 @@
 		<dependency>
 			<groupId>br.com.maps.labrador</groupId>
 			<artifactId>labrador-config</artifactId>
-			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>br.com.maps.labrador</groupId>
+			<artifactId>labrador-base</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>br.com.maps.labrador</groupId>
+			<artifactId>labrador-base</artifactId>
+			<type>db</type>
+		</dependency>
+		<dependency>
+			<groupId>jmine.tec</groupId>
+			<artifactId>jmine-tec-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jmine.tec</groupId>
+			<artifactId>jmine-tec-security-impl</artifactId>
+			<type>db</type>
+		</dependency>
+		<dependency>
+			<groupId>jmine.tec</groupId>
+			<artifactId>jmine-tec-services-impl</artifactId>
+			<type>db</type>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<defaultGoal>refdb:ref</defaultGoal>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<testSourceDirectory>src/test/java</testSourceDirectory>
 		<resources>
@@ -100,35 +123,15 @@
 				<driverClassName>org.postgresql.Driver</driverClassName>
 				<hibernateDialect>org.hibernate.dialect.PostgreSQLDialect</hibernateDialect>
 				<schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.PostgreSQLDialect</schemaDialect>
-				<databaseUrl>jdbc:postgresql://localhost:5432/jmine</databaseUrl>
-				<username>jmine</username>
-				<password>jmine</password>
+				<databaseUrl>jdbc:postgresql://localhost:5432/labrador</databaseUrl>
+				<username>labrador</username>
+				<password>labrador</password>
 			</properties>
 
 			<dependencies>
 				<dependency>
 					<groupId>postgresql</groupId>
 					<artifactId>postgresql</artifactId>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>oracle</id>
-			<properties>
-				<converterClass>jmine.tec.utils.db.converter.OracleConverter</converterClass>
-				<executorClass>jmine.tec.utils.db.executor.OracleDbExecutor</executorClass>
-				<driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
-				<hibernateDialect>org.hibernate.dialect.Oracle10gDialect</hibernateDialect>
-				<schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.Oracle10gDialect</schemaDialect>
-				<databaseUrl>jdbc:oracle:thin:@localhost:1521/SID</databaseUrl>
-				<username>scott</username>
-				<password>tiger</password>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.oracle</groupId>
-					<artifactId>ojdbc5</artifactId>
 					<scope>provided</scope>
 				</dependency>
 			</dependencies>
