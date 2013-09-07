@@ -11,7 +11,9 @@
 	<import resource="base-mapping.xml" />
 	<import resource="base-services.xml" />
 
-	<bean id="simpleController" class="jmine.tec.persist.impl.PlainPersistenceEnabledController" parent="abstractController"></bean>
+	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
+		<property name="persister" ref="statelessPersister"/>
+	</bean>
 
 	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
 		<property name="authorizationManager" ref="boAuthorizationManager" />
