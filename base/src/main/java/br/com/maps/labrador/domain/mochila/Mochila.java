@@ -35,7 +35,6 @@ import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 @Entity
 @Alias("MOCHILA")
 @Table(name = "MOCHILA")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Documentation("TABELA QUE ARMAZENA AS MOCHILAS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_MOCHILA", sequenceName = "SEQ_MOCHILA")
 public class Mochila extends PersistableBusinessObject {
