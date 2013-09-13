@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<import resource="jmine-tec-persist.xml" />
+	<import resource="jmine-tec-security-api.xml" />
+	<import resource="jmine-tec-security-impl.xml" />
+	<import resource="jmine-tec-rtm-impl.xml" />
+	<import resource="jmine-tec-report.xml" />
+
+	<import resource="core-mapping.xml" />
+	<import resource="core-services.xml" />
+
+	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
+		<property name="persister" ref="hotPersister" />
+	</bean>
+
+	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
+		<property name="authorizationManager" ref="boAuthorizationManager" />
+	</bean>
+
+	<bean id="securityService" class="jmine.tec.security.api.SecurityService">
+		<property name="systemId" value="1" />
+		<property name="frameworkIds">
+			<list>
+				<value>6</value> <!-- JMINE -->
+			</list>
+		</property>
+	</bean>
+	<bean id="diagnosticianCase" class="jmine.tec.rtm.impl.diagnostician.BeanFactoryDiagnosticianCase">
+	</bean>
+
+
+	<bean id="userDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>jmine.tec.security.impl.dao.UserDAO</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="metaCredentialDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>jmine.tec.security.impl.dao.MetaCredentialDAO</value>
+		</constructor-arg>
+	</bean>
+
+	<bean class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="persisterFactory" />
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.listener.UserCredentialPersisterListener">
+					<property name="metaCredentialDAO" ref="metaCredentialDAO" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.EmprestimoPersisterListenerConfigurer" />
+
+	<bean id="labradorBaseValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="validatorRegistry"></property>
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.validator.EmprestimoValidator" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
