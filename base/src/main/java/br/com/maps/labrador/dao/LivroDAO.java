@@ -8,7 +8,6 @@ import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
 
-import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -28,7 +27,7 @@ public class LivroDAO extends BaseDAO<Livro> {
      * @param titulo String utilizada na consulta
      * @param autor String utilizada na consulta
      * @param editora String utilizada na consulta
-     * @return uma lista de {@link Emprestimo} através de Strings que refletem os atributos de um {@link Livro}.
+     * @return uma lista de {@link Livro} através de Strings que refletem os atributos de um {@link Livro}.
      */
     public List<Livro> findByName(String isbn10, String isbn13, String titulo, String autor, String editora) {
         Criteria c = this.createCriteria();

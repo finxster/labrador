@@ -22,7 +22,8 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
-import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -57,9 +58,9 @@ public class Livro extends PersistableBusinessObject {
 
     private LabradorUsuario usuario;
 
-    private StatusLivro status = StatusLivro.DISPONIVEL;
+    private StatusEmprestavel status = StatusEmprestavel.DISPONIVEL;
 
-    private LocalizacaoLivro localizacao;
+    private LocalizacaoEmprestavel localizacao;
 
     /**
      * Construtor
@@ -191,14 +192,14 @@ public class Livro extends PersistableBusinessObject {
     @NotNull
     @Column(name = "STATUS", nullable = false)
     @Documentation("STATUS DO EMPRESTIMO DO LIVRO.")
-    public StatusLivro getStatus() {
+    public StatusEmprestavel getStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(StatusLivro status) {
+    public void setStatus(StatusEmprestavel status) {
         this.status = status;
     }
 
@@ -211,14 +212,14 @@ public class Livro extends PersistableBusinessObject {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_LOCAL_LIVRO")
     @Documentation("CODIGO DA LOCALIZACAO DO LIVRO.")
-    public LocalizacaoLivro getLocalizacao() {
+    public LocalizacaoEmprestavel getLocalizacao() {
         return localizacao;
     }
 
     /**
      * @param localizacao the localizacao to set
      */
-    public void setLocalizacao(LocalizacaoLivro localizacao) {
+    public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
         this.localizacao = localizacao;
     }
 
