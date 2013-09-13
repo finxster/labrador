@@ -8,8 +8,8 @@ import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
-import br.com.maps.labrador.domain.livro.LocalizacaoLivro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -39,7 +39,7 @@ public class LivroService {
 
     private DAO<Livro> dao;
 
-    private DAO<LocalizacaoLivro> localizacaoDAO;
+    private DAO<LocalizacaoEmprestavel> localizacaoDAO;
 
     private StatelessPersister<Livro> persister;
 
@@ -63,12 +63,12 @@ public class LivroService {
         Livro livro = this.dao.createBean();
         livro.setIsbn10(this.isbn10);
         livro.setIsbn13(this.isbn13);
-        livro.setTitulo(titulo);
+        livro.setTitulo(this.titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
         livro.setUsuario(this.usuario);
 
-        LocalizacaoLivro localizacaoLivro = this.localizacaoDAO.createBean();
+        LocalizacaoEmprestavel localizacaoLivro = this.localizacaoDAO.createBean();
         localizacaoLivro.setNome(this.localizacao);
         livro.setLocalizacao(localizacaoLivro);
 
@@ -88,7 +88,7 @@ public class LivroService {
      * @param localizacaoDAO the localizacaoDAO to set
      */
     @Injected
-    public void setLocalizacaoDAO(DAO<LocalizacaoLivro> localizacaoDAO) {
+    public void setLocalizacaoDAO(DAO<LocalizacaoEmprestavel> localizacaoDAO) {
         this.localizacaoDAO = localizacaoDAO;
     }
 

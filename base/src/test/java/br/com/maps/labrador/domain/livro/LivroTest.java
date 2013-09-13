@@ -2,7 +2,9 @@ package br.com.maps.labrador.domain.livro;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import br.com.maps.labrador.BOBaseTestCase;
-import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavelTest;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.domain.usuario.LabradorUsuarioTest;
 
@@ -26,9 +28,9 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
     private static LabradorUsuario[] LABRADOR_USUARIO;
 
-    private static StatusLivro[] STATUS;
+    private static StatusEmprestavel[] STATUS;
 
-    private static LocalizacaoLivro[] LOCALIZACAO;
+    private static LocalizacaoEmprestavel[] LOCALIZACAO;
 
     /**
      * {@inheritDoc}
@@ -41,8 +43,8 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         AUTOR = new String[]{ "Autor_1", "Autor_1" };
         EDITORA = new String[]{ "Editora_1", "Editora_2" };
         LABRADOR_USUARIO = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
-        STATUS = new StatusLivro[]{ StatusLivro.DISPONIVEL, StatusLivro.EMPRESTADO };
-        LOCALIZACAO = new LocalizacaoLivroTest().getSavedTestData().toArray(new LocalizacaoLivro[2]);
+        STATUS = new StatusEmprestavel[]{ StatusEmprestavel.DISPONIVEL, StatusEmprestavel.EMPRESTADO };
+        LOCALIZACAO = new LocalizacaoEmprestavelTest().getSavedTestData().toArray(new LocalizacaoEmprestavel[2]);
     }
 
     /**
