@@ -8,11 +8,8 @@ import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
-
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.livro.LocalizacaoLivro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -21,7 +18,6 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @author finx
  * @created Aug 26, 2013
  */
-@Transactional(propagation = Propagation.REQUIRES_NEW)
 @ServiceImplementor(action = ActionsEnum.INCLUIR)
 public class LivroService {
 
@@ -39,7 +35,11 @@ public class LivroService {
 
     private static final String USUARIO = "Usuário";
 
+    private static final String LOCALIZACAO = "Localização";
+
     private DAO<Livro> dao;
+
+    private DAO<LocalizacaoLivro> localizacaoDAO;
 
     private StatelessPersister<Livro> persister;
 
@@ -55,16 +55,22 @@ public class LivroService {
 
     private LabradorUsuario usuario;
 
+    private String localizacao;
+
     @Output(propertyName = IDENTIFICADOR)
     @Execution
     public Livro execute() {
         Livro livro = this.dao.createBean();
         livro.setIsbn10(this.isbn10);
         livro.setIsbn13(this.isbn13);
-        livro.setTitulo(this.titulo);
+        livro.setTitulo(titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
         livro.setUsuario(this.usuario);
+
+        LocalizacaoLivro localizacaoLivro = this.localizacaoDAO.createBean();
+        localizacaoLivro.setNome(this.localizacao);
+        livro.setLocalizacao(localizacaoLivro);
 
         this.persister.save(livro);
         return livro;
@@ -76,6 +82,14 @@ public class LivroService {
     @Injected
     public void setDao(DAO<Livro> dao) {
         this.dao = dao;
+    }
+
+    /**
+     * @param localizacaoDAO the localizacaoDAO to set
+     */
+    @Injected
+    public void setLocalizacaoDAO(DAO<LocalizacaoLivro> localizacaoDAO) {
+        this.localizacaoDAO = localizacaoDAO;
     }
 
     /**
@@ -132,6 +146,14 @@ public class LivroService {
     @Input(fieldName = USUARIO)
     public void setUsuario(LabradorUsuario usuario) {
         this.usuario = usuario;
+    }
+
+    /**
+     * @param localizacao the localizacao to set
+     */
+    @Input(fieldName = LOCALIZACAO)
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
     }
 
 }
