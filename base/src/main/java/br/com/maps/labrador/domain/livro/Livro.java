@@ -14,9 +14,12 @@ import javax.persistence.Table;
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
+import jmine.tec.persist.impl.annotation.Index;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
@@ -55,6 +58,8 @@ public class Livro extends PersistableBusinessObject {
     private LabradorUsuario usuario;
 
     private StatusLivro status = StatusLivro.DISPONIVEL;
+
+    private LocalizacaoLivro localizacao;
 
     /**
      * Construtor
@@ -195,4 +200,25 @@ public class Livro extends PersistableBusinessObject {
     public void setStatus(StatusLivro status) {
         this.status = status;
     }
+
+    /**
+     * @return the localizacao
+     */
+    @NotNull
+    @Index(suffix = "0")
+    @Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_LOCAL_LIVRO")
+    @Documentation("CODIGO DA LOCALIZACAO DO LIVRO.")
+    public LocalizacaoLivro getLocalizacao() {
+        return localizacao;
+    }
+
+    /**
+     * @param localizacao the localizacao to set
+     */
+    public void setLocalizacao(LocalizacaoLivro localizacao) {
+        this.localizacao = localizacao;
+    }
+
 }
