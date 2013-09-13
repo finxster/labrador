@@ -23,7 +23,7 @@
         <jmine-tec-version>3.0.1.2</jmine-tec-version>
         
         <!-- Configurações do refdb -->
-        <refDbPluginVersion>1.1.13</refDbPluginVersion>
+        <refDbPluginVersion>1.1.17</refDbPluginVersion>
     </properties>
     
     <repositories>
@@ -70,13 +70,6 @@
                 <artifactId>labrador-base</artifactId>
                 <version>${project.version}</version>
                 <type>db</type>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>br.com.maps.labrador</groupId>
-                <artifactId>labrador-base</artifactId>
-                <version>${project.version}</version>
-                <type>test-jar</type>  
                 <scope>test</scope>
             </dependency>
             <dependency>
