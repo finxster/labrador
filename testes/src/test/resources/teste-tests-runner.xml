@@ -3,5 +3,5 @@
 <beans default-autowire="byName" default-lazy-init="false">
 	<import resource="classpath:jmine-tec-test-runner-runtime.xml" />
 
-	<import resource="classpath:jmine-tec-report-beans.xml" />
+<!-- 	<import resource="classpath:jmine-tec-report-beans.xml" /> -->
 </beans>

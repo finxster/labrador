@@ -3,7 +3,7 @@
 <beans>
 
     <import resource="classpath:jmine-tec-test.xml" />
-    <import resource="classpath:core-beans.xml" />
+    <import resource="classpath:base-beans.xml" />
     <import resource="classpath:jmine-tec-services-impl-test-services.xml" />
 
 </beans>

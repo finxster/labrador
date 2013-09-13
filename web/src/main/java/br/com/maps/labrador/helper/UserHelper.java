@@ -7,7 +7,6 @@ import javax.security.auth.Subject;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
-import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.web.wicket.security.SecureSession;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
