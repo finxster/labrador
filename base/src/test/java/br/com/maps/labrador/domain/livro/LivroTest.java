@@ -28,6 +28,8 @@ public class LivroTest extends BOBaseTestCase<Livro> {
 
     private static StatusLivro[] STATUS;
 
+    private static LocalizacaoLivro[] LOCALIZACAO;
+
     /**
      * {@inheritDoc}
      */
@@ -40,6 +42,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         EDITORA = new String[]{ "Editora_1", "Editora_2" };
         LABRADOR_USUARIO = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
         STATUS = new StatusLivro[]{ StatusLivro.DISPONIVEL, StatusLivro.EMPRESTADO };
+        LOCALIZACAO = new LocalizacaoLivroTest().getSavedTestData().toArray(new LocalizacaoLivro[2]);
     }
 
     /**
@@ -54,6 +57,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         bo.setEditora(EDITORA[idx]);
         bo.setUsuario(LABRADOR_USUARIO[idx]);
         bo.setStatus(STATUS[idx]);
+        bo.setLocalizacao(LOCALIZACAO[idx]);
     }
 
     /**
@@ -68,5 +72,6 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         assertEquals(EDITORA[idx], bo.getEditora());
         assertEquals(LABRADOR_USUARIO[idx], bo.getUsuario());
         assertEquals(STATUS[idx], bo.getStatus());
+        assertEquals(LOCALIZACAO[idx], bo.getLocalizacao());
     }
 }
