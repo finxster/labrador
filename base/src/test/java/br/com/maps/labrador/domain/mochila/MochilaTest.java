@@ -5,6 +5,8 @@ import br.com.maps.labrador.BOBaseTestCase;
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavelTest;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
+import br.com.maps.labrador.domain.usuario.LabradorUsuarioTest;
 
 /**
  * Um teste para o domínio de {@link Mochila}.
@@ -19,6 +21,8 @@ public class MochilaTest extends BOBaseTestCase<Mochila> {
 
     private static StatusEmprestavel[] STATUS;
 
+    private static LabradorUsuario[] LABRADOR_USUARIO;
+
     private static LocalizacaoEmprestavel[] LOCALIZACAO;
 
     /**
@@ -28,6 +32,7 @@ public class MochilaTest extends BOBaseTestCase<Mochila> {
     protected void initializeTestData() throws BeanNotFoundException {
         NOME = new String[]{ "MOCHILA1", "MOCHILA2" };
         STATUS = new StatusEmprestavel[]{ StatusEmprestavel.DISPONIVEL, StatusEmprestavel.EMPRESTADO };
+        LABRADOR_USUARIO = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
         LOCALIZACAO = new LocalizacaoEmprestavelTest().getSavedTestData().toArray(new LocalizacaoEmprestavel[2]);
     }
 
@@ -38,6 +43,7 @@ public class MochilaTest extends BOBaseTestCase<Mochila> {
     protected void fillData(int idx, Mochila bo) {
         bo.setNome(NOME[idx]);
         bo.setStatus(STATUS[idx]);
+        bo.setUsuario(LABRADOR_USUARIO[idx]);
         bo.setLocalizacao(LOCALIZACAO[idx]);
     }
 
@@ -48,6 +54,7 @@ public class MochilaTest extends BOBaseTestCase<Mochila> {
     protected void compareData(int idx, Mochila bo) throws BeanNotFoundException {
         assertEquals(NOME[idx], bo.getNome());
         assertEquals(STATUS[idx], bo.getStatus());
+        assertEquals(LABRADOR_USUARIO[idx], bo.getUsuario());
         assertEquals(LOCALIZACAO[idx], bo.getLocalizacao());
     }
 }

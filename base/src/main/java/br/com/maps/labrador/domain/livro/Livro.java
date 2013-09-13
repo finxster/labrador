@@ -193,7 +193,7 @@ public class Livro extends PersistableBusinessObject {
     @Column(name = "STATUS", nullable = false)
     @Documentation("STATUS DO EMPRESTIMO DO LIVRO.")
     public StatusEmprestavel getStatus() {
-        return status;
+        return this.status;
     }
 
     /**
@@ -213,7 +213,7 @@ public class Livro extends PersistableBusinessObject {
     @JoinColumn(name = "COD_LOCAL_LIVRO")
     @Documentation("CODIGO DA LOCALIZACAO DO LIVRO.")
     public LocalizacaoEmprestavel getLocalizacao() {
-        return localizacao;
+        return this.localizacao;
     }
 
     /**

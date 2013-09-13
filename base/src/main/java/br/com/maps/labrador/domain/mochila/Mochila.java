@@ -17,13 +17,13 @@ import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Index;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Uma entidade que irá representar uma Mochila em nosso sistema.
@@ -42,6 +42,8 @@ public class Mochila extends PersistableBusinessObject {
     private Long id;
 
     private String nome;
+
+    private LabradorUsuario usuario;
 
     private StatusEmprestavel status = StatusEmprestavel.DISPONIVEL;
 
@@ -88,6 +90,23 @@ public class Mochila extends PersistableBusinessObject {
      */
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    /**
+     * @return the usuario
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_USUARIO")
+    @Documentation("CODIGO DO USUARIO QUE E O PROPRIETARIO DA MOCHILA")
+    public LabradorUsuario getUsuario() {
+        return this.usuario;
+    }
+
+    /**
+     * @param usuario the usuario to set
+     */
+    public void setUsuario(LabradorUsuario usuario) {
+        this.usuario = usuario;
     }
 
     /**
