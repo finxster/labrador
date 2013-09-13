@@ -35,7 +35,6 @@ import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 @Entity
 @Alias("PROJETOR")
 @Table(name = "PROJETOR")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Documentation("TABELA QUE ARMAZENA OS PROJETORES DO SISTEMA")
 @SequenceGenerator(name = "SEQ_PROJETOR", sequenceName = "SEQ_PROJETOR")
 public class Projetor extends PersistableBusinessObject {
