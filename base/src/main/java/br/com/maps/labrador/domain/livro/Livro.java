@@ -89,9 +89,10 @@ public class Livro extends PersistableBusinessObject {
     /**
      * @return the titulo
      */
+    @NotNull
     @NaturalKey
     @Documentation("TITULO DO LIVRO")
-    @Column(name = "TITULO")
+    @Column(name = "TITULO", nullable = false)
     public String getTitulo() {
         return this.titulo;
     }
