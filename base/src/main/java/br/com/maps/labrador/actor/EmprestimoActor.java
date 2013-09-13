@@ -4,10 +4,10 @@ import jmine.tec.component.actor.AbstractActor;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import br.com.maps.labrador.LabradorBaseController;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
-import br.com.maps.labrador.domain.livro.enumx.StatusLivro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -40,7 +40,7 @@ public class EmprestimoActor extends AbstractActor {
         this.persister.save(emprestimo);
 
         Livro livro = emprestimo.getLivro();
-        livro.setStatus(StatusLivro.DISPONIVEL);
+        livro.setStatus(StatusEmprestavel.DISPONIVEL);
         this.persister.save(livro);
     }
 

@@ -23,8 +23,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorWebException;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
-import br.com.maps.labrador.domain.livro.LocalizacaoLivro;
 import br.com.maps.labrador.helper.IsbnDBHelper;
 import br.com.maps.labrador.helper.UserHelper;
 
@@ -127,8 +127,8 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected boolean beforeSave(Livro target) {
         // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        DAO<LocalizacaoLivro> dao = this.daoFactory.getDAOByEntityType(LocalizacaoLivro.class);
-        LocalizacaoLivro localizacaoLivro = dao.createBean();
+        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
+        LocalizacaoEmprestavel localizacaoLivro = dao.createBean();
         localizacaoLivro.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoLivro);
