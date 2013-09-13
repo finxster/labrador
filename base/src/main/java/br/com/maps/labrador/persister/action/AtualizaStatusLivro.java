@@ -1,4 +1,4 @@
-package br.com.maps.labrador.persister;
+package br.com.maps.labrador.persister.action;
 
 import jmine.tec.component.Action;
 import jmine.tec.di.annotation.Injected;

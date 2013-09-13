@@ -72,9 +72,9 @@
 				<version>${refDbPluginVersion}</version>
 				<configuration>
 					<descriptors>
-						<descriptor>core-db.xml</descriptor>
+						<descriptor>base-db.xml</descriptor>
 					</descriptors>
-					<beanFactory>core-refdb-beans.xml</beanFactory>
+					<beanFactory>base-refdb-beans.xml</beanFactory>
 					<includeActions>true</includeActions>
 					<dbResources>src/db/resources/</dbResources>
 					<hibernateDrop>false</hibernateDrop>

@@ -4,7 +4,7 @@
     <parent>
         <groupId>jmine.tec.pom</groupId>
         <artifactId>jmine-tec-pom</artifactId>
-        <version>3.0.4.0</version>
+        <version>3.0.1.2</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -20,10 +20,10 @@
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>6.1.25</jetty.version>
-        <jmine-tec-version>3.0.4.0</jmine-tec-version>
+        <jmine-tec-version>3.0.1.2</jmine-tec-version>
         
         <!-- Configurações do refdb -->
-        <refDbPluginVersion>1.1.17</refDbPluginVersion>
+        <refDbPluginVersion>1.1.13</refDbPluginVersion>
     </properties>
     
     <repositories>
@@ -62,7 +62,21 @@
                 <groupId>br.com.maps.labrador</groupId>
                 <artifactId>labrador-base</artifactId>
                 <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
                 <type>db</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>  
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -73,6 +87,11 @@
             <dependency>
                 <groupId>br.com.maps.labrador</groupId>
                 <artifactId>labrador-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-testes</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -100,7 +119,8 @@
   <modules>
     <module>config</module>
     <module>base</module>
-    <module>web</module>
     <module>database</module>
+    <module>web</module>
+    <module>testes</module>
   </modules>
 </project>

@@ -2,6 +2,7 @@ package br.com.maps.labrador.dao;
 
 import java.util.List;
 
+import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
@@ -9,6 +10,7 @@ import org.hibernate.Criteria;
 
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * DAO para {@link Livro}.
@@ -18,7 +20,7 @@ import br.com.maps.labrador.domain.livro.Livro;
  */
 public class LivroDAO extends BaseDAO<Livro> {
 
-	/**
+    /**
      * Retorna uma lista de {@link Livro} através de Strings que refletem os atributos de um {@link Livro}.
      * 
      * @param isbn10 String utilizada na consulta
@@ -37,5 +39,13 @@ public class LivroDAO extends BaseDAO<Livro> {
         RestrictionsUtils.addRestrictionILike(c, "editora", editora);
 
         return this.executeQuery(c);
+    }
+
+    public Livro findByLivroUsuario(Livro livro, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
+        Criteria criteria = this.createCriteria();
+        RestrictionsUtils.addRestrictionEqId(criteria, "id", livro);
+        Criteria criteriaUsuario = criteria.createCriteria("usuario");
+        RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
+        return this.executeSingleQuery(criteria);
     }
 }
