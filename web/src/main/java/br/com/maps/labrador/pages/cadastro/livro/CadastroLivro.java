@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import jmine.tec.component.exception.MessageCreator;
+import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
@@ -16,11 +17,13 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.livro.LocalizacaoLivro;
 import br.com.maps.labrador.helper.IsbnDBHelper;
 import br.com.maps.labrador.helper.UserHelper;
 
@@ -34,6 +37,8 @@ public class CadastroLivro extends FormPage<Livro> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
+
+    private String localizacao;
 
     // XXX (diego.ferreira) este parâmetro deverá ser configurado em um ".properties" e injetado via spring
     private static final String MAPS_ISBNDB_COD = "SQGBZAKH";
@@ -80,6 +85,7 @@ public class CadastroLivro extends FormPage<Livro> {
         final TextField<String> titulo = ComponentHelper.createTextField("titulo");
         final TextField<String> autor = ComponentHelper.createTextField("autor");
         final TextField<String> editora = ComponentHelper.createTextField("editora");
+        final TextField<String> localizacaoTextField = ComponentHelper.createTextField("localizacao", this, "localizacao");
 
         isbnTextField.add(new OnBlurAjaxBehavior() {
 
@@ -104,6 +110,7 @@ public class CadastroLivro extends FormPage<Livro> {
         components.add(titulo.setOutputMarkupId(true));
         components.add(autor.setOutputMarkupId(true));
         components.add(editora.setOutputMarkupId(true));
+        components.add(localizacaoTextField);
         return components;
     }
 
@@ -118,7 +125,13 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected boolean beforeSave(Livro target) {
         // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        target.setUsuario(UserHelper.getUser(daoFactory));
+        DAO<LocalizacaoLivro> dao = this.daoFactory.getDAOByEntityType(LocalizacaoLivro.class);
+        LocalizacaoLivro localizacaoLivro = dao.createBean();
+        localizacaoLivro.setNome(this.localizacao);
+
+        target.setLocalizacao(localizacaoLivro);
+        target.setUsuario(UserHelper.getUser(this.daoFactory));
+
         return super.beforeSave(target);
     }
 
@@ -164,4 +177,19 @@ public class CadastroLivro extends FormPage<Livro> {
         }
         return null;
     }
+
+    /**
+     * @return the localizacao
+     */
+    public String getLocalizacao() {
+        return localizacao;
+    }
+
+    /**
+     * @param localizacao the localizacao to set
+     */
+    public void setLocalizacao(String localizacao) {
+        this.localizacao = localizacao;
+    }
+
 }
