@@ -12,6 +12,9 @@ import br.com.maps.labrador.pages.CrudUsuarioPage;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroDevolucaoEmprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
+import br.com.maps.labrador.pages.cadastro.mochila.CadastroMochila;
+import br.com.maps.labrador.pages.cadastro.modem.CadastroModem;
+import br.com.maps.labrador.pages.cadastro.projetor.CadastroProjetor;
 import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
 
@@ -31,16 +34,19 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
 
         // add menu here
         config.addPage(CadastroLivro.class, "Base", "Cadastros", "Livros");
+        config.addPage(CadastroMochila.class, "Base", "Cadastros", "Mochilas");
+        config.addPage(CadastroModem.class, "Base", "Cadastros", "Modems");
+        config.addPage(CadastroProjetor.class, "Base", "Cadastros", "Projetores");
 
         config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
         config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
 
-        config.addPage(PesquisaLivro.class, "Base","Pesquisas", "Livros");
-        config.addPage(PesquisaEmprestimo.class, "Base","Pesquisas", "Empréstimos");
+        config.addPage(PesquisaLivro.class, "Base", "Pesquisas", "Livros");
+        config.addPage(PesquisaEmprestimo.class, "Base", "Pesquisas", "Empréstimos");
 
         config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
         config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Autorização", "Auditoria");
-        
+
         config.addPage(ConsultaDiagnosticador.class, "Infra", "Infra", "Diagnosticador");
         config.addPage(ConsultaExceptionRecord.class, "Infra", "Infra", "Exceptions");
         config.addPage(Importacao.class, "Infra", "Infra", "Importacao");
