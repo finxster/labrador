@@ -35,7 +35,6 @@ import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 @Entity
 @Alias("MODEM")
 @Table(name = "MODEM")
-@JsonIgnoreProperties(ignoreUnknown = true)
 @Documentation("TABELA QUE ARMAZENA OS MODEMS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_MODEM", sequenceName = "SEQ_MODEM")
 public class Modem extends PersistableBusinessObject {
