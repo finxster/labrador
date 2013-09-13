@@ -9,6 +9,8 @@ import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
+import jmine.tec.web.wicket.bootstrap.behavior.addon.BootstrapAddonBehavior;
+import jmine.tec.web.wicket.component.injection.composite.LabeledFormInputPanel;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
@@ -17,7 +19,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.TextField;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -80,13 +81,14 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
-        final TextField<String> isbnTextField = ComponentHelper.createTextField("isbn10");
-        final TextField<String> isbn13 = ComponentHelper.createTextField("isbn13");
-        final TextField<String> titulo = ComponentHelper.createTextField("titulo");
-        final TextField<String> autor = ComponentHelper.createTextField("autor");
-        final TextField<String> editora = ComponentHelper.createTextField("editora");
-        final TextField<String> localizacaoTextField = ComponentHelper.createTextField("localizacao", this, "localizacao");
+        final LabeledFormInputPanel isbnTextField = ComponentHelper.createLabeledTextField("isbn10", "ISBN 10", getEntity());
+        final LabeledFormInputPanel isbn13 = ComponentHelper.createLabeledTextField("isbn13", "ISBN 13", getEntity());
+        final LabeledFormInputPanel titulo = ComponentHelper.createLabeledTextField("titulo", "Título", getEntity(), true);
+        final LabeledFormInputPanel autor = ComponentHelper.createLabeledTextField("autor", "Autor", getEntity());
+        final LabeledFormInputPanel editora = ComponentHelper.createLabeledTextField("editora", "Editora", getEntity());
+        final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
 
+        isbnTextField.getFormComponent().add(new BootstrapAddonBehavior().setAddon("ISBNdb.com"));
         isbnTextField.add(new OnBlurAjaxBehavior() {
 
             @Override
@@ -158,10 +160,10 @@ public class CadastroLivro extends FormPage<Livro> {
     /**
      * Obtém as informações do livro cadastrados no isbndb a partir do valor (ISBN10) do {@link TextField} informado.
      * 
-     * @param textField {@link TextField}
+     * @param isbnTextField {@link TextField}
      */
-    private void parseJsonObject(TextField<String> textField) {
-        String isbn10 = textField.getModelObject().toUpperCase();
+    private void parseJsonObject(LabeledFormInputPanel<String> isbnTextField) {
+        String isbn10 = isbnTextField.getModelObject().toUpperCase();
         IsbnDBHelper.getLivroByISBN10(isbn10, getEntity());
     }
 
