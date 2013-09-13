@@ -1,8 +1,10 @@
 package br.com.maps.labrador;
 
+import jmine.tec.rtm.impl.RtmController;
+import jmine.tec.security.api.SecurityManager;
+import jmine.tec.security.web.WebSecurityContext;
 import jmine.tec.web.wicket.application.JMineWicketWebApplication;
 import jmine.tec.web.wicket.pages.main.Home;
-import jmine.tec.web.wicket.pages.main.Login;
 import jmine.tec.web.wicket.pages.main.Logout;
 import jmine.tec.web.wicket.security.SecureSession;
 
@@ -19,9 +21,7 @@ import org.apache.wicket.request.resource.caching.version.LastModifiedResourceVe
 import org.apache.wicket.settings.IResourceSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
-import jmine.tec.rtm.impl.RtmController;
-import jmine.tec.security.api.SecurityManager;
-import jmine.tec.security.web.WebSecurityContext;
+import br.com.maps.labrador.pages.login.LabradorLogin;
 
 /**
  * Starting point webApplication
@@ -51,7 +51,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
         resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
 
         this.mount(new MountedMapper("logout", Logout.class));
-        this.mount(new MountedMapper("login", Login.class));
+        this.mount(new MountedMapper("login", LabradorLogin.class));
         this.mount(new MountedMapper("accessDenied", AccessDeniedPage.class));
         this.mount(new MountedMapper("home", Home.class));
     }
@@ -119,9 +119,8 @@ public class LabradorApplication extends JMineWicketWebApplication {
 
         return session;
     }
-	
-	
-	public void setStyle(String style) {
-		this.style = style;
-	}
+
+    public void setStyle(String style) {
+        this.style = style;
+    }
 }
