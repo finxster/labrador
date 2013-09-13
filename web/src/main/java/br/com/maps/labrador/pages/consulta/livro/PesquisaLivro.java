@@ -21,9 +21,9 @@ import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
  * @author laercio.duarte
  * @created Aug 29, 2013
  */
-public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro>  {
+public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro> {
 
-	/**
+    /**
      * {@inheritDoc}
      */
     public Page createNewPage() {
@@ -66,6 +66,7 @@ public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro>  {
         table.addStringColumn("titulo", "Título", "titulo");
         table.addStringColumn("autor", "Autor", "autor");
         table.addStringColumn("editora", "Editora", "editora");
+        table.addStringColumn("localizacao", "Localização", "localizacao.nome");
         table.addStringColumn("status", "Status", "status");
     }
 
