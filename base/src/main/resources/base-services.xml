@@ -12,8 +12,14 @@
 						<value>br.com.maps.labrador.service.incluir.LivroService</value>
 						<value>br.com.maps.labrador.service.incluir.LabradorUsuarioService</value>
 						<value>br.com.maps.labrador.service.incluir.EmprestimoService</value>
+						<value>br.com.maps.labrador.service.incluir.MochilaService</value>
+						<value>br.com.maps.labrador.service.incluir.ModemService</value>
+						<value>br.com.maps.labrador.service.incluir.ProjetorService</value>
 						<value>br.com.maps.labrador.service.excluir.LabradorUsuarioService</value>
 						<value>br.com.maps.labrador.service.excluir.LivroService</value>
+						<value>br.com.maps.labrador.service.excluir.MochilaService</value>
+						<value>br.com.maps.labrador.service.excluir.ModemService</value>
+						<value>br.com.maps.labrador.service.excluir.ProjetorService</value>
 					</list>
 				</property>
 			</bean>

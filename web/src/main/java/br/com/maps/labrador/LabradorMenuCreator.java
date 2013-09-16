@@ -17,6 +17,9 @@ import br.com.maps.labrador.pages.cadastro.modem.CadastroModem;
 import br.com.maps.labrador.pages.cadastro.projetor.CadastroProjetor;
 import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
+import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
+import br.com.maps.labrador.pages.consulta.modem.PesquisaModem;
+import br.com.maps.labrador.pages.consulta.projetor.PesquisaProjetor;
 
 /**
  * Starting point menu creator
@@ -37,11 +40,13 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(CadastroMochila.class, "Base", "Cadastros", "Mochilas");
         config.addPage(CadastroModem.class, "Base", "Cadastros", "Modems");
         config.addPage(CadastroProjetor.class, "Base", "Cadastros", "Projetores");
-
         config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
         config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
 
         config.addPage(PesquisaLivro.class, "Base", "Pesquisas", "Livros");
+        config.addPage(PesquisaMochila.class, "Base", "Pesquisas", "Mochilas");
+        config.addPage(PesquisaModem.class, "Base", "Pesquisas", "Modems");
+        config.addPage(PesquisaProjetor.class, "Base", "Pesquisas", "Projetores");
         config.addPage(PesquisaEmprestimo.class, "Base", "Pesquisas", "Empréstimos");
 
         config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
@@ -50,6 +55,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(ConsultaDiagnosticador.class, "Infra", "Infra", "Diagnosticador");
         config.addPage(ConsultaExceptionRecord.class, "Infra", "Infra", "Exceptions");
         config.addPage(Importacao.class, "Infra", "Infra", "Importacao");
+
         config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
         config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
 

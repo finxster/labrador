@@ -1,0 +1,9 @@
+<importacao>
+	<services name="Projetores">
+		<service name="Projetor" action="INCLUIR">
+			<param name="Nome">Projetor 01</param>
+			<param name="Usuário">laercio</param>
+			<param name="Localização">Setor de Infraestutura</param>
+		</service>
+	</services>
+</importacao>
