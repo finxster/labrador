@@ -1,0 +1,9 @@
+<importacao>
+	<services name="Mochilas">
+		<service name="Mochila" action="INCLUIR">
+			<param name="Nome">Mochila 01</param>
+			<param name="Usuário">laercio</param>
+			<param name="Localização">Setor de Infraestutura</param>
+		</service>
+	</services>
+</importacao>

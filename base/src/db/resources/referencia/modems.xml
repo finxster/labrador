@@ -1,0 +1,9 @@
+<importacao>
+	<services name="Modems">
+		<service name="Modem" action="INCLUIR">
+			<param name="Nome">Modem 01</param>
+			<param name="Usuário">laercio</param>
+			<param name="Localização">Setor de Infraestutura</param>
+		</service>
+	</services>
+</importacao>

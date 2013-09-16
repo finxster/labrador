@@ -14,5 +14,8 @@
 		<entry type="SQL">security/users.sql</entry>
 		<entry type="INTEGRACAO-XML">usuarios.xml</entry>
 		<entry type="INTEGRACAO-XML">livros.xml</entry>
+		<entry type="INTEGRACAO-XML">projetores.xml</entry>
+		<entry type="INTEGRACAO-XML">mochilas.xml</entry>
+		<entry type="INTEGRACAO-XML">modems.xml</entry>
 	</ref>
 </ref-db>

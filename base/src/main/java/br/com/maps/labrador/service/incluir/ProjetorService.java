@@ -16,7 +16,7 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * Serviço para inclusão de um {@link Projetor} de um {@link LabradorUsuario}
  * 
  * @author laercio.duarte
- * @created Sat 14, 2013
+ * @created Sep 14, 2013
  */
 
 @ServiceImplementor(action = ActionsEnum.INCLUIR)
