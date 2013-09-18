@@ -1,102 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+    xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
 
 <head>
 
 </head>
 
 <body>
-	<wicket:panel>
-<div class="container-fluid">
-	<div class="row-fluid">
-		<div class="span12">
-			<div class="row-fluid">
-				<div class="span6">
-					<div class="row-fluid">
-						<div class="span12">
-							<img src="images/login.jpg" />
-							<p>
-								Oi! Eu sou o <i>Labrador default</i>, meu dono é MAPS!<br/>
-Adoro colecionar coisas e por isso apoio essa iniciativa <br/>
-do InovaMAPS!<br/>
-Conhece outros labradores simpáticos, amantes de<br/> 
-livros, brinquedos, crianças? Mande sua foto para <br/>
-<a href="mailto:labrador@maps.com.br">labrador@maps.com.br</a> e nos ajude a conquistar mais <br/>
-fãs com seu mascote querido! <br/>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="span6">
-					<div class="row-fluid">
-						<div class="span12">
-							<img src="images/labrador_final_simples.png" />
-							<p>
-								O Labrador quer ser seu melhor amigo!<br/>
-								Cadastre e compartilhe suas coleções com ele!<br/> 
-								Além de guardar suas informações, ele também <br/>
-								fareja o que você quiser em outras coleções! <br/>
-							</p>
-							<div class="row-fluid">
-								<div class="span12">
-									<ul class="nav nav-tabs">
-										<li class="active">
-											<a href="#">Login</a>
-										</li>
-										<li>
-											<a href="#">Cadastro</a>
-										</li>
-									</ul>
-									<form wicket:id="securityForm" name="form_login" >
-										<div class="app_name hidden">
-											<span wicket:id="systemName" />
-										</div>
-										<fieldset>
-											<div wicket:id="user.control-group">
-												<div class="pagination-centered">
-													<div class="input-prepend login_user">
-														<span class="add-on"> <i class="icon-user"></i> </span> <input
-															type="text" wicket:id="username" name="username"
-															maxlength="100" placeholder="E-mail ou Usuário" />
-													</div>
-												</div>
-											</div>
-											<div wicket:id="pass.control-group">
-												<div class="pagination-centered">
-													<div class="input-prepend password">
-														<span class="add-on"> <i class="icon-lock"></i> </span> <input
-															type="password" wicket:id="password" name="password" class="passwd"
-															maxlength="128" placeholder="Senha" size="10"/>
-														<input id="botaoLogin" class="btn btn-primary login_button" type="submit" name="efetuarLogin" value="Entrar" />
-													</div>
-												</div>
-											</div>
-											 	<span class="help-block">Esqueceu sua senha? Clique aqui!</span>
-											 	 <label>Entrar com o Facebook</label>
-											 	 <label>Entrar com o Twitter</label>
-											 	 <label>Entrar com o Google+</label>
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-  <style type="text/css">
-	input.btn {
-		width: 100px !important;
-	}
-	input.passwd {
-		width: 112px !important;
-	}
-  </style>
+    <wicket:panel>
+        <div class="container-fluid">
+            <div class="row-fluid row-fluid-labrador">
+                <div class="span6">
+                    <div class="row-fluid">
+                        <div class="login_logo"></div>
+                        <div class="span12 info_labrador">
+                            <p>
+                                Oi! Eu sou o <i>Labrador default</i>,
+                                meu dono é MAPS! <br />Adoro colecionar
+                                coisas e por isso apoio essa iniciativa
+                                <br />do InovaMAPS!
+                            </p>
+                            <p>
+                                Conhece outros labradores simpáticos,
+                                amantes de <br />livros, brinquedos,
+                                crianças? Mande sua foto para<br /> <a
+                                    href="mailto:labrador@maps.com.br">labrador@maps.com.br</a>
+                                e nos ajude a conquistar mais<br /> fãs
+                                com seu mascote querido!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="row-fluid">
+                        <div class="span12 info_cadastro">
+                            <div class="login"></div>
+                            <p>
+                                O Labrador quer ser seu melhor amigo! <br />Cadastre
+                                e compartilhe suas coleções com ele!
+                            </p>
+                            <p>
+                                Além de guardar suas informações, ele
+                                também <br />fareja o que você quiser
+                                em outras coleções!
+                            </p>
+                            <div class="row-fluid login_cadastro">
+                                <div class="span12">
+                                    <ul class="nav nav-tabs nav_login">
+                                        <li class="active"><a
+                                            href="#">Login</a></li>
+                                        <li><a href="#">Cadastro</a></li>
+                                    </ul>
+                                    <form wicket:id="securityForm"
+                                        name="form_login">
+                                        <div class="app_name hidden">
+                                            <span wicket:id="systemName" />
+                                        </div>
+                                        <fieldset>
+                                            <div
+                                                wicket:id="user.control-group">
+                                                <div
+                                                    class="pagination-centered login-position">
+                                                    <div
+                                                        class="input-prepend login_user">
+                                                        <span
+                                                            class="add-on">
+                                                            <i
+                                                            class="icon-user"></i>
+                                                        </span> <input
+                                                            type="text"
+                                                            wicket:id="username"
+                                                            name="username"
+                                                            maxlength="100"
+                                                            placeholder="E-mail ou Usuário" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div
+                                                wicket:id="pass.control-group">
+                                                <div
+                                                    class="pagination-centered login-position">
+                                                    <div
+                                                        class="input-prepend password">
+                                                        <span
+                                                            class="add-on">
+                                                            <i
+                                                            class="icon-lock"></i>
+                                                        </span> <input
+                                                            type="password"
+                                                            wicket:id="password"
+                                                            name="password"
+                                                            class="passwd"
+                                                            maxlength="128"
+                                                            placeholder="Senha"
+                                                            size="10" />
+                                                        <input
+                                                            id="botaoLogin"
+                                                            class="btn btn-primary login_button"
+                                                            type="submit"
+                                                            name="efetuarLogin"
+                                                            value="Entrar" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <span class="help-block">Esqueceu
+                                                sua senha? <a href="#">Clique aqui!</a></span>
+                                            <a title="Facebook"
+                                                onclick="window.open('Endereço do seu facebook'); return false;"
+                                                rel="nofollow"
+                                                target="_blank"><img
+                                                style="border-width: 0px; display: inline;"
+                                                title="Facebook"
+                                                alt="Spain"
+                                                src="src/main/resources/images/facebook.png"
+                                                border="0" width="24"
+                                                height="24" /></a> <label>Entrar
+                                                com o Facebook</label> <a
+                                                title="Twitter"
+                                                onclick="window.open('Endereço do seu twitter'); return false;"
+                                                rel="nofollow"
+                                                target="_blank"><img
+                                                style="border-width: 0px; display: inline;"
+                                                title="Twitter"
+                                                alt="Spain"
+                                                src="src/main/resources/images/twitter.png"
+                                                border="0" width="24"
+                                                height="24" /></a> <label>Entrar
+                                                com o Twitter</label> <a
+                                                title="Google+"
+                                                onclick="window.open('Endereço do seu feed'); return false;"
+                                                rel="nofollow"
+                                                target="_blank"><img
+                                                style="border-width: 0px; display: inline;"
+                                                title="RSS" alt="Spain"
+                                                src="images/google_plus.png"
+                                                border="0" width="24"
+                                                height="24" /></a> <label>Entrar
+                                                com o Google+</label>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-	</wicket:panel>
+    </wicket:panel>
 </body>
 </html>

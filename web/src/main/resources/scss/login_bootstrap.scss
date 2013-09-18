@@ -1,23 +1,18 @@
-/* Autores: Cassiano dos Santos Alves e Lilian Perillo */
+/* Autor: Lilian Perillo */
 /* BACKGROUND BODY LOGIN */
 body {
-  background: #f4f4f4 !important;
+  // needs latest Compass, add '@import "compass"' to your scss
+  background-color: #fcfdff; // Old browsers
+  @include filter-gradient(#fcfdff, #a3ddff, vertical); // IE6-9
+  @include background-image(linear-gradient(top,  #fcfdff 0%,#eaf7ff 41%,#cbebff 77%,#a3ddff 100%));
+
 }
 
 /* HEADER LOGIN */
 .login {
-  border-bottom: 1px solid #9baab3;
-  box-shadow: 0px 0px 4px white inset;
+  background: url("images/logo_labrador.png") right top no-repeat;	
   height: 50px;
   width: 100%;
-  background-color: #edeaea;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFEDEAEA', endColorstr='#FFA5A5A5');
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #edeaea), color-stop(7%, #e8e8e8), color-stop(50%, #e2e2e2), color-stop(53%, #e2e2e2), color-stop(90%, #c6c6c6), color-stop(95%, #bcbcbc), color-stop(100%, #a5a5a5));
-  background-image: -webkit-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
-  background-image: -moz-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
-  background-image: -o-linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
-  background-image: linear-gradient(top, #edeaea 0%, #e8e8e8 7%, #e2e2e2 50%, #e2e2e2 53%, #c6c6c6 90%, #bcbcbc 95%, #a5a5a5 100%);
 }
 
 /* LOGIN LOGO */
