@@ -1,0 +1,9 @@
+/* Autores: Lilian Perillo e Cassiano dos Santos Alves */
+/* MAIN */
+.main {
+  margin: 30px 5px 5px 5px !important;
+}
+.header-push{
+	height: 0 !important;
+	padding-bottom: 0  !important;
+}
