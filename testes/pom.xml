@@ -73,7 +73,7 @@
 			<scope>test</scope>
 			<type>test-jar</type>
 		</dependency>
-			<dependency>
+		<dependency>
 			<groupId>jmine.tec</groupId>
 			<artifactId>jmine-tec-test-runner</artifactId>
 		</dependency>
@@ -81,6 +81,7 @@
 			<groupId>jmine.tec</groupId>
 			<artifactId>jmine-tec-test-runner</artifactId>
 			<scope>test</scope>
+			<type>test-jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
