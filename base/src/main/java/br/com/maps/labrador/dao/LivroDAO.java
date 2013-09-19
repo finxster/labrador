@@ -40,6 +40,14 @@ public class LivroDAO extends BaseDAO<Livro> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Livro} através de um {@link LabradorUsuario}.
+     * 
+     * @param livro {@link Livro} utilizado na consulta
+     * @param labradorUsuario {@link LabradorUsuario} utilizado na consulta
+     * @return uma lista de {@link Livro} através de um {@link LabradorUsuario}.
+     * @throws BeanNotFoundException
+     */
     public Livro findByLivroUsuario(Livro livro, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", livro);

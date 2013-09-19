@@ -32,6 +32,14 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Projetor} através de um {@link LabradorUsuario}.
+     * 
+     * @param projetor {@link Projetor} utilizado na consulta
+     * @param labradorUsuario {@link LabradorUsuario} utilizado na consulta
+     * @return uma lista de {@link Projetor} através de um {@link LabradorUsuario}.
+     * @throws BeanNotFoundException
+     */
     public Projetor findByProjetorUsuario(Projetor projetor, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", projetor);
