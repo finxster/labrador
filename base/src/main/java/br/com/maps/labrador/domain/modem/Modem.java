@@ -1,6 +1,8 @@
 package br.com.maps.labrador.domain.modem;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,18 +12,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Index;
-import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -31,13 +34,11 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @author laercio.duarte
  * @created 23/08/2013
  */
-
 @Entity
 @Alias("MODEM")
-@Table(name = "MODEM")
-@Documentation("TABELA QUE ARMAZENA OS MODEMS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_MODEM", sequenceName = "SEQ_MODEM")
-public class Modem extends PersistableBusinessObject {
+@DiscriminatorValue("3")
+public class Modem extends AbstractEmprestavel {
 
     private Long id;
 
@@ -144,6 +145,14 @@ public class Modem extends PersistableBusinessObject {
      */
     public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
         this.localizacao = localizacao;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Transient
+    public LabradorUsuario getProprietario() {
+        return getUsuario();
     }
 
 }

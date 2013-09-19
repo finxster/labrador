@@ -21,6 +21,7 @@ import org.apache.wicket.request.resource.caching.version.LastModifiedResourceVe
 import org.apache.wicket.settings.IResourceSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
+import br.com.maps.labrador.pages.consulta.coisas.ConsultaCoisas;
 import br.com.maps.labrador.pages.login.LabradorLogin;
 
 /**
@@ -43,6 +44,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
     @Override
     protected void init() {
         super.init();
+        this.getDebugSettings().setAjaxDebugModeEnabled(false);
         this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         this.getSecuritySettings().setAuthorizationStrategy(this.authorizationStrategy);
         this.getApplicationSettings().setAccessDeniedPage(AccessDeniedPage.class);
@@ -53,7 +55,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
         this.mount(new MountedMapper("logout", Logout.class));
         this.mount(new MountedMapper("login", LabradorLogin.class));
         this.mount(new MountedMapper("accessDenied", AccessDeniedPage.class));
-        this.mount(new MountedMapper("home", Home.class));
+        this.mount(new MountedMapper("home", ConsultaCoisas.class));
     }
 
     /**
@@ -61,7 +63,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
      */
     @Override
     public Class<? extends Page> getHomePage() {
-        return Home.class;
+        return ConsultaCoisas.class;
     }
 
     /**

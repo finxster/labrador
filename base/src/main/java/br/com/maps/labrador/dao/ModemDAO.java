@@ -7,7 +7,10 @@ import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
+import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.modem.Modem;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -47,5 +50,29 @@ public class ModemDAO extends BaseDAO<Modem> {
         Criteria criteriaUsuario = criteria.createCriteria("usuario");
         RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
         return this.executeSingleQuery(criteria);
+    }
+
+    public List<Modem> findByNome(String titulo) {
+        Criteria c = this.createCriteria();
+        RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
+        return this.executeQuery(c);
+    }
+    
+    public List<Modem> findByProprietario(String proprietario) {
+        Criteria c = this.createCriteria();
+        if (proprietario != null) {
+            Criteria critUsuario = c.createCriteria("usuario");
+            critUsuario.add(Restrictions.ilike("nome", proprietario, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
+    }
+
+    public List<Modem> findByLocalizacao(String localizacao) {
+        Criteria c = this.createCriteria();
+        if (localizacao != null) {
+            Criteria critUsuario = c.createCriteria("localizacao");
+            critUsuario.add(Restrictions.ilike("nome", localizacao, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
     }
 }

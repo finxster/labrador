@@ -1,6 +1,7 @@
 package br.com.maps.labrador.domain.projetor;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,19 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Index;
-import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -31,13 +32,12 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @author laercio.duarte
  * @created 23/08/2013
  */
-
 @Entity
 @Alias("PROJETOR")
-@Table(name = "PROJETOR")
 @Documentation("TABELA QUE ARMAZENA OS PROJETORES DO SISTEMA")
 @SequenceGenerator(name = "SEQ_PROJETOR", sequenceName = "SEQ_PROJETOR")
-public class Projetor extends PersistableBusinessObject {
+@DiscriminatorValue("4")
+public class Projetor extends AbstractEmprestavel {
 
     private Long id;
 
@@ -144,6 +144,14 @@ public class Projetor extends PersistableBusinessObject {
      */
     public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
         this.localizacao = localizacao;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Transient
+    public LabradorUsuario getProprietario() {
+        return getUsuario();
     }
 
 }
