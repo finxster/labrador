@@ -27,7 +27,7 @@ public enum LabradorBaseMessages implements MessageCreator {
      * @param key key
      */
     private LabradorBaseMessages(int nargs, String key) {
-        this.delegate = MessageCreatorHelper.creator("core-messages", key, nargs);
+        this.delegate = MessageCreatorHelper.creator("base-messages", key, nargs);
     }
 
     /**

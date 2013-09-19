@@ -1,0 +1,128 @@
+/* Autor: Lilian Perillo */
+/* 17/09/2013 */
+
+/* BACKGROUND BODY LOGIN */
+body {
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffffff 0%, #f7fcff 45%, #e8f6ff 90%, #e8f6ff 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(45%,#f7fcff), color-stop(90%,#e8f6ff), color-stop(100%,#e8f6ff)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffffff 0%,#f7fcff 45%,#e8f6ff 90%,#e8f6ff 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffffff 0%,#f7fcff 45%,#e8f6ff 90%,#e8f6ff 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffffff 0%,#f7fcff 45%,#e8f6ff 90%,#e8f6ff 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffffff 0%,#f7fcff 45%,#e8f6ff 90%,#e8f6ff 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e8f6ff',GradientType=0 ); /* IE6-9 */
+
+  color: #59595B;
+  font: normal 14px Arial, Helvetica, Verdana, Geneva, sans-serif !important;
+  line-height: 20px !important;
+
+
+/*scss*/
+/*
+// needs latest Compass, add '@import "compass"' to your scss
+background-color: #ffffff; // Old browsers
+@include filter-gradient(#ffffff, #e8f6ff, vertical); // IE6-9
+@include background-image(linear-gradient(top,  #ffffff 0%,#f7fcff 45%,#e8f6ff 90%,#e8f6ff 100%));
+
+
+*/
+}
+
+html{
+	height: 100%;
+}
+a:hover, a:focus {
+    text-decoration: none !important;
+}
+img{
+	float: left;
+	margin-right: 10px;
+}
+label{
+	margin-top: 12px;
+	margin-bottom: 10px !important;
+}
+
+/* LOGIN */
+.login {
+  background: url("images/logo_labrador.png") right top no-repeat;	
+  height: 125px;
+  width: 400px;
+ }
+
+/* LOGIN  */
+.login_logo {
+  background: url("images/logo_produto_labrador.png") center center no-repeat;
+  border: 10px solid #2C2E7F;
+  display: block;;
+  height: 301px;
+  margin: 40px auto;
+  width: 450px;
+  transform: rotate(357deg);
+  -webkit-transform: rotate(357deg);
+  -moz-transform: rotate(357deg);
+  -ms-transform:rotate(357deg);
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+.login_user {
+  float: left;
+  width: 40%;
+}
+.login_cadastro{
+	margin: 45px 20px 10px;
+	padding: 5px 40px;	
+	width: 70% !important;
+}
+.login_button{
+    border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    -webkit-border-radius: 4px !important;
+    -o-border-radius: 4px !important;
+    -ms-border-radius: 4px !important;
+    -khtml-border-radius: 4px !important;	
+    height: 30px;	
+}
+
+/* INFO LABRADOR CADASTRO */
+.info_labrador p{
+	margin: 5px 70px;
+	padding: 5px 70px;
+}
+.info_cadastro p{
+	margin: 5px 50px;
+	padding: 5px 50px;
+}
+
+/* FEEDBACK PANEL LOGIN */
+.feedback_login {
+  text-align: center;
+}
+
+
+/* BOOTSTRAP */
+
+.row-fluid-labrador .info_labrador{
+	float: left;
+}
+.row-fluid-labrador .info_cadastro{
+	float: right;
+}
+
+.login-position{
+	text-align: left !important;
+}
+
+.nav_login > li > a:hover, .nav_login > li > a:focus{
+	background-color: #95C3FA !important;
+    color: #FFF !important;	
+}
+.nav_login > li > a:hover, .nav_login > li > a:focus {
+    border-color: #C7C7D7 #C7C7D7 #BBBCDD !important;
+}
+.nav_login > .active > a, .nav_login > .active > a:hover, .nav_login > .active > a:focus{
+	background-color: #3873B9 !important;
+    color: #FFF !important;
+}
+.nav_login {
+    border-bottom: 1px solid #C7C7D7 !important;
+}
