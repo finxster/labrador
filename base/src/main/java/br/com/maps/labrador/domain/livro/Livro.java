@@ -1,6 +1,7 @@
 package br.com.maps.labrador.domain.livro;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,13 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Index;
-import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
@@ -23,6 +23,7 @@ import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -38,11 +39,10 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  */
 @Entity
 @Alias("LIVRO")
-@Table(name = "LIVRO")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Documentation("TABELA QUE ARMAZENA OS LIVROS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO")
-public class Livro extends PersistableBusinessObject {
+@DiscriminatorValue("1")
+public class Livro extends AbstractEmprestavel {
 
     private Long id;
 
@@ -221,6 +221,22 @@ public class Livro extends PersistableBusinessObject {
      */
     public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
         this.localizacao = localizacao;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Transient
+    public String getNome() {
+        return this.titulo;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Transient
+    public LabradorUsuario getProprietario() {
+        return getUsuario();
     }
 
 }
