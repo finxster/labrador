@@ -33,6 +33,14 @@ public class MochilaDAO extends BaseDAO<Mochila> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Mochila} através de um {@link LabradorUsuario}.
+     * 
+     * @param mochila {@link Mochila} utilizado na consulta
+     * @param labradorUsuario {@link LabradorUsuario} utilizado na consulta
+     * @return uma lista de {@link Mochila} através de um {@link LabradorUsuario}.
+     * @throws BeanNotFoundException
+     */
     public Mochila findByMochilaUsuario(Mochila mochila, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", mochila);

@@ -33,6 +33,14 @@ public class ModemDAO extends BaseDAO<Modem> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Modem} através de um {@link LabradorUsuario}.
+     * 
+     * @param modem {@link Modem} utilizado na consulta
+     * @param labradorUsuario {@link LabradorUsuario} utilizado na consulta
+     * @return uma lista de {@link Modem} através de um {@link LabradorUsuario}.
+     * @throws BeanNotFoundException
+     */
     public Modem findByModemUsuario(Modem modem, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", modem);
