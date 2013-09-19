@@ -7,12 +7,14 @@ import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
+import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
 import jmine.tec.web.wicket.component.injection.composite.LabeledFormInputPanel;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -30,8 +32,6 @@ public class CadastroMochila extends FormPage<Mochila> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
-
-    private String localizacao;
 
     /**
      * Construtor.
@@ -72,13 +72,27 @@ public class CadastroMochila extends FormPage<Mochila> {
         List<Component> components = new ArrayList<Component>();
 
         final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
-        final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
+        final LabeledFormInputPanel localizacaoTextField =
+                ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this.getEntity()
+                        .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM);
 
         components.add(nome.setOutputMarkupId(true));
         components.add(localizacaoTextField);
 
         return components;
 
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Mochila createEntity() {
+        Mochila mochila = super.createEntity();
+        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
+        LocalizacaoEmprestavel localizacao = dao.createBean();
+        mochila.setLocalizacao(localizacao);
+        return mochila;
     }
 
     /**
@@ -92,28 +106,9 @@ public class CadastroMochila extends FormPage<Mochila> {
     @Override
     protected boolean beforeSave(Mochila target) {
         // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
-        LocalizacaoEmprestavel localizacaoMochila = dao.createBean();
-        localizacaoMochila.setNome(this.localizacao);
-
-        target.setLocalizacao(localizacaoMochila);
         target.setUsuario(UserHelper.getUser(this.daoFactory));
 
         return super.beforeSave(target);
-    }
-
-    /**
-     * @return the localizacao
-     */
-    public String getLocalizacao() {
-        return this.localizacao;
-    }
-
-    /**
-     * @param localizacao the localizacao to set
-     */
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
     }
 
 }
