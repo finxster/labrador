@@ -65,7 +65,6 @@ label{
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
 }
 .login_user {
-  float: left;
   width: 40%;
 }
 .login_cadastro{
@@ -98,8 +97,11 @@ label{
   text-align: center;
 }
 
-
-/* BOOTSTRAP */
+.container-fluid-labrador {
+	padding-top: 50px !important;
+	padding-left: 50px !important;
+    padding-right: 50px !important;
+}
 
 .row-fluid-labrador .info_labrador{
 	float: left;
