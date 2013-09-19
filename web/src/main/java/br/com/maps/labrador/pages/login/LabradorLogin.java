@@ -9,6 +9,7 @@ import jmine.tec.web.wicket.pages.main.LoginConfig;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.IHeaderResponse;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -84,7 +85,7 @@ public class LabradorLogin extends Template {
     @Override
     protected Panel getHeaderPanel(String id) {
         return new LabradorLoginPanel(id, this.getSystemName(), this.getSecurityService());
-//        return new TesteLoginPanel(id);
+        // return new TesteLoginPanel(id);
     }
 
     /**
@@ -120,6 +121,14 @@ public class LabradorLogin extends Template {
      */
     private LoginConfig getLoginConfig() {
         return (LoginConfig) this.getApplicationStyle().getConfig(LoginConfig.KEY);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected Panel getFooterPanel(String id) {
+        return new EmptyPanel(id);
     }
 
 }
