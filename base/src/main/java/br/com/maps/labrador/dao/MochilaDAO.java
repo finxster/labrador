@@ -7,6 +7,8 @@ import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
@@ -26,10 +28,13 @@ public class MochilaDAO extends BaseDAO<Mochila> {
      * @param nome String utilizada na consulta
      * @return uma lista de {@link Mochila} através de uma String que reflete um atributo de um {@link Mochila}.
      */
-    public List<Mochila> findByName(String nome) {
+    public List<Mochila> findByNameLocalizacao(String nome, String localizacao) {
         Criteria c = this.createCriteria();
-        RestrictionsUtils.addRestrictionILike(c, "nome", nome);
-
+        RestrictionsUtils.addRestrictionILike(c, "nome", nome, MatchMode.ANYWHERE);
+        if (localizacao != null) {
+            Criteria critLocalizacao = c.createCriteria("localizacao");
+            critLocalizacao.add(Restrictions.ilike("nome", localizacao, MatchMode.ANYWHERE));
+        }
         return this.executeQuery(c);
     }
 

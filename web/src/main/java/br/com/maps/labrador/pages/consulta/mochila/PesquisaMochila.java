@@ -37,7 +37,7 @@ public class PesquisaMochila extends CrudModelPage<PesquisaMochilaFilter, Mochil
     public List<Mochila> search(DAOFactory daoFactory) {
         MochilaDAO dao = daoFactory.getDAOByClass(MochilaDAO.class);
         PesquisaMochilaFilter m = this.getModel();
-        return dao.findByName(m.getNome());
+        return dao.findByNameLocalizacao(m.getNome(), m.getLocalizacao());
     }
 
     /**
