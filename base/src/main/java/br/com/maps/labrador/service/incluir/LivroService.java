@@ -63,7 +63,7 @@ public class LivroService {
         Livro livro = this.dao.createBean();
         livro.setIsbn10(this.isbn10);
         livro.setIsbn13(this.isbn13);
-        livro.setTitulo(this.titulo);
+        livro.setNome(this.titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
         livro.setProprietario(this.usuario);

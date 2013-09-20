@@ -1,4 +1,4 @@
-package br.com.maps.labrador.pages.consulta.coisas;
+package br.com.maps.labrador.pages.consulta.emprestavel;
 
 import java.io.Serializable;
 

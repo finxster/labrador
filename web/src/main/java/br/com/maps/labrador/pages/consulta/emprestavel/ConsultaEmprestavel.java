@@ -1,4 +1,4 @@
-package br.com.maps.labrador.pages.consulta.coisas;
+package br.com.maps.labrador.pages.consulta.emprestavel;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,9 +24,15 @@ import br.com.maps.labrador.dao.LivroDAO;
 import br.com.maps.labrador.dao.MochilaDAO;
 import br.com.maps.labrador.dao.ModemDAO;
 import br.com.maps.labrador.dao.ProjetorDAO;
-import br.com.maps.labrador.domain.emprestavel.Emprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 
-public class ConsultaCoisas extends BaseListPage<ConsultaCoisasFilter, EmprestavelVO> {
+/**
+ * Tela que consulta os objetos emprestáveis do sistema.
+ * 
+ * @author finx
+ * @created Sep 20, 2013
+ */
+public class ConsultaEmprestavel extends BaseListPage<ConsultaEmprestavelFilter, EmprestavelVO> {
 
     @SpringBean
     private DAOFactory daoFactory;
@@ -40,26 +46,26 @@ public class ConsultaCoisas extends BaseListPage<ConsultaCoisasFilter, Emprestav
         ModemDAO modemDAO = daoFactory.getDAOByClass(ModemDAO.class);
         ProjetorDAO projetorDAO = daoFactory.getDAOByClass(ProjetorDAO.class);
 
-        ConsultaCoisasFilter m = this.getModel();
-        Set<Emprestavel> emprestaveis = new HashSet<Emprestavel>();
-        emprestaveis.addAll(livroDAO.findByTitulo(m.getCoisa()));
-        emprestaveis.addAll(livroDAO.findByProprietario(m.getCoisa()));
-        emprestaveis.addAll(livroDAO.findByLocalizacao(m.getCoisa()));
-        
-        emprestaveis.addAll(mochilaDAO.findByNome(m.getCoisa()));
-        emprestaveis.addAll(mochilaDAO.findByProprietario(m.getCoisa()));
-        emprestaveis.addAll(mochilaDAO.findByLocalizacao(m.getCoisa()));
-        
-        emprestaveis.addAll(modemDAO.findByNome(m.getCoisa()));
-        emprestaveis.addAll(modemDAO.findByProprietario(m.getCoisa()));
-        emprestaveis.addAll(modemDAO.findByLocalizacao(m.getCoisa()));
-        
-        emprestaveis.addAll(projetorDAO.findByNome(m.getCoisa()));
-        emprestaveis.addAll(projetorDAO.findByProprietario(m.getCoisa()));
-        emprestaveis.addAll(projetorDAO.findByLocalizacao(m.getCoisa()));
+        ConsultaEmprestavelFilter m = this.getModel();
+        Set<AbstractEmprestavel> emprestaveis = new HashSet<AbstractEmprestavel>();
+        emprestaveis.addAll(livroDAO.findByTitulo(m.getEmprestavel()));
+        emprestaveis.addAll(livroDAO.findByProprietario(m.getEmprestavel()));
+        emprestaveis.addAll(livroDAO.findByLocalizacao(m.getEmprestavel()));
+
+        emprestaveis.addAll(mochilaDAO.findByNome(m.getEmprestavel()));
+        emprestaveis.addAll(mochilaDAO.findByProprietario(m.getEmprestavel()));
+        emprestaveis.addAll(mochilaDAO.findByLocalizacao(m.getEmprestavel()));
+
+        emprestaveis.addAll(modemDAO.findByNome(m.getEmprestavel()));
+        emprestaveis.addAll(modemDAO.findByProprietario(m.getEmprestavel()));
+        emprestaveis.addAll(modemDAO.findByLocalizacao(m.getEmprestavel()));
+
+        emprestaveis.addAll(projetorDAO.findByNome(m.getEmprestavel()));
+        emprestaveis.addAll(projetorDAO.findByProprietario(m.getEmprestavel()));
+        emprestaveis.addAll(projetorDAO.findByLocalizacao(m.getEmprestavel()));
 
         List<EmprestavelVO> vos = new ArrayList<EmprestavelVO>();
-        for (Emprestavel emprestavel : emprestaveis) {
+        for (AbstractEmprestavel emprestavel : emprestaveis) {
             vos.add(new EmprestavelVO(emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel.getLocalizacao()
                     .getNome()));
         }
@@ -71,8 +77,8 @@ public class ConsultaCoisas extends BaseListPage<ConsultaCoisasFilter, Emprestav
      * {@inheritDoc}
      */
     @Override
-    protected ConsultaCoisasFilter createModel() {
-        return new ConsultaCoisasFilter();
+    protected ConsultaEmprestavelFilter createModel() {
+        return new ConsultaEmprestavelFilter();
     }
 
     /**
@@ -107,16 +113,6 @@ public class ConsultaCoisas extends BaseListPage<ConsultaCoisasFilter, Emprestav
         });
         return commands;
     }
-
-    //
-    // /**
-    // * {@inheritDoc}
-    // */
-    // @Override
-    // protected List<ImageCommand> getTableCommands(Emprestavel entity) {
-    // List<ImageCommand> commands = new ArrayList<ImageCommand>();
-    // return commands;
-    // }
 
     /**
      * {@inheritDoc}

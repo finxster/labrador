@@ -3,25 +3,13 @@ package br.com.maps.labrador.domain.livro;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
-import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.DiscriminatorComment;
-import jmine.tec.persist.impl.annotation.Index;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.validator.NotNull;
 
-import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
-import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
-import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.
@@ -43,37 +31,15 @@ public class Livro extends AbstractEmprestavel {
 
     private String isbn13;
 
-    private String titulo;
-
     private String autor;
 
     private String editora;
-
-    private LocalizacaoEmprestavel localizacao;
 
     /**
      * Construtor
      */
     protected Livro() {
         super();
-    }
-
-    /**
-     * @return the titulo
-     */
-    @NotNull
-    @NaturalKey
-    @Documentation("TITULO DO LIVRO")
-    @Column(name = "TITULO")
-    public String getTitulo() {
-        return this.titulo;
-    }
-
-    /**
-     * @param titulo the titulo to set
-     */
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
     }
 
     /**
@@ -138,34 +104,6 @@ public class Livro extends AbstractEmprestavel {
      */
     public void setEditora(String editora) {
         this.editora = editora;
-    }
-
-    /**
-     * @return the localizacao
-     */
-    @NotNull
-    @Index(suffix = "0")
-    @Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_LOCAL_LIVRO")
-    @Documentation("CODIGO DA LOCALIZACAO DO LIVRO.")
-    public LocalizacaoEmprestavel getLocalizacao() {
-        return this.localizacao;
-    }
-
-    /**
-     * @param localizacao the localizacao to set
-     */
-    public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
-        this.localizacao = localizacao;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Transient
-    public String getNome() {
-        return this.titulo;
     }
 
 }

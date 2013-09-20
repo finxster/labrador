@@ -16,13 +16,18 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import jmine.tec.component.Documentation;
+import jmine.tec.persist.api.persister.annotation.NaturalKey;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Comment;
+import jmine.tec.persist.impl.annotation.Index;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.Emprestavel;
+import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 @Entity
@@ -37,9 +42,13 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
 
     private Long id;
 
+    private String nome;
+
     private LabradorUsuario proprietario;
 
     private StatusEmprestavel status = StatusEmprestavel.DISPONIVEL;
+
+    private LocalizacaoEmprestavel localizacao;
 
     /**
      * @return the id
@@ -60,6 +69,42 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
+     * @return the nome
+     */
+    @NotNull
+    @NaturalKey
+    @Column(name = "NOME", nullable = false)
+    @Documentation("NOME DO OBJETO QUE EH EMPRESTAVEL.")
+    public String getNome() {
+        return this.nome;
+    }
+
+    /**
+     * @param nome the nome to set
+     */
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    /**
+     * @return the proprietario
+     */
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_USUARIO", nullable = false)
+    @Documentation("CODIGO DO USUARIO QUE EH O PROPRIETARIO DO EMPRESTAVEL.")
+    public LabradorUsuario getProprietario() {
+        return this.proprietario;
+    }
+
+    /**
+     * @param proprietario the proprietario to set
+     */
+    public void setProprietario(LabradorUsuario proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    /**
      * @return the status
      */
     @NotNull
@@ -77,20 +122,23 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
-     * @return the proprietario
+     * @return the localizacao
      */
+    @NotNull
+    @Index(suffix = "0")
+    @Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_USUARIO")
-    @Documentation("CODIGO DO USUARIO QUE E O PROPRIETARIO DO LIVRO")
-    public LabradorUsuario getProprietario() {
-        return this.proprietario;
+    @JoinColumn(name = "COD_LOCAL_EMPRESTAVEL")
+    @Documentation("CODIGO DA LOCALIZACAO DO EMPRESTAVEL.")
+    public LocalizacaoEmprestavel getLocalizacao() {
+        return this.localizacao;
     }
 
     /**
-     * @param proprietario the proprietario to set
+     * @param localizacao the localizacao to set
      */
-    public void setProprietario(LabradorUsuario proprietario) {
-        this.proprietario = proprietario;
+    public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
+        this.localizacao = localizacao;
     }
 
     /**

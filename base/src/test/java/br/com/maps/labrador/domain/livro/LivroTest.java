@@ -54,7 +54,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
     protected void fillData(int idx, Livro bo) {
         bo.setIsbn10(ISBN10[idx]);
         bo.setIsbn13(ISBN13[idx]);
-        bo.setTitulo(TITULO[idx]);
+        bo.setNome(TITULO[idx]);
         bo.setAutor(AUTOR[idx]);
         bo.setEditora(EDITORA[idx]);
         bo.setProprietario(LABRADOR_USUARIO[idx]);
@@ -69,7 +69,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
     protected void compareData(int idx, Livro bo) throws BeanNotFoundException {
         assertEquals(ISBN10[idx], bo.getIsbn10());
         assertEquals(ISBN13[idx], bo.getIsbn13());
-        assertEquals(TITULO[idx], bo.getTitulo());
+        assertEquals(TITULO[idx], bo.getNome());
         assertEquals(AUTOR[idx], bo.getAutor());
         assertEquals(EDITORA[idx], bo.getEditora());
         assertEquals(LABRADOR_USUARIO[idx], bo.getProprietario());

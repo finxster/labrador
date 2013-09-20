@@ -46,7 +46,7 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
     public Projetor findByProjetorUsuario(Projetor projetor, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", projetor);
-        Criteria criteriaUsuario = criteria.createCriteria("usuario");
+        Criteria criteriaUsuario = criteria.createCriteria("proprietario");
         RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
         return this.executeSingleQuery(criteria);
     }
@@ -60,7 +60,7 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
     public List<Projetor> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
-            Criteria critUsuario = c.createCriteria("usuario");
+            Criteria critUsuario = c.createCriteria("proprietario");
             critUsuario.add(Restrictions.ilike("nome", proprietario, MatchMode.ANYWHERE));
         }
         return this.executeQuery(c);

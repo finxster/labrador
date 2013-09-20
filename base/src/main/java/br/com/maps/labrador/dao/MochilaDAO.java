@@ -50,7 +50,7 @@ public class MochilaDAO extends BaseDAO<Mochila> {
     public Mochila findByMochilaUsuario(Mochila mochila, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", mochila);
-        Criteria criteriaUsuario = criteria.createCriteria("usuario");
+        Criteria criteriaUsuario = criteria.createCriteria("proprietario");
         RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
         return this.executeSingleQuery(criteria);
     }
@@ -64,7 +64,7 @@ public class MochilaDAO extends BaseDAO<Mochila> {
     public List<Mochila> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
-            Criteria critUsuario = c.createCriteria("usuario");
+            Criteria critUsuario = c.createCriteria("proprietario");
             critUsuario.add(Restrictions.ilike("nome", proprietario, MatchMode.ANYWHERE));
         }
         return this.executeQuery(c);
