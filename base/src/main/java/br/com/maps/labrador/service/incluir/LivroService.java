@@ -66,7 +66,7 @@ public class LivroService {
         livro.setTitulo(this.titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
-        livro.setUsuario(this.usuario);
+        livro.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoLivro = this.localizacaoDAO.createBean();
         localizacaoLivro.setNome(this.localizacao);

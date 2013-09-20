@@ -9,8 +9,9 @@ import jmine.tec.web.wicket.component.menu.cfg.AbstractMenuConfigFactoryBean;
 import jmine.tec.web.wicket.component.menu.cfg.MenuConfig;
 import br.com.maps.labrador.pages.AlterarSenhaPage;
 import br.com.maps.labrador.pages.CrudUsuarioPage;
-import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroDevolucaoEmprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
+import br.com.maps.labrador.pages.cadastro.emprestimo.controle.ControleEmprestimo;
+import br.com.maps.labrador.pages.cadastro.emprestimo.devolucao.CadastroDevolucaoEmprestimo;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 import br.com.maps.labrador.pages.cadastro.mochila.CadastroMochila;
 import br.com.maps.labrador.pages.cadastro.modem.CadastroModem;
@@ -41,6 +42,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(CadastroModem.class, "Base", "Cadastros", "Modems");
         config.addPage(CadastroProjetor.class, "Base", "Cadastros", "Projetores");
         config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
+        config.addPage(ControleEmprestimo.class, "Empréstimos", "Livros", "Emprestar");
         config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
 
         config.addPage(PesquisaLivro.class, "Base", "Pesquisas", "Livros");

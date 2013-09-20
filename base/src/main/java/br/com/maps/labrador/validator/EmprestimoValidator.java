@@ -9,8 +9,8 @@ import java.util.List;
 import jmine.tec.component.annotations.Unmodifiable;
 import jmine.tec.persist.impl.validator.AbstractValidator;
 import jmine.tec.persist.impl.validator.ValidationError;
+import br.com.maps.labrador.domain.emprestavel.Emprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
-import br.com.maps.labrador.domain.livro.Livro;
 
 /**
  * Validações referentes ao empréstimo de um livro.
@@ -28,12 +28,12 @@ public class EmprestimoValidator extends AbstractValidator<Emprestimo> {
     public List<ValidationError> validateInsert(Emprestimo bean) {
         List<ValidationError> errors = new ArrayList<ValidationError>();
 
-        Livro livro = bean.getLivro();
-        if (!livro.getStatus().isDisponivel()) {
-            this.addError(errors, new ValidationError(LIVRO_NAO_DISPONIVEL_PARA_EMPRESTIMO.create(livro.getTitulo())));
+        Emprestavel emprestavel = bean.getEmprestavel();
+        if (!emprestavel.getStatus().isDisponivel()) {
+            this.addError(errors, new ValidationError(LIVRO_NAO_DISPONIVEL_PARA_EMPRESTIMO.create(emprestavel.getNome())));
         }
 
-        if (bean.getTomador().equals(livro.getUsuario())) {
+        if (bean.getTomador().equals(emprestavel.getProprietario())) {
             this.addError(errors, new ValidationError(NAO_EH_POSSIVEL_EMPRESTAR_UM_LIVRO_PROPRIO.create()));
         }
 

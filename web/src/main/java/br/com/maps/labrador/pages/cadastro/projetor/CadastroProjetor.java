@@ -97,7 +97,7 @@ public class CadastroProjetor extends FormPage<Projetor> {
         localizacaoProjetor.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoProjetor);
-        target.setUsuario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(UserHelper.getUser(this.daoFactory));
 
         return super.beforeSave(target);
     }

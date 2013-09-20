@@ -43,7 +43,7 @@ public class ProjetorTest extends BOBaseTestCase<Projetor> {
     protected void fillData(int idx, Projetor bo) {
         bo.setNome(NOME[idx]);
         bo.setStatus(STATUS[idx]);
-        bo.setUsuario(LABRADOR_USUARIO[idx]);
+        bo.setProprietario(LABRADOR_USUARIO[idx]);
         bo.setLocalizacao(LOCALIZACAO[idx]);
     }
 
@@ -54,7 +54,7 @@ public class ProjetorTest extends BOBaseTestCase<Projetor> {
     protected void compareData(int idx, Projetor bo) throws BeanNotFoundException {
         assertEquals(NOME[idx], bo.getNome());
         assertEquals(STATUS[idx], bo.getStatus());
-        assertEquals(LABRADOR_USUARIO[idx], bo.getUsuario());
+        assertEquals(LABRADOR_USUARIO[idx], bo.getProprietario());
         assertEquals(LOCALIZACAO[idx], bo.getLocalizacao());
     }
 }

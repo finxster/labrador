@@ -52,7 +52,7 @@ public class EmprestimoService {
     @Output(propertyName = IDENTIFICADOR)
     public Emprestimo execute() {
         Emprestimo emprestimo = this.dao.createBean();
-        emprestimo.setLivro(this.livro);
+        emprestimo.setEmprestavel(this.livro);
         emprestimo.setData(this.clock.currentTimestamp());
         emprestimo.setDataDevolucao(this.dataDevolucao);
         emprestimo.setTomador(this.labradorUsuario);

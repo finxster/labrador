@@ -47,7 +47,7 @@ public class MochilaService {
     public Mochila execute() {
         Mochila mochila = this.dao.createBean();
         mochila.setNome(this.nome);
-        mochila.setUsuario(this.usuario);
+        mochila.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);
