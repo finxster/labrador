@@ -36,10 +36,6 @@
 		</dependency>
 		<dependency>
 			<groupId>jmine.tec</groupId>
-			<artifactId>jmine-tec-security-impl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>jmine.tec</groupId>
 			<artifactId>jmine-tec-services-impl</artifactId>
 		</dependency>
 		<dependency>
