@@ -7,7 +7,7 @@ import jmine.tec.persist.impl.dao.BaseDAO;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 public class AbstractEmprestavelDAO extends BaseDAO<AbstractEmprestavel> {

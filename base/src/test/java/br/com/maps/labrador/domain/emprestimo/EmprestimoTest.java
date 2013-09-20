@@ -4,7 +4,7 @@ import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.utils.date.Date;
 import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.BOBaseTestCase;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.livro.LivroTest;

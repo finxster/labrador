@@ -9,7 +9,7 @@ import java.util.List;
 import jmine.tec.component.annotations.Unmodifiable;
 import jmine.tec.persist.impl.validator.AbstractValidator;
 import jmine.tec.persist.impl.validator.ValidationError;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 
 /**

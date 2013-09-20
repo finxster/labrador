@@ -1,4 +1,4 @@
-package br.com.maps.labrador.domain.emprestavel.enumx;
+package br.com.maps.labrador.domain.emprestavel;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -26,8 +26,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
-import br.com.maps.labrador.domain.emprestavel.Emprestavel;
-import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 @Entity

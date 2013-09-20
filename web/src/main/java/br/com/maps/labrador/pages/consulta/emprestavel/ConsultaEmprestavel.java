@@ -24,7 +24,7 @@ import br.com.maps.labrador.dao.LivroDAO;
 import br.com.maps.labrador.dao.MochilaDAO;
 import br.com.maps.labrador.dao.ModemDAO;
 import br.com.maps.labrador.dao.ProjetorDAO;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
 /**
  * Tela que consulta os objetos emprestáveis do sistema.
