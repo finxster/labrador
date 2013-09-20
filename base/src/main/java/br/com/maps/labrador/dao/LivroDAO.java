@@ -35,7 +35,7 @@ public class LivroDAO extends BaseDAO<Livro> {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionEq(c, "isbn10", isbn10);
         RestrictionsUtils.addRestrictionILike(c, "isbn13", isbn13);
-        RestrictionsUtils.addRestrictionILike(c, "titulo", titulo);
+        RestrictionsUtils.addRestrictionILike(c, "nome", titulo);
         RestrictionsUtils.addRestrictionILike(c, "autor", autor);
         RestrictionsUtils.addRestrictionILike(c, "editora", editora);
 
@@ -53,21 +53,21 @@ public class LivroDAO extends BaseDAO<Livro> {
     public Livro findByLivroUsuario(Livro livro, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", livro);
-        Criteria criteriaUsuario = criteria.createCriteria("usuario");
+        Criteria criteriaUsuario = criteria.createCriteria("proprietario");
         RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
         return this.executeSingleQuery(criteria);
     }
 
     public List<Livro> findByTitulo(String titulo) {
         Criteria c = this.createCriteria();
-        RestrictionsUtils.addRestrictionILike(c, "titulo", titulo, MatchMode.ANYWHERE);
+        RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
 
     public List<Livro> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
-            Criteria critUsuario = c.createCriteria("usuario");
+            Criteria critUsuario = c.createCriteria("proprietario");
             critUsuario.add(Restrictions.ilike("nome", proprietario, MatchMode.ANYWHERE));
         }
         return this.executeQuery(c);

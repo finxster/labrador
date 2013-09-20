@@ -31,7 +31,7 @@ import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import br.com.maps.labrador.pages.consulta.coisas.ConsultaCoisas;
+import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
 
 public class LabradorLoginPanel extends Panel {
 
@@ -203,7 +203,7 @@ public class LabradorLoginPanel extends Panel {
      * @return Class
      */
     protected Class<? extends Page> getResponsePage() {
-        return ConsultaCoisas.class;
+        return ConsultaEmprestavel.class;
     }
 
 }

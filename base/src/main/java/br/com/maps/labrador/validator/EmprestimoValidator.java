@@ -9,7 +9,7 @@ import java.util.List;
 import jmine.tec.component.annotations.Unmodifiable;
 import jmine.tec.persist.impl.validator.AbstractValidator;
 import jmine.tec.persist.impl.validator.ValidationError;
-import br.com.maps.labrador.domain.emprestavel.Emprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 
 /**
@@ -28,7 +28,7 @@ public class EmprestimoValidator extends AbstractValidator<Emprestimo> {
     public List<ValidationError> validateInsert(Emprestimo bean) {
         List<ValidationError> errors = new ArrayList<ValidationError>();
 
-        Emprestavel emprestavel = bean.getEmprestavel();
+        AbstractEmprestavel emprestavel = bean.getEmprestavel();
         if (!emprestavel.getStatus().isDisponivel()) {
             this.addError(errors, new ValidationError(LIVRO_NAO_DISPONIVEL_PARA_EMPRESTIMO.create(emprestavel.getNome())));
         }

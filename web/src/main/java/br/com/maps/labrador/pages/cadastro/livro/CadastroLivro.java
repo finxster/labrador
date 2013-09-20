@@ -83,7 +83,7 @@ public class CadastroLivro extends FormPage<Livro> {
         List<Component> components = new ArrayList<Component>();
         final LabeledFormInputPanel isbnTextField = ComponentHelper.createLabeledTextField("isbn10", "ISBN 10", getEntity());
         final LabeledFormInputPanel isbn13 = ComponentHelper.createLabeledTextField("isbn13", "ISBN 13", getEntity());
-        final LabeledFormInputPanel titulo = ComponentHelper.createLabeledTextField("titulo", "Título", getEntity(), true);
+        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", getEntity(), true);
         final LabeledFormInputPanel autor = ComponentHelper.createLabeledTextField("autor", "Autor", getEntity());
         final LabeledFormInputPanel editora = ComponentHelper.createLabeledTextField("editora", "Editora", getEntity());
         final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
@@ -96,7 +96,7 @@ public class CadastroLivro extends FormPage<Livro> {
                 try {
                     CadastroLivro.this.parseJsonObject(isbnTextField);
                     target.add(isbn13);
-                    target.add(titulo);
+                    target.add(nome);
                     target.add(autor);
                     target.add(editora);
                 } catch (LabradorWebException e) {
@@ -109,7 +109,7 @@ public class CadastroLivro extends FormPage<Livro> {
 
         components.add(isbnTextField.setOutputMarkupId(true));
         components.add(isbn13.setOutputMarkupId(true));
-        components.add(titulo.setOutputMarkupId(true));
+        components.add(nome.setOutputMarkupId(true));
         components.add(autor.setOutputMarkupId(true));
         components.add(editora.setOutputMarkupId(true));
         components.add(localizacaoTextField);
@@ -148,7 +148,7 @@ public class CadastroLivro extends FormPage<Livro> {
         livro.setIsbn10(this.safeCheck(map.get("isbn10")));
         livro.setIsbn13(this.safeCheck(map.get("isbn13")));
         livro.setEditora(this.safeCheck(map.get("publisher_text")));
-        livro.setTitulo(this.safeCheck(map.get("title")));
+        livro.setNome(this.safeCheck(map.get("title")));
 
         List autores = (List) map.get("author_data");
         if (autores != null && !autores.isEmpty()) {
