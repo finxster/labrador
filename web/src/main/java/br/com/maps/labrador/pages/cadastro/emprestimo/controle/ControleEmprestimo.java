@@ -1,11 +1,10 @@
-package br.com.maps.labrador.pages.cadastro.emprestimo;
+package br.com.maps.labrador.pages.cadastro.emprestimo.controle;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
 import jmine.tec.component.exception.MessageCreator;
-import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.report.impl.table.ReportTableBuilder;
@@ -17,9 +16,13 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorBaseController;
-import br.com.maps.labrador.domain.emprestimo.Emprestimo;
+import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
+import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
 
-public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Emprestimo> {
+public class ControleEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmprestavel> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
@@ -30,7 +33,7 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
     /**
      * Construtor
      */
-    public CadastroDevolucaoEmprestimo() {
+    public ControleEmprestimo() {
         super();
     }
 
@@ -39,13 +42,13 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
      * 
      * @param pageParameters {@link PageParameters}
      */
-    public CadastroDevolucaoEmprestimo(PageParameters pageParameters) {
+    public ControleEmprestimo(PageParameters pageParameters) {
         super(pageParameters);
     }
 
-    public List<Emprestimo> search(DAOFactory daoFactory) {
-        DAO<Emprestimo> dao = daoFactory.getDAOByEntityType(Emprestimo.class);
-        return dao.findAll();
+    public List<AbstractEmprestavel> search(DAOFactory daoFactory) {
+        AbstractEmprestavelDAO dao = daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
+        return dao.findAllByMyUser(UserHelper.getUser(daoFactory));
     }
 
     /**
@@ -60,11 +63,8 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
      * {@inheritDoc}
      */
     @Override
-    protected void addResultTableColumns(ReportTableBuilder<Emprestimo> table) {
-        table.addStringColumn("livro", "Livro", "livro.titulo");
-        table.addStringColumn("donoLivro", "Dono do livro", "livro.usuario.nome");
-        table.addTimestampColumn("dataEmprestimo", "Data do empréstimo", "data");
-        table.addDateColumn("dataDevolucao", "Data da devolução", "dataDevolucao");
+    protected void addResultTableColumns(ReportTableBuilder<AbstractEmprestavel> table) {
+        table.addStringColumn("nome", "Nome", "nome");
         table.addStringColumn("status", "Status", "status");
     }
 
@@ -83,22 +83,24 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
     protected List<ButtonCommand> getPageCommands() {
         List<ButtonCommand> pageCommands = super.getPageCommands();
 
-        pageCommands.add(new SingleEntityExecutionButton<Emprestimo>() {
+        final LabradorUsuario user = UserHelper.getUser(daoFactory);
+
+        pageCommands.add(new SingleEntityExecutionButton<AbstractEmprestavel>() {
 
             /**
              * {@inheritDoc}
              */
             @Override
             public String getLabel() {
-                return "Devolver empréstimo";
+                return "Emprestar";
             }
 
             /**
              * {@inheritDoc}
              */
             @Override
-            protected void doExecute(Emprestimo entity) {
-                controller.devolverEmprestimo(entity);
+            protected void doExecute(AbstractEmprestavel entity) {
+                controller.executarEmprestimo(user, entity);
             }
 
             /**
@@ -106,15 +108,15 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
              */
             @Override
             protected Set<Serializable> getSelected() {
-                return CadastroDevolucaoEmprestimo.this.getSelectedItens();
+                return ControleEmprestimo.this.getSelectedItens();
             }
 
             /**
              * {@inheritDoc}
              */
             @Override
-            protected Emprestimo loadEntity(Serializable entityId) throws BeanNotFoundException {
-                return CadastroDevolucaoEmprestimo.this.loadEntity(entityId);
+            protected AbstractEmprestavel loadEntity(Serializable entityId) throws BeanNotFoundException {
+                return ControleEmprestimo.this.loadEntity(entityId);
             }
 
         });

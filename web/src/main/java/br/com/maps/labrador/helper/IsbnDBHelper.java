@@ -84,15 +84,15 @@ public class IsbnDBHelper {
             throw new LabradorWebException(LabradorWebMessages.FALHA_OBTER_DADOS_ISBN.create(autor));
         }
     }
-    
+
     private static void hidrateEntityByAuthor(Map<String, Object> mp, Livro livro) {
         Map<String, Object> map = (Map<String, Object>) ((List) mp.get("data")).get(0);
         livro.setAutor(safeCheck(map.get("name")));
         livro.setIsbn13(safeCheck(map.get("isbn13")));
         livro.setEditora(safeCheck(map.get("publisher_name")));
-        livro.setTitulo(safeCheck(map.get("title")));
+        livro.setNome(safeCheck(map.get("title")));
     }
-    
+
     /**
      * Efetua o parte do {@link Map} com as informações obtidas no isbndb e hidrata a instância de livro informada.
      * 
@@ -104,7 +104,7 @@ public class IsbnDBHelper {
         livro.setIsbn10(safeCheck(map.get("isbn10")));
         livro.setIsbn13(safeCheck(map.get("isbn13")));
         livro.setEditora(safeCheck(map.get("publisher_text")));
-        livro.setTitulo(safeCheck(map.get("title")));
+        livro.setNome(safeCheck(map.get("title")));
 
         List autores = (List) map.get("author_data");
         if (autores != null && !autores.isEmpty()) {

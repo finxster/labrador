@@ -123,7 +123,7 @@
 				<driverClassName>org.postgresql.Driver</driverClassName>
 				<hibernateDialect>org.hibernate.dialect.PostgreSQLDialect</hibernateDialect>
 				<schemaDialect>jmine.tec.persist.impl.schema.impl.dialects.PostgreSQLDialect</schemaDialect>
-				<databaseUrl>jdbc:postgresql://auau:5432/labrador</databaseUrl>
+				<databaseUrl>jdbc:postgresql://localhost:5432/labrador</databaseUrl>
 				<username>labrador</username>
 				<password>labrador</password>
 			</properties>

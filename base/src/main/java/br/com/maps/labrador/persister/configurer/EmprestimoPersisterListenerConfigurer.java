@@ -4,7 +4,6 @@ import jmine.tec.persist.impl.di.PersisterListenerConfigurer;
 import jmine.tec.persist.impl.di.PersisterListeners;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.persister.action.AtualizaDataEmprestimo;
-import br.com.maps.labrador.persister.action.AtualizaStatusLivro;
 
 /**
  * {@link PersisterListenerConfigurer} para {@link Emprestimo}.
@@ -19,7 +18,6 @@ public class EmprestimoPersisterListenerConfigurer implements PersisterListenerC
      */
     public void configure(PersisterListeners listeners) {
         listeners.beforeInsert(Emprestimo.class, AtualizaDataEmprestimo.class);
-        listeners.beforeInsert(Emprestimo.class, AtualizaStatusLivro.class);
     }
 
 }

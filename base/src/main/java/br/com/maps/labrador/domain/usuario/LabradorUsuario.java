@@ -23,6 +23,7 @@ import jmine.tec.security.impl.domain.User;
 
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 
 /**
@@ -46,7 +47,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
 
     private String email;
 
-    private List<Livro> livros;
+    private List<AbstractEmprestavel> emprestaveis;
 
     /**
      * Construtor.
@@ -61,7 +62,7 @@ public class LabradorUsuario extends PersistableBusinessObject {
     @Id
     @Documentation("CODIGO DO USUARIO")
     @GeneratedValue(generator = "SEQ_LAUSR", strategy = GenerationType.AUTO)
-    @Column(name = "ID", updatable = false, nullable = false)
+    @Column(name = "COD_USUARIO", updatable = false, nullable = false)
     public Long getId() {
         return id;
     }
@@ -126,18 +127,18 @@ public class LabradorUsuario extends PersistableBusinessObject {
     }
 
     /**
-     * @return the livros
+     * @return the emprestaveis
      */
-    @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
-    public List<Livro> getLivros() {
-        return livros;
+    @OneToMany(mappedBy = "proprietario", fetch = FetchType.LAZY)
+    public List<AbstractEmprestavel> getEmprestaveis() {
+        return this.emprestaveis;
     }
 
     /**
-     * @param livros the livros to set
+     * @param emprestaveis the emprestaveis to set
      */
-    public void setLivros(List<Livro> livros) {
-        this.livros = livros;
+    public void setEmprestaveis(List<AbstractEmprestavel> emprestaveis) {
+        this.emprestaveis = emprestaveis;
     }
 
     /**

@@ -60,10 +60,10 @@ public class PesquisaLivro extends CrudModelPage<PesquisaLivroFilter, Livro> {
      */
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Livro> table) {
-        table.addStringColumn("user", "Usuário", "usuario.nome");
+        table.addStringColumn("proprietario", "Proprietário", "proprietario.nome");
         table.addStringColumn("isbn13", "ISBN 13", "isbn13");
         table.addStringColumn("isbn10", "ISBN 10", "isbn10");
-        table.addStringColumn("titulo", "Título", "titulo");
+        table.addStringColumn("titulo", "Título", "nome");
         table.addStringColumn("autor", "Autor", "autor");
         table.addStringColumn("editora", "Editora", "editora");
         table.addStringColumn("localizacao", "Localização", "localizacao.nome");
