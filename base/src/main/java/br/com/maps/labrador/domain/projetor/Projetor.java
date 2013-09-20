@@ -4,7 +4,7 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import jmine.tec.persist.impl.annotation.DiscriminatorComment;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
 /**
  * Uma entidade que irá representar um Projetor em nosso sistema.

@@ -3,7 +3,7 @@ package br.com.maps.labrador;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.persist.impl.controller.AbstractPersistenceEnabledController;
 import br.com.maps.labrador.actor.EmprestimoActor;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 

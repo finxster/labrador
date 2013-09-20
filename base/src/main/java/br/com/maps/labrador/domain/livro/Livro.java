@@ -9,7 +9,7 @@ import jmine.tec.persist.impl.annotation.DiscriminatorComment;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.

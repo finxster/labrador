@@ -17,7 +17,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.helper.UserHelper;
 import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;

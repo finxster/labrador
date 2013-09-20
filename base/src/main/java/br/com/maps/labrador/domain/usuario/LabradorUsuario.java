@@ -23,7 +23,7 @@ import jmine.tec.security.impl.domain.User;
 
 import org.hibernate.validator.NotNull;
 
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 
 /**

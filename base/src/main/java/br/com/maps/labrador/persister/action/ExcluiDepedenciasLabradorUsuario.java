@@ -5,7 +5,7 @@ import java.util.List;
 import jmine.tec.component.Action;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.persister.StatelessPersister;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 

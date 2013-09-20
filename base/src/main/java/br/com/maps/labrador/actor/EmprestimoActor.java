@@ -4,7 +4,7 @@ import jmine.tec.component.actor.AbstractActor;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import br.com.maps.labrador.LabradorBaseController;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;

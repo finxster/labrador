@@ -21,8 +21,8 @@ import jmine.tec.utils.date.Timestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.Emprestavel;
-import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
