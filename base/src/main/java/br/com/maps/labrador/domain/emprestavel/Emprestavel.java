@@ -12,8 +12,14 @@ import jmine.tec.persist.api.Persistable;
  */
 public interface Emprestavel extends Persistable, Serializable {
 
+    /**
+     * Realiza o empréstimo desse objeto.
+     */
     void emprestar();
 
+    /**
+     * Devolve o objeto ao seu proprietário.
+     */
     void devolver();
 
 }
