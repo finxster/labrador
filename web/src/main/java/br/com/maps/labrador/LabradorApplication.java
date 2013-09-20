@@ -44,6 +44,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
     @Override
     protected void init() {
         super.init();
+        this.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
         this.getDebugSettings().setAjaxDebugModeEnabled(false);
         this.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         this.getSecuritySettings().setAuthorizationStrategy(this.authorizationStrategy);

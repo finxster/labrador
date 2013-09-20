@@ -47,7 +47,7 @@ public class ModemService {
     public Modem execute() {
         Modem modem = this.dao.createBean();
         modem.setNome(this.nome);
-        modem.setUsuario(this.usuario);
+        modem.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);

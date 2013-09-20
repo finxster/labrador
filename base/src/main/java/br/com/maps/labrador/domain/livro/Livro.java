@@ -4,17 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.api.persister.annotation.NaturalKey;
-import jmine.tec.persist.impl.annotation.Alias;
+import jmine.tec.persist.impl.annotation.DiscriminatorComment;
 import jmine.tec.persist.impl.annotation.Index;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -38,13 +34,10 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @created Sep 6, 2013
  */
 @Entity
-@Alias("LIVRO")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@SequenceGenerator(name = "SEQ_LIVRO", sequenceName = "SEQ_LIVRO")
 @DiscriminatorValue("1")
+@DiscriminatorComment("LIVRO")
 public class Livro extends AbstractEmprestavel {
-
-    private Long id;
 
     private String isbn10;
 
@@ -56,10 +49,6 @@ public class Livro extends AbstractEmprestavel {
 
     private String editora;
 
-    private LabradorUsuario usuario;
-
-    private StatusEmprestavel status = StatusEmprestavel.DISPONIVEL;
-
     private LocalizacaoEmprestavel localizacao;
 
     /**
@@ -70,30 +59,12 @@ public class Livro extends AbstractEmprestavel {
     }
 
     /**
-     * @return the id
-     */
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_LIVRO")
-    @Documentation("ESSA E NOSSA CHAVE PRIMARIA")
-    @Column(name = "COD_LIVRO")
-    public Long getId() {
-        return this.id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
      * @return the titulo
      */
     @NotNull
     @NaturalKey
     @Documentation("TITULO DO LIVRO")
-    @Column(name = "TITULO", nullable = false)
+    @Column(name = "TITULO")
     public String getTitulo() {
         return this.titulo;
     }
@@ -170,40 +141,6 @@ public class Livro extends AbstractEmprestavel {
     }
 
     /**
-     * @return the usuario
-     */
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_USUARIO")
-    @Documentation("CODIGO DO USUARIO QUE E O PROPRIETARIO DO LIVRO")
-    public LabradorUsuario getUsuario() {
-        return this.usuario;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
-    }
-
-    /**
-     * @return the status
-     */
-    @NotNull
-    @Column(name = "STATUS", nullable = false)
-    @Documentation("STATUS DO EMPRESTIMO DO LIVRO.")
-    public StatusEmprestavel getStatus() {
-        return this.status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(StatusEmprestavel status) {
-        this.status = status;
-    }
-
-    /**
      * @return the localizacao
      */
     @NotNull
@@ -229,14 +166,6 @@ public class Livro extends AbstractEmprestavel {
     @Transient
     public String getNome() {
         return this.titulo;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Transient
-    public LabradorUsuario getProprietario() {
-        return getUsuario();
     }
 
 }

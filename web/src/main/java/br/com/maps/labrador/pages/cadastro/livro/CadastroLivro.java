@@ -132,7 +132,7 @@ public class CadastroLivro extends FormPage<Livro> {
         localizacaoLivro.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoLivro);
-        target.setUsuario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(UserHelper.getUser(this.daoFactory));
 
         return super.beforeSave(target);
     }

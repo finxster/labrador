@@ -61,8 +61,8 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Emprestimo> table) {
         table.addStringColumn("tomador", "Tomador", "tomador.nome");
-        table.addStringColumn("livro", "Livro", "livro.titulo");
-        table.addStringColumn("donoLivro", "Dono do livro", "livro.usuario.nome");
+        table.addStringColumn("livro", "Livro", "emprestavel.nome");
+        table.addStringColumn("donoLivro", "Dono do livro", "emprestavel.proprietario.nome");
         table.addStringColumn("data", "Data", "data");
         table.addStringColumn("dataDevolucao", "Data da devolução", "dataDevolucao");
     }

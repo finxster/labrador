@@ -57,7 +57,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         bo.setTitulo(TITULO[idx]);
         bo.setAutor(AUTOR[idx]);
         bo.setEditora(EDITORA[idx]);
-        bo.setUsuario(LABRADOR_USUARIO[idx]);
+        bo.setProprietario(LABRADOR_USUARIO[idx]);
         bo.setStatus(STATUS[idx]);
         bo.setLocalizacao(LOCALIZACAO[idx]);
     }
@@ -72,7 +72,7 @@ public class LivroTest extends BOBaseTestCase<Livro> {
         assertEquals(TITULO[idx], bo.getTitulo());
         assertEquals(AUTOR[idx], bo.getAutor());
         assertEquals(EDITORA[idx], bo.getEditora());
-        assertEquals(LABRADOR_USUARIO[idx], bo.getUsuario());
+        assertEquals(LABRADOR_USUARIO[idx], bo.getProprietario());
         assertEquals(STATUS[idx], bo.getStatus());
         assertEquals(LOCALIZACAO[idx], bo.getLocalizacao());
     }

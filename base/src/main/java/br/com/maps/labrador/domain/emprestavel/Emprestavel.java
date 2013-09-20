@@ -3,6 +3,7 @@ package br.com.maps.labrador.domain.emprestavel;
 import java.io.Serializable;
 
 import jmine.tec.persist.api.Persistable;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -18,4 +19,11 @@ public interface Emprestavel extends Persistable, Serializable {
     LabradorUsuario getProprietario();
 
     LocalizacaoEmprestavel getLocalizacao();
+
+    StatusEmprestavel getStatus();
+
+    void emprestar();
+
+    void devolver();
+
 }

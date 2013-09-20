@@ -97,7 +97,7 @@ public class CadastroModem extends FormPage<Modem> {
         localizacaoModem.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoModem);
-        target.setUsuario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(UserHelper.getUser(this.daoFactory));
 
         return super.beforeSave(target);
     }

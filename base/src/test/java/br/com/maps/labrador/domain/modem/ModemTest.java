@@ -43,7 +43,7 @@ public class ModemTest extends BOBaseTestCase<Modem> {
     protected void fillData(int idx, Modem bo) {
         bo.setNome(NOME[idx]);
         bo.setStatus(STATUS[idx]);
-        bo.setUsuario(LABRADOR_USUARIO[idx]);
+        bo.setProprietario(LABRADOR_USUARIO[idx]);
         bo.setLocalizacao(LOCALIZACAO[idx]);
     }
 
@@ -54,7 +54,7 @@ public class ModemTest extends BOBaseTestCase<Modem> {
     protected void compareData(int idx, Modem bo) throws BeanNotFoundException {
         assertEquals(NOME[idx], bo.getNome());
         assertEquals(STATUS[idx], bo.getStatus());
-        assertEquals(LABRADOR_USUARIO[idx], bo.getUsuario());
+        assertEquals(LABRADOR_USUARIO[idx], bo.getProprietario());
         assertEquals(LOCALIZACAO[idx], bo.getLocalizacao());
     }
 }

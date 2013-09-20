@@ -5,6 +5,7 @@ import java.util.List;
 import jmine.tec.component.Action;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.persister.StatelessPersister;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -31,8 +32,8 @@ public class ExcluiDepedenciasLabradorUsuario implements Action<LabradorUsuario>
      * @param labradorUsuario {@link LabradorUsuario}
      */
     private void excluiLivrosUsuario(LabradorUsuario labradorUsuario) {
-        List<Livro> livros = labradorUsuario.getLivros();
-        for (Livro livro : livros) {
+        List<AbstractEmprestavel> livros = labradorUsuario.getEmprestaveis();
+        for (AbstractEmprestavel livro : livros) {
             this.persister.remove(livro);
         }
     }

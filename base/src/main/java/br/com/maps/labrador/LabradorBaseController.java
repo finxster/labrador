@@ -3,8 +3,8 @@ package br.com.maps.labrador;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.persist.impl.controller.AbstractPersistenceEnabledController;
 import br.com.maps.labrador.actor.EmprestimoActor;
+import br.com.maps.labrador.domain.emprestavel.enumx.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
-import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -17,7 +17,7 @@ public class LabradorBaseController extends AbstractPersistenceEnabledController
 
     private StatelessPersister persister;
 
-    public void executarEmprestimo(LabradorUsuario user, Livro livro) {
+    public void executarEmprestimo(LabradorUsuario user, AbstractEmprestavel livro) {
         EmprestimoActor actor = new EmprestimoActor(this);
         actor.executarEmprestimo(user, livro);
     }

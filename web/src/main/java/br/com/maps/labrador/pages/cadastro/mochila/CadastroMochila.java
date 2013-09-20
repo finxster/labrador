@@ -106,7 +106,7 @@ public class CadastroMochila extends FormPage<Mochila> {
     @Override
     protected boolean beforeSave(Mochila target) {
         // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        target.setUsuario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(UserHelper.getUser(this.daoFactory));
 
         return super.beforeSave(target);
     }
