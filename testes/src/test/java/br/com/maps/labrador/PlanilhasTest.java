@@ -88,7 +88,7 @@ public class PlanilhasTest extends ServicesIntegrationTestCase {
      */
     @Override
     protected String[] getResourcesBaseReferencia() {
-        String[] out = { "base-db.xml" };
+        String[] out = { "teste-db.xml" };
         return out;
     }
 
@@ -97,7 +97,7 @@ public class PlanilhasTest extends ServicesIntegrationTestCase {
      */
     @Override
     protected final String getSpringMainXMLFilename() {
-        return "teste-test-beans.xml";
+        return "teste-beans.xml";
     }
 
     @Override
