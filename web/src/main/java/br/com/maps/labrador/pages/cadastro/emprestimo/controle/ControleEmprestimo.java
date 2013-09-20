@@ -22,6 +22,12 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.helper.UserHelper;
 import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
 
+/**
+ * Tela para controle de empréstimos.
+ * 
+ * @author finx
+ * @created Sep 20, 2013
+ */
 public class ControleEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmprestavel> {
 
     @SpringBean(name = "daoFactory")

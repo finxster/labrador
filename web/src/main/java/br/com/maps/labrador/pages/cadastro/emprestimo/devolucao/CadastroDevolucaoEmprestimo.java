@@ -20,6 +20,12 @@ import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
 
+/**
+ * Tela para devolução de empréstimos.
+ * 
+ * @author finx
+ * @created Sep 20, 2013
+ */
 public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Emprestimo> {
 
     @SpringBean(name = "daoFactory")
