@@ -30,7 +30,7 @@ public class EmprestimoActorTest {
         Livro livro = mock(Livro.class);
 
         Emprestimo emprestimo = mock(Emprestimo.class);
-        when(emprestimo.getLivro()).thenReturn(livro);
+        when(emprestimo.getEmprestavel()).thenReturn(livro);
 
         StatelessPersister persister = mock(StatelessPersister.class);
 

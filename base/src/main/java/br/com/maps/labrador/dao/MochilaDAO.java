@@ -10,6 +10,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
+import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -49,8 +50,33 @@ public class MochilaDAO extends BaseDAO<Mochila> {
     public Mochila findByMochilaUsuario(Mochila mochila, LabradorUsuario labradorUsuario) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, "id", mochila);
-        Criteria criteriaUsuario = criteria.createCriteria("usuario");
+        Criteria criteriaUsuario = criteria.createCriteria("proprietario");
         RestrictionsUtils.addRestrictionEqId(criteriaUsuario, "id", labradorUsuario);
         return this.executeSingleQuery(criteria);
     }
+
+    public List<Mochila> findByNome(String titulo) {
+        Criteria c = this.createCriteria();
+        RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
+        return this.executeQuery(c);
+    }
+
+    public List<Mochila> findByProprietario(String proprietario) {
+        Criteria c = this.createCriteria();
+        if (proprietario != null) {
+            Criteria critUsuario = c.createCriteria("proprietario");
+            critUsuario.add(Restrictions.ilike("nome", proprietario, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
+    }
+
+    public List<Mochila> findByLocalizacao(String localizacao) {
+        Criteria c = this.createCriteria();
+        if (localizacao != null) {
+            Criteria critUsuario = c.createCriteria("localizacao");
+            critUsuario.add(Restrictions.ilike("nome", localizacao, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
+    }
+
 }

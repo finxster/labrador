@@ -13,7 +13,6 @@ import jmine.tec.security.api.UserDataLogger;
 import jmine.tec.security.web.WebSecurityContext;
 import jmine.tec.security.web.WebSecurityManager;
 import jmine.tec.web.wicket.component.border.ControlGroup;
-import jmine.tec.web.wicket.pages.main.Home;
 import jmine.tec.web.wicket.security.SecureSession;
 import jmine.tec.web.wicket.security.UserDetails;
 import jmine.tec.web.wicket.upperCase.field.NoUpperCasePasswordTextField;
@@ -31,6 +30,8 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
 
 public class LabradorLoginPanel extends Panel {
 
@@ -202,7 +203,7 @@ public class LabradorLoginPanel extends Panel {
      * @return Class
      */
     protected Class<? extends Page> getResponsePage() {
-        return Home.class;
+        return ConsultaEmprestavel.class;
     }
 
 }

@@ -21,8 +21,9 @@ import jmine.tec.utils.date.Timestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.Emprestavel;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
-import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -40,7 +41,7 @@ public class Emprestimo extends PersistableBusinessObject {
 
     private Long id;
 
-    private Livro livro;
+    private AbstractEmprestavel emprestavel;
 
     private Timestamp data;
 
@@ -76,22 +77,22 @@ public class Emprestimo extends PersistableBusinessObject {
     }
 
     /**
-     * @return the livro
+     * @return the emprestavel
      */
     @NotNull
     @Index(suffix = "0")
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_LIVRO")
-    @Documentation("CODIGO DO LIVRO.")
-    public Livro getLivro() {
-        return livro;
+    @JoinColumn(name = "COD_EMPRESTAVEL")
+    @Documentation("CODIGO DO OBJETO EMPRESTAVEL.")
+    public AbstractEmprestavel getEmprestavel() {
+        return this.emprestavel;
     }
 
     /**
-     * @param livro the livro to set
+     * @param emprestavel the emprestavel to set
      */
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    public void setEmprestavel(AbstractEmprestavel emprestavel) {
+        this.emprestavel = emprestavel;
     }
 
     /**

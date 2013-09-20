@@ -47,7 +47,7 @@ public class ProjetorService {
     public Projetor execute() {
         Projetor projetor = this.dao.createBean();
         projetor.setNome(this.nome);
-        projetor.setUsuario(this.usuario);
+        projetor.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);
