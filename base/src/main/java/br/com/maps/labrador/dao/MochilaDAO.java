@@ -10,7 +10,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -55,10 +54,10 @@ public class MochilaDAO extends BaseDAO<Mochila> {
         return this.executeSingleQuery(criteria);
     }
 
-    public List<Mochila> findByNome(String titulo) {
+    public Mochila findByNome(String titulo) throws BeanNotFoundException {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
-        return this.executeQuery(c);
+        return this.executeSingleQuery(c);
     }
 
     public List<Mochila> findByProprietario(String proprietario) {

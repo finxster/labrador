@@ -52,7 +52,7 @@ public class ConsultaEmprestavel extends BaseListPage<ConsultaEmprestavelFilter,
         emprestaveis.addAll(livroDAO.findByProprietario(m.getEmprestavel()));
         emprestaveis.addAll(livroDAO.findByLocalizacao(m.getEmprestavel()));
 
-        emprestaveis.addAll(mochilaDAO.findByNome(m.getEmprestavel()));
+        emprestaveis.addAll(mochilaDAO.findByLikeNaturalKey(m.getEmprestavel()));
         emprestaveis.addAll(mochilaDAO.findByProprietario(m.getEmprestavel()));
         emprestaveis.addAll(mochilaDAO.findByLocalizacao(m.getEmprestavel()));
 
@@ -125,7 +125,8 @@ public class ConsultaEmprestavel extends BaseListPage<ConsultaEmprestavelFilter,
 
             @Override
             protected Component createReportTitle(String id) {
-                return new Label(id, getSearchHandler().search(daoFactory).size() + " resultado(s) encontrado(s) na pesquisa.");
+                return new Label(id, this.getSearchHandler().search(ConsultaEmprestavel.this.daoFactory).size()
+                        + " resultado(s) encontrado(s) na pesquisa.");
             }
 
         };

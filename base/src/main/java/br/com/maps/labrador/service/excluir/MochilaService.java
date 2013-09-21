@@ -19,7 +19,6 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @author laercio.duarte
  * @created Sep 14, 2013
  */
-
 @ServiceImplementor(action = ActionsEnum.EXCLUIR)
 public class MochilaService {
 

@@ -10,8 +10,8 @@ import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
 import jmine.tec.utils.date.Clock;
 import jmine.tec.utils.date.Date;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
-import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -25,21 +25,21 @@ public class EmprestimoService {
 
     private static final String IDENTIFICADOR = "Identificador";
 
-    private static final String LIVRO = "Livro";
+    private static final String COISA = "Coisa";
 
     private static final String DATA_DEVOLUCAO = "Data Devolução";
 
     private static final String LABRADOR_USUARIO = "Tomador";
 
-    private Clock clock;
-
-    private Livro livro;
+    private AbstractEmprestavel coisa;
 
     private Date dataDevolucao;
 
     private DAO<Emprestimo> dao;
 
-    private LabradorUsuario labradorUsuario;
+    private LabradorUsuario tomador;
+
+    private Clock clock;
 
     private StatelessPersister<Emprestimo> persister;
 
@@ -52,20 +52,20 @@ public class EmprestimoService {
     @Output(propertyName = IDENTIFICADOR)
     public Emprestimo execute() {
         Emprestimo emprestimo = this.dao.createBean();
-        emprestimo.setEmprestavel(this.livro);
+        emprestimo.setEmprestavel(this.coisa);
         emprestimo.setData(this.clock.currentTimestamp());
         emprestimo.setDataDevolucao(this.dataDevolucao);
-        emprestimo.setTomador(this.labradorUsuario);
+        emprestimo.setTomador(this.tomador);
         this.persister.save(emprestimo);
         return emprestimo;
     }
 
     /**
-     * @param livro the livro to set
+     * @param coisa the coisa to set
      */
-    @Input(fieldName = LIVRO)
-    public void setLivro(Livro livro) {
-        this.livro = livro;
+    @Input(fieldName = COISA)
+    public void setCoisa(AbstractEmprestavel coisa) {
+        this.coisa = coisa;
     }
 
     /**
@@ -81,7 +81,7 @@ public class EmprestimoService {
      */
     @Input(fieldName = LABRADOR_USUARIO)
     public void setLabradorUsuario(LabradorUsuario labradorUsuario) {
-        this.labradorUsuario = labradorUsuario;
+        this.tomador = labradorUsuario;
     }
 
     /**

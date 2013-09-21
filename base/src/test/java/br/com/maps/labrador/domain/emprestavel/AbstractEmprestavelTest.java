@@ -27,7 +27,7 @@ public abstract class AbstractEmprestavelTest<T extends AbstractEmprestavel> ext
      */
     @Override
     protected void initializeTestData() throws BeanNotFoundException {
-        NOME = new String[]{ "MODEM1", "MODEM2" };
+        NOME = new String[]{ "nome1", "nome2" };
         PROPRIETARIO = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
         STATUS = new StatusEmprestavel[]{ StatusEmprestavel.DISPONIVEL, StatusEmprestavel.EMPRESTADO };
         LOCALIZACAO = new LocalizacaoEmprestavelTest().getSavedTestData().toArray(new LocalizacaoEmprestavel[2]);
@@ -37,7 +37,7 @@ public abstract class AbstractEmprestavelTest<T extends AbstractEmprestavel> ext
      * {@inheritDoc}
      */
     @Override
-    protected void fillData(int idx, AbstractEmprestavel bo) {
+    protected void fillData(int idx, T bo) {
         bo.setNome(NOME[idx]);
         bo.setStatus(STATUS[idx]);
         bo.setProprietario(PROPRIETARIO[idx]);
@@ -48,7 +48,7 @@ public abstract class AbstractEmprestavelTest<T extends AbstractEmprestavel> ext
      * {@inheritDoc}
      */
     @Override
-    protected void compareData(int idx, AbstractEmprestavel bo) throws BeanNotFoundException {
+    protected void compareData(int idx, T bo) throws BeanNotFoundException {
         assertEquals(NOME[idx], bo.getNome());
         assertEquals(PROPRIETARIO[idx], bo.getProprietario());
         assertEquals(STATUS[idx], bo.getStatus());

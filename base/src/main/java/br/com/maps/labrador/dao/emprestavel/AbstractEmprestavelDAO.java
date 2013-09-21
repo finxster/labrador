@@ -25,5 +25,4 @@ public class AbstractEmprestavelDAO extends BaseDAO<AbstractEmprestavel> {
         critUsuario.add(Restrictions.eq("id", user.getId()));
         return this.executeQuery(c);
     }
-
 }

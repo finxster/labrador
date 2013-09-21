@@ -44,7 +44,7 @@ public class PesquisaMochilaFilter implements Serializable {
     /**
      * @param localizacao the localizacao to set
      */
-    @LabeledFormInput(label = "Localização")
+    @LabeledFormInput(label = "Localizacao")
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
     }

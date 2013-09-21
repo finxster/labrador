@@ -2,13 +2,17 @@ package br.com.maps.labrador.dao;
 
 import java.util.List;
 
+import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.livro.Livro;
+import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * DAO para {@link Emprestimo}.
@@ -27,7 +31,14 @@ public class EmprestimoDAO extends BaseDAO<Emprestimo> {
     public List<Emprestimo> findByLivro(Livro livro) {
         Criteria criteria = this.createCriteria();
         RestrictionsUtils.addRestrictionEqId(criteria, livro);
-        return executeQuery(criteria);
+        return this.executeQuery(criteria);
+    }
+
+    public Emprestimo findByTomadorEmprestavel(LabradorUsuario tomador, AbstractEmprestavel emprestavel) throws BeanNotFoundException {
+        Criteria criteria = this.createCriteria();
+        criteria.createCriteria("tomador").add(Restrictions.eq("id", tomador.getId()));
+        criteria.createCriteria("emprestavel").add(Restrictions.eq("id", emprestavel.getId()));
+        return this.executeSingleQuery(criteria);
     }
 
 }
