@@ -52,6 +52,7 @@ public class MochilaService {
     public void validate() {
         try {
             this.mochilaDAO.findByMochilaUsuario(this.mochila, this.labradorUsuario);
+
         } catch (BeanNotFoundException e) {
             throw new ValidationException(e.getLocalizedMessageHolder());
         }

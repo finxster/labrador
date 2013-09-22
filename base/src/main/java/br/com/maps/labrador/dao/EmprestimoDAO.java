@@ -34,6 +34,14 @@ public class EmprestimoDAO extends BaseDAO<Emprestimo> {
         return this.executeQuery(criteria);
     }
 
+    /**
+     * Retorna um {@link Emprestimo} através de um tomador/{@link LabradorUsuario} e a coisa/objeto que foi tomado/emprestado
+     * 
+     * @param tomador
+     * @param emprestavel
+     * @return um {@link Emprestimo} através de um tomador/{@link LabradorUsuario} e a coisa/objeto que foi tomado/emprestado
+     * @throws BeanNotFoundException
+     */
     public Emprestimo findByTomadorEmprestavel(LabradorUsuario tomador, AbstractEmprestavel emprestavel) throws BeanNotFoundException {
         Criteria criteria = this.createCriteria();
         criteria.createCriteria("tomador").add(Restrictions.eq("id", tomador.getId()));
