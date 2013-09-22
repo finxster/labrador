@@ -4,149 +4,204 @@
     xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
 
 <head>
-
 </head>
 
 <body>
     <wicket:panel>
-        <div class="container-fluid container-fluid-labrador">
-            <div class="row-fluid row-fluid-labrador">
-                <div class="span6">
-                    <div class="row-fluid">
-                        <div class="login_logo"></div>
-                        <div class="span12 info_labrador">
-                            <p>
-                                Oi! Eu sou o <i>Labrador default</i>,
-                                meu dono é MAPS! <br />Adoro colecionar
-                                coisas e por isso apoio essa iniciativa
-                                <br />do InovaMAPS!
-                            </p>
-                            <p>
-                                Conhece outros labradores simpáticos,
-                                amantes de <br />livros, brinquedos,
-                                crianças? Mande sua foto para<br /> <a
-                                    href="mailto:labrador@maps.com.br">labrador@maps.com.br</a>
-                                e nos ajude a conquistar mais<br /> fãs
-                                com seu mascote querido!
-                            </p>
-                        </div>
-                    </div>
+
+   <style type="text/css">
+
+      /* Sticky footer styles
+      -------------------------------------------------- */
+
+      html,
+      body {
+        height: 100%;
+        /* The html and body elements cannot have any padding or margin. */
+      }
+
+      /* Wrapper for page content to push down footer */
+      #wrap {
+        min-height: 100%;
+        height: auto !important;
+        height: 100%;
+        /* Negative indent footer by it's height */
+        margin: 0 auto -60px;
+      }
+
+      /* Set the fixed height of the footer here */
+      #push,
+      #footer {
+        height: 60px;
+      }
+      #footer {
+        background-color: #f5f5f5;
+      }
+
+      /* Lastly, apply responsive CSS fixes as necessary */
+      @media (max-width: 767px) {
+        #footer {
+          margin-left: -20px;
+          margin-right: -20px;
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+      }
+
+
+
+      /* Custom page CSS
+      -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      #wrap > .container {
+      }
+      .container .credit {
+        margin: 20px 0;
+      }
+
+      code {
+        font-size: 80%;
+      }
+
+    </style>
+    <!-- Part 1: Wrap all page content here -->
+    <div id="wrap">
+    
+ <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+          <a class="logo_produto pull-left" href="#"></a>
+          <div class="nav-collapse collapse">
+                                        
+            <form class="navbar-form pull-right" wicket:id="securityForm" name="form_login">
+                            <input type="text" class="span2" wicket:id="username" maxlength="100" placeholder="E-mail ou Usuário" />
+                            <input type="password" class="span2" wicket:id="password" maxlength="128" placeholder="Senha" size="10" />
+                            <input id="botaoLogin" class="btn btn-primary login_button" type="submit" name="efetuarLogin"value="Entrar" />
+            </form>
+          </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit">
+        <h1>Cadê minhas coisas?</h1>
+        <p>Gostamos de colecionar coisas. Não nos importamos em emprestar nossas coisas. E agora vamos conseguir saber pra quem essas coisas foram emprestadas!</p>
+        <p><a href="#principal" class="btn btn-primary btn-large">Saiba mais &raquo;</a></p>
+      </div>
+
+      <!-- Example row of columns -->
+        <div class="row-fluid">
+			<div class="span12">
+				<ul class="thumbnails">
+					<li class="span4">
+						<div class="thumbnail">
+							<img alt="Livros" src="http://thumbs.dreamstime.com/x/filhote-de-cachorro-de-labrador-com-seus-matriz-e-livros-3714613.jpg" style="width:360px; height:120px" />
+							<div class="caption">
+								<h3>Livros</h3>
+								<p>O Labrador faz todo o controle dos seus livros, sabendo exatamente pra quem você emprestou.</p>
+								<p><a class="btn" href="#livros">Saiba mais &raquo;</a></p>
+							</div>
+						</div>
+					</li>
+					<li class="span4">
+						<div class="thumbnail">
+							<img alt="300x200" src="http://farm2.static.flickr.com/1140/1054061406_a06e947e32_z.jpg"  style="width:360px; height:120px"/>
+							<div class="caption">
+								<h3>Equipamentos</h3>
+								<p>Controle de projetores, modems e mochilas e outros equipamentos que possam ser emprestados.</p>
+                                <p><a class="btn" href="#equipamentos">Saiba mais &raquo;</a></p>
+							</div>
+						</div>
+					</li>
+					<li class="span4">
+						<div class="thumbnail">
+							<img alt="300x200" src="http://lorempixel.com/600/200/sports" style="width:360px; height:120px" />
+							<div class="caption">
+								<h3>Inova Maps</h3>
+								<p>Conheça o que é o Inova Maps, e como surgiu o Labrador.</p>
+                                <p><a class="btn" href="#inova">Saiba mais &raquo;</a></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+                <div id="principal">
+                <br /><br />
                 </div>
-                <div class="span6">
-                    <div class="row-fluid">
-                        <div class="span12 info_cadastro">
-                            <div class="login"></div>
-                            <p>
-                                O Labrador quer ser seu melhor amigo! <br />Cadastre
-                                e compartilhe suas coleções com ele!
-                            </p>
-                            <p>
-                                Além de guardar suas informações, ele
-                                também <br />fareja o que você quiser
-                                em outras coleções!
-                            </p>
-                            <div class="row-fluid login_cadastro">
-                                <div class="span12">
-                                    <ul class="nav nav-tabs nav_login">
-                                        <li class="active"><a
-                                            href="#">Login</a></li>
-                                        <li><a href="#">Cadastro</a></li>
-                                    </ul>
-                                    <form wicket:id="securityForm"
-                                        name="form_login">
-                                        <div class="app_name hidden">
-                                            <span wicket:id="systemName" />
-                                        </div>
-                                        <fieldset>
-                                            <div
-                                                wicket:id="user.control-group">
-                                                <div
-                                                    class="pagination-centered login-position">
-                                                    <div
-                                                        class="input-prepend login_user">
-                                                        <span
-                                                            class="add-on">
-                                                            <i
-                                                            class="icon-user"></i>
-                                                        </span> <input
-                                                            type="text"
-                                                            wicket:id="username"
-                                                            name="username"
-                                                            maxlength="100"
-                                                            placeholder="E-mail ou Usuário" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div
-                                                wicket:id="pass.control-group">
-                                                <div
-                                                    class="pagination-centered login-position">
-                                                    <div
-                                                        class="input-prepend password">
-                                                        <span
-                                                            class="add-on">
-                                                            <i
-                                                            class="icon-lock"></i>
-                                                        </span> <input
-                                                            type="password"
-                                                            wicket:id="password"
-                                                            name="password"
-                                                            class="passwd"
-                                                            maxlength="128"
-                                                            placeholder="Senha"
-                                                            size="10" />
-                                                        <input
-                                                            id="botaoLogin"
-                                                            class="btn btn-primary login_button"
-                                                            type="submit"
-                                                            name="efetuarLogin"
-                                                            value="Entrar" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <span class="help-block">Esqueceu
-                                                sua senha? <a href="#">Clique aqui!</a></span>
-                                            <a title="Facebook"
-                                                onclick="window.open('Endereço do seu facebook'); return false;"
-                                                rel="nofollow"
-                                                target="_blank"><img
-                                                style="border-width: 0px; display: inline;"
-                                                title="Facebook"
-                                                alt="Spain"
-                                                src="src/main/resources/images/facebook.png"
-                                                border="0" width="24"
-                                                height="24" /></a> <label>Entrar
-                                                com o Facebook</label> <a
-                                                title="Twitter"
-                                                onclick="window.open('Endereço do seu twitter'); return false;"
-                                                rel="nofollow"
-                                                target="_blank"><img
-                                                style="border-width: 0px; display: inline;"
-                                                title="Twitter"
-                                                alt="Spain"
-                                                src="src/main/resources/images/twitter.png"
-                                                border="0" width="24"
-                                                height="24" /></a> <label>Entrar
-                                                com o Twitter</label> <a
-                                                title="Google+"
-                                                onclick="window.open('Endereço do seu feed'); return false;"
-                                                rel="nofollow"
-                                                target="_blank"><img
-                                                style="border-width: 0px; display: inline;"
-                                                title="RSS" alt="Spain"
-                                                src="images/google_plus.png"
-                                                border="0" width="24"
-                                                height="24" /></a> <label>Entrar
-                                                com o Google+</label>
-                                        </fieldset>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+				<div class="page-header">
+					<h1>Controle de empréstimos <small>Como o Labrador pode te ajudar a gerenciar suas coisas.</small></h1>
+				</div>
+<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
+<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
+<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
+<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
+<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
+                <div id="livros">
+                <br /><br />
                 </div>
+                <div class="page-header">
+                    <h1>Livros <small>Gerenciamento de livros.</small></h1>
+                </div>
+<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
+<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
+<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
+<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
+<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
+                <div id="equipamentos">
+                <br /><br />
+                </div>
+                <div class="page-header">
+                    <h1>Equipamentos <small>Gerenciamento de equipamentos.</small></h1>
+                </div>
+<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
+<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
+<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
+<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
+<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
+                <div id="inova">
+                <br /><br />
+                </div>
+                <div class="page-header" id="inova">
+                    <h1>Inova Maps <small>O que é o Inova Maps?</small></h1>
+                </div>
+<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
+<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
+<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
+<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
+<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
             </div>
         </div>
+
+      <hr>
+</div> <!-- wrap -->
+
+      <div id="footer">
+          <div class="container">
+            <p class="muted credit">
+                O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="#">Inova Maps</a>. O Labrador foi desenvolvido com o <a href="http://www.jmine.com.br" target="_blank">Jmine</a>.
+            </p>
+          </div>
+      </div>
+
+    </div> <!-- /container -->
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-alert.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tooltip.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-popover.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-button.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
+
 
     </wicket:panel>
 </body>
