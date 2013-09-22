@@ -1,0 +1,34 @@
+<importacao>
+	<services name="Usuários">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">finx</param>
+			<param name="Nome">finx</param>
+			<param name="E-mail">luis.volpato@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">laercio</param>
+			<param name="Nome">laercio</param>
+			<param name="E-mail">laercio.duarte@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">diego</param>
+			<param name="Nome">diego</param>
+			<param name="E-mail">diego.ferreira@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">roberta</param>
+			<param name="Nome">roberta</param>
+			<param name="E-mail">roberta.morikawa@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">mabel</param>
+			<param name="Nome">mabel</param>
+			<param name="E-mail">isabel.ota@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Nome">maps</param>
+			<param name="E-mail">labrador@maps.com.br</param>
+		</service>
+	</services>
+</importacao>
