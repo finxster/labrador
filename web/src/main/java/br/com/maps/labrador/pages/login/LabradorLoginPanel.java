@@ -138,15 +138,17 @@ public class LabradorLoginPanel extends Panel {
         };
         form.setModel(new CompoundPropertyModel<UserDetails>(userDetails));
 
-        form.add(new Label("systemName", this.systemName));
+//        form.add(new Label("systemName", this.systemName));
 
-        ControlGroup userControlGroup = new ControlGroup("user.control-group");
-        userControlGroup.add(this.getUsernameField());
-        form.add(userControlGroup);
+//        ControlGroup userControlGroup = new ControlGroup("user.control-group");
+//        userControlGroup.add(this.getUsernameField());
+//        form.add(userControlGroup);
+        form.add(this.getUsernameField());
 
-        ControlGroup passControlGroup = new ControlGroup("pass.control-group");
-        passControlGroup.add(this.getPasswordField());
-        form.add(passControlGroup);
+//        ControlGroup passControlGroup = new ControlGroup("pass.control-group");
+//        passControlGroup.add(this.getPasswordField());
+//        form.add(passControlGroup);
+        form.add(this.getPasswordField());
 
         return form;
     }
