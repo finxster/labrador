@@ -10,7 +10,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.projetor.Projetor;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -21,6 +20,25 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @created Sep 14, 2013
  */
 public class ProjetorDAO extends BaseDAO<Projetor> {
+
+    /**
+     * Retorna uma lista de {@link Projetor} através das Strings @param nome and @param localizacao que refletem atributos de um
+     * {@link Projetor}.
+     * 
+     * @param nome String utilizada na consulta
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Projetor} através das Strings @param nome and @param localizacao que refletem atributos de um
+     * {@link Projetor}.
+     */
+    public List<Projetor> findByNameLocalizacao(String nome, String localizacao) {
+        Criteria c = this.createCriteria();
+        RestrictionsUtils.addRestrictionILike(c, "nome", nome, MatchMode.ANYWHERE);
+        if (localizacao != null) {
+            Criteria critLocalizacao = c.createCriteria("localizacao");
+            critLocalizacao.add(Restrictions.ilike("nome", localizacao, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
+    }
 
     /**
      * Retorna uma lista de {@link Projetor} através de Strings que refletem os atributos de um {@link Projetor}.
@@ -56,7 +74,7 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
-    
+
     public List<Projetor> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {

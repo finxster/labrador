@@ -37,7 +37,7 @@ public class PesquisaModem extends CrudModelPage<PesquisaModemFilter, Modem> {
     public List<Modem> search(DAOFactory daoFactory) {
         ModemDAO dao = daoFactory.getDAOByClass(ModemDAO.class);
         PesquisaModemFilter m = this.getModel();
-        return dao.findByName(m.getNome());
+        return dao.findByNameLocalizacao(m.getNome(), m.getLocalizacao());
     }
 
     /**

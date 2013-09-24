@@ -37,7 +37,7 @@ public class PesquisaProjetor extends CrudModelPage<PesquisaProjetorFilter, Proj
     public List<Projetor> search(DAOFactory daoFactory) {
         ProjetorDAO dao = daoFactory.getDAOByClass(ProjetorDAO.class);
         PesquisaProjetorFilter m = this.getModel();
-        return dao.findByName(m.getNome());
+        return dao.findByNameLocalizacao(m.getNome(), m.getLocalizacao());
     }
 
     /**
