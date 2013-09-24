@@ -23,6 +23,10 @@ background-color: #ffffff; // Old browsers
 */
 }
 
+.header-push {
+	height: 0;
+}
+
 .footer-push {
 	height: 0;
 }

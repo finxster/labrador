@@ -16,10 +16,13 @@ public class EmprestavelVO implements Serializable {
 
     private String localizacao;
 
-    public EmprestavelVO(String nome, String proprietario, String localizacao) {
+    private String status;
+
+    public EmprestavelVO(String nome, String proprietario, String localizacao, String status) {
         this.nome = nome;
         this.proprietario = proprietario;
         this.localizacao = localizacao;
+        this.status = status;
     }
 
     /**
@@ -41,6 +44,13 @@ public class EmprestavelVO implements Serializable {
      */
     public String getLocalizacao() {
         return localizacao;
+    }
+
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
     }
 
 }

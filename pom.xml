@@ -20,7 +20,7 @@
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jetty.version>6.1.25</jetty.version>
-        <jmine-tec-version>3.0.1.2</jmine-tec-version>
+        <jmine-tec-version>W6-3.0.5.0</jmine-tec-version>
         
         <!-- Configurações do refdb -->
         <refDbPluginVersion>1.1.17</refDbPluginVersion>
@@ -106,7 +106,80 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-        </dependencies>
+<!-- dependências externas -->          
+<dependency>
+  <groupId>de.agilecoders.wicket</groupId>
+  <artifactId>wicket-bootstrap-core</artifactId>
+  <version>0.8.4</version>
+</dependency>
+
+<dependency>
+  <groupId>de.agilecoders.wicket</groupId>
+  <artifactId>wicket-bootstrap-extensions</artifactId>
+  <version>0.8.4</version>
+</dependency>
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>3.0</version>
+</dependency>
+
+                        <dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-jquery-ui</artifactId>
+                                <version>6.9.2</version>
+             <!--               <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions> -->                        
+</dependency>
+
+
+<dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-core</artifactId>
+                                <version>6.9.2</version>
+                                <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions>
+                        </dependency>
+                        <dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-core</artifactId>
+                                <version>6.9.2</version>
+                                <type>test-jar</type>
+                                <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions>
+                        </dependency>
+<dependency>
+<groupId>org.apache.wicket</groupId>
+<artifactId>wicket-request</artifactId>
+<version>6.10.0</version>
+</dependency>
+
+</dependencies>
     </dependencyManagement>
 
   <modules>

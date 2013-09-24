@@ -1,26 +1,34 @@
 package br.com.maps.labrador.pages.cadastro.emprestimo.controle;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAOFactory;
-import jmine.tec.persist.api.dao.BeanNotFoundException;
-import jmine.tec.report.impl.table.ReportTableBuilder;
-import jmine.tec.web.wicket.component.command.button.ButtonCommand;
-import jmine.tec.web.wicket.component.command.button.SingleEntityExecutionButton;
-import jmine.tec.web.wicket.pages.form.ExecutePage;
+import jmine.tec.web.wicket.ComponentHelper;
+import jmine.tec.web.wicket.pages.Template;
 
-import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.helper.UserHelper;
-import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
+import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 
 /**
  * Tela para controle de empréstimos.
@@ -28,7 +36,7 @@ import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
  * @author finx
  * @created Sep 20, 2013
  */
-public class ControleEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmprestavel> {
+public class ControleEmprestimo extends Template {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
@@ -36,42 +44,91 @@ public class ControleEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
     @SpringBean(name = "labradorBaseController")
     private LabradorBaseController controller;
 
+    private LabradorUsuario usuarioAEmprestar;
+
+    private Form<Void> form;
+
+    private List<AbstractEmprestavel> operacoes = new ArrayList<AbstractEmprestavel>();
+
     /**
      * Construtor
      */
     public ControleEmprestimo() {
         super();
+        this.doPesquisar();
+        this.initForm();
     }
 
     /**
-     * Construtor
-     * 
-     * @param pageParameters {@link PageParameters}
+     * Executa a pesquisa de Operações para Batimento.
      */
-    public ControleEmprestimo(PageParameters pageParameters) {
-        super(pageParameters);
-    }
-
-    public List<AbstractEmprestavel> search(DAOFactory daoFactory) {
-        AbstractEmprestavelDAO dao = daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
-        return dao.findAllByMyUser(UserHelper.getUser(daoFactory));
+    private void doPesquisar() {
+        AbstractEmprestavelDAO dao = this.daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
+        this.operacoes = dao.findAllByMyUser(UserHelper.getUser(this.daoFactory));
     }
 
     /**
-     * {@inheritDoc}
+     * Inicializa o form
      */
-    @Override
-    protected EmprestivoVO createModel() {
-        return new EmprestivoVO();
-    }
+    private void initForm() {
+        this.form = new Form<Void>("mainForm");
+        FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+        this.form.add(feedbackPanel.setOutputMarkupId(true));
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void addResultTableColumns(ReportTableBuilder<AbstractEmprestavel> table) {
-        table.addStringColumn("nome", "Nome", "nome");
-        table.addStringColumn("status", "Status", "status");
+        WebMarkupContainer containerLista = new WebMarkupContainer("containerLista");
+        ListView<AbstractEmprestavel> listOperacoes =
+                new ListView<AbstractEmprestavel>("operacoes", new PropertyModel<List<AbstractEmprestavel>>(this, "operacoes")) {
+                    @Override
+                    protected void populateItem(ListItem<AbstractEmprestavel> item) {
+                        final AbstractEmprestavel emprestavel = item.getModelObject();
+                        item.add(new Label("nome", new PropertyModel<String>(emprestavel, "nome")));
+                        item.add(new Label("status", new PropertyModel<StatusEmprestavel>(emprestavel, "status")));
+
+                        WebMarkupContainer painelEmprestimo =
+                                new WebMarkupContainer("painelEmprestimo", new Model<AbstractEmprestavel>(emprestavel));
+                        painelEmprestimo.setOutputMarkupId(true);
+
+                        WebMarkupContainerModal modal = new WebMarkupContainerModal("modal");
+                        Teste teste = new Teste("button", modal);
+                        FormComponent<LabradorUsuario> usuario =
+                                ComponentHelper.createLabeledField(LabradorUsuario.class, "usuarioAEmprestar",
+                                        new PropertyModel<LabradorUsuario>(teste, "usuarioAEmprestar"), "Usuário", false);
+
+                        WebMarkupContainer webMarkupContainer = new WebMarkupContainer("content");
+                        webMarkupContainer.add(usuario);
+                        modal.add(webMarkupContainer);
+
+                        teste.add(new AttributeModifier("class", "btn btn-primary"));
+                        teste.setBody(Model.of("Emprestar"));
+                        teste.setObjetoAEmprestar(emprestavel);
+
+                        modal.header(Model.of("Empréstimo"));
+                        modal.setUseCloseHandler(true);
+                        modal.addButton(teste);
+
+                        BotaoModal botaoModal = new BotaoModal("botao", ControleEmprestimo.this.form, modal);
+//                        AjaxSubmitLink link = new AjaxSubmitLink("botao") {
+//                        };
+//                        modal.addOpenerAttributesTo(link);
+                        painelEmprestimo.add(botaoModal);
+                        painelEmprestimo.add(modal);
+
+                        item.add(painelEmprestimo);
+
+                    }
+                };
+        containerLista.add(listOperacoes);
+        containerLista.setOutputMarkupId(true);
+        this.form.add(containerLista);
+
+        // SubmitLink linkPesquisar = new SubmitLink("pesquisar") {
+        // @Override
+        // public void onSubmit() {
+        // doPesquisar();
+        // };
+        // };
+        // this.form.add(linkPesquisar);
+        this.add(this.form);
     }
 
     /**
@@ -82,52 +139,113 @@ public class ControleEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
         return null;
     }
 
+    public class BotaoModal extends AjaxSubmitLink {
+
+        private Modal modal;
+
+        public BotaoModal(String id, Form<?> form, Modal modal) {
+            super(id, form);
+            this.modal = modal;
+        }
+
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            this.modal.appendShowDialogJavaScript(target);
+        }
+    }
+
+    public class Teste extends AjaxSubmitLink {
+
+        private Modal modal;
+
+        public Teste(String id, Modal modal) {
+            super(id);
+            this.modal = modal;
+        }
+
+        private AbstractEmprestavel objetoAEmprestar;
+
+        private LabradorUsuario usuarioAEmprestar;
+
+        // public Teste(AbstractEmprestavel entity) {
+        // this.entity = entity;
+        // }
+
+        // /**
+        // * {@inheritDoc}
+        // */
+        // @Override
+        // public String getLabel() {
+        // return "Emprestar";
+        // }
+        //
+        // @Override
+        // public boolean isPrimaryButton() {
+        // return true;
+        // }
+
+        /**
+         * @return the usuarioAEmprestar
+         */
+        public LabradorUsuario getUsuarioAEmprestar() {
+            return usuarioAEmprestar;
+        }
+
+        /**
+         * @param usuarioAEmprestar the usuarioAEmprestar to set
+         */
+        public void setUsuarioAEmprestar(LabradorUsuario usuarioAEmprestar) {
+            this.usuarioAEmprestar = usuarioAEmprestar;
+        }
+
+        /**
+         * @return the objetoAEmprestar
+         */
+        public AbstractEmprestavel getObjetoAEmprestar() {
+            return objetoAEmprestar;
+        }
+
+        /**
+         * @param objetoAEmprestar the objetoAEmprestar to set
+         */
+        public void setObjetoAEmprestar(AbstractEmprestavel objetoAEmprestar) {
+            this.objetoAEmprestar = objetoAEmprestar;
+        }
+
+        // @Override
+        // protected Page execute() {
+        // controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar);
+        // return ControleEmprestimo.this;
+        // }
+
+        // @Override
+        // protected void onAction() throws Exception {
+        // this.getParent().getParent().getDefaultModelObject();
+        // controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar);
+        // }
+
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar);
+            modal.appendCloseDialogJavaScript(target);
+            // XXX (finx:20130923) :(
+            this.setResponsePage(ControleEmprestimo.this);
+        }
+
+    }
+
     /**
-     * {@inheritDoc}
+     * @return the usuarioAEmprestar
      */
-    @Override
-    protected List<ButtonCommand> getPageCommands() {
-        List<ButtonCommand> pageCommands = super.getPageCommands();
+    public LabradorUsuario getUsuarioAEmprestar() {
+        return usuarioAEmprestar;
+    }
 
-        final LabradorUsuario user = UserHelper.getUser(daoFactory);
-
-        pageCommands.add(new SingleEntityExecutionButton<AbstractEmprestavel>() {
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            public String getLabel() {
-                return "Emprestar";
-            }
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected void doExecute(AbstractEmprestavel entity) {
-                controller.executarEmprestimo(user, entity);
-            }
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected Set<Serializable> getSelected() {
-                return ControleEmprestimo.this.getSelectedItens();
-            }
-
-            /**
-             * {@inheritDoc}
-             */
-            @Override
-            protected AbstractEmprestavel loadEntity(Serializable entityId) throws BeanNotFoundException {
-                return ControleEmprestimo.this.loadEntity(entityId);
-            }
-
-        });
-
-        return pageCommands;
+    /**
+     * @param usuarioAEmprestar the usuarioAEmprestar to set
+     */
+    public void setUsuarioAEmprestar(LabradorUsuario usuarioAEmprestar) {
+        this.usuarioAEmprestar = usuarioAEmprestar;
     }
 
 }
