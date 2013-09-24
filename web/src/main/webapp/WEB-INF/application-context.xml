@@ -9,6 +9,11 @@
 		<property name="menu" ref="menuApplication" />
 	</bean>
 
+	<!-- XXX (finx:20130923) isso não deveria estar aqui... -->
+	<bean id="bootstrapTemplatePanelsFactory" class="br.com.maps.labrador.factory.LabradorTemplatePanelsFactory">
+		<property name="menuCreator" ref="menuCreator" />
+	</bean>
+
 	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMegaMenuAdapter">
 		<constructor-arg>
 			<bean class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMergerFactoryBean">

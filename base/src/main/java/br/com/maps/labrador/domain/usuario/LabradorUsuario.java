@@ -156,4 +156,12 @@ public class LabradorUsuario extends PersistableBusinessObject {
     public String getPassword() {
         return getUser().getPassword();
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return this.nome + " - " + this.email;
+    }
 }
