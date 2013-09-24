@@ -41,19 +41,6 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
     }
 
     /**
-     * Retorna uma lista de {@link Projetor} através de Strings que refletem os atributos de um {@link Projetor}.
-     * 
-     * @param nome String utilizada na consulta
-     * @return uma lista de {@link Projetor} através de uma String que reflete um atributo de um {@link Projetor}.
-     */
-    public List<Projetor> findByName(String nome) {
-        Criteria c = this.createCriteria();
-        RestrictionsUtils.addRestrictionILike(c, "nome", nome);
-
-        return this.executeQuery(c);
-    }
-
-    /**
      * Retorna uma lista de {@link Projetor} através de um {@link LabradorUsuario}.
      * 
      * @param projetor {@link Projetor} utilizado na consulta
@@ -69,12 +56,26 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
         return this.executeSingleQuery(criteria);
     }
 
+    /**
+     * Retorna uma lista de {@link Projetor} através de uma String @param titulo que representa um atributo de uma {@link Projetor}
+     * 
+     * @param titulo String utilizada na consulta
+     * @return uma {@link Projetor} através de uma String @param titulo que representa um atributo de uma {@link Projetor}
+     * @throws BeanNotFoundException
+     */
     public List<Projetor> findByNome(String titulo) {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Projetor} através de uma String @param proprietario que representa um atributo de uma {@link Projetor}
+     * 
+     * @param proprietario String utilizada na consulta
+     * @return uma lista de {@link Projetor} através de uma String @param proprietario que representa um atributo de uma {@link Projetor}
+     * @throws BeanNotFoundException
+     */
     public List<Projetor> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
@@ -84,6 +85,13 @@ public class ProjetorDAO extends BaseDAO<Projetor> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Projetor} através de uma String @param localizacao que representa um atributo de uma {@link Projetor}
+     * 
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Projetor} através de uma String @param localizacao que representa um atributo de uma {@link Projetor}
+     * @throws BeanNotFoundException
+     */
     public List<Projetor> findByLocalizacao(String localizacao) {
         Criteria c = this.createCriteria();
         if (localizacao != null) {

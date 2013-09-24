@@ -40,19 +40,6 @@ public class ModemDAO extends BaseDAO<Modem> {
     }
 
     /**
-     * Retorna uma lista de {@link Modem} através de Strings que refletem os atributos de um {@link Modem}.
-     * 
-     * @param nome String utilizada na consulta
-     * @return uma lista de {@link Modem} através de uma String que reflete um atributo de um {@link Modem}.
-     */
-    public List<Modem> findByName(String nome) {
-        Criteria c = this.createCriteria();
-        RestrictionsUtils.addRestrictionILike(c, "nome", nome);
-
-        return this.executeQuery(c);
-    }
-
-    /**
      * Retorna uma lista de {@link Modem} através de um {@link LabradorUsuario}.
      * 
      * @param modem {@link Modem} utilizado na consulta
@@ -68,12 +55,26 @@ public class ModemDAO extends BaseDAO<Modem> {
         return this.executeSingleQuery(criteria);
     }
 
+    /**
+     * Retorna uma lista de {@link Modem} através de uma String @param titulo que representa um atributo de uma {@link Modem}
+     * 
+     * @param titulo String utilizada na consulta
+     * @return uma {@link Modem} através de uma String @param titulo que representa um atributo de uma {@link Modem}
+     * @throws BeanNotFoundException
+     */
     public List<Modem> findByNome(String titulo) {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Modem} através de uma String @param proprietario que representa um atributo de uma {@link Modem}
+     * 
+     * @param proprietario String utilizada na consulta
+     * @return uma lista de {@link Modem} através de uma String @param proprietario que representa um atributo de uma {@link Modem}
+     * @throws BeanNotFoundException
+     */
     public List<Modem> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
@@ -83,6 +84,13 @@ public class ModemDAO extends BaseDAO<Modem> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Modem} através de uma String @param localizacao que representa um atributo de uma {@link Modem}
+     * 
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Modem} através de uma String @param localizacao que representa um atributo de uma {@link Modem}
+     * @throws BeanNotFoundException
+     */
     public List<Modem> findByLocalizacao(String localizacao) {
         Criteria c = this.createCriteria();
         if (localizacao != null) {
