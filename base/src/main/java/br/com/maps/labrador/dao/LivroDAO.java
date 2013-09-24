@@ -58,12 +58,26 @@ public class LivroDAO extends BaseDAO<Livro> {
         return this.executeSingleQuery(criteria);
     }
 
+    /**
+     * Retorna uma lista de {@link Livro} através de uma String @param titulo que representa um atributo de uma {@link Livro}
+     * 
+     * @param titulo String utilizada na consulta
+     * @return uma {@link Livro} através de uma String @param titulo que representa um atributo de uma {@link Livro}
+     * @throws BeanNotFoundException
+     */
     public List<Livro> findByTitulo(String titulo) {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Livro} através de uma String @param proprietario que representa um atributo de uma {@link Livro}
+     * 
+     * @param proprietario String utilizada na consulta
+     * @return uma lista de {@link Livro} através de uma String @param proprietario que representa um atributo de uma {@link Livro}
+     * @throws BeanNotFoundException
+     */
     public List<Livro> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
@@ -73,6 +87,13 @@ public class LivroDAO extends BaseDAO<Livro> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Livro} através de uma String @param localizacao que representa um atributo de uma {@link Livro}
+     * 
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Livro} através de uma String @param localizacao que representa um atributo de uma {@link Livro}
+     * @throws BeanNotFoundException
+     */
     public List<Livro> findByLocalizacao(String localizacao) {
         Criteria c = this.createCriteria();
         if (localizacao != null) {

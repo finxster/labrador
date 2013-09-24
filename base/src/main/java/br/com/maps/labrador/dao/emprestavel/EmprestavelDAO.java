@@ -16,6 +16,11 @@ import br.com.maps.labrador.domain.emprestavel.Emprestavel;
  */
 public class EmprestavelDAO extends BaseDAO<Emprestavel> {
 
+    /**
+     * Retorna uma lista de {@link Emprestavel}
+     * 
+     * @return uma lista de {@link Emprestavel}
+     */
     public List<Emprestavel> findAllWithoutPaging() {
         Criteria criteria = this.createCriteria();
         // criteria.addOrder(Order.asc("nome"));

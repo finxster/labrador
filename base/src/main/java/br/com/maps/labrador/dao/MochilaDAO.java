@@ -54,12 +54,26 @@ public class MochilaDAO extends BaseDAO<Mochila> {
         return this.executeSingleQuery(criteria);
     }
 
-    public Mochila findByNome(String titulo) throws BeanNotFoundException {
+    /**
+     * Retorna uma lista de {@link Mochila} através de uma String @param titulo que representa um atributo de uma {@link Mochila}
+     * 
+     * @param titulo String utilizada na consulta
+     * @return uma {@link Mochila} através de uma String @param titulo que representa um atributo de uma {@link Mochila}
+     * @throws BeanNotFoundException
+     */
+    public List<Mochila> findByNome(String titulo) throws BeanNotFoundException {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
-        return this.executeSingleQuery(c);
+        return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Mochila} através de uma String @param proprietario que representa um atributo de uma {@link Mochila}
+     * 
+     * @param proprietario String utilizada na consulta
+     * @return uma lista de {@link Mochila} através de uma String @param proprietario que representa um atributo de uma {@link Mochila}
+     * @throws BeanNotFoundException
+     */
     public List<Mochila> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
@@ -69,6 +83,13 @@ public class MochilaDAO extends BaseDAO<Mochila> {
         return this.executeQuery(c);
     }
 
+    /**
+     * Retorna uma lista de {@link Mochila} através de uma String @param localizacao que representa um atributo de uma {@link Mochila}
+     * 
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Mochila} através de uma String @param localizacao que representa um atributo de uma {@link Mochila}
+     * @throws BeanNotFoundException
+     */
     public List<Mochila> findByLocalizacao(String localizacao) {
         Criteria c = this.createCriteria();
         if (localizacao != null) {
