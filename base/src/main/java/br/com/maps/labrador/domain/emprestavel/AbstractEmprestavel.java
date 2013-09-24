@@ -153,5 +153,13 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     public void devolver() {
         this.status = StatusEmprestavel.DISPONIVEL;
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return this.nome;
+    }
 
 }

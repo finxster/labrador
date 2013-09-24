@@ -61,7 +61,7 @@ public class PesquisaProjetor extends CrudModelPage<PesquisaProjetorFilter, Proj
      */
     @Override
     protected void addResultTableColumns(ReportTableBuilder<Projetor> table) {
-        table.addStringColumn("user", "Usuário", "usuario.nome");
+        table.addStringColumn("user", "Usuário", "proprietario.nome");
         table.addStringColumn("nome", "Nome", "nome");
         table.addStringColumn("localizacao", "Localização", "localizacao.nome");
         table.addStringColumn("status", "Status", "status");
