@@ -10,7 +10,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-import br.com.maps.labrador.domain.mochila.Mochila;
 import br.com.maps.labrador.domain.modem.Modem;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -22,6 +21,23 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  */
 
 public class ModemDAO extends BaseDAO<Modem> {
+
+    /**
+     * Retorna uma lista de {@link Modem} através das Strings @param nome and @param localizacao que refletem atributos de um {@link Modem}.
+     * 
+     * @param nome String utilizada na consulta
+     * @param localizacao String utilizada na consulta
+     * @return uma lista de {@link Modem} através das Strings @param nome and @param localizacao que refletem atributos de um {@link Modem}.
+     */
+    public List<Modem> findByNameLocalizacao(String nome, String localizacao) {
+        Criteria c = this.createCriteria();
+        RestrictionsUtils.addRestrictionILike(c, "nome", nome, MatchMode.ANYWHERE);
+        if (localizacao != null) {
+            Criteria critLocalizacao = c.createCriteria("localizacao");
+            critLocalizacao.add(Restrictions.ilike("nome", localizacao, MatchMode.ANYWHERE));
+        }
+        return this.executeQuery(c);
+    }
 
     /**
      * Retorna uma lista de {@link Modem} através de Strings que refletem os atributos de um {@link Modem}.
@@ -57,7 +73,7 @@ public class ModemDAO extends BaseDAO<Modem> {
         RestrictionsUtils.addRestrictionILike(c, "nome", titulo, MatchMode.ANYWHERE);
         return this.executeQuery(c);
     }
-    
+
     public List<Modem> findByProprietario(String proprietario) {
         Criteria c = this.createCriteria();
         if (proprietario != null) {
