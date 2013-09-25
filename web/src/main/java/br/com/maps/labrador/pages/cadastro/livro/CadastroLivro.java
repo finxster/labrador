@@ -81,11 +81,11 @@ public class CadastroLivro extends FormPage<Livro> {
     @Override
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
-        final LabeledFormInputPanel isbnTextField = ComponentHelper.createLabeledTextField("isbn10", "ISBN 10", getEntity());
-        final LabeledFormInputPanel isbn13 = ComponentHelper.createLabeledTextField("isbn13", "ISBN 13", getEntity());
-        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", getEntity(), true);
-        final LabeledFormInputPanel autor = ComponentHelper.createLabeledTextField("autor", "Autor", getEntity());
-        final LabeledFormInputPanel editora = ComponentHelper.createLabeledTextField("editora", "Editora", getEntity());
+        final LabeledFormInputPanel isbnTextField = ComponentHelper.createLabeledTextField("isbn10", "ISBN 10", this.getEntity());
+        final LabeledFormInputPanel isbn13 = ComponentHelper.createLabeledTextField("isbn13", "ISBN 13", this.getEntity());
+        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
+        final LabeledFormInputPanel autor = ComponentHelper.createLabeledTextField("autor", "Autor", this.getEntity());
+        final LabeledFormInputPanel editora = ComponentHelper.createLabeledTextField("editora", "Editora", this.getEntity());
         final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
 
         isbnTextField.getFormComponent().add(new BootstrapAddonBehavior().setAddon("ISBNdb.com"));
@@ -163,8 +163,11 @@ public class CadastroLivro extends FormPage<Livro> {
      * @param isbnTextField {@link TextField}
      */
     private void parseJsonObject(LabeledFormInputPanel<String> isbnTextField) {
-        String isbn10 = isbnTextField.getModelObject().toUpperCase();
-        IsbnDBHelper.getLivroByISBN10(isbn10, getEntity());
+        String modelObject = isbnTextField.getModelObject();
+        if (modelObject != null) {
+            String isbn10 = modelObject.toUpperCase();
+            IsbnDBHelper.getLivroByISBN10(isbn10, this.getEntity());
+        }
     }
 
     /**
@@ -184,7 +187,7 @@ public class CadastroLivro extends FormPage<Livro> {
      * @return the localizacao
      */
     public String getLocalizacao() {
-        return localizacao;
+        return this.localizacao;
     }
 
     /**
