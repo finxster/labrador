@@ -12,6 +12,7 @@ import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.authorization.IAuthorizationStrategy;
+import org.apache.wicket.core.util.file.WebApplicationPath;
 import org.apache.wicket.markup.html.pages.AccessDeniedPage;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
@@ -70,6 +71,19 @@ public class LabradorApplication extends JMineWicketWebApplication {
      * {@inheritDoc}
      */
     @Override
+    protected void internalInit() {
+        super.internalInit();
+
+        this.getMarkupSettings().setStripWicketTags(true);
+        IResourceSettings resourceSettings = this.getResourceSettings();
+        resourceSettings.getResourceFinders().add(0, new WebApplicationPath(this.getServletContext(), "/"));
+        resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Class<? extends Page> getHomePage() {
         return ConsultaEmprestavel.class;
     }
@@ -77,13 +91,15 @@ public class LabradorApplication extends JMineWicketWebApplication {
     /**
      * @return the securityManager
      */
+    @Override
     public SecurityManager<WebSecurityContext> getSecurityManager() {
-        return securityManager;
+        return this.securityManager;
     }
 
     /**
      * @param securityManager the securityManager to set
      */
+    @Override
     public void setSecurityManager(SecurityManager<WebSecurityContext> securityManager) {
         this.securityManager = securityManager;
     }
@@ -92,7 +108,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
      * @return the rtmController
      */
     public RtmController getRtmController() {
-        return rtmController;
+        return this.rtmController;
     }
 
     /**
@@ -106,7 +122,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
      * @return the authorizationStrategy
      */
     public IAuthorizationStrategy getAuthorizationStrategy() {
-        return authorizationStrategy;
+        return this.authorizationStrategy;
     }
 
     /**
@@ -130,6 +146,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
         return session;
     }
 
+    @Override
     public void setStyle(String style) {
         this.style = style;
     }
