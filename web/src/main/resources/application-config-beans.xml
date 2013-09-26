@@ -29,7 +29,7 @@
 				<!-- Configurações de postgresql local -->
 				<prop key="database.hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
 				<prop key="datasource.driverClassName">org.postgresql.Driver</prop>
-				<prop key="datasource.url">jdbc:postgresql://localhost:5432/labrador</prop>
+				<prop key="datasource.url">jdbc:postgresql://localhost:5432/labrador?charSet=LATIN1</prop>
 				<prop key="datasource.username">labrador</prop>
 				<prop key="datasource.password">labrador</prop>
 				<prop key="datasource.maxWait">0</prop>
