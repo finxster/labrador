@@ -1,0 +1,44 @@
+<importacao>
+	<services name="Usuários do labrador da JBC">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-cassius</param>
+			<param name="Nome">jbc-cassius</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-marcelo</param>
+			<param name="Nome">jbc-marcelo</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-denis</param>
+			<param name="Nome">jbc-denis</param>
+			<param name="E-mail">denis.takata@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-leonardo</param>
+			<param name="Nome">jbc-leonardo</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-pedro</param>
+			<param name="Nome">jbc-pedro</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-douglas</param>
+			<param name="Nome">jbc-douglas</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc-thiago</param>
+			<param name="Nome">jbc-thiago</param>
+			<param name="E-mail">cassius@editorajbc.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">teste</param>
+			<param name="Nome">teste</param>
+			<param name="E-mail">labrador@maps.com.br</param>
+		</service>
+	</services>
+</importacao>
