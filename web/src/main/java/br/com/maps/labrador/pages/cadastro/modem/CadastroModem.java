@@ -7,18 +7,18 @@ import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
-import jmine.tec.web.wicket.component.injection.composite.LabeledFormInputPanel;
+import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.modem.Modem;
-import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de modem
@@ -30,11 +30,6 @@ public class CadastroModem extends FormPage<Modem> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
-
-    @SpringBean
-    private LabradorUserHelper userHelper;
-    
-    private String localizacao;
 
     /**
      * Construtor.
@@ -74,11 +69,9 @@ public class CadastroModem extends FormPage<Modem> {
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
 
-        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
-        final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
-
-        components.add(nome.setOutputMarkupId(true));
-        components.add(localizacaoTextField);
+        components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
+        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(getEntity()
+                .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
 
         return components;
 
@@ -92,29 +85,16 @@ public class CadastroModem extends FormPage<Modem> {
         return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    protected boolean beforeSave(Modem target) {
-        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
+    protected Modem createEntity() {
+        Modem modem = super.createEntity();
         DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
-        LocalizacaoEmprestavel localizacaoModem = dao.createBean();
-        localizacaoModem.setNome(this.localizacao);
-
-        target.setLocalizacao(localizacaoModem);
-        return super.beforeSave(target);
-    }
-
-    /**
-     * @return the localizacao
-     */
-    public String getLocalizacao() {
-        return this.localizacao;
-    }
-
-    /**
-     * @param localizacao the localizacao to set
-     */
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+        LocalizacaoEmprestavel localizacao = dao.createBean();
+        modem.setLocalizacao(localizacao);
+        return modem;
     }
 
 }
