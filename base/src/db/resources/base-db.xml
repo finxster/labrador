@@ -6,9 +6,16 @@
 	</dependencies>
 	<post basePath="postscript">
 		<entry type="SERVICE">security/security_client.xml</entry>
-		<entry type="SERVICE">security/metacredentials.xml</entry>
-		<entry type="SERVICE">security/credentials_user.xml</entry>
-		<entry type="SERVICE">security/credentials_admin.xml</entry>
+		<entry type="SERVICE">security/chinese/chinese_wall_credential.xml</entry>
+		<entry type="SERVICE">security/credentials/metacredentials.xml</entry>
+		<entry type="SERVICE">security/credentials/credentials_user.xml</entry>
+		<entry type="SERVICE">security/credentials/credentials_admin.xml</entry>
+		
+		<!-- Grupos de usuário -->
+		<entry type="SERVICE">security/groups/grupo_administrador.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_jbc.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps_tecnologia.xml</entry>
 	</post>
 	<ref basePath="referencia">
 		<entry type="SQL">security/users.sql</entry>
