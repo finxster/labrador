@@ -20,7 +20,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.mochila.Mochila;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de mochilas
@@ -32,6 +32,9 @@ public class CadastroMochila extends FormPage<Mochila> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
+    
+    @SpringBean
+    private LabradorUserHelper userHelper;
 
     /**
      * Construtor.
@@ -106,7 +109,7 @@ public class CadastroMochila extends FormPage<Mochila> {
     @Override
     protected boolean beforeSave(Mochila target) {
         // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        target.setProprietario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(this.userHelper.getCurrentUser());
 
         return super.beforeSave(target);
     }

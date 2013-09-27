@@ -38,8 +38,6 @@ public class ModemService {
 
     private String nome;
 
-    private LabradorUsuario usuario;
-
     private String localizacao;
 
     @Output(propertyName = IDENTIFICADOR)
@@ -47,7 +45,6 @@ public class ModemService {
     public Modem execute() {
         Modem modem = this.dao.createBean();
         modem.setNome(this.nome);
-        modem.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);
@@ -87,14 +84,6 @@ public class ModemService {
     @Input(fieldName = NOME)
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    @Input(fieldName = USUARIO)
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
     }
 
     /**

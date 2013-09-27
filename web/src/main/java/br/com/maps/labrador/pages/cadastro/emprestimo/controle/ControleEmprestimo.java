@@ -27,7 +27,7 @@ import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
 
 /**
@@ -43,6 +43,9 @@ public class ControleEmprestimo extends Template {
 
     @SpringBean(name = "labradorBaseController")
     private LabradorBaseController controller;
+    
+    @SpringBean
+    private LabradorUserHelper userHelper;
 
     private LabradorUsuario usuarioAEmprestar;
 
@@ -64,7 +67,7 @@ public class ControleEmprestimo extends Template {
      */
     private void doPesquisar() {
         AbstractEmprestavelDAO dao = this.daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
-        this.operacoes = dao.findAllByMyUser(UserHelper.getUser(this.daoFactory));
+        this.operacoes = dao.findAllByMyUser(this.userHelper.getCurrentUser());
     }
 
     /**
@@ -226,7 +229,7 @@ public class ControleEmprestimo extends Template {
 
         @Override
         protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-            controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar, null);
+            controller.emprestar(this.usuarioAEmprestar, this.objetoAEmprestar, null);
             modal.appendCloseDialogJavaScript(target);
             // XXX (finx:20130923) :(
             this.setResponsePage(ControleEmprestimo.this);

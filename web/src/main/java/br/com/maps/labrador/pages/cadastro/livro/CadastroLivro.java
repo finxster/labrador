@@ -26,7 +26,7 @@ import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.helper.IsbnDBHelper;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela que cadastra livros.
@@ -39,6 +39,9 @@ public class CadastroLivro extends FormPage<Livro> {
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
 
+    @SpringBean
+    private LabradorUserHelper userHelper;
+    
     private String localizacao;
 
     // XXX (diego.ferreira) este parâmetro deverá ser configurado em um ".properties" e injetado via spring
@@ -132,7 +135,7 @@ public class CadastroLivro extends FormPage<Livro> {
         localizacaoLivro.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoLivro);
-        target.setProprietario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(this.userHelper.getCurrentUser());
 
         return super.beforeSave(target);
     }

@@ -33,8 +33,6 @@ public class LivroService {
 
     private static final String EDITORA = "Editora";
 
-    private static final String USUARIO = "Usuário";
-
     private static final String LOCALIZACAO = "Localização";
 
     private DAO<Livro> dao;
@@ -53,8 +51,6 @@ public class LivroService {
 
     private String editora;
 
-    private LabradorUsuario usuario;
-
     private String localizacao;
 
     @Output(propertyName = IDENTIFICADOR)
@@ -66,7 +62,6 @@ public class LivroService {
         livro.setNome(this.titulo);
         livro.setAutor(this.autor);
         livro.setEditora(this.editora);
-        livro.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoLivro = this.localizacaoDAO.createBean();
         localizacaoLivro.setNome(this.localizacao);
@@ -138,14 +133,6 @@ public class LivroService {
     @Input(fieldName = EDITORA)
     public void setEditora(String editora) {
         this.editora = editora;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    @Input(fieldName = USUARIO)
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
     }
 
     /**

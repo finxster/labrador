@@ -7,4 +7,8 @@
 
 	<bean id="wallClock" class="jmine.tec.utils.date.StoppedClock" />
 
+	<bean id="userHelper" class="br.com.maps.labrador.helper.StaticLabradorUserHelper">
+		<property name="securityService" ref="securityService" />
+		<property name="daoFactory" ref="daoFactory" />
+	</bean>
 </beans>

@@ -18,7 +18,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.projetor.Projetor;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de projetores
@@ -30,6 +30,9 @@ public class CadastroProjetor extends FormPage<Projetor> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
+    
+    @SpringBean
+    private LabradorUserHelper userHelper;
 
     private String localizacao;
 
@@ -97,7 +100,7 @@ public class CadastroProjetor extends FormPage<Projetor> {
         localizacaoProjetor.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoProjetor);
-        target.setProprietario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(this.userHelper.getCurrentUser());
 
         return super.beforeSave(target);
     }

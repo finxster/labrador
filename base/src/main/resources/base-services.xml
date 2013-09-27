@@ -19,6 +19,8 @@
 						
 						<value>br.com.maps.labrador.service.alterar.RelogioService</value>
 						
+						<value>br.com.maps.labrador.service.executar.LoginService</value>
+						
 						<value>br.com.maps.labrador.service.validar.EmprestimoService</value>
 						<value>br.com.maps.labrador.service.validar.LivroService</value>
 						<value>br.com.maps.labrador.service.validar.StatusEmprestimoService</value>

@@ -18,7 +18,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.modem.Modem;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de modem
@@ -31,6 +31,9 @@ public class CadastroModem extends FormPage<Modem> {
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
 
+    @SpringBean
+    private LabradorUserHelper userHelper;
+    
     private String localizacao;
 
     /**
@@ -97,7 +100,7 @@ public class CadastroModem extends FormPage<Modem> {
         localizacaoModem.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoModem);
-        target.setProprietario(UserHelper.getUser(this.daoFactory));
+        target.setProprietario(this.userHelper.getCurrentUser());
 
         return super.beforeSave(target);
     }

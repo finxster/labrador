@@ -25,8 +25,6 @@ public class MochilaService {
 
     private static final String NOME = "Nome";
 
-    private static final String USUARIO = "Usuário";
-
     private static final String LOCALIZACAO = "Localização";
 
     private DAO<Mochila> dao;
@@ -37,8 +35,6 @@ public class MochilaService {
 
     private String nome;
 
-    private LabradorUsuario usuario;
-
     private String localizacao;
 
     @Output(propertyName = IDENTIFICADOR)
@@ -46,7 +42,6 @@ public class MochilaService {
     public Mochila execute() {
         Mochila mochila = this.dao.createBean();
         mochila.setNome(this.nome);
-        mochila.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);
@@ -86,14 +81,6 @@ public class MochilaService {
     @Input(fieldName = NOME)
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    @Input(fieldName = USUARIO)
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
     }
 
     /**
