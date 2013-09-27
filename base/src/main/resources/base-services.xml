@@ -15,6 +15,7 @@
 						<value>br.com.maps.labrador.service.incluir.MochilaService</value>
 						<value>br.com.maps.labrador.service.incluir.ModemService</value>
 						<value>br.com.maps.labrador.service.incluir.ProjetorService</value>
+						<value>br.com.maps.labrador.service.incluir.DevolucaoEmprestimoService</value>
 						<value>br.com.maps.labrador.service.validar.EmprestimoService</value>
 						<value>br.com.maps.labrador.service.excluir.LabradorUsuarioService</value>
 						<value>br.com.maps.labrador.service.excluir.LivroService</value>
