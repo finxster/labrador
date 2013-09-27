@@ -106,7 +106,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
              */
             @Override
             protected void doExecute(AbstractEmprestavel entity) {
-                controller.executarEmprestimo(user, entity);
+                controller.executarEmprestimo(user, entity, null);
             }
 
             /**

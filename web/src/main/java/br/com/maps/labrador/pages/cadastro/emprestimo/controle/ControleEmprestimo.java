@@ -226,7 +226,7 @@ public class ControleEmprestimo extends Template {
 
         @Override
         protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-            controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar);
+            controller.executarEmprestimo(this.usuarioAEmprestar, this.objetoAEmprestar, null);
             modal.appendCloseDialogJavaScript(target);
             // XXX (finx:20130923) :(
             this.setResponsePage(ControleEmprestimo.this);

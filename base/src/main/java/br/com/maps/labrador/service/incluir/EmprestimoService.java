@@ -1,15 +1,12 @@
 package br.com.maps.labrador.service.incluir;
 
 import jmine.tec.di.annotation.Injected;
-import jmine.tec.persist.api.DAO;
-import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
-import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import jmine.tec.utils.date.Clock;
 import jmine.tec.utils.date.Date;
+import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
@@ -23,25 +20,19 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 @ServiceImplementor(action = ActionsEnum.INCLUIR)
 public class EmprestimoService {
 
-    private static final String IDENTIFICADOR = "Identificador";
-
     private static final String COISA = "Coisa";
 
     private static final String DATA_DEVOLUCAO = "Data Devolução";
-
+    
     private static final String LABRADOR_USUARIO = "Tomador";
 
     private AbstractEmprestavel coisa;
 
     private Date dataDevolucao;
 
-    private DAO<Emprestimo> dao;
-
     private LabradorUsuario tomador;
 
-    private Clock clock;
-
-    private StatelessPersister<Emprestimo> persister;
+    private LabradorBaseController controller;
 
     /**
      * Execução do serviço de cadastro de {@link Emprestimo}
@@ -49,15 +40,8 @@ public class EmprestimoService {
      * @return {@link Emprestimo}
      */
     @Execution
-    @Output(propertyName = IDENTIFICADOR)
-    public Emprestimo execute() {
-        Emprestimo emprestimo = this.dao.createBean();
-        emprestimo.setEmprestavel(this.coisa);
-        emprestimo.setData(this.clock.currentTimestamp());
-        emprestimo.setDataDevolucao(this.dataDevolucao);
-        emprestimo.setTomador(this.tomador);
-        this.persister.save(emprestimo);
-        return emprestimo;
+    public void execute() {
+        this.controller.executarEmprestimo(this.tomador, this.coisa, this.dataDevolucao);
     }
 
     /**
@@ -77,34 +61,19 @@ public class EmprestimoService {
     }
 
     /**
-     * @param labradorUsuario the labradorUsuario to set
+     * @param tomador the tomador to set
      */
     @Input(fieldName = LABRADOR_USUARIO)
-    public void setLabradorUsuario(LabradorUsuario labradorUsuario) {
-        this.tomador = labradorUsuario;
+    public void setTomador(LabradorUsuario tomador) {
+        this.tomador = tomador;
     }
 
     /**
-     * @param clock the clock to set
+     * @param controller the controller to set
      */
     @Injected
-    public void setClock(Clock clock) {
-        this.clock = clock;
+    public void setController(LabradorBaseController controller) {
+        this.controller = controller;
     }
 
-    /**
-     * @param dao the dao to set
-     */
-    @Injected
-    public void setDao(DAO<Emprestimo> dao) {
-        this.dao = dao;
-    }
-
-    /**
-     * @param persister the persister to set
-     */
-    @Injected
-    public void setPersister(StatelessPersister<Emprestimo> persister) {
-        this.persister = persister;
-    }
 }

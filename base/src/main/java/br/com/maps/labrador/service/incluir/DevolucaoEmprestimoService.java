@@ -1,15 +1,15 @@
 package br.com.maps.labrador.service.incluir;
 
 import jmine.tec.di.annotation.Injected;
-import jmine.tec.persist.api.DAO;
-import jmine.tec.persist.api.persister.StatelessPersister;
+import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.services.api.ActionsEnum;
+import jmine.tec.services.api.ServiceExecutionException;
 import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import jmine.tec.utils.date.Clock;
-import jmine.tec.utils.date.Date;
+import br.com.maps.labrador.LabradorBaseController;
+import br.com.maps.labrador.dao.EmprestimoDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
@@ -27,36 +27,32 @@ public class DevolucaoEmprestimoService {
 
     private static final String COISA = "Coisa";
 
-    private static final String DATA_DEVOLUCAO = "Data Devolução";
-
     private static final String LABRADOR_USUARIO = "Tomador";
+
+    private LabradorBaseController controller;
 
     private AbstractEmprestavel coisa;
 
-    private Date dataDevolucao;
-
-    private DAO<Emprestimo> dao;
+    private EmprestimoDAO dao;
 
     private LabradorUsuario tomador;
-
-    private Clock clock;
-
-    private StatelessPersister<Emprestimo> persister;
 
     /**
      * Execução do serviço de cadastro de {@link CadastroDevolucaoEmprestimo}
      * 
      * @return {@link Emprestimo}
+     * @throws ServiceExecutionException
      */
     @Execution
     @Output(propertyName = IDENTIFICADOR)
-    public Emprestimo execute() {
-        Emprestimo emprestimo = this.dao.createBean();
-        emprestimo.setEmprestavel(this.coisa);
-        emprestimo.setData(this.clock.currentTimestamp());
-        emprestimo.setDataDevolucao(this.dataDevolucao);
-        emprestimo.setTomador(this.tomador);
-        this.persister.save(emprestimo);
+    public Emprestimo execute() throws ServiceExecutionException {
+        Emprestimo emprestimo;
+        try {
+            emprestimo = this.dao.findByTomadorEmprestavel(this.tomador, this.coisa);
+        } catch (BeanNotFoundException e) {
+            throw new ServiceExecutionException(e.getLocalizedMessageHolder(), e);
+        }
+        controller.devolverEmprestimo(emprestimo);
         return emprestimo;
     }
 
@@ -69,14 +65,6 @@ public class DevolucaoEmprestimoService {
     }
 
     /**
-     * @param dataDevolucao the dataDevolucao to set
-     */
-    @Input(fieldName = DATA_DEVOLUCAO)
-    public void setDataDevolucao(Date dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
-    }
-
-    /**
      * @param labradorUsuario the labradorUsuario to set
      */
     @Input(fieldName = LABRADOR_USUARIO)
@@ -85,26 +73,27 @@ public class DevolucaoEmprestimoService {
     }
 
     /**
-     * @param clock the clock to set
+     * @param controller the controller to set
      */
     @Injected
-    public void setClock(Clock clock) {
-        this.clock = clock;
+    public void setController(LabradorBaseController controller) {
+        this.controller = controller;
     }
 
     /**
      * @param dao the dao to set
      */
     @Injected
-    public void setDao(DAO<Emprestimo> dao) {
+    public void setDao(EmprestimoDAO dao) {
         this.dao = dao;
     }
 
     /**
-     * @param persister the persister to set
+     * @param tomador the tomador to set
      */
-    @Injected
-    public void setPersister(StatelessPersister<Emprestimo> persister) {
-        this.persister = persister;
+    @Input(fieldName = LABRADOR_USUARIO)
+    public void setTomador(LabradorUsuario tomador) {
+        this.tomador = tomador;
     }
+
 }
