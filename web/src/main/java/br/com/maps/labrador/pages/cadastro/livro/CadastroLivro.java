@@ -2,23 +2,23 @@ package br.com.maps.labrador.pages.cadastro.livro;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
+import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
 import jmine.tec.web.wicket.bootstrap.behavior.addon.BootstrapAddonBehavior;
 import jmine.tec.web.wicket.component.injection.composite.LabeledFormInputPanel;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
@@ -26,7 +26,6 @@ import br.com.maps.labrador.LabradorWebException;
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.livro.Livro;
 import br.com.maps.labrador.helper.IsbnDBHelper;
-import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela que cadastra livros.
@@ -38,11 +37,6 @@ public class CadastroLivro extends FormPage<Livro> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
-
-    @SpringBean
-    private LabradorUserHelper userHelper;
-    
-    private String localizacao;
 
     // XXX (diego.ferreira) este parâmetro deverá ser configurado em um ".properties" e injetado via spring
     private static final String MAPS_ISBNDB_COD = "SQGBZAKH";
@@ -89,7 +83,9 @@ public class CadastroLivro extends FormPage<Livro> {
         final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
         final LabeledFormInputPanel autor = ComponentHelper.createLabeledTextField("autor", "Autor", this.getEntity());
         final LabeledFormInputPanel editora = ComponentHelper.createLabeledTextField("editora", "Editora", this.getEntity());
-        final LabeledFormInputPanel localizacaoTextField = ComponentHelper.createLabeledTextField("localizacao", "Localização", this, true);
+        final LabeledFormInputPanel localizacaoTextField =
+                ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this.getEntity()
+                        .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM);
 
         isbnTextField.getFormComponent().add(new BootstrapAddonBehavior().setAddon("ISBNdb.com"));
         isbnTextField.add(new OnBlurAjaxBehavior() {
@@ -127,36 +123,16 @@ public class CadastroLivro extends FormPage<Livro> {
         return null;
     }
 
-    @Override
-    protected boolean beforeSave(Livro target) {
-        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
-        LocalizacaoEmprestavel localizacaoLivro = dao.createBean();
-        localizacaoLivro.setNome(this.localizacao);
-
-        target.setLocalizacao(localizacaoLivro);
-
-        return super.beforeSave(target);
-    }
-
     /**
-     * Efetua o parte do {@link Map} com as informações obtidas no isbndb e hidrata a instância de livro informada.
-     * 
-     * @param mp {@link Map}
-     * @param livro {@link Livro}
+     * {@inheritDoc}
      */
-    private void hidrateEntity(Map<String, Object> mp, Livro livro) {
-        Map<String, Object> map = (Map<String, Object>) ((List) mp.get("data")).get(0);
-        livro.setIsbn10(this.safeCheck(map.get("isbn10")));
-        livro.setIsbn13(this.safeCheck(map.get("isbn13")));
-        livro.setEditora(this.safeCheck(map.get("publisher_text")));
-        livro.setNome(this.safeCheck(map.get("title")));
-
-        List autores = (List) map.get("author_data");
-        if (autores != null && !autores.isEmpty()) {
-            Map<String, Object> autoresMap = (Map<String, Object>) autores.get(0);
-            livro.setAutor(this.safeCheck(autoresMap.get("name")));
-        }
+    @Override
+    protected Livro createEntity() {
+        Livro livro = super.createEntity();
+        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
+        LocalizacaoEmprestavel localizacao = dao.createBean();
+        livro.setLocalizacao(localizacao);
+        return livro;
     }
 
     /**
@@ -170,33 +146,6 @@ public class CadastroLivro extends FormPage<Livro> {
             String isbn10 = modelObject.toUpperCase();
             IsbnDBHelper.getLivroByISBN10(isbn10, this.getEntity());
         }
-    }
-
-    /**
-     * Efetua um null check na string informada.
-     * 
-     * @param str string que será analisada
-     * @return a própria string caso a mesma não seja nula.
-     */
-    private String safeCheck(Object str) {
-        if (!StringUtils.isEmpty((String) str)) {
-            return str.toString();
-        }
-        return null;
-    }
-
-    /**
-     * @return the localizacao
-     */
-    public String getLocalizacao() {
-        return this.localizacao;
-    }
-
-    /**
-     * @param localizacao the localizacao to set
-     */
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
     }
 
 }

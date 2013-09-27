@@ -33,9 +33,6 @@ public class CadastroMochila extends FormPage<Mochila> {
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
 
-    @SpringBean
-    private LabradorUserHelper userHelper;
-
     /**
      * Construtor.
      * 
@@ -74,13 +71,9 @@ public class CadastroMochila extends FormPage<Mochila> {
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
 
-        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
-        final LabeledFormInputPanel localizacaoTextField =
-                ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this.getEntity()
-                        .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM);
-
-        components.add(nome.setOutputMarkupId(true));
-        components.add(localizacaoTextField);
+        components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
+        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this
+                .getEntity().getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
 
         return components;
 
