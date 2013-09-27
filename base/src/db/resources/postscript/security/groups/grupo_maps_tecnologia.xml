@@ -8,7 +8,7 @@
         <!-- Chinese wall -->
         <service name="GroupCredential" action="INCLUIR">
             <param name="Grupo">MAPS_TECNOLOGIA</param>
-            <param name="Credencial">EMPRESTAVEL_FULL_ACCESS</param>
+            <param name="Credencial">EMPRESTAVEL_ACESSO_LIMITADO</param>
         </service>
         
         <!-- Meta credential / URL credential -->

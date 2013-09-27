@@ -12,7 +12,7 @@
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">diego</param>
 			<param name="Senha">diego</param>
-			<param name="Database ID">2</param>
+			<param name="Database ID">3</param>
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">diego</param>
@@ -21,7 +21,7 @@
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">laercio</param>
 			<param name="Senha">laercio</param>
-			<param name="Database ID">3</param>
+			<param name="Database ID">2</param>
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">laercio</param>
@@ -52,7 +52,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">maps</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 	</services>
 
