@@ -32,7 +32,7 @@ public class CadastroMochila extends FormPage<Mochila> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
-    
+
     @SpringBean
     private LabradorUserHelper userHelper;
 
@@ -104,14 +104,6 @@ public class CadastroMochila extends FormPage<Mochila> {
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
-    }
-
-    @Override
-    protected boolean beforeSave(Mochila target) {
-        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        target.setProprietario(this.userHelper.getCurrentUser());
-
-        return super.beforeSave(target);
     }
 
 }
