@@ -12,6 +12,7 @@
 
 	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
 		<property name="persister" ref="statelessPersister" />
+		<property name="clock" ref="wallClock" />
 	</bean>
 
 	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">

@@ -2,6 +2,8 @@ package br.com.maps.labrador;
 
 import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.persist.impl.controller.AbstractPersistenceEnabledController;
+import jmine.tec.utils.date.Clock;
+import jmine.tec.utils.date.Date;
 import br.com.maps.labrador.actor.EmprestimoActor;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
@@ -17,9 +19,11 @@ public class LabradorBaseController extends AbstractPersistenceEnabledController
 
     private StatelessPersister persister;
 
-    public void executarEmprestimo(LabradorUsuario user, AbstractEmprestavel livro) {
+    private Clock clock;
+
+    public void executarEmprestimo(LabradorUsuario user, AbstractEmprestavel livro, Date dataDevolucao) {
         EmprestimoActor actor = new EmprestimoActor(this);
-        actor.executarEmprestimo(user, livro);
+        actor.executarEmprestimo(user, livro, dataDevolucao);
     }
 
     public void devolverEmprestimo(Emprestimo emprestimo) {
@@ -39,6 +43,20 @@ public class LabradorBaseController extends AbstractPersistenceEnabledController
      */
     public void setPersister(StatelessPersister persister) {
         this.persister = persister;
+    }
+
+    /**
+     * @return the clock
+     */
+    public Clock getClock() {
+        return clock;
+    }
+
+    /**
+     * @param clock the clock to set
+     */
+    public void setClock(Clock clock) {
+        this.clock = clock;
     }
 
 }

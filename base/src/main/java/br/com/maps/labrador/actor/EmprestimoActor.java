@@ -3,6 +3,7 @@ package br.com.maps.labrador.actor;
 import jmine.tec.component.actor.AbstractActor;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.persister.StatelessPersister;
+import jmine.tec.utils.date.Date;
 import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
@@ -26,19 +27,22 @@ public class EmprestimoActor extends AbstractActor {
         this.persister = controller.getPersister();
     }
 
-    public final void executarEmprestimo(LabradorUsuario usuario, AbstractEmprestavel emprestavel) {
+    public final void executarEmprestimo(LabradorUsuario usuario, AbstractEmprestavel emprestavel, Date dataDevolucao) {
         DAO<Emprestimo> dao = controller.getDAOFactory().getDAOByEntityType(Emprestimo.class);
         Emprestimo emprestimo = dao.createBean();
         emprestimo.setTomador(usuario);
         emprestimo.setEmprestavel(emprestavel);
+        emprestimo.setData(controller.getClock().currentTimestamp());
+        emprestimo.setDataDevolucao(dataDevolucao);
         persister.save(emprestimo);
-        
+
         emprestavel.emprestar();
         persister.save(emprestavel);
     }
 
     public void devolverEmprestimo(Emprestimo emprestimo) {
         emprestimo.setStatus(StatusEmprestimo.DEVOLVIDO);
+        emprestimo.setDataDevolucao(controller.getClock().currentDate());
         this.persister.save(emprestimo);
 
         AbstractEmprestavel emprestavel = emprestimo.getEmprestavel();
