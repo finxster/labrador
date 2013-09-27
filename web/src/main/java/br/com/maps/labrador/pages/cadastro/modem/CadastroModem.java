@@ -100,8 +100,6 @@ public class CadastroModem extends FormPage<Modem> {
         localizacaoModem.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoModem);
-        target.setProprietario(this.userHelper.getCurrentUser());
-
         return super.beforeSave(target);
     }
 

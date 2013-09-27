@@ -135,7 +135,6 @@ public class CadastroLivro extends FormPage<Livro> {
         localizacaoLivro.setNome(this.localizacao);
 
         target.setLocalizacao(localizacaoLivro);
-        target.setProprietario(this.userHelper.getCurrentUser());
 
         return super.beforeSave(target);
     }
