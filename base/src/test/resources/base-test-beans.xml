@@ -4,6 +4,6 @@
 
     <import resource="classpath:jmine-tec-test.xml" />
     <import resource="classpath:base-beans.xml" />
+    <import resource="classpath:base-mapping.xml" />
     <import resource="classpath:jmine-tec-services-impl-test-services.xml" />
-
 </beans>

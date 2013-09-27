@@ -9,7 +9,7 @@
 
 	<import resource="base-mapping.xml" />
 	<import resource="base-services.xml" />
-
+	
 	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
 		<property name="persister" ref="statelessPersister" />
 	</bean>
@@ -70,5 +70,4 @@
 			</list>
 		</property>
 	</bean>
-
 </beans>

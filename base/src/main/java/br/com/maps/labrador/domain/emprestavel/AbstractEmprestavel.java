@@ -26,6 +26,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.chinese.EmprestavelChineseWallEntity;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -90,7 +91,7 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
      */
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_USUARIO", nullable = false)
+    @JoinColumn(name = EmprestavelChineseWallEntity.COLUMN_NAME, nullable = false)
     @Documentation("CODIGO DO USUARIO QUE EH O PROPRIETARIO DO EMPRESTAVEL.")
     public LabradorUsuario getProprietario() {
         return this.proprietario;

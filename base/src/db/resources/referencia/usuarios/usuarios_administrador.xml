@@ -7,7 +7,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">finx</param>
-			<param name="Grupo">ADMIN_LABRADOR</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">diego</param>
@@ -16,7 +16,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">diego</param>
-			<param name="Grupo">ADMIN_LABRADOR</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">laercio</param>
@@ -25,7 +25,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">laercio</param>
-			<param name="Grupo">ADMIN_LABRADOR</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">roberta</param>
@@ -34,7 +34,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">roberta</param>
-			<param name="Grupo">ADMIN_LABRADOR</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">mabel</param>
@@ -43,7 +43,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">mabel</param>
-			<param name="Grupo">ADMIN_LABRADOR</param>
+			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">maps</param>
@@ -52,15 +52,6 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">maps</param>
-			<param name="Grupo">USUARIO</param>
-		</service>
-		<service name="User" action="INCLUIR">
-			<param name="Usuário">jbc</param>
-			<param name="Senha">123456</param>
-			<param name="Database ID">2000</param>
-		</service>
-		<service name="UserGroup" action="INCLUIR">
-			<param name="Usuário">jbc</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
 	</services>
@@ -90,16 +81,6 @@
 			<param name="Usuário">mabel</param>
 			<param name="Nome">mabel</param>
 			<param name="E-mail">isabel.ota@maps.com.br</param>
-		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
-			<param name="Usuário">maps</param>
-			<param name="Nome">maps</param>
-			<param name="E-mail">labrador@maps.com.br</param>
-		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
-			<param name="Usuário">jbc</param>
-			<param name="Nome">jbc</param>
-			<param name="E-mail">jbc@jbc.com.br</param>
 		</service>
 	</services>
 </importacao>
