@@ -1,12 +1,12 @@
 <importacao>
-	<services name="Usuarios do sistema">
+	<services name="JBCs do sistema">
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">jbc-cassius</param>
 			<param name="Senha">3wFGdC</param>
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-cassius</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -15,7 +15,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-marcelo</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -24,7 +24,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-denis</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -33,7 +33,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-leonardo</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -42,7 +42,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-pedro</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -51,7 +51,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-douglas</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -60,7 +60,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jbc-thiago</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 		
 		<service name="User" action="INCLUIR">
@@ -69,52 +69,52 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">teste</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">JBC</param>
 		</service>
 	</services>
 
 	<services name="Usuários do labrador da JBC">
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-cassius</param>
 			<param name="Nome">jbc-cassius</param>
 			<param name="E-mail">cassius@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-marcelo</param>
 			<param name="Nome">jbc-marcelo</param>
 			<param name="E-mail">marcelo.rodrigues@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-denis</param>
 			<param name="Nome">jbc-denis</param>
 			<param name="E-mail">denis.takata@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-leonardo</param>
 			<param name="Nome">jbc-leonardo</param>
 			<param name="E-mail">leonardo.rocha@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-pedro</param>
 			<param name="Nome">jbc-pedro</param>
 			<param name="E-mail">pedro.catarino@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-douglas</param>
 			<param name="Nome">jbc-douglas</param>
 			<param name="E-mail">douglas.souza@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-thiago</param>
 			<param name="Nome">jbc-thiago</param>
 			<param name="E-mail">thiago.silva@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">jbc-jeff</param>
 			<param name="Nome">jbc-jeff</param>
 			<param name="E-mail">jeff@editorajbc.com.br</param>
 		</service>
-		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorJBC" action="INCLUIR">
 			<param name="Usuário">teste</param>
 			<param name="Nome">teste</param>
 			<param name="E-mail">labrador@maps.com.br</param>
