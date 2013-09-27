@@ -1,0 +1,24 @@
+<importacao>
+    <services name="Grupos">
+        <service name="Group" action="INCLUIR">
+            <param name="Nome">JBC</param>
+            <param name="Database ID">1003</param>
+        </service>
+        
+        <!-- Chinese wall -->
+        <service name="GroupCredential" action="INCLUIR">
+            <param name="Grupo">ADMINISTRADOR</param>
+            <param name="Credencial">EMPRESTAVEL_FULL_ACCESS</param>
+        </service>
+        
+        <!-- Meta credential / URL credential -->
+        <service name="GroupMetaCredential" action="INCLUIR">
+            <param name="Grupo">ADMINISTRADOR</param>
+            <param name="Meta Credencial">JMINE_WEB_APP_USER</param>
+        </service>
+        <service name="GroupMetaCredential" action="INCLUIR">
+            <param name="Grupo">ADMINISTRADOR</param>
+            <param name="Meta Credencial">JMINE_WEB_APP_ADMIN</param>
+        </service>
+    </services>
+</importacao>

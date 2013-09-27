@@ -9,5 +9,23 @@
 			<param name="Usuário">finx</param>
 			<param name="Localização">Meu quarto</param>
 		</service>
+		<service name="Livro" action="INCLUIR">
+			<param name="ISBN 10">22334455</param>
+			<param name="ISBN 13">44335522</param>
+			<param name="Título">First Blood</param>
+			<param name="Autor">David Morell</param>
+			<param name="Editora">Random House</param>
+			<param name="Usuário">diego</param>
+			<param name="Localização">Meu quarto</param>
+		</service>
+		<service name="Livro" action="INCLUIR">
+			<param name="ISBN 10">8573244771 </param>
+			<param name="ISBN 13">9788573244779 </param>
+			<param name="Título">200 DICAS PARA EMAGRECER</param>
+			<param name="Autor">MONTRAN, L. C.</param>
+			<param name="Editora">EKO</param>
+			<param name="Usuário">finx</param>
+			<param name="Localização">Meu quarto</param>
+		</service>
 	</services>
 </importacao>
