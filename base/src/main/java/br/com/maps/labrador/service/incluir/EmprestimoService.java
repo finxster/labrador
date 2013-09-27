@@ -23,14 +23,10 @@ public class EmprestimoService {
     private static final String COISA = "Coisa";
 
     private static final String DATA_DEVOLUCAO = "Data Devolução";
-    
-    private static final String LABRADOR_USUARIO = "Tomador";
 
     private AbstractEmprestavel coisa;
 
     private Date dataDevolucao;
-
-    private LabradorUsuario tomador;
 
     private LabradorBaseController controller;
 
@@ -41,7 +37,7 @@ public class EmprestimoService {
      */
     @Execution
     public void execute() {
-        this.controller.executarEmprestimo(this.tomador, this.coisa, this.dataDevolucao);
+        this.controller.executarEmprestimo(this.coisa, this.dataDevolucao);
     }
 
     /**
@@ -58,14 +54,6 @@ public class EmprestimoService {
     @Input(fieldName = DATA_DEVOLUCAO)
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
-    }
-
-    /**
-     * @param tomador the tomador to set
-     */
-    @Input(fieldName = LABRADOR_USUARIO)
-    public void setTomador(LabradorUsuario tomador) {
-        this.tomador = tomador;
     }
 
     /**

@@ -26,8 +26,6 @@ public class ProjetorService {
 
     private static final String NOME = "Nome";
 
-    private static final String USUARIO = "Usuário";
-
     private static final String LOCALIZACAO = "Localização";
 
     private DAO<Projetor> dao;
@@ -38,8 +36,6 @@ public class ProjetorService {
 
     private String nome;
 
-    private LabradorUsuario usuario;
-
     private String localizacao;
 
     @Output(propertyName = IDENTIFICADOR)
@@ -47,7 +43,6 @@ public class ProjetorService {
     public Projetor execute() {
         Projetor projetor = this.dao.createBean();
         projetor.setNome(this.nome);
-        projetor.setProprietario(this.usuario);
 
         LocalizacaoEmprestavel localizacaoProjetor = this.localizacaoDAO.createBean();
         localizacaoProjetor.setNome(this.localizacao);
@@ -87,14 +82,6 @@ public class ProjetorService {
     @Input(fieldName = NOME)
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    /**
-     * @param usuario the usuario to set
-     */
-    @Input(fieldName = USUARIO)
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
     }
 
     /**
