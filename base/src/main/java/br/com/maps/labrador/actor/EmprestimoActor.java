@@ -32,7 +32,6 @@ public class EmprestimoActor extends AbstractActor {
         Emprestimo emprestimo = dao.createBean();
         emprestimo.setTomador(usuario);
         emprestimo.setEmprestavel(emprestavel);
-        emprestimo.setData(controller.getClock().currentTimestamp());
         emprestimo.setDataDevolucao(dataDevolucao);
         persister.save(emprestimo);
 
