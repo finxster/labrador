@@ -1,0 +1,90 @@
+<importacao>
+	<services name="Usuarios do sistema">
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">renan.kuroki</param>
+			<param name="Senha">3lPLnK</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">renan.kuroki</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">fernando.chovich</param>
+			<param name="Senha">2ChC8Z</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">fernando.chovich</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">igor.colombo</param>
+			<param name="Senha">1YfJz6</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">igor.colombo</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">lilian.perillo</param>
+			<param name="Senha">3FepiN</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">lilian.perillo</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">kevin.chinem</param>
+			<param name="Senha">90TQBX</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">kevin.chinem</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">fabio.sakiyama</param>
+			<param name="Senha">7eP7UH</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">fabio.sakiyama</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+	</services>
+
+	<services name="Usuários do labrador">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">renan.kuroki</param>
+			<param name="Nome">renan.kuroki</param>
+			<param name="E-mail">renan.kuroki@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">fernando.chovich</param>
+			<param name="Nome">fernando.chovich</param>
+			<param name="E-mail">fernando.chovich@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">igor.colombo</param>
+			<param name="Nome">igor.colombo</param>
+			<param name="E-mail">igor.colombo@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">lilian.perillo</param>
+			<param name="Nome">lilian.perillo</param>
+			<param name="E-mail">lilian.perillo@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">kevin.chinem</param>
+			<param name="Nome">kevin.chinem</param>
+			<param name="E-mail">kevin.chinem@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">fabio.sakiyama</param>
+			<param name="Nome">fabio.sakiyama</param>
+			<param name="E-mail">fabio.sakiyama@maps.com.br</param>
+		</service>
+	</services>
+</importacao>
