@@ -8,7 +8,6 @@
 			<param name="Usuário">renan.kuroki</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
-
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">fernando.chovich</param>
 			<param name="Senha">2ChC8Z</param>
@@ -17,7 +16,6 @@
 			<param name="Usuário">fernando.chovich</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
-		
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">igor.colombo</param>
 			<param name="Senha">1YfJz6</param>
@@ -26,7 +24,6 @@
 			<param name="Usuário">igor.colombo</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
-
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">lilian.perillo</param>
 			<param name="Senha">3FepiN</param>
@@ -35,7 +32,6 @@
 			<param name="Usuário">lilian.perillo</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
-		
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">kevin.chinem</param>
 			<param name="Senha">90TQBX</param>
@@ -44,13 +40,38 @@
 			<param name="Usuário">kevin.chinem</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
-		
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">fabio.sakiyama</param>
 			<param name="Senha">7eP7UH</param>
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">fabio.sakiyama</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">evaristo.goes</param>
+			<param name="Senha">1Rb9WF</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">evaristo.goes</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">cesar.moraes</param>
+			<param name="Senha">1ryT3S</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">cesar.moraes</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">daniel.gallardo</param>
+			<param name="Senha">4MzUKJ</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">daniel.gallardo</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
 	</services>
@@ -86,5 +107,21 @@
 			<param name="Nome">fabio.sakiyama</param>
 			<param name="E-mail">fabio.sakiyama@maps.com.br</param>
 		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">evaristo.goes</param>
+			<param name="Nome">evaristo.goes</param>
+			<param name="E-mail">evaristo.goes@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">cesar.moraes</param>
+			<param name="Nome">cesar.moraes</param>
+			<param name="E-mail">cesar.moraes@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">daniel.gallardo</param>
+			<param name="Nome">daniel.gallardo</param>
+			<param name="E-mail">daniel.gallardo@maps.com.br</param>
+		</service>
+
 	</services>
 </importacao>
