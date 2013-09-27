@@ -1,0 +1,14 @@
+<importacao>
+    <services name="Grupos">
+        <service name="Group" action="INCLUIR">
+            <param name="Nome">USUARIO</param>
+            <param name="Database ID">5001</param>
+        </service>
+        
+        <!-- Meta credential / URL credential -->
+        <service name="GroupMetaCredential" action="INCLUIR">
+            <param name="Grupo">USUARIO</param>
+            <param name="Meta Credencial">USUARIO</param>
+        </service>
+    </services>
+</importacao>

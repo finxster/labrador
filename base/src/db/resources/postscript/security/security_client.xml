@@ -1,0 +1,8 @@
+<importacao>
+	<services name="Security Clients">
+		<service name="SecurityClient" action="INCLUIR">
+			<param name="Nome">Labrador</param>
+			<param name="Database ID">1</param>
+		</service>
+	</services>
+</importacao>
