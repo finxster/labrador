@@ -34,7 +34,7 @@ public class EmprestimoActorTest {
 
         StatelessPersister persister = mock(StatelessPersister.class);
 
-        EmprestimoActor actor = new EmprestimoActor(null);
+        EmprestimoActor actor = new EmprestimoActor();
 
         actor.devolverEmprestimo(emprestimo);
 

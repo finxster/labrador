@@ -14,17 +14,16 @@ import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 /**
- * Defina a localização de um livro.
+ * Define a localização de um objeto emprestável.
  * 
  * @author finx
  * @created Sep 13, 2013
  */
-
 @Entity
-@Alias("LOCEMPRESTAVEL")
+@Alias("LOCEMP")
 @Table(name = "LOCAL_EMPRESTAVEL")
 @Documentation("TABELA QUE ARMAZENA A LOCALIZACAO DOS OBEJTOS EMPRESTAVEIS, NO SENTIDO DE EMPRESTAR, DO SISTEMA")
-@SequenceGenerator(name = "SEQ_LOCEMPRESTAVEL", sequenceName = "SEQ_LOCEMPRESTAVEL")
+@SequenceGenerator(name = "SEQ_LOCEMP", sequenceName = "SEQ_LOCEMP")
 public class LocalizacaoEmprestavel extends PersistableBusinessObject {
 
     private Long id;
@@ -42,7 +41,7 @@ public class LocalizacaoEmprestavel extends PersistableBusinessObject {
      * @return the id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_LOCEMPRESTAVEL")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_LOCEMP")
     @Documentation("CODIGO DA LOCALIZACAO DO EMPRESTAVEL")
     @Column(name = "COD_LOCAL_EMPRESTAVEL")
     public Long getId() {
