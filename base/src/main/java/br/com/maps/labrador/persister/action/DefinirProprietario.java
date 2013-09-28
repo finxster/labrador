@@ -20,7 +20,9 @@ public class DefinirProprietario implements Action<AbstractEmprestavel> {
      * {@inheritDoc}
      */
     public void act(AbstractEmprestavel target) {
-        target.setProprietario(this.userHelper.getCurrentUser());
+        if (target.getProprietario() == null) {
+            target.setProprietario(this.userHelper.getCurrentUser());
+        }
     }
 
 }
