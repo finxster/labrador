@@ -20,6 +20,8 @@ public class AtualizaDataEmprestimo implements Action<Emprestimo> {
      * {@inheritDoc}
      */
     public void act(Emprestimo target) {
-        target.setData(clock.currentTimestamp());
+        if (target.getData() == null) {
+            target.setData(this.clock.currentTimestamp());
+        }
     }
 }
