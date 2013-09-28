@@ -11,10 +11,10 @@
 		<entry type="SERVICE">security/credentials_user.xml</entry>
 		<entry type="SERVICE">security/credentials_admin.xml</entry>
 		<entry type="SERVICE">security/group-metacredentials.xml</entry>
+		<entry type="INTEGRACAO-XML">usuarios.xml</entry>
 	</post>
 	<ref basePath="referencia">
 <!-- 		<entry type="SQL">security/users.sql</entry> -->
-		<entry type="INTEGRACAO-XML">usuarios.xml</entry>
 		<entry type="INTEGRACAO-XML">livros.xml</entry>
 		<entry type="INTEGRACAO-XML">projetores.xml</entry>
 		<entry type="INTEGRACAO-XML">mochilas.xml</entry>
