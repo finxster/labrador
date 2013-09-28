@@ -55,6 +55,15 @@
 			<param name="Grupo">USUARIO</param>
 		</service>
 		<service name="User" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Senha">labrador</param>
+			<param name="Database ID">11</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		<service name="User" action="INCLUIR">
 			<param name="Usuário">jbc</param>
 			<param name="Senha">123456</param>
 			<param name="Database ID">2000</param>
@@ -95,6 +104,11 @@
 			<param name="Usuário">maps</param>
 			<param name="Nome">maps</param>
 			<param name="E-mail">labrador@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Nome">infra</param>
+			<param name="E-mail">tecnologia@maps.com.br</param>
 		</service>
 		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">jbc</param>

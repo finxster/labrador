@@ -20,7 +20,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.mochila.Mochila;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de mochilas
@@ -71,13 +71,9 @@ public class CadastroMochila extends FormPage<Mochila> {
     protected List<Component> createFormComponents() {
         List<Component> components = new ArrayList<Component>();
 
-        final LabeledFormInputPanel nome = ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true);
-        final LabeledFormInputPanel localizacaoTextField =
-                ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this.getEntity()
-                        .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM);
-
-        components.add(nome.setOutputMarkupId(true));
-        components.add(localizacaoTextField);
+        components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
+        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this
+                .getEntity().getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
 
         return components;
 
@@ -101,14 +97,6 @@ public class CadastroMochila extends FormPage<Mochila> {
     @Override
     protected MessageCreator getHelpTextCreator() {
         return null;
-    }
-
-    @Override
-    protected boolean beforeSave(Mochila target) {
-        // XXX (finx:20130906) isso deveria estar em um persister listener, não na tela!
-        target.setProprietario(UserHelper.getUser(this.daoFactory));
-
-        return super.beforeSave(target);
     }
 
 }

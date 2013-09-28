@@ -1,16 +1,16 @@
-package br.com.maps.labrador.service.incluir;
+package br.com.maps.labrador.service.validar;
 
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.ServiceImplementor;
 import br.com.maps.labrador.domain.modem.Modem;
 
 /**
- * Serviço para inclusão de um {@link Modem} de um usuário
+ * Serviço que valida um {@link Modem}.
  * 
  * @author laercio.duarte
- * @created Sep 14, 2013
+ * @created Sep 27, 2013
  */
-@ServiceImplementor(action = ActionsEnum.INCLUIR)
+@ServiceImplementor(action = ActionsEnum.VALIDAR)
 public class ModemService extends AbstractEmprestavelService<Modem> {
 
 }
