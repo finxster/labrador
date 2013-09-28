@@ -3,11 +3,17 @@ package br.com.maps.labrador.service.incluir;
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.persister.StatelessPersister;
+import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.Output;
+import jmine.tec.services.api.export.ReferenceMap;
+import jmine.tec.services.api.export.ServiceFiller;
+import jmine.tec.services.api.io.ServiceBean;
+import jmine.tec.services.impl.export.impl.ExportUtils;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
@@ -17,13 +23,17 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @created Sep 27, 2013
  * @param <T> tipo do emprestável.
  */
-public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> {
+public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> implements ServiceFiller<T> {
 
     private static final String IDENTIFICADOR = "Identificador";
 
     private static final String NOME = "Nome";
 
     private static final String LOCALIZACAO = "Localização";
+
+    private static final String STATUS = "Status";
+
+    private static final String PROPRIETARIO = "Proprietário";
 
     private DAO<T> dao;
 
@@ -35,6 +45,10 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
 
     private String localizacao;
 
+    private StatusEmprestavel status;
+
+    private LabradorUsuario proprietario;
+
     /**
      * Executa o serviço
      * 
@@ -45,6 +59,8 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
     public T execute() {
         T coisa = this.dao.createBean();
         coisa.setNome(this.nome);
+        coisa.setStatus(this.status);
+        coisa.setProprietario(proprietario);
 
         LocalizacaoEmprestavel localizacaoCoisa = this.localizacaoDAO.createBean();
         localizacaoCoisa.setNome(this.localizacao);
@@ -67,6 +83,20 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
     }
 
     /**
+     * {@inheritDoc}
+     */
+    public void fillServiceBean(ServiceBean bean, ReferenceMap referenceMap, T entity) {
+        bean.setAction(ActionsEnum.INCLUIR);
+        bean.setName(ExportUtils.getServiceName(this.getClass()));
+
+        ExportUtils.put(bean, IDENTIFICADOR, "coisa" + entity.getId());
+        ExportUtils.put(bean, PROPRIETARIO, entity.getProprietario().getNome());
+        ExportUtils.put(bean, NOME, entity.getNome());
+        ExportUtils.put(bean, LOCALIZACAO, entity.getLocalizacao().getNome());
+        ExportUtils.put(bean, STATUS, entity.getStatus());
+    }
+
+    /**
      * @param nome the nome to set
      */
     @Input(fieldName = NOME)
@@ -80,6 +110,22 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
     @Input(fieldName = LOCALIZACAO)
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    @Input(fieldName = STATUS, required = false)
+    public void setStatus(StatusEmprestavel status) {
+        this.status = status;
+    }
+
+    /**
+     * @param proprietario the proprietario to set
+     */
+    @Input(fieldName = PROPRIETARIO, required = false)
+    public void setProprietario(LabradorUsuario proprietario) {
+        this.proprietario = proprietario;
     }
 
     /**

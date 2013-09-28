@@ -9,6 +9,7 @@
 
 	<import resource="base-mapping.xml" />
 	<import resource="base-services.xml" />
+	<import resource="base-exporters.xml" />
 
 	<bean id="userHelper" class="br.com.maps.labrador.helper.LabradorUserHelper">
 		<property name="securityService" ref="securityService" />

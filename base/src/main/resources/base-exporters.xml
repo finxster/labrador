@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="labradorBaseExporters" class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="exportActor" />
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.export.LivroExporter" />
+				<bean class="br.com.maps.labrador.export.ProjetorExporter" />
+				<bean class="br.com.maps.labrador.export.ModemExporter" />
+				<bean class="br.com.maps.labrador.export.MochilaExporter" />
+				<bean class="br.com.maps.labrador.export.EmprestimoExporter" />
+			</list>
+		</property>
+	</bean>
+</beans>

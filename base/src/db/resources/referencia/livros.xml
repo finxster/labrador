@@ -6,7 +6,7 @@
 		<service name="Livro" action="INCLUIR">
 			<param name="ISBN 10">9788576860761</param>
 			<param name="ISBN 13">9788576860761</param>
-			<param name="Título">A batalha do apocalipse</param>
+			<param name="Nome">A batalha do apocalipse</param>
 			<param name="Autor">Eduardo Spohr</param>
 			<param name="Editora">Verus</param>
 			<param name="Usuário">finx</param>
