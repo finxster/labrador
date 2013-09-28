@@ -1,16 +1,16 @@
-package br.com.maps.labrador.service.incluir;
+package br.com.maps.labrador.service.validar;
 
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.ServiceImplementor;
 import br.com.maps.labrador.domain.projetor.Projetor;
 
 /**
- * Serviço para inclusão de um {@link Projetor} de um usuário
+ * Serviço que valida um {@link Projetor}.
  * 
  * @author laercio.duarte
- * @created Sep 14, 2013
+ * @created Sep 27, 2013
  */
-@ServiceImplementor(action = ActionsEnum.INCLUIR)
+@ServiceImplementor(action = ActionsEnum.VALIDAR)
 public class ProjetorService extends AbstractEmprestavelService<Projetor> {
 
 }

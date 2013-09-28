@@ -1,16 +1,16 @@
-package br.com.maps.labrador.service.incluir;
+package br.com.maps.labrador.service.validar;
 
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.ServiceImplementor;
 import br.com.maps.labrador.domain.mochila.Mochila;
 
 /**
- * Serviço para inclusão de um {@link Mochila} de um usuário
+ * Serviço que valida um {@link Mochila}.
  * 
  * @author laercio.duarte
- * @created Sep 14, 2013
+ * @created Sep 27, 2013
  */
-@ServiceImplementor(action = ActionsEnum.INCLUIR)
+@ServiceImplementor(action = ActionsEnum.VALIDAR)
 public class MochilaService extends AbstractEmprestavelService<Mochila> {
 
 }
