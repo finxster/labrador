@@ -1,16 +1,12 @@
 package br.com.maps.labrador.service.incluir;
 
-import jmine.tec.di.annotation.Injected;
-import jmine.tec.persist.api.DAO;
-import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.services.api.ActionsEnum;
-import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
-import jmine.tec.services.api.annotations.Output;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
+import jmine.tec.services.api.export.ReferenceMap;
+import jmine.tec.services.api.io.ServiceBean;
+import jmine.tec.services.impl.export.impl.ExportUtils;
 import br.com.maps.labrador.domain.livro.Livro;
-import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
 /**
  * Serviço de inclusão de livros.
@@ -19,91 +15,39 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  * @created Aug 26, 2013
  */
 @ServiceImplementor(action = ActionsEnum.INCLUIR)
-public class LivroService {
-
-    private static final String IDENTIFICADOR = "Identificador";
+public class LivroService extends AbstractEmprestavelService<Livro> {
 
     private static final String ISBN_10 = "ISBN 10";
 
     private static final String ISBN_13 = "ISBN 13";
 
-    private static final String TITULO = "Título";
-
     private static final String AUTOR = "Autor";
 
     private static final String EDITORA = "Editora";
-
-    private static final String USUARIO = "Usuário";
-
-    private static final String LOCALIZACAO = "Localização";
-
-    private DAO<Livro> dao;
-
-    private DAO<LocalizacaoEmprestavel> localizacaoDAO;
-
-    private StatelessPersister<Livro> persister;
 
     private String isbn10;
 
     private String isbn13;
 
-    private String titulo;
-
     private String autor;
 
     private String editora;
 
-    private LabradorUsuario usuario;
-
-    private String localizacao;
-
-    @Output(propertyName = IDENTIFICADOR)
-    @Execution
-    public Livro execute() {
-        Livro livro = this.dao.createBean();
-        livro.setIsbn10(this.isbn10);
-        livro.setIsbn13(this.isbn13);
-        livro.setNome(this.titulo);
-        livro.setAutor(this.autor);
-        livro.setEditora(this.editora);
-        livro.setProprietario(this.usuario);
-
-        LocalizacaoEmprestavel localizacaoLivro = this.localizacaoDAO.createBean();
-        localizacaoLivro.setNome(this.localizacao);
-        livro.setLocalizacao(localizacaoLivro);
-
-        this.persister.save(livro);
-        return livro;
-    }
-
     /**
-     * @param dao the dao to set
+     * {@inheritDoc}
      */
-    @Injected
-    public void setDao(DAO<Livro> dao) {
-        this.dao = dao;
-    }
-
-    /**
-     * @param localizacaoDAO the localizacaoDAO to set
-     */
-    @Injected
-    public void setLocalizacaoDAO(DAO<LocalizacaoEmprestavel> localizacaoDAO) {
-        this.localizacaoDAO = localizacaoDAO;
-    }
-
-    /**
-     * @param persister the persister to set
-     */
-    @Injected
-    public void setPersister(StatelessPersister<Livro> persister) {
-        this.persister = persister;
+    @Override
+    protected void doSpecificInclusions(Livro coisa) {
+        coisa.setIsbn10(this.isbn10);
+        coisa.setIsbn13(this.isbn13);
+        coisa.setAutor(this.autor);
+        coisa.setEditora(this.editora);
     }
 
     /**
      * @param isbn10 the isbn10 to set
      */
-    @Input(fieldName = ISBN_10)
+    @Input(fieldName = ISBN_10, required = false)
     public void setIsbn10(String isbn10) {
         this.isbn10 = isbn10;
     }
@@ -111,23 +55,15 @@ public class LivroService {
     /**
      * @param isbn13 the isbn13 to set
      */
-    @Input(fieldName = ISBN_13)
+    @Input(fieldName = ISBN_13, required = false)
     public void setIsbn13(String isbn13) {
         this.isbn13 = isbn13;
     }
 
     /**
-     * @param titulo the titulo to set
-     */
-    @Input(fieldName = TITULO)
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    /**
      * @param autor the autor to set
      */
-    @Input(fieldName = AUTOR)
+    @Input(fieldName = AUTOR, required = false)
     public void setAutor(String autor) {
         this.autor = autor;
     }
@@ -135,25 +71,20 @@ public class LivroService {
     /**
      * @param editora the editora to set
      */
-    @Input(fieldName = EDITORA)
+    @Input(fieldName = EDITORA, required = false)
     public void setEditora(String editora) {
         this.editora = editora;
     }
 
     /**
-     * @param usuario the usuario to set
+     * {@inheritDoc}
      */
-    @Input(fieldName = USUARIO)
-    public void setUsuario(LabradorUsuario usuario) {
-        this.usuario = usuario;
-    }
+    public void fillServiceBean(ServiceBean bean, ReferenceMap referenceMap, Livro entity) {
+        super.fillServiceBean(bean, referenceMap, entity);
 
-    /**
-     * @param localizacao the localizacao to set
-     */
-    @Input(fieldName = LOCALIZACAO)
-    public void setLocalizacao(String localizacao) {
-        this.localizacao = localizacao;
+        ExportUtils.put(bean, ISBN_10, entity.getIsbn10());
+        ExportUtils.put(bean, ISBN_13, entity.getIsbn13());
+        ExportUtils.put(bean, AUTOR, entity.getAutor());
+        ExportUtils.put(bean, EDITORA, entity.getEditora());
     }
-
 }

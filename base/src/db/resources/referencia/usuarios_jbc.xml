@@ -64,6 +64,15 @@
 		</service>
 		
 		<service name="User" action="INCLUIR">
+			<param name="Usuário">jbc-jeff</param>
+			<param name="Senha">2HHz7W</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jbc-jeff</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
 			<param name="Usuário">teste</param>
 			<param name="Senha">labrador</param>
 		</service>

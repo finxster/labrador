@@ -51,15 +51,15 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(PesquisaProjetor.class, "Base", "Pesquisas", "Projetores");
         config.addPage(PesquisaEmprestimo.class, "Base", "Pesquisas", "Empréstimos");
 
-//        config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
-//        config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Autorização", "Auditoria");
-//
-//        config.addPage(ConsultaDiagnosticador.class, "Infra", "Infra", "Diagnosticador");
-//        config.addPage(ConsultaExceptionRecord.class, "Infra", "Infra", "Exceptions");
-//        config.addPage(Importacao.class, "Infra", "Infra", "Importacao");
-//
+        config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
+        config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Autorização", "Auditoria");
+
+        config.addPage(ConsultaDiagnosticador.class, "Infra", "Infra", "Diagnosticador");
+        config.addPage(ConsultaExceptionRecord.class, "Infra", "Infra", "Exceptions");
+        config.addPage(Importacao.class, "Infra", "Infra", "Importacao");
+
         config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
-//        config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
+        config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
 
         return config;
     }

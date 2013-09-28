@@ -1,5 +1,8 @@
 <importacao>
 	<services name="Mochilas">
+		<service name="Login" action="EXECUTAR">
+			<param name="Usuário">infra</param>
+		</service>
 		<service name="Mochila" action="INCLUIR">
 			<param name="Nome">Mochila 01</param>
 			<param name="Usuário">maps</param>

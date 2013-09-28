@@ -19,7 +19,7 @@ import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
-import br.com.maps.labrador.helper.UserHelper;
+import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela que cadastra empréstimos.
@@ -34,6 +34,9 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
 
     @SpringBean(name = "labradorBaseController")
     private LabradorBaseController controller;
+    
+    @SpringBean
+    private LabradorUserHelper userHelper;
 
     /**
      * Construtor
@@ -53,7 +56,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
 
     public List<AbstractEmprestavel> search(DAOFactory daoFactory) {
         AbstractEmprestavelDAO dao = daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
-        return dao.findAllByNotMyUser(UserHelper.getUser(daoFactory));
+        return dao.findAllByNotMyUser(userHelper.getCurrentUser());
     }
 
     /**
@@ -89,8 +92,6 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
     protected List<ButtonCommand> getPageCommands() {
         List<ButtonCommand> pageCommands = super.getPageCommands();
 
-        final LabradorUsuario user = UserHelper.getUser(daoFactory);
-
         pageCommands.add(new SingleEntityExecutionButton<AbstractEmprestavel>() {
 
             /**
@@ -106,7 +107,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
              */
             @Override
             protected void doExecute(AbstractEmprestavel entity) {
-                controller.executarEmprestimo(user, entity);
+                controller.executarEmprestimo(entity, null);
             }
 
             /**
