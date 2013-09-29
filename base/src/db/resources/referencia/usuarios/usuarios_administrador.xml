@@ -82,5 +82,10 @@
 			<param name="Nome">mabel</param>
 			<param name="E-mail">isabel.ota@maps.com.br</param>
 		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Nome">maps</param>
+			<param name="E-mail">labrador@maps.com.br</param>
+		</service>
 	</services>
 </importacao>
