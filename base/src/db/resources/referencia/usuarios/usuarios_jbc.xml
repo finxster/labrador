@@ -62,7 +62,16 @@
 			<param name="Usuário">jbc-thiago</param>
 			<param name="Grupo">JBC</param>
 		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jbc-jeff</param>
+			<param name="Senha">6B0Q3X</param>
+		</service>
 		
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jbc-jeff</param>
+			<param name="Grupo">JBC</param>
+		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">teste</param>
 			<param name="Senha">labrador</param>
@@ -109,11 +118,11 @@
 			<param name="Nome">jbc-thiago</param>
 			<param name="E-mail">thiago.silva@editorajbc.com.br</param>
 		</service>
-<!-- 		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">jbc-jeff</param>
 			<param name="Nome">jbc-jeff</param>
 			<param name="E-mail">jeff@editorajbc.com.br</param>
-		</service> -->
+		</service>
 		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">teste</param>
 			<param name="Nome">teste</param>
