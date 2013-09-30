@@ -74,6 +74,43 @@
 			<param name="Usuário">daniel.gallardo</param>
 			<param name="Grupo">USUARIO</param>
 		</service>
+ 
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">camila.maida</param>
+			<param name="Senha">7rWfA1</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">camila.maida</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">ricardo.toth</param>
+			<param name="Senha">9VN0uE</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">ricardo.toth</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">adriano.silva</param>
+			<param name="Senha">4ejk6Z</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">adriano.silva</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">julio.fradico</param>
+			<param name="Senha">9rOQkE</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">julio.fradico</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
 	</services>
 
 	<services name="Usuários do labrador">
@@ -122,6 +159,25 @@
 			<param name="Nome">daniel.gallardo</param>
 			<param name="E-mail">daniel.gallardo@maps.com.br</param>
 		</service>
-
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">camila.maida</param>
+			<param name="Nome">camila.maida</param>
+			<param name="E-mail">camila.maida@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">ricardo.toth</param>
+			<param name="Nome">ricardo.toth</param>
+			<param name="E-mail">ricardo.toth@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">adriano.silva</param>
+			<param name="Nome">adriano.silva</param>
+			<param name="E-mail">adriano.silva@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">julio.fradico</param>
+			<param name="Nome">julio.fradico</param>
+			<param name="E-mail">julio.fradico@maps.com.br</param>
+		</service>
 	</services>
 </importacao>
