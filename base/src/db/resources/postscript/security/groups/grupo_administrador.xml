@@ -1,24 +1,32 @@
 <importacao>
-    <services name="Grupos">
-        <service name="Group" action="INCLUIR">
-            <param name="Nome">ADMINISTRADOR</param>
-            <param name="Database ID">1000</param>
-        </service>
-        
-        <!-- Chinese wall -->
-        <service name="GroupCredential" action="INCLUIR">
-            <param name="Grupo">ADMINISTRADOR</param>
-            <param name="Credencial">EMPRESTAVEL_ACESSO_TOTAL</param>
-        </service>
-        
-        <!-- Meta credential / URL credential -->
-        <service name="GroupMetaCredential" action="INCLUIR">
-            <param name="Grupo">ADMINISTRADOR</param>
-            <param name="Meta Credencial">JMINE_WEB_APP_USER</param>
-        </service>
-        <service name="GroupMetaCredential" action="INCLUIR">
-            <param name="Grupo">ADMINISTRADOR</param>
-            <param name="Meta Credencial">JMINE_WEB_APP_ADMIN</param>
-        </service>
-    </services>
+	<services name="Grupos">
+		<service name="Group" action="INCLUIR">
+			<param name="Nome">ADMINISTRADOR</param>
+			<param name="Database ID">1000</param>
+		</service>
+
+		<!-- Chinese wall -->
+		<service name="GroupCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Credencial">EMPRESTAVEL_ACESSO_TOTAL</param>
+		</service>
+
+		<!-- Meta credential / URL credential -->
+		<service name="GroupMetaCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Meta Credencial">JMINE_WEB_APP_USER</param>
+		</service>
+		<service name="GroupMetaCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Meta Credencial">JMINE_WEB_APP_ADMIN</param>
+		</service>
+		<service name="GroupMetaCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Meta Credencial">LABRADOR</param>
+		</service>
+		<service name="GroupMetaCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Meta Credencial">USUARIO</param>
+		</service>
+	</services>
 </importacao>
