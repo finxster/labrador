@@ -21,6 +21,7 @@ import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
 import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
 import br.com.maps.labrador.pages.consulta.modem.PesquisaModem;
 import br.com.maps.labrador.pages.consulta.projetor.PesquisaProjetor;
+import br.com.maps.labrador.pages.main.LabradorMain;
 
 /**
  * Starting point menu creator
@@ -60,7 +61,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
 
         config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
         config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
-
+        config.addPage(LabradorMain.class, "Teste", "Teste");
         return config;
     }
 
