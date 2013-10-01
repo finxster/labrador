@@ -60,7 +60,7 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
         T coisa = this.dao.createBean();
         coisa.setNome(this.nome);
         coisa.setStatus(this.status);
-        coisa.setProprietario(proprietario);
+        coisa.setProprietario(this.proprietario);
 
         LocalizacaoEmprestavel localizacaoCoisa = this.localizacaoDAO.createBean();
         localizacaoCoisa.setNome(this.localizacao);
@@ -115,7 +115,7 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
     /**
      * @param status the status to set
      */
-    @Input(fieldName = STATUS, required = false)
+    @Input(fieldName = STATUS, required = false, defaultValue = "DISPONIVEL")
     public void setStatus(StatusEmprestavel status) {
         this.status = status;
     }
