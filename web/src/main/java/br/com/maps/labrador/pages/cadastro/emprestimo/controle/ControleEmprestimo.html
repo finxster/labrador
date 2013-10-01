@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org/">
+<head>
+<title></title>
+</head>
+<body>
+<wicket:extend>
+    <form wicket:id="mainForm">
+     <span wicket:id="feedback">feedbackmessages will be put here</span>
+     
+        <div wicket:id="containerLista">
+    <table class="listagem" summary="Descritivo do funcional da tabela">
+        <thead>
+            <tr>
+                <th class="firstColuna" nowrap="nowrap">Nome</th>
+                <th class="halfColuna" nowrap="nowrap">Status</th>
+                <th class="halfColuna" nowrap="nowrap"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr wicket:id="operacoes">
+                <td class="firstConteudo" wicket:id="nome">Nome</td>
+                <td class="halfConteudo" wicket:id="status">Status</td>
+                <td class="lastConteudo" wicket:id="painelEmprestimo">
+                <a role="button" class="btn" wicket:id="botao">Emprestar</a>
+<div wicket:id="modal">
+<!--     <div class="row-fluid">
+        <div class="span12">
+            <a id="modal-931651" href="#modal-container-931651" role="button" class="btn" data-toggle="modal">Emprestar</a>
+
+            <div id="modal-container-931651" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3 id="myModalLabel">Estou emprestando esse objeto para</h3>
+                </div>
+                <div class="modal-body"><div wicket:id="usuarioAEmprestar" ></div></div>
+                <div class="modal-footer">
+                     <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button> <input type="submit" class="btn btn-primary"/>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+     </form>	
+
+</wicket:extend>
+</body>
+</html>
