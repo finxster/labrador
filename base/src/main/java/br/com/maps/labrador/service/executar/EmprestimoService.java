@@ -5,7 +5,7 @@ import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.Execution;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.ServiceImplementor;
-import jmine.tec.utils.date.Date;
+import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
@@ -18,7 +18,7 @@ public class EmprestimoService {
 
     private AbstractEmprestavel coisa;
 
-    private Date dataDevolucao;
+    private Timestamp dataDevolucao;
 
     private LabradorBaseController controller;
 
@@ -42,7 +42,7 @@ public class EmprestimoService {
      * @param dataDevolucao the dataDevolucao to set
      */
     @Input(fieldName = DATA_DEVOLUCAO)
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(Timestamp dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
