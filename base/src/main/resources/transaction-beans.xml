@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+    <bean id="transactionalController" parent="abstractTransactionalController" class="jmine.tec.persist.impl.controller.TransactionalController">
+    </bean>
+
+    <bean id="annotatedSessionFactory" class="jmine.tec.persist.impl.spring.AnnotationSessionFactoryBean" lazy-init="true">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configurationClass" value="org.hibernate.cfg.AnnotationConfiguration" />
+        <property name="annotatedClasses" ref="mappingResources" />
+        <property name="preInsertEventListeners">
+            <list>
+            </list>
+        </property>
+        <property name="preUpdateEventListeners">
+            <list>
+            </list>
+        </property>
+        <property name="postLoadEventListeners">
+            <list>
+                <ref bean="persisterPostLoadEventListener" />
+                <ref bean="clearHistoryEventListener" />
+            </list>
+        </property>
+        <property name="postInsertEventListeners">
+            <list>
+                <ref bean="clearHistoryEventListener" />
+            </list>
+        </property>
+        <property name="postUpdateEventListeners">
+            <list>
+                <ref bean="clearHistoryEventListener" />
+            </list>
+        </property>
+        <property name="flushEventListeners">
+            <list>
+                <ref bean="dirtyAwareFlushEventListener" />
+            </list>
+        </property>
+        <property name="autoFlushEventListeners">
+            <list>
+                <ref bean="dirtyAwareAutoFlushEventListener" />
+            </list>
+        </property>
+        <property name="saveOrUpdateEventListeners">
+            <list>
+                <ref bean="uniqueGeneratedValueEventListener" />
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">${database.hibernate.dialect}</prop>
+                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.default_schema">${database.hibernate.default_schema}</prop>
+                <prop key="hibernate.dbcp.ps.maxActive">100</prop>
+                <prop key="hibernate.dbcp.ps.whenExhaustedAction">1</prop>
+                <prop key="hibernate.dbcp.ps.maxWait">120000</prop>
+                <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                <prop key="hibernate.cache.use_query_cache">true</prop>
+                <prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+                <prop key="hibernate.jdbc.use_scrollable_resultset">true</prop>
+            </props>
+        </property>
+        <property name="schemaUpdate">
+            <value>${hibernate.schemaUpdate}</value>
+        </property>
+        <property name="injectFiltersOnSubclasses" value="true" />
+        <property name="filterDefinitions">
+            <bean factory-bean="chineseWallFilterRegistry" factory-method="getFilters" />
+        </property>
+    </bean>
+
+    <bean id="boAuthorizationManager" class="jmine.tec.persist.impl.authorization.AuthorizationManager">
+        <constructor-arg type="jmine.tec.persist.impl.authorization.AuthorizationStatus" value="${authorization.status}" />
+        <constructor-arg type="boolean" value="${authorization.allowAuthBySameUser}" />
+    </bean>
+
+    <bean id="sessionFactory" class="jmine.tec.persist.impl.spring.PartitionAnnotationSessionFactoryBean" lazy-init="true">
+        <property name="pureSessionFactoryBean" ref="&amp;annotatedSessionFactory" />
+        <property name="boAuthorizationManager" ref="boAuthorizationManager" />
+        <property name="pagingService" ref="pagingService" />
+    </bean>
+</beans>
