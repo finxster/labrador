@@ -125,7 +125,7 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
      */
     @NotNull
     @Index(suffix = "0")
-    @Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
+    @Cascade({ CascadeType.ALL })
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COD_LOCAL_EMPRESTAVEL")
     @Documentation("CODIGO DA LOCALIZACAO DO EMPRESTAVEL.")
@@ -153,7 +153,7 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     public void devolver() {
         this.status = StatusEmprestavel.DISPONIVEL;
     }
-    
+
     /**
      * {@inheritDoc}
      */
