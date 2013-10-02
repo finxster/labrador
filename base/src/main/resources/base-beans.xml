@@ -9,22 +9,9 @@
 
 	<import resource="base-mapping.xml" />
 	<import resource="base-services.xml" />
-	<import resource="base-exporters.xml" />
-
-	<bean id="userHelper" class="br.com.maps.labrador.helper.LabradorUserHelper">
-		<property name="securityService" ref="securityService" />
-		<property name="daoFactory" ref="daoFactory" />
-	</bean>
-
-	<bean id="emprestimoActor" class="br.com.maps.labrador.actor.EmprestimoActor">
-		<property name="userHelper" ref="userHelper" />
-		<property name="persister" ref="statelessPersister" />
-		<property name="clock" ref="wallClock" />
-		<property name="daoFactory" ref="daoFactory" />
-	</bean>
-
+	
 	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
-		<property name="emprestimoActor" ref="emprestimoActor" />
+		<property name="persister" ref="statelessPersister" />
 	</bean>
 
 	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
@@ -74,8 +61,7 @@
 
 	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestimoPersisterListenerConfigurer" />
 	<bean id="labradorUsuarioPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.LabradorUsuarioPersisterListenerConfigurer" />
-	<bean id="emprestavelPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestavelPersisterListenerConfigurer" />
-
+    <bean id="emprestavelPersisterListener" class="br.com.maps.labrador.persister.configurer.EmprestavelPersisterListener"/>
 	<bean id="produtoIntegracaoValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
 		<property name="receiver" ref="validatorRegistry"></property>
 		<property name="registers">
@@ -84,5 +70,4 @@
 			</list>
 		</property>
 	</bean>
-
 </beans>
