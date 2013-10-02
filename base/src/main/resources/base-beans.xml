@@ -61,7 +61,7 @@
 
 	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestimoPersisterListenerConfigurer" />
 	<bean id="labradorUsuarioPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.LabradorUsuarioPersisterListenerConfigurer" />
-
+    <bean id="emprestavelPersisterListener" class="br.com.maps.labrador.persister.configurer.EmprestavelPersisterListener"/>
 	<bean id="produtoIntegracaoValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
 		<property name="receiver" ref="validatorRegistry"></property>
 		<property name="registers">

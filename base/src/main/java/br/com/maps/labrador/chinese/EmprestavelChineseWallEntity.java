@@ -16,7 +16,7 @@ public interface EmprestavelChineseWallEntity {
     /**
      * Nome das colunas no DB que identificam o ID de um usuário.
      */
-    String COLUMN_NAME = "COD_USUARIO";
+    String COLUMN_NAME = "COD_EMPRESTAVEL";
 
     /**
      * Nome do parâmetro.
@@ -26,8 +26,7 @@ public interface EmprestavelChineseWallEntity {
     /**
      * Condição do filtro.
      */
-    String CONDITION = COLUMN_NAME + " in ( SELECT cwei.COD_ENTITY FROM $SCHEMA_NAME$.CREDENTIAL_ENTITY_ID cwei "
+    String CONDITION = COLUMN_NAME + " in (" + " SELECT cwei.COD_ENTITY FROM $SCHEMA_NAME$.CREDENTIAL_ENTITY_ID cwei "
             + "JOIN $SCHEMA_NAME$.CREDENTIAL cred ON cwei.COD_CREDENTIAL = cred.COD_CREDENTIAL " + "where cred.TYPE_CREDENTIAL = 2 AND "
             + "cred.ENTITY_NAME = 'EMPRESTAVEL' AND " + "cred.COD_CREDENTIAL IN ( :" + PARAM_NAME + "))";
-
 }
