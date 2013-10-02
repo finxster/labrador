@@ -51,74 +51,28 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     private LocalizacaoEmprestavel localizacao;
 
     /**
+     * {@inheritDoc}
+     */
+    public void devolver() {
+        this.status = StatusEmprestavel.DISPONIVEL;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void emprestar() {
+        this.status = StatusEmprestavel.EMPRESTADO;
+    }
+
+    /**
      * @return the id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_EMPRES")
     @Documentation("CODIGO QUE IDENTIFICA UM OBJETO QUE EH PASSIVEL DE EMPRESTIMO")
-    @Column(name = "COD_EMPRESTAVEL")
+    @Column(name = EmprestavelChineseWallEntity.COLUMN_NAME)
     public Long getId() {
         return this.id;
-    }
-
-    /**
-     * @param id the id to set
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    /**
-     * @return the nome
-     */
-    @NotNull
-    @NaturalKey
-    @Column(name = "NOME", nullable = false)
-    @Documentation("NOME DO OBJETO QUE EH EMPRESTAVEL.")
-    public String getNome() {
-        return this.nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
-     * @return the proprietario
-     */
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = EmprestavelChineseWallEntity.COLUMN_NAME, nullable = false)
-    @Documentation("CODIGO DO USUARIO QUE EH O PROPRIETARIO DO EMPRESTAVEL.")
-    public LabradorUsuario getProprietario() {
-        return this.proprietario;
-    }
-
-    /**
-     * @param proprietario the proprietario to set
-     */
-    public void setProprietario(LabradorUsuario proprietario) {
-        this.proprietario = proprietario;
-    }
-
-    /**
-     * @return the status
-     */
-    @NotNull
-    @Column(name = "STATUS", nullable = false)
-    @Documentation("STATUS DO EMPRESTIMO DO EMPRESTAVEL.")
-    public StatusEmprestavel getStatus() {
-        return this.status;
-    }
-
-    /**
-     * @param status the status to set
-     */
-    public void setStatus(StatusEmprestavel status) {
-        this.status = status;
     }
 
     /**
@@ -135,6 +89,45 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
+     * @return the nome
+     */
+    @NotNull
+    @NaturalKey
+    @Column(name = "NOME", nullable = false)
+    @Documentation("NOME DO OBJETO QUE EH EMPRESTAVEL.")
+    public String getNome() {
+        return this.nome;
+    }
+
+    /**
+     * @return the proprietario
+     */
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_USUARIO", nullable = false)
+    @Documentation("CODIGO DO USUARIO QUE EH O PROPRIETARIO DO EMPRESTAVEL.")
+    public LabradorUsuario getProprietario() {
+        return this.proprietario;
+    }
+
+    /**
+     * @return the status
+     */
+    @NotNull
+    @Column(name = "STATUS", nullable = false)
+    @Documentation("STATUS DO EMPRESTIMO DO EMPRESTAVEL.")
+    public StatusEmprestavel getStatus() {
+        return this.status;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
      * @param localizacao the localizacao to set
      */
     public void setLocalizacao(LocalizacaoEmprestavel localizacao) {
@@ -142,19 +135,26 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
-     * {@inheritDoc}
+     * @param nome the nome to set
      */
-    public void emprestar() {
-        this.status = StatusEmprestavel.EMPRESTADO;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * {@inheritDoc}
+     * @param proprietario the proprietario to set
      */
-    public void devolver() {
-        this.status = StatusEmprestavel.DISPONIVEL;
+    public void setProprietario(LabradorUsuario proprietario) {
+        this.proprietario = proprietario;
     }
-    
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(StatusEmprestavel status) {
+        this.status = status;
+    }
+
     /**
      * {@inheritDoc}
      */

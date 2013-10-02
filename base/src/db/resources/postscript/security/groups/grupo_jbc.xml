@@ -8,7 +8,7 @@
         <!-- Chinese wall -->
         <service name="GroupCredential" action="INCLUIR">
             <param name="Grupo">JBC</param>
-            <param name="Credencial">EMPRESTAVEL_ACESSO_LIMITADO</param>
+            <param name="Credencial">EMPRESTAVEL_ACESSO_LIMITADO_JBC</param>
         </service>
         
         <!-- Meta credential / URL credential -->
