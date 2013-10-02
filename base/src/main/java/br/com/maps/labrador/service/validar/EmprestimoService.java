@@ -85,7 +85,7 @@ public class EmprestimoService extends AbstractValidationService {
     /**
      * @param dataDevolucao the dataDevolucao to set
      */
-    @Input(fieldName = DATA_DEVOLUCAO)
+    @Input(fieldName = DATA_DEVOLUCAO, required = false)
     public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }

@@ -124,7 +124,7 @@ public class EmprestavelChineseWallTest extends DefaultRefDBTestCase {
         Livro livro1 = livroDAO.findByNaturalKey("200 DICAS PARA EMAGRECER");
 
         // Consulta sem credential de chinesewall, acesso a todos os livros
-        assertEquals(3, livroDAO.findAll().size());
+        assertEquals(4, livroDAO.findAll().size());
 
         // Validando que o livro favorito do finx foi encontrado.
         assertNotNull(livro1);
