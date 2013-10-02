@@ -54,6 +54,10 @@
 			<param name="Usuário">maps</param>
 			<param name="Grupo">ADMINISTRADOR</param>
 		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Grupo">MAPS_TECNOLOGIA</param>
+		</service>
 	</services>
 
 	<services name="Usuários do labrador">

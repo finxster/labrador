@@ -24,6 +24,7 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Filter;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.chinese.EmprestavelChineseWallEntity;
@@ -38,6 +39,7 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TP_EMPRESTAVEL", discriminatorType = DiscriminatorType.INTEGER)
 @Comment(table = "EMPRESTAVEL", column = "TP_EMPRESTAVEL", value = "INDICA O TIPO DO OBJETO EMPRESTAVO.")
+@Filter(name = EmprestavelChineseWallEntity.FILTER_NAME, condition = EmprestavelChineseWallEntity.CONDITION)
 public abstract class AbstractEmprestavel extends PersistableBusinessObject implements Emprestavel {
 
     private Long id;
