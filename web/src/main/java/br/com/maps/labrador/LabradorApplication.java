@@ -1,7 +1,5 @@
 package br.com.maps.labrador;
 
-import images.ImageResources;
-
 import java.util.Iterator;
 
 import jmine.tec.rtm.impl.RtmController;
@@ -86,15 +84,20 @@ public class LabradorApplication extends JMineWicketWebApplication {
         resourceSettings.getResourceFinders().add(0, new WebApplicationPath(this.getServletContext(), "/"));
         resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
         
-        
+//        ((SystemMapper) this.getRootRequestMapper()).unmount("images");
 //        ((SystemMapper) this.getRootRequestMapper()).add(new ImageMapper("images", ImageResources.class));
         Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
+        ImageMapper imageMapper = null;
         while (it.hasNext()) {
             IRequestMapper next = it.next();
             if (next instanceof ImageMapper) {
-                ((SystemMapper) this.getRootRequestMapper()).remove(next);
+                imageMapper = (ImageMapper) next;//((SystemMapper) this.getRootRequestMapper()).remove(next);
             }
         }
+        if (imageMapper != null) {
+            ((SystemMapper) this.getRootRequestMapper()).remove(imageMapper);
+        }
+        
     }
     
     /**
