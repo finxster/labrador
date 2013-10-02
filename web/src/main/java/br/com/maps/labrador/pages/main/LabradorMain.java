@@ -8,23 +8,17 @@ import java.util.Set;
 
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
-import jmine.tec.web.wicket.component.paging.DAOQueryDataProvider;
 import jmine.tec.web.wicket.model.DefaultDetachableModel;
 
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.GridView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
-import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.dao.LivroDAO;
@@ -89,28 +83,19 @@ public class LabradorMain extends WebPage {
 
             @Override
             protected void populateEmptyItem(Item<EmprestavelVO> item) {
-                item.add(new Label("nome", "<vazio>"));
-                item.add(new Label("proprietario", "<vazio>"));
-                item.add(new Label("localizacao", "<vazio>"));
-                item.add(new Label("status", "<vazio>"));
+                item.add(new EmptyPanel("painelPrincipal"));
 
             }
 
             @Override
             protected void populateItem(Item<EmprestavelVO> item) {
                 EmprestavelVO vo = item.getModelObject();
-                item.add(new Label("nome", Model.of(vo.getNome())));
-                item.add(new Label("proprietario", Model.of(vo.getProprietario())));
-                item.add(new Label("localizacao", Model.of(vo.getLocalizacao())));
-                item.add(new Label("status", Model.of(vo.getStatus())));
-
+                item.add(new EmprestavelPanel("painelPrincipal", vo));
             }
         };
-        
+
         gridView.setRows(4);
         gridView.setColumns(2);
-
-        
 
         this.add(gridView);
         this.add(form);

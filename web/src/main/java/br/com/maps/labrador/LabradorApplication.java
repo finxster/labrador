@@ -1,9 +1,14 @@
 package br.com.maps.labrador;
 
+import images.ImageResources;
+
+import java.util.Iterator;
+
 import jmine.tec.rtm.impl.RtmController;
 import jmine.tec.security.api.SecurityManager;
 import jmine.tec.security.web.WebSecurityContext;
 import jmine.tec.web.wicket.application.JMineWicketWebApplication;
+import jmine.tec.web.wicket.mapper.ImageMapper;
 import jmine.tec.web.wicket.pages.main.Logout;
 import jmine.tec.web.wicket.security.SecureSession;
 
@@ -11,9 +16,11 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
+import org.apache.wicket.SystemMapper;
 import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.core.util.file.WebApplicationPath;
 import org.apache.wicket.markup.html.pages.AccessDeniedPage;
+import org.apache.wicket.request.IRequestMapper;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.Response;
 import org.apache.wicket.request.resource.caching.FilenameWithVersionResourceCachingStrategy;
@@ -59,7 +66,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
         this.getApplicationSettings().setAccessDeniedPage(AccessDeniedPage.class);
         IResourceSettings resourceSettings = this.getResourceSettings();
         // resourceSettings.addResourceFolder("");
-        resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
+        // resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
 
         this.mountPage("logout", Logout.class);
         this.mountPage("login", LabradorLogin.class);
@@ -78,8 +85,18 @@ public class LabradorApplication extends JMineWicketWebApplication {
         IResourceSettings resourceSettings = this.getResourceSettings();
         resourceSettings.getResourceFinders().add(0, new WebApplicationPath(this.getServletContext(), "/"));
         resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
+        
+        
+//        ((SystemMapper) this.getRootRequestMapper()).add(new ImageMapper("images", ImageResources.class));
+        Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
+        while (it.hasNext()) {
+            IRequestMapper next = it.next();
+            if (next instanceof ImageMapper) {
+                ((SystemMapper) this.getRootRequestMapper()).remove(next);
+            }
+        }
     }
-
+    
     /**
      * {@inheritDoc}
      */
