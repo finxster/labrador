@@ -21,6 +21,7 @@
 		<entry type="INTEGRACAO-XML">usuarios/usuarios_administrador.xml</entry>
 		<entry type="INTEGRACAO-XML">usuarios/usuarios_maps.xml</entry>
 		<entry type="INTEGRACAO-XML">usuarios/usuarios_jbc.xml</entry>
+		<entry type="INTEGRACAO-XML">usuarios/usuarios_maps_tecnlogia.xml</entry>
 		<entry type="INTEGRACAO-XML">maps/livros.xml</entry>
 		<entry type="INTEGRACAO-XML">tecnologia/projetores.xml</entry>
 		<entry type="INTEGRACAO-XML">tecnologia/mochilas.xml</entry>
