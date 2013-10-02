@@ -15,9 +15,9 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
  */
 public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> extends AbstractValidationService {
 
-    private static final String COISA = "coisa";
+    private static final String COISA = "Coisa";
 
-    private static final String NOME = "nome";
+    private static final String NOME = "Nome";
 
     private static final String PROPRIETARIO = "Proprietario";
 
@@ -38,7 +38,7 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
     protected final void validate() throws ServiceExecutionException {
         this.assertEquals(NOME, this.nome, this.coisa.getNome());
         this.assertEquals(PROPRIETARIO, this.proprietario, this.coisa.getProprietario());
-        this.assertEquals(LOCALIZACAO, this.localizacao, this.coisa.getLocalizacao().getNome());
+        this.assertEquals(LOCALIZACAO, this.localizacao.getNome(), this.coisa.getLocalizacao().getNome());
 
         this.doSpecificValidations(this.coisa);
     }
