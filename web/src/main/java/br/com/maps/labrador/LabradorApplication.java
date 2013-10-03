@@ -55,7 +55,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
 
         // desligando modo debug
         this.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
-        this.getDebugSettings().setAjaxDebugModeEnabled(false);
+//        this.getDebugSettings().setAjaxDebugModeEnabled(false);
 
         // configuração do wicket-bootstrap
         Bootstrap.install(Application.get(), new BootstrapSettings());
@@ -84,19 +84,17 @@ public class LabradorApplication extends JMineWicketWebApplication {
         resourceSettings.getResourceFinders().add(0, new WebApplicationPath(this.getServletContext(), "/"));
         resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
         
-//        ((SystemMapper) this.getRootRequestMapper()).unmount("images");
-//        ((SystemMapper) this.getRootRequestMapper()).add(new ImageMapper("images", ImageResources.class));
-        Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
-        ImageMapper imageMapper = null;
-        while (it.hasNext()) {
-            IRequestMapper next = it.next();
-            if (next instanceof ImageMapper) {
-                imageMapper = (ImageMapper) next;//((SystemMapper) this.getRootRequestMapper()).remove(next);
-            }
-        }
-        if (imageMapper != null) {
-            ((SystemMapper) this.getRootRequestMapper()).remove(imageMapper);
-        }
+//        Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
+//        ImageMapper imageMapper = null;
+//        while (it.hasNext()) {
+//            IRequestMapper next = it.next();
+//            if (next instanceof ImageMapper) {
+//                imageMapper = (ImageMapper) next;
+//            }
+//        }
+//        if (imageMapper != null) {
+//            ((SystemMapper) this.getRootRequestMapper()).remove(imageMapper);
+//        }
         
     }
     
