@@ -6,9 +6,10 @@ import java.util.List;
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
-import jmine.tec.web.wicket.component.injection.composite.LabeledFormInputPanel;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
@@ -20,14 +21,13 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
 import br.com.maps.labrador.domain.mochila.Mochila;
-import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
  * Tela para cadastro de mochilas
  * 
  * @author laercio.duarte
  */
-
+@Secure(id = "URL_EDIT_MOCHILA", permissionType = UrlPermission.class)
 public class CadastroMochila extends FormPage<Mochila> {
 
     @SpringBean(name = "daoFactory")

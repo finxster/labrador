@@ -5,6 +5,8 @@ import java.util.List;
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.report.impl.table.ReportTableBuilder;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.pages.form.CrudModelPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
@@ -21,7 +23,7 @@ import br.com.maps.labrador.pages.cadastro.projetor.CadastroProjetor;
  * @author laercio.duarte
  * @created Sep 15, 2013
  */
-
+@Secure(id = "URL_LIST_PROJETOR", permissionType = UrlPermission.class)
 public class PesquisaProjetor extends CrudModelPage<PesquisaProjetorFilter, Projetor> {
 
     /**
