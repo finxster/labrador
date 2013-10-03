@@ -1,0 +1,11 @@
+<importacao>
+	<services name="Mochilas">
+		<service name="Login" action="EXECUTAR">
+			<param name="Usuário">tecnologia</param>
+		</service>
+		<service name="Mochila" action="INCLUIR">
+			<param name="Nome">Mochila 01</param>
+			<param name="Localização">Setor de Infraestutura</param>
+		</service>
+	</services>
+</importacao>
