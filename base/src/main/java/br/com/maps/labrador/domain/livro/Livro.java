@@ -7,24 +7,21 @@ import javax.persistence.Entity;
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.impl.annotation.DiscriminatorComment;
 
-import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.hibernate.annotations.Filter;
 
+import br.com.maps.labrador.chinese.EmprestavelChineseWallEntity;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
 /**
  * Uma entidade que irá representar um Livro em nosso sistema.
  * 
- * @author laercio.duarte
- * @created 23/08/2013
- */
-/**
  * @author diego.ferreira
  * @created Sep 6, 2013
  */
 @Entity
-@JsonIgnoreProperties(ignoreUnknown = true)
 @DiscriminatorValue("1")
 @DiscriminatorComment("LIVRO")
+@Filter(name = EmprestavelChineseWallEntity.FILTER_NAME, condition = EmprestavelChineseWallEntity.CONDITION)
 public class Livro extends AbstractEmprestavel {
 
     private String isbn10;

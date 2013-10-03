@@ -4,6 +4,10 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import jmine.tec.persist.impl.annotation.DiscriminatorComment;
+
+import org.hibernate.annotations.Filter;
+
+import br.com.maps.labrador.chinese.EmprestavelChineseWallEntity;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 
 /**
@@ -15,6 +19,7 @@ import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 @Entity
 @DiscriminatorValue("3")
 @DiscriminatorComment("MODEM")
+@Filter(name = EmprestavelChineseWallEntity.FILTER_NAME, condition = EmprestavelChineseWallEntity.CONDITION)
 public class Modem extends AbstractEmprestavel {
 
     /**
