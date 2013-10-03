@@ -106,10 +106,10 @@
 		<div class="row-fluid">
 			<div class="form-inline">
 				<ul class="nav nav-pills span2">
-					<li><a href="#"><i class="icon-home" /> Home</a></li>
+					<li><a href="#" wicket:id="linkHome"><i class="icon-home" /> Home</a></li>
 				</ul>
 				<ul class="nav nav-pills span8" style="text-align: center;">
-					<li><a href="#"><i class="icon-cadastro" /> Cadastro</a></li>
+					<li><a href="#" wicket:id="linkCadastro"><i class="icon-cadastro" /> Cadastro</a></li>
 					<li><a href="#"><i class="icon-emprestimo" /> Empréstimos</a></li>
 					<li><a href="#"><i class="icon-devolucao" /> Devoluções</a></li>
 				</ul>
@@ -144,7 +144,10 @@
 			<div class="span8">
 				<div class="row-fluid">
 					<!-- escondido para categorias -->
-					<div class="span12"></div>
+					<div class="span12" wicket:id="cadastros">
+                    
+                    
+                    </div>
 					<div class="span12" id="principal">
 						<div class="page-header">
 							<h1>

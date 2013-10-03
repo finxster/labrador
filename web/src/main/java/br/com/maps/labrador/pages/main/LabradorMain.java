@@ -10,8 +10,14 @@ import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.model.DefaultDetachableModel;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.EmptyPanel;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.repeater.Item;
@@ -19,6 +25,7 @@ import org.apache.wicket.markup.repeater.data.GridView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.dao.LivroDAO;
@@ -26,8 +33,16 @@ import br.com.maps.labrador.dao.MochilaDAO;
 import br.com.maps.labrador.dao.ModemDAO;
 import br.com.maps.labrador.dao.ProjetorDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
+import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
+import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
 import br.com.maps.labrador.pages.consulta.emprestavel.EmprestavelVO;
 
+/**
+ * Página principal do Labrador.
+ * 
+ * @author finx
+ * @created Sep 27, 2013
+ */
 public class LabradorMain extends WebPage {
 
     @SpringBean
@@ -37,6 +52,8 @@ public class LabradorMain extends WebPage {
 
     private List<EmprestavelVO> resultados = new ArrayList<EmprestavelVO>();
 
+    private boolean cadastrosPanelVisibility = false;
+
     /**
      * {@inheritDoc}
      */
@@ -44,21 +61,32 @@ public class LabradorMain extends WebPage {
     protected void onInitialize() {
         super.onInitialize();
 
-        FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
-        feedbackPanel.setOutputMarkupId(true);
-        this.add(feedbackPanel);
+        this.addFeedbackPanel();
+        this.addForm();
+        this.addLinks();
+        this.addPanels();
+        this.search();
+        this.addResultGridView();
+    }
 
-        Form<EmprestavelVO> form = new Form<EmprestavelVO>("mainForm") {
-            @Override
-            protected void onSubmit() {
-                search();
-            }
-        };
-        form.setModel(new CompoundPropertyModel<EmprestavelVO>(new EmprestavelVO()));
+    private void addPanels() {
+        // WebMarkupContainer containerCadastros = new WebMarkupContainer("containerCadastros");
+        CadastrosPanel cadastrosPanel = new CadastrosPanel("cadastros");// {
+        // public boolean isVisible() {
+        // return cadastrosPanelVisibility;
+        //
+        // };
+        // };
+        cadastrosPanel.setOutputMarkupPlaceholderTag(true);
+        cadastrosPanel.setVisible(false);
+        // containerCadastros.setOutputMarkupId(true);
+        // containerCadastros.add(cadastrosPanel);
+        // this.add(containerCadastros);
+        this.add(cadastrosPanel);
 
-        form.add(ComponentHelper.createTextField("busca", this, "query"));
+    }
 
-        search();
+    private void addResultGridView() {
         IDataProvider<EmprestavelVO> dataProvider = new IDataProvider<EmprestavelVO>() {
 
             public void detach() {
@@ -94,12 +122,50 @@ public class LabradorMain extends WebPage {
             }
         };
 
-        gridView.setRows(4);
+        // gridView.setRows(4);
         gridView.setColumns(2);
 
         this.add(gridView);
-        this.add(form);
+    }
 
+    private void addFeedbackPanel() {
+        FeedbackPanel feedbackPanel = new FeedbackPanel("feedback");
+        feedbackPanel.setOutputMarkupId(true);
+        this.add(feedbackPanel);
+    }
+
+    private void addLinks() {
+
+        Link<Void> linkHome = new Link<Void>("linkHome") {
+            @Override
+            public void onClick() {
+                setResponsePage(ConsultaEmprestavel.class);
+            }
+        };
+        this.add(linkHome);
+
+        AjaxLink<Void> linkCadastro = new AjaxLink<Void>("linkCadastro") {
+            @Override
+            public void onClick(AjaxRequestTarget target) {
+                CadastrosPanel cadastrosPanel = (CadastrosPanel) LabradorMain.this.get("cadastros");
+                cadastrosPanel.setVisible(!cadastrosPanel.isVisible());
+                target.add(cadastrosPanel);
+            }
+        };
+
+        this.add(linkCadastro);
+    }
+
+    private void addForm() {
+        Form<EmprestavelVO> form = new Form<EmprestavelVO>("mainForm") {
+            @Override
+            protected void onSubmit() {
+                search();
+            }
+        };
+        form.setModel(new CompoundPropertyModel<EmprestavelVO>(new EmprestavelVO()));
+        form.add(ComponentHelper.createTextField("busca", this, "query"));
+        this.add(form);
     }
 
     private void search() {
@@ -159,6 +225,13 @@ public class LabradorMain extends WebPage {
      */
     public void setResultados(List<EmprestavelVO> resultados) {
         this.resultados = resultados;
+    }
+
+    /**
+     * @return the cadastrosPanelVisibility
+     */
+    public boolean getCadastrosPanelVisibility() {
+        return cadastrosPanelVisibility;
     }
 
 }
