@@ -2,7 +2,6 @@ package br.com.maps.labrador.service.incluir;
 
 import jmine.tec.di.annotation.Injected;
 import jmine.tec.persist.api.DAO;
-import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.services.api.ActionsEnum;
 import jmine.tec.services.api.annotations.Execution;
@@ -63,13 +62,8 @@ public abstract class AbstractEmprestavelService<T extends AbstractEmprestavel> 
         coisa.setStatus(this.status);
         coisa.setProprietario(this.proprietario);
 
-        LocalizacaoEmprestavel localizacaoCoisa;
-        try {
-            localizacaoCoisa = this.localizacaoDAO.findByNaturalKey(this.localizacao);
-        } catch (BeanNotFoundException e) {
-            localizacaoCoisa = this.localizacaoDAO.createBean();
-            localizacaoCoisa.setNome(this.localizacao);
-        }
+        LocalizacaoEmprestavel localizacaoCoisa = this.localizacaoDAO.createBean();
+        localizacaoCoisa.setNome(this.localizacao);
         coisa.setLocalizacao(localizacaoCoisa);
 
         this.doSpecificInclusions(coisa);
