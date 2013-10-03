@@ -1,9 +1,10 @@
 package br.com.maps.labrador.persister.configurer;
 
-import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
-import br.com.maps.labrador.persister.action.DefinirProprietario;
 import jmine.tec.persist.impl.di.PersisterListenerConfigurer;
 import jmine.tec.persist.impl.di.PersisterListeners;
+import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
+import br.com.maps.labrador.persister.action.AtualizarLocalizacao;
+import br.com.maps.labrador.persister.action.DefinirProprietario;
 
 /**
  * {@link PersisterListenerConfigurer} para um {@link AbstractEmprestavel}.
@@ -18,6 +19,7 @@ public class EmprestavelPersisterListenerConfigurer implements PersisterListener
      */
     public void configure(PersisterListeners listeners) {
         listeners.beforeInsert(AbstractEmprestavel.class, DefinirProprietario.class);
+        listeners.beforeInsert(AbstractEmprestavel.class, AtualizarLocalizacao.class);
     }
 
 }
