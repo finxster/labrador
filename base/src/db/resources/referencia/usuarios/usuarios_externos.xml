@@ -6,7 +6,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">rafael.neri</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 	</services>
 
