@@ -14,10 +14,6 @@
         <!-- Meta credential / URL credential -->
         <service name="GroupMetaCredential" action="INCLUIR">
             <param name="Grupo">JBC</param>
-            <param name="Meta Credencial">JMINE_WEB_APP_USER</param>
-        </service>
-        <service name="GroupMetaCredential" action="INCLUIR">
-            <param name="Grupo">JBC</param>
             <param name="Meta Credencial">USUARIO</param>
         </service>
     </services>

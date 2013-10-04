@@ -5,6 +5,8 @@ import java.util.List;
 
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAOFactory;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.pages.Template;
 
@@ -36,6 +38,7 @@ import de.agilecoders.wicket.core.markup.html.bootstrap.dialog.Modal;
  * @author finx
  * @created Sep 20, 2013
  */
+@Secure(id = "URL_CONTROLE_EMPRESTIMO", permissionType = UrlPermission.class)
 public class ControleEmprestimo extends Template {
 
     @SpringBean(name = "daoFactory")
@@ -43,7 +46,7 @@ public class ControleEmprestimo extends Template {
 
     @SpringBean(name = "labradorBaseController")
     private LabradorBaseController controller;
-    
+
     @SpringBean
     private LabradorUserHelper userHelper;
 
@@ -110,9 +113,9 @@ public class ControleEmprestimo extends Template {
                         modal.addButton(teste);
 
                         BotaoModal botaoModal = new BotaoModal("botao", ControleEmprestimo.this.form, modal);
-//                        AjaxSubmitLink link = new AjaxSubmitLink("botao") {
-//                        };
-//                        modal.addOpenerAttributesTo(link);
+                        // AjaxSubmitLink link = new AjaxSubmitLink("botao") {
+                        // };
+                        // modal.addOpenerAttributesTo(link);
                         painelEmprestimo.add(botaoModal);
                         painelEmprestimo.add(modal);
 
@@ -191,7 +194,7 @@ public class ControleEmprestimo extends Template {
          * @return the usuarioAEmprestar
          */
         public LabradorUsuario getUsuarioAEmprestar() {
-            return usuarioAEmprestar;
+            return this.usuarioAEmprestar;
         }
 
         /**
@@ -205,7 +208,7 @@ public class ControleEmprestimo extends Template {
          * @return the objetoAEmprestar
          */
         public AbstractEmprestavel getObjetoAEmprestar() {
-            return objetoAEmprestar;
+            return this.objetoAEmprestar;
         }
 
         /**
@@ -229,8 +232,8 @@ public class ControleEmprestimo extends Template {
 
         @Override
         protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
-            controller.emprestar(this.usuarioAEmprestar, this.objetoAEmprestar, null);
-            modal.appendCloseDialogJavaScript(target);
+            ControleEmprestimo.this.controller.emprestar(this.usuarioAEmprestar, this.objetoAEmprestar, null);
+            this.modal.appendCloseDialogJavaScript(target);
             // XXX (finx:20130923) :(
             this.setResponsePage(ControleEmprestimo.this);
         }
@@ -241,7 +244,7 @@ public class ControleEmprestimo extends Template {
      * @return the usuarioAEmprestar
      */
     public LabradorUsuario getUsuarioAEmprestar() {
-        return usuarioAEmprestar;
+        return this.usuarioAEmprestar;
     }
 
     /**

@@ -8,6 +8,8 @@ import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.report.impl.table.ReportTableBuilder;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.component.command.button.ButtonCommand;
 import jmine.tec.web.wicket.component.command.button.SingleEntityExecutionButton;
 import jmine.tec.web.wicket.pages.form.ExecutePage;
@@ -18,7 +20,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import br.com.maps.labrador.LabradorBaseController;
 import br.com.maps.labrador.dao.emprestavel.AbstractEmprestavelDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
-import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 import br.com.maps.labrador.helper.LabradorUserHelper;
 
 /**
@@ -27,6 +28,7 @@ import br.com.maps.labrador.helper.LabradorUserHelper;
  * @author finx
  * @created Aug 26, 2013
  */
+@Secure(id = "URL_EDIT_EMPRESTIMO", permissionType = UrlPermission.class)
 public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmprestavel> {
 
     @SpringBean(name = "daoFactory")
@@ -34,7 +36,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
 
     @SpringBean(name = "labradorBaseController")
     private LabradorBaseController controller;
-    
+
     @SpringBean
     private LabradorUserHelper userHelper;
 
@@ -56,7 +58,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
 
     public List<AbstractEmprestavel> search(DAOFactory daoFactory) {
         AbstractEmprestavelDAO dao = daoFactory.getDAOByClass(AbstractEmprestavelDAO.class);
-        return dao.findAllByNotMyUser(userHelper.getCurrentUser());
+        return dao.findAllByNotMyUser(this.userHelper.getCurrentUser());
     }
 
     /**
@@ -107,7 +109,7 @@ public class CadastroEmprestimo extends ExecutePage<EmprestivoVO, AbstractEmpres
              */
             @Override
             protected void doExecute(AbstractEmprestavel entity) {
-                controller.executarEmprestimo(entity, null);
+                CadastroEmprestimo.this.controller.executarEmprestimo(entity, null);
             }
 
             /**

@@ -9,6 +9,8 @@ import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
 import jmine.tec.report.impl.table.ReportTableBuilder;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.component.command.button.ButtonCommand;
 import jmine.tec.web.wicket.component.command.button.SingleEntityExecutionButton;
 import jmine.tec.web.wicket.pages.form.ExecutePage;
@@ -26,6 +28,7 @@ import br.com.maps.labrador.pages.cadastro.emprestimo.EmprestivoVO;
  * @author finx
  * @created Sep 20, 2013
  */
+@Secure(id = "URL_EDIT_DEVOLUCAO_EMPRESTIMO", permissionType = UrlPermission.class)
 public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Emprestimo> {
 
     @SpringBean(name = "daoFactory")
@@ -105,7 +108,7 @@ public class CadastroDevolucaoEmprestimo extends ExecutePage<EmprestivoVO, Empre
              */
             @Override
             protected void doExecute(Emprestimo entity) {
-                controller.devolverEmprestimo(entity);
+                CadastroDevolucaoEmprestimo.this.controller.devolverEmprestimo(entity);
             }
 
             /**
