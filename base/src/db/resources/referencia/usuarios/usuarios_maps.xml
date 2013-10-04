@@ -6,7 +6,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">renan.kuroki</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">fernando.chovich</param>
@@ -14,7 +14,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">fernando.chovich</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">igor.colombo</param>
@@ -22,7 +22,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">igor.colombo</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">lilian.perillo</param>
@@ -30,7 +30,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">lilian.perillo</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">kevin.chinem</param>
@@ -38,7 +38,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">kevin.chinem</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">fabio.sakiyama</param>
@@ -46,7 +46,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">fabio.sakiyama</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">evaristo.goes</param>
@@ -54,7 +54,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">evaristo.goes</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -63,7 +63,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">cesar.moraes</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -72,7 +72,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">daniel.gallardo</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
  
 		<service name="User" action="INCLUIR">
@@ -81,7 +81,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">camila.maida</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -90,7 +90,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">ricardo.toth</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -99,7 +99,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">adriano.silva</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -108,7 +108,25 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">julio.fradico</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">rodrigo.menezes</param>
+			<param name="Senha">9nO1pb</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">rodrigo.menezes</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">felipe.saito</param>
+			<param name="Senha">2jbEXp</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">felipe.saito</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 	</services>
@@ -178,6 +196,16 @@
 			<param name="Usuário">julio.fradico</param>
 			<param name="Nome">julio.fradico</param>
 			<param name="E-mail">julio.fradico@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">rodrigo.menezes</param>
+			<param name="Nome">rodrigo.menezes</param>
+			<param name="E-mail">rodrigo.menezes@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">felipe.saito</param>
+			<param name="Nome">felipe.saito</param>
+			<param name="E-mail">felipe.saito@maps.com.br</param>
 		</service>
 	</services>
 </importacao>

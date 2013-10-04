@@ -6,18 +6,23 @@
 	</dependencies>
 	<post basePath="postscript">
 		<entry type="SERVICE">security/security_client.xml</entry>
-		<entry type="SERVICE">security/metacredentials.xml</entry>
-		<entry type="SERVICE">security/grupo_cliente.xml</entry>
-		<entry type="SERVICE">security/credentials_user.xml</entry>
-		<entry type="SERVICE">security/credentials_admin.xml</entry>
-		<entry type="SERVICE">security/group-metacredentials.xml</entry>
-		<entry type="INTEGRACAO-XML">usuarios.xml</entry>
+		<entry type="SERVICE">security/chinese/chinese_wall_credential.xml</entry>
+		<entry type="SERVICE">security/credentials/metacredentials.xml</entry>
+		<entry type="SERVICE">security/credentials/credentials_user.xml</entry>
+		<entry type="SERVICE">security/credentials/credentials_admin.xml</entry>
+		
+		<!-- Grupos de usuário -->
+		<entry type="SERVICE">security/groups/grupo_administrador.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_jbc.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps_tecnologia.xml</entry>
+		<entry type="INTEGRACAO-XML">usuarios_administrador.xml</entry>
 	</post>
 	<ref basePath="referencia">
-<!-- 		<entry type="SQL">security/users.sql</entry> -->
-		<entry type="INTEGRACAO-XML">livros.xml</entry>
-		<entry type="INTEGRACAO-XML">projetores.xml</entry>
-		<entry type="INTEGRACAO-XML">mochilas.xml</entry>
-		<entry type="INTEGRACAO-XML">modems.xml</entry>
+		<entry type="INTEGRACAO-XML">usuarios/usuarios_maps_tecnologia.xml</entry>
+		<entry type="INTEGRACAO-XML">maps/livros.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/projetores.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/mochilas.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/modems.xml</entry>
 	</ref>
 </ref-db>

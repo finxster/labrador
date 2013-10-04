@@ -41,7 +41,7 @@ public class EmprestimoService {
     /**
      * @param dataDevolucao the dataDevolucao to set
      */
-    @Input(fieldName = DATA_DEVOLUCAO)
+    @Input(fieldName = DATA_DEVOLUCAO, required = false)
     public void setDataDevolucao(Timestamp dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
