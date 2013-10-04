@@ -1,0 +1,119 @@
+<importacao>
+	<services name="Usuarios do sistema">
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">finx</param>
+			<param name="Senha">finx</param>
+			<param name="Database ID">1</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">finx</param>
+			<param name="Grupo">ADMIN_LABRADOR</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">diego</param>
+			<param name="Senha">diego</param>
+			<param name="Database ID">2</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">diego</param>
+			<param name="Grupo">ADMIN_LABRADOR</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">laercio</param>
+			<param name="Senha">laercio</param>
+			<param name="Database ID">3</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">laercio</param>
+			<param name="Grupo">ADMIN_LABRADOR</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">roberta</param>
+			<param name="Senha">roberta</param>
+			<param name="Database ID">4</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">roberta</param>
+			<param name="Grupo">ADMIN_LABRADOR</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">mabel</param>
+			<param name="Senha">mabel</param>
+			<param name="Database ID">5</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">mabel</param>
+			<param name="Grupo">ADMIN_LABRADOR</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Senha">labrador</param>
+			<param name="Database ID">10</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Senha">labrador</param>
+			<param name="Database ID">11</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jbc</param>
+			<param name="Senha">123456</param>
+			<param name="Database ID">2000</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jbc</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+	</services>
+
+	<services name="Usuários do labrador">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">finx</param>
+			<param name="Nome">finx</param>
+			<param name="E-mail">luis.volpato@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">laercio</param>
+			<param name="Nome">laercio</param>
+			<param name="E-mail">laercio.duarte@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">diego</param>
+			<param name="Nome">diego</param>
+			<param name="E-mail">diego.ferreira@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">roberta</param>
+			<param name="Nome">roberta</param>
+			<param name="E-mail">roberta.morikawa@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">mabel</param>
+			<param name="Nome">mabel</param>
+			<param name="E-mail">isabel.ota@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">maps</param>
+			<param name="Nome">maps</param>
+			<param name="E-mail">labrador@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">infra</param>
+			<param name="Nome">infra</param>
+			<param name="E-mail">tecnologia@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jbc</param>
+			<param name="Nome">jbc</param>
+			<param name="E-mail">jbc@jbc.com.br</param>
+		</service>
+	</services>
+</importacao>

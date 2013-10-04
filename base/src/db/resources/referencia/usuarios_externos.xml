@@ -1,0 +1,20 @@
+<importacao>
+	<services name="Usuarios do sistema">
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">rafael.neri</param>
+			<param name="Senha">05oK0p</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">rafael.neri</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+	</services>
+
+	<services name="Usuários do labrador">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">rafael.neri</param>
+			<param name="Nome">rafael.neri</param>
+			<param name="E-mail">neri.o.huno@gmail.com</param>
+		</service>
+	</services>
+</importacao>
