@@ -5,8 +5,7 @@ import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.persist.impl.dao.BaseDAOFactory;
 import jmine.tec.utils.date.Clock;
-import jmine.tec.utils.date.Date;
-import br.com.maps.labrador.LabradorBaseController;
+import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
@@ -29,33 +28,33 @@ public class EmprestimoActor extends AbstractActor {
 
     private BaseDAOFactory daoFactory;
 
-    public void executarEmprestimo(AbstractEmprestavel emprestavel, Date dataDevolucao) {
+    public void executarEmprestimo(AbstractEmprestavel emprestavel, Timestamp dataDevolucao) {
         DAO<Emprestimo> dao = this.daoFactory.getDAOByEntityType(Emprestimo.class);
         Emprestimo emprestimo = dao.createBean();
         emprestimo.setTomador(this.userHelper.getCurrentUser());
         emprestimo.setEmprestavel(emprestavel);
         emprestimo.setDataDevolucao(dataDevolucao);
-        persister.save(emprestimo);
+        this.persister.save(emprestimo);
 
         emprestavel.emprestar();
-        persister.save(emprestavel);
+        this.persister.save(emprestavel);
     }
-    
-    public void emprestar(LabradorUsuario usuario, AbstractEmprestavel emprestavel, Date dataDevolucao) {
+
+    public void emprestar(LabradorUsuario usuario, AbstractEmprestavel emprestavel, Timestamp dataDevolucao) {
         DAO<Emprestimo> dao = this.daoFactory.getDAOByEntityType(Emprestimo.class);
         Emprestimo emprestimo = dao.createBean();
         emprestimo.setTomador(usuario);
         emprestimo.setEmprestavel(emprestavel);
         emprestimo.setDataDevolucao(dataDevolucao);
-        persister.save(emprestimo);
+        this.persister.save(emprestimo);
 
         emprestavel.emprestar();
-        persister.save(emprestavel);
+        this.persister.save(emprestavel);
     }
 
     public void devolverEmprestimo(Emprestimo emprestimo) {
         emprestimo.setStatus(StatusEmprestimo.DEVOLVIDO);
-        emprestimo.setDataDevolucao(this.clock.currentDate());
+        emprestimo.setDataDevolucao(this.clock.currentTimestamp());
         this.persister.save(emprestimo);
 
         AbstractEmprestavel emprestavel = emprestimo.getEmprestavel();
@@ -67,7 +66,7 @@ public class EmprestimoActor extends AbstractActor {
      * @return the userHelper
      */
     public LabradorUserHelper getUserHelper() {
-        return userHelper;
+        return this.userHelper;
     }
 
     /**
@@ -81,7 +80,7 @@ public class EmprestimoActor extends AbstractActor {
      * @return the persister
      */
     public StatelessPersister getPersister() {
-        return persister;
+        return this.persister;
     }
 
     /**
@@ -95,7 +94,7 @@ public class EmprestimoActor extends AbstractActor {
      * @return the clock
      */
     public Clock getClock() {
-        return clock;
+        return this.clock;
     }
 
     /**
@@ -109,7 +108,7 @@ public class EmprestimoActor extends AbstractActor {
      * @return the daoFactory
      */
     public BaseDAOFactory getDaoFactory() {
-        return daoFactory;
+        return this.daoFactory;
     }
 
     /**

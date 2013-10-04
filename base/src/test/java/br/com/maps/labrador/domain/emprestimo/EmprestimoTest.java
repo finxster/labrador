@@ -1,7 +1,6 @@
 package br.com.maps.labrador.domain.emprestimo;
 
 import jmine.tec.persist.api.dao.BeanNotFoundException;
-import jmine.tec.utils.date.Date;
 import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.BOBaseTestCase;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
@@ -23,7 +22,7 @@ public class EmprestimoTest extends BOBaseTestCase<Emprestimo> {
 
     private static Timestamp[] DATA_HORA;
 
-    private static Date[] DATA_DEVOLUCAO;
+    private static Timestamp[] DATA_DEVOLUCAO;
 
     private static StatusEmprestimo[] STATUS;
 
@@ -36,7 +35,7 @@ public class EmprestimoTest extends BOBaseTestCase<Emprestimo> {
     protected void initializeTestData() throws BeanNotFoundException {
         EMPRESTAVEL = new LivroTest().getSavedTestData().toArray(new Livro[2]);
         DATA_HORA = new Timestamp[]{ new Timestamp(12345), new Timestamp(98765) };
-        DATA_DEVOLUCAO = new Date[]{ new Date(2013, 8, 26), new Date(2013, 8, 27) };
+        DATA_DEVOLUCAO = new Timestamp[]{ new Timestamp(54321), new Timestamp(56789) };
         STATUS = new StatusEmprestimo[]{ StatusEmprestimo.EFETUADO, StatusEmprestimo.DEVOLVIDO };
         TOMADOR = new LabradorUsuarioTest().getSavedTestData().toArray(new LabradorUsuario[2]);
     }

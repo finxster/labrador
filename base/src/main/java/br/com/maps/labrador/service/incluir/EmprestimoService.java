@@ -12,7 +12,6 @@ import jmine.tec.services.api.export.ReferenceMap;
 import jmine.tec.services.api.export.ServiceFiller;
 import jmine.tec.services.api.io.ServiceBean;
 import jmine.tec.services.impl.export.impl.ExportUtils;
-import jmine.tec.utils.date.Date;
 import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
@@ -44,7 +43,7 @@ public class EmprestimoService implements ServiceFiller<Emprestimo> {
 
     private Timestamp data;
 
-    private Date dataDevolucao;
+    private Timestamp dataDevolucao;
 
     private DAO<Emprestimo> dao;
 
@@ -67,7 +66,7 @@ public class EmprestimoService implements ServiceFiller<Emprestimo> {
         emprestimo.setData(this.data);
         emprestimo.setDataDevolucao(this.dataDevolucao);
         emprestimo.setTomador(this.tomador);
-        emprestimo.setStatus(status);
+        emprestimo.setStatus(this.status);
         this.persister.save(emprestimo);
         return emprestimo;
     }
@@ -82,7 +81,7 @@ public class EmprestimoService implements ServiceFiller<Emprestimo> {
         ExportUtils.put(bean, IDENTIFICADOR, "emprestimo" + entity.getId());
         ExportUtils.put(bean, COISA, entity.getEmprestavel());
         ExportUtils.put(bean, DATA, entity.getData());
-        ExportUtils.put(bean, DATA_DEVOLUCAO, entity.getDataDevolucao() == null ? null : entity.getDataDevolucao().getMessage());
+        ExportUtils.put(bean, DATA_DEVOLUCAO, entity.getDataDevolucao() == null ? null : entity.getDataDevolucao().toString());
         ExportUtils.put(bean, TOMADOR, entity.getTomador().getNome());
         ExportUtils.put(bean, STATUS, entity.getStatus());
     }
@@ -99,7 +98,7 @@ public class EmprestimoService implements ServiceFiller<Emprestimo> {
      * @param dataDevolucao the dataDevolucao to set
      */
     @Input(fieldName = DATA_DEVOLUCAO, required = false)
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(Timestamp dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 

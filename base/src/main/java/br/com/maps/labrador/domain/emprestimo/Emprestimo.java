@@ -15,14 +15,12 @@ import jmine.tec.component.Documentation;
 import jmine.tec.persist.impl.annotation.Alias;
 import jmine.tec.persist.impl.annotation.Index;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
-import jmine.tec.utils.date.Date;
 import jmine.tec.utils.date.Timestamp;
 
 import org.hibernate.annotations.Type;
 import org.hibernate.validator.NotNull;
 
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
-import br.com.maps.labrador.domain.emprestavel.Emprestavel;
 import br.com.maps.labrador.domain.emprestimo.enumx.StatusEmprestimo;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -45,7 +43,7 @@ public class Emprestimo extends PersistableBusinessObject {
 
     private Timestamp data;
 
-    private Date dataDevolucao;
+    private Timestamp dataDevolucao;
 
     private StatusEmprestimo status = StatusEmprestimo.EFETUADO;
 
@@ -66,7 +64,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @Documentation("CODIGO DO EMPRESTIMO")
     @Column(name = "COD_EMPRESTIMO")
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -103,7 +101,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @Documentation("DATA DO EMPRESTIMO")
     @Type(type = "jmine.tec.persist.impl.hibernate.type.TimestampType")
     public Timestamp getData() {
-        return data;
+        return this.data;
     }
 
     /**
@@ -118,15 +116,15 @@ public class Emprestimo extends PersistableBusinessObject {
      */
     @Column(name = "DT_DEVOLUCAO")
     @Documentation("DATA DA DEVOLUCAO DO EMPRESTIMO")
-    @Type(type = "jmine.tec.persist.impl.hibernate.type.DateType")
-    public Date getDataDevolucao() {
-        return dataDevolucao;
+    @Type(type = "jmine.tec.persist.impl.hibernate.type.TimestampType")
+    public Timestamp getDataDevolucao() {
+        return this.dataDevolucao;
     }
 
     /**
      * @param dataDevolucao the dataDevolucao to set
      */
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(Timestamp dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
@@ -137,7 +135,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @Column(name = "STATUS", nullable = false)
     @Documentation("STATUS DO EMPRESTIMO.")
     public StatusEmprestimo getStatus() {
-        return status;
+        return this.status;
     }
 
     /**
@@ -156,7 +154,7 @@ public class Emprestimo extends PersistableBusinessObject {
     @JoinColumn(name = "COD_TOMADOR")
     @Documentation("CODIGO DO TOMADOR.")
     public LabradorUsuario getTomador() {
-        return tomador;
+        return this.tomador;
     }
 
     /**

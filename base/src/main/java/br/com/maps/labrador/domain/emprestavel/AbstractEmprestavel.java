@@ -24,8 +24,10 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Filter;
 import org.hibernate.validator.NotNull;
 
+import br.com.maps.labrador.chinese.EmprestavelChineseWallEntity;
 import br.com.maps.labrador.domain.emprestavel.enumx.StatusEmprestavel;
 import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 
@@ -37,6 +39,7 @@ import br.com.maps.labrador.domain.usuario.LabradorUsuario;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TP_EMPRESTAVEL", discriminatorType = DiscriminatorType.INTEGER)
 @Comment(table = "EMPRESTAVEL", column = "TP_EMPRESTAVEL", value = "INDICA O TIPO DO OBJETO EMPRESTAVO.")
+@Filter(name = EmprestavelChineseWallEntity.FILTER_NAME, condition = EmprestavelChineseWallEntity.CONDITION)
 public abstract class AbstractEmprestavel extends PersistableBusinessObject implements Emprestavel {
 
     private Long id;
@@ -50,21 +53,41 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     private LocalizacaoEmprestavel localizacao;
 
     /**
+     * {@inheritDoc}
+     */
+    public void devolver() {
+        this.status = StatusEmprestavel.DISPONIVEL;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public void emprestar() {
+        this.status = StatusEmprestavel.EMPRESTADO;
+    }
+
+    /**
      * @return the id
      */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_EMPRES")
     @Documentation("CODIGO QUE IDENTIFICA UM OBJETO QUE EH PASSIVEL DE EMPRESTIMO")
-    @Column(name = "COD_EMPRESTAVEL")
+    @Column(name = EmprestavelChineseWallEntity.COLUMN_NAME)
     public Long getId() {
         return this.id;
     }
 
     /**
-     * @param id the id to set
+     * @return the localizacao
      */
-    public void setId(Long id) {
-        this.id = id;
+    @NotNull
+    @Index(suffix = "0")
+    @Cascade({ CascadeType.ALL })
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "COD_LOCAL_EMPRESTAVEL")
+    @Documentation("CODIGO DA LOCALIZACAO DO EMPRESTAVEL.")
+    public LocalizacaoEmprestavel getLocalizacao() {
+        return this.localizacao;
     }
 
     /**
@@ -79,13 +102,6 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
      * @return the proprietario
      */
     @NotNull
@@ -94,13 +110,6 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     @Documentation("CODIGO DO USUARIO QUE EH O PROPRIETARIO DO EMPRESTAVEL.")
     public LabradorUsuario getProprietario() {
         return this.proprietario;
-    }
-
-    /**
-     * @param proprietario the proprietario to set
-     */
-    public void setProprietario(LabradorUsuario proprietario) {
-        this.proprietario = proprietario;
     }
 
     /**
@@ -114,23 +123,10 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
-     * @param status the status to set
+     * @param id the id to set
      */
-    public void setStatus(StatusEmprestavel status) {
-        this.status = status;
-    }
-
-    /**
-     * @return the localizacao
-     */
-    @NotNull
-    @Index(suffix = "0")
-    @Cascade({ CascadeType.ALL, CascadeType.DELETE_ORPHAN })
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COD_LOCAL_EMPRESTAVEL")
-    @Documentation("CODIGO DA LOCALIZACAO DO EMPRESTAVEL.")
-    public LocalizacaoEmprestavel getLocalizacao() {
-        return this.localizacao;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     /**
@@ -141,19 +137,26 @@ public abstract class AbstractEmprestavel extends PersistableBusinessObject impl
     }
 
     /**
-     * {@inheritDoc}
+     * @param nome the nome to set
      */
-    public void emprestar() {
-        this.status = StatusEmprestavel.EMPRESTADO;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     /**
-     * {@inheritDoc}
+     * @param proprietario the proprietario to set
      */
-    public void devolver() {
-        this.status = StatusEmprestavel.DISPONIVEL;
+    public void setProprietario(LabradorUsuario proprietario) {
+        this.proprietario = proprietario;
     }
-    
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(StatusEmprestavel status) {
+        this.status = status;
+    }
+
     /**
      * {@inheritDoc}
      */
