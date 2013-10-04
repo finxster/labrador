@@ -7,7 +7,7 @@ import jmine.tec.services.api.ServiceExecutionException;
 import jmine.tec.services.api.annotations.Input;
 import jmine.tec.services.api.annotations.ServiceImplementor;
 import jmine.tec.services.impl.AbstractValidationService;
-import jmine.tec.utils.date.Date;
+import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.dao.EmprestimoDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
@@ -37,7 +37,7 @@ public class EmprestimoService extends AbstractValidationService {
 
     private AbstractEmprestavel emprestavel;
 
-    private Date dataDevolucao;
+    private Timestamp dataDevolucao;
 
     private EmprestimoDAO dao;
 
@@ -85,8 +85,8 @@ public class EmprestimoService extends AbstractValidationService {
     /**
      * @param dataDevolucao the dataDevolucao to set
      */
-    @Input(fieldName = DATA_DEVOLUCAO)
-    public void setDataDevolucao(Date dataDevolucao) {
+    @Input(fieldName = DATA_DEVOLUCAO, required = false)
+    public void setDataDevolucao(Timestamp dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 

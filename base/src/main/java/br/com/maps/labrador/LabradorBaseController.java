@@ -1,9 +1,7 @@
 package br.com.maps.labrador;
 
-import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.persist.impl.controller.AbstractPersistenceEnabledController;
-import jmine.tec.utils.date.Clock;
-import jmine.tec.utils.date.Date;
+import jmine.tec.utils.date.Timestamp;
 import br.com.maps.labrador.actor.EmprestimoActor;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
@@ -19,15 +17,15 @@ public class LabradorBaseController extends AbstractPersistenceEnabledController
 
     private EmprestimoActor emprestimoActor;
 
-    public void executarEmprestimo(AbstractEmprestavel livro, Date dataDevolucao) {
+    public void executarEmprestimo(AbstractEmprestavel livro, Timestamp dataDevolucao) {
         this.emprestimoActor.executarEmprestimo(livro, dataDevolucao);
     }
 
     public void devolverEmprestimo(Emprestimo emprestimo) {
         this.emprestimoActor.devolverEmprestimo(emprestimo);
     }
-    
-    public void emprestar(LabradorUsuario usuario, AbstractEmprestavel emprestavel, Date dataDevolucao) {
+
+    public void emprestar(LabradorUsuario usuario, AbstractEmprestavel emprestavel, Timestamp dataDevolucao) {
         this.emprestimoActor.emprestar(usuario, emprestavel, dataDevolucao);
     }
 
@@ -35,7 +33,7 @@ public class LabradorBaseController extends AbstractPersistenceEnabledController
      * @return the emprestimoActor
      */
     public EmprestimoActor getEmprestimoActor() {
-        return emprestimoActor;
+        return this.emprestimoActor;
     }
 
     /**

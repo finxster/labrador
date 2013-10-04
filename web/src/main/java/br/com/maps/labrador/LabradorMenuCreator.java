@@ -5,6 +5,7 @@ import jmine.tec.web.pages.persist.audit.ConsultaTrilhaAuditoria;
 import jmine.tec.web.pages.persist.auth.Authorization;
 import jmine.tec.web.pages.rtm.ConsultaExceptionRecord;
 import jmine.tec.web.pages.rtm.diagnosticador.ConsultaDiagnosticador;
+import jmine.tec.web.pages.security.PesquisaGroup;
 import jmine.tec.web.wicket.component.menu.cfg.AbstractMenuConfigFactoryBean;
 import jmine.tec.web.wicket.component.menu.cfg.MenuConfig;
 import br.com.maps.labrador.pages.AlterarSenhaPage;
@@ -21,7 +22,6 @@ import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
 import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
 import br.com.maps.labrador.pages.consulta.modem.PesquisaModem;
 import br.com.maps.labrador.pages.consulta.projetor.PesquisaProjetor;
-import br.com.maps.labrador.pages.main.LabradorMain;
 
 /**
  * Starting point menu creator
@@ -61,7 +61,10 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
 
         config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
         config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
-        config.addPage(LabradorMain.class, "Teste", "Teste");
+
+        // config.addPage(PesquisaCredentialChineseWall.class, "Infra", "Controle de acesso", "Chinese Wall");
+        config.addPage(PesquisaGroup.class, "Infra", "Controle de acesso", "Grupo de usuários");
+
         return config;
     }
 

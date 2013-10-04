@@ -14,13 +14,16 @@
 		<property name="menuCreator" ref="menuCreator" />
 	</bean>
 
-	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMegaMenuAdapter">
+	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigBootstrapMenuAdapter">
 		<constructor-arg>
 			<bean class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMergerFactoryBean">
 				<constructor-arg>
 					<list>
 						<ref bean="menuApplicationBase" />
 					</list>
+				</constructor-arg>
+				<constructor-arg>
+					<value type="java.lang.Boolean">true</value>
 				</constructor-arg>
 			</bean>
 		</constructor-arg>

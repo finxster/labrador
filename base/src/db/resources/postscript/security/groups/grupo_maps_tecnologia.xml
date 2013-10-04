@@ -1,0 +1,24 @@
+<importacao>
+    <services name="Grupos">
+        <service name="Group" action="INCLUIR">
+            <param name="Nome">MAPS_TECNOLOGIA</param>
+            <param name="Database ID">1002</param>
+        </service>
+        
+        <!-- Chinese wall -->
+        <service name="GroupCredential" action="INCLUIR">
+            <param name="Grupo">MAPS_TECNOLOGIA</param>
+            <param name="Credencial">EMPRESTAVEL_ACESSO_LIMITADO_MAPS_TECNOLOGIA</param>
+        </service>
+        
+        <!-- Meta credential / URL credential -->
+        <service name="GroupMetaCredential" action="INCLUIR">
+            <param name="Grupo">MAPS_TECNOLOGIA</param>
+            <param name="Meta Credencial">JMINE_WEB_APP_USER</param>
+        </service>
+        <service name="GroupMetaCredential" action="INCLUIR">
+            <param name="Grupo">MAPS_TECNOLOGIA</param>
+            <param name="Meta Credencial">USUARIO</param>
+        </service>
+    </services>
+</importacao>
