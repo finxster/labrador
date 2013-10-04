@@ -14,11 +14,7 @@
         <!-- Meta credential / URL credential -->
         <service name="GroupMetaCredential" action="INCLUIR">
             <param name="Grupo">MAPS_TECNOLOGIA</param>
-            <param name="Meta Credencial">JMINE_WEB_APP_USER</param>
-        </service>
-        <service name="GroupMetaCredential" action="INCLUIR">
-            <param name="Grupo">MAPS_TECNOLOGIA</param>
-            <param name="Meta Credencial">USUARIO</param>
+            <param name="Meta Credencial">USUARIO_MAPS_TECNOLOGIA</param>
         </service>
     </services>
 </importacao>
