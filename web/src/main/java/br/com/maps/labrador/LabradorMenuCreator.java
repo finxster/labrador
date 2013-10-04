@@ -62,7 +62,6 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(AlterarSenhaPage.class, "Infra", "Usuários", "Alterar senha");
         config.addPage(CrudUsuarioPage.class, "Infra", "Usuários", "Controle de acesso");
 
-        // config.addPage(PesquisaCredentialChineseWall.class, "Infra", "Controle de acesso", "Chinese Wall");
         config.addPage(PesquisaGroup.class, "Infra", "Controle de acesso", "Grupo de usuários");
 
         return config;

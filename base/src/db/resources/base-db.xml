@@ -8,23 +8,19 @@
 		<entry type="SERVICE">security/security_client.xml</entry>
 		<entry type="SERVICE">security/chinese/chinese_wall_credential.xml</entry>
 		<entry type="SERVICE">security/credentials/metacredentials.xml</entry>
-		<entry type="SERVICE">security/credentials/credentials_user.xml</entry>
-		<entry type="SERVICE">security/credentials/credentials_admin.xml</entry>
+		<entry type="SERVICE">security/credentials/url_credentials.xml</entry>
 		
 		<!-- Grupos de usuário -->
 		<entry type="SERVICE">security/groups/grupo_administrador.xml</entry>
 		<entry type="SERVICE">security/groups/grupo_jbc.xml</entry>
 		<entry type="SERVICE">security/groups/grupo_maps.xml</entry>
 		<entry type="SERVICE">security/groups/grupo_maps_tecnologia.xml</entry>
+		<entry type="SERVICE">usuarios.xml</entry>
 	</post>
-	<ref basePath="referencia">
-		<entry type="INTEGRACAO-XML">usuarios/usuarios_administrador.xml</entry>
-		<entry type="INTEGRACAO-XML">usuarios/usuarios_maps.xml</entry>
-		<entry type="INTEGRACAO-XML">usuarios/usuarios_jbc.xml</entry>
-		<entry type="INTEGRACAO-XML">usuarios/usuarios_maps_tecnologia.xml</entry>
+	 <ref basePath="referencia">
 		<entry type="INTEGRACAO-XML">maps/livros.xml</entry>
 		<entry type="INTEGRACAO-XML">tecnologia/projetores.xml</entry>
 		<entry type="INTEGRACAO-XML">tecnologia/mochilas.xml</entry>
 		<entry type="INTEGRACAO-XML">tecnologia/modems.xml</entry>
-	</ref>
+	</ref> 
 </ref-db>

@@ -14,19 +14,15 @@
 		<!-- Meta credential / URL credential -->
 		<service name="GroupMetaCredential" action="INCLUIR">
 			<param name="Grupo">ADMINISTRADOR</param>
-			<param name="Meta Credencial">JMINE_WEB_APP_USER</param>
-		</service>
-		<service name="GroupMetaCredential" action="INCLUIR">
-			<param name="Grupo">ADMINISTRADOR</param>
-			<param name="Meta Credencial">JMINE_WEB_APP_ADMIN</param>
-		</service>
-		<service name="GroupMetaCredential" action="INCLUIR">
-			<param name="Grupo">ADMINISTRADOR</param>
-			<param name="Meta Credencial">LABRADOR</param>
+			<param name="Meta Credencial">ADMINISTRADOR</param>
 		</service>
 		<service name="GroupMetaCredential" action="INCLUIR">
 			<param name="Grupo">ADMINISTRADOR</param>
 			<param name="Meta Credencial">USUARIO</param>
+		</service>
+		<service name="GroupMetaCredential" action="INCLUIR">
+			<param name="Grupo">ADMINISTRADOR</param>
+			<param name="Meta Credencial">USUARIO_MAPS_TECNOLOGIA</param>
 		</service>
 	</services>
 </importacao>

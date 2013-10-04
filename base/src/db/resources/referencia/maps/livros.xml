@@ -31,7 +31,7 @@
 			<param name="Localização">Meu quarto</param>
 		</service>
 		<service name="Login" action="EXECUTAR">
-			<param name="Usuário">tecnologia</param>
+			<param name="Usuário">laercio</param>
 		</service>
 		<service name="Livro" action="INCLUIR">
 			<param name="ISBN 10">123123 </param>

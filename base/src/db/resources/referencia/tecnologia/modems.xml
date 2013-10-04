@@ -1,7 +1,7 @@
 <importacao>
 	<services name="Modems">
 		<service name="Login" action="EXECUTAR">
-			<param name="Usuário">tecnologia</param>
+			<param name="Usuário">laercio</param>
 		</service>
 		<service name="Modem" action="INCLUIR">
 			<param name="Nome">Modem 01</param>
