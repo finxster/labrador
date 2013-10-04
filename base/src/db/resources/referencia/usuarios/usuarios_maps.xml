@@ -129,6 +129,33 @@
 			<param name="Grupo">MAPS</param>
 		</service>
 
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">ramon.canales</param>
+			<param name="Senha">95BhJ1</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">ramon.canales</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">rafael.volpato</param>
+			<param name="Senha">95BhJ1</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">rafael.volpato</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">nilson.ivano</param>
+			<param name="Senha">96FZyl</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">nilson.ivano</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+
 	</services>
 
 	<services name="Usuários do labrador">
@@ -206,6 +233,21 @@
 			<param name="Usuário">felipe.saito</param>
 			<param name="Nome">felipe.saito</param>
 			<param name="E-mail">felipe.saito@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">ramon.canales</param>
+			<param name="Nome">ramon.canales</param>
+			<param name="E-mail">ramon.canales@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">rafael.volpato</param>
+			<param name="Nome">rafael.volpato</param>
+			<param name="E-mail">rafael.volpato@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">nilson.ivano</param>
+			<param name="Nome">nilson.ivano</param>
+			<param name="E-mail">nilson.ivano@maps.com.br</param>
 		</service>
 	</services>
 </importacao>
