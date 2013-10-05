@@ -10,11 +10,8 @@ import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.model.DefaultDetachableModel;
 
-import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
@@ -25,7 +22,6 @@ import org.apache.wicket.markup.repeater.data.GridView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import br.com.maps.labrador.dao.LivroDAO;
@@ -33,7 +29,6 @@ import br.com.maps.labrador.dao.MochilaDAO;
 import br.com.maps.labrador.dao.ModemDAO;
 import br.com.maps.labrador.dao.ProjetorDAO;
 import br.com.maps.labrador.domain.emprestavel.AbstractEmprestavel;
-import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
 import br.com.maps.labrador.pages.consulta.emprestavel.EmprestavelVO;
 
@@ -70,20 +65,10 @@ public class LabradorMain extends WebPage {
     }
 
     private void addPanels() {
-        // WebMarkupContainer containerCadastros = new WebMarkupContainer("containerCadastros");
-        CadastrosPanel cadastrosPanel = new CadastrosPanel("cadastros");// {
-        // public boolean isVisible() {
-        // return cadastrosPanelVisibility;
-        //
-        // };
-        // };
+        CadastrosPanel cadastrosPanel = new CadastrosPanel("cadastros");
         cadastrosPanel.setOutputMarkupPlaceholderTag(true);
         cadastrosPanel.setVisible(false);
-        // containerCadastros.setOutputMarkupId(true);
-        // containerCadastros.add(cadastrosPanel);
-        // this.add(containerCadastros);
         this.add(cadastrosPanel);
-
     }
 
     private void addResultGridView() {
@@ -135,7 +120,6 @@ public class LabradorMain extends WebPage {
     }
 
     private void addLinks() {
-
         Link<Void> linkHome = new Link<Void>("linkHome") {
             @Override
             public void onClick() {
@@ -144,7 +128,7 @@ public class LabradorMain extends WebPage {
         };
         this.add(linkHome);
 
-        AjaxLink<Void> linkCadastro = new AjaxLink<Void>("linkCadastro") {
+        final AjaxLink<Void> linkCadastro = new AjaxLink<Void>("linkCadastro") {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 CadastrosPanel cadastrosPanel = (CadastrosPanel) LabradorMain.this.get("cadastros");
@@ -154,6 +138,7 @@ public class LabradorMain extends WebPage {
         };
 
         this.add(linkCadastro);
+        // linkCadastro.add(new BootstrapIconAddonBehavior("cadastro").setType(BootstrapAddonType.PREPEND));
     }
 
     private void addForm() {
@@ -194,7 +179,7 @@ public class LabradorMain extends WebPage {
         emprestaveis.addAll(projetorDAO.findByLocalizacao(query));
 
         for (AbstractEmprestavel emprestavel : emprestaveis) {
-            this.resultados.add(new EmprestavelVO(emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel
+            this.resultados.add(new EmprestavelVO(emprestavel.getId(), emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel
                     .getLocalizacao().getNome(), emprestavel.getStatus().toString()));
         }
     }

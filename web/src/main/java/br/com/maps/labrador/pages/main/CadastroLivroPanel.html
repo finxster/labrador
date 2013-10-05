@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+
+<body>
+    <wicket:panel>
+        <div wicket:id="feedback">[Feedback Panel]</div>
+        <form wicket:id="mainForm">
+            <div wicket:id="ctrlGroupIsbn">
+                <input type="text" placeholder="ISBN 10" wicket:id="isbn10" />
+            </div>
+            <div wicket:id="ctrlGroupNome" class="control-group error">
+                <input type="text" placeholder="Título" wicket:id="nome" />
+            </div>
+            <div wicket:id="ctrlGroupAutor">
+                <input type="text" placeholder="Autor" wicket:id="autor" />
+            </div>
+            <div wicket:id="ctrlGroupEditora">
+                <input type="text" placeholder="Editora" wicket:id="editora" />
+            </div>
+            <div wicket:id="ctrlGroupLocalizacao" class="control-group error">
+                <input type="text" placeholder="Localização" wicket:id="localizacao" />
+            </div>
+        </form>
+    </wicket:panel>
+</body>
+</html>
