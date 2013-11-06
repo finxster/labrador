@@ -75,16 +75,16 @@ public class LabradorMain extends WebPage {
         IDataProvider<EmprestavelVO> dataProvider = new IDataProvider<EmprestavelVO>() {
 
             public void detach() {
-                resultados = new ArrayList<EmprestavelVO>();
+                LabradorMain.this.resultados = new ArrayList<EmprestavelVO>();
             }
 
             public Iterator<? extends EmprestavelVO> iterator(long first, long count) {
-                search();
-                return resultados.iterator();
+                LabradorMain.this.search();
+                return LabradorMain.this.resultados.iterator();
             }
 
             public long size() {
-                return resultados.size();
+                return LabradorMain.this.resultados.size();
             }
 
             public IModel<EmprestavelVO> model(EmprestavelVO object) {
@@ -97,13 +97,11 @@ public class LabradorMain extends WebPage {
             @Override
             protected void populateEmptyItem(Item<EmprestavelVO> item) {
                 item.add(new EmptyPanel("painelPrincipal"));
-
             }
 
             @Override
             protected void populateItem(Item<EmprestavelVO> item) {
-                EmprestavelVO vo = item.getModelObject();
-                item.add(new EmprestavelPanel("painelPrincipal", vo));
+                item.add(new EmprestavelPanel("painelPrincipal", item.getModelObject()));
             }
         };
 
@@ -123,7 +121,7 @@ public class LabradorMain extends WebPage {
         Link<Void> linkHome = new Link<Void>("linkHome") {
             @Override
             public void onClick() {
-                setResponsePage(ConsultaEmprestavel.class);
+                this.setResponsePage(ConsultaEmprestavel.class);
             }
         };
         this.add(linkHome);
@@ -145,7 +143,7 @@ public class LabradorMain extends WebPage {
         Form<EmprestavelVO> form = new Form<EmprestavelVO>("mainForm") {
             @Override
             protected void onSubmit() {
-                search();
+                LabradorMain.this.search();
             }
         };
         form.setModel(new CompoundPropertyModel<EmprestavelVO>(new EmprestavelVO()));
@@ -154,10 +152,10 @@ public class LabradorMain extends WebPage {
     }
 
     private void search() {
-        LivroDAO livroDAO = daoFactory.getDAOByClass(LivroDAO.class);
-        MochilaDAO mochilaDAO = daoFactory.getDAOByClass(MochilaDAO.class);
-        ModemDAO modemDAO = daoFactory.getDAOByClass(ModemDAO.class);
-        ProjetorDAO projetorDAO = daoFactory.getDAOByClass(ProjetorDAO.class);
+        LivroDAO livroDAO = this.daoFactory.getDAOByClass(LivroDAO.class);
+        MochilaDAO mochilaDAO = this.daoFactory.getDAOByClass(MochilaDAO.class);
+        ModemDAO modemDAO = this.daoFactory.getDAOByClass(ModemDAO.class);
+        ProjetorDAO projetorDAO = this.daoFactory.getDAOByClass(ProjetorDAO.class);
 
         this.resultados = new ArrayList<EmprestavelVO>();
         String query = this.getQuery();
@@ -179,8 +177,8 @@ public class LabradorMain extends WebPage {
         emprestaveis.addAll(projetorDAO.findByLocalizacao(query));
 
         for (AbstractEmprestavel emprestavel : emprestaveis) {
-            this.resultados.add(new EmprestavelVO(emprestavel.getId(), emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel
-                    .getLocalizacao().getNome(), emprestavel.getStatus().toString()));
+            this.resultados.add(new EmprestavelVO(emprestavel.getId(), emprestavel.getNome(), emprestavel.getProprietario().getNome(),
+                    emprestavel.getLocalizacao().getNome(), emprestavel.getStatus().toString()));
         }
     }
 
@@ -188,7 +186,7 @@ public class LabradorMain extends WebPage {
      * @return the query
      */
     public String getQuery() {
-        return query;
+        return this.query;
     }
 
     /**
@@ -202,7 +200,7 @@ public class LabradorMain extends WebPage {
      * @return the resultados
      */
     public List<EmprestavelVO> getResultados() {
-        return resultados;
+        return this.resultados;
     }
 
     /**
@@ -216,7 +214,7 @@ public class LabradorMain extends WebPage {
      * @return the cadastrosPanelVisibility
      */
     public boolean getCadastrosPanelVisibility() {
-        return cadastrosPanelVisibility;
+        return this.cadastrosPanelVisibility;
     }
 
 }
