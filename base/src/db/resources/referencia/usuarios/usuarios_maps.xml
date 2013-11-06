@@ -156,6 +156,33 @@
 			<param name="Grupo">USUARIO</param>
 		</service>
 
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Senha">14LeTH</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Senha">0Q4fFt</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Senha">2jltkk</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
+		
 	</services>
 
 	<services name="Usuários do labrador">
@@ -248,6 +275,21 @@
 			<param name="Usuário">nilson.ivano</param>
 			<param name="Nome">nilson.ivano</param>
 			<param name="E-mail">nilson.ivano@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Nome">renato.lundberg</param>
+			<param name="E-mail">renato.lundberg@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Nome">kendji.shimada</param>
+			<param name="E-mail">kendji.shimada@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Nome">sergio.petto</param>
+			<param name="E-mail">sergio.petto@maps.com.br</param>
 		</service>
 	</services>
 </importacao>
