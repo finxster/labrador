@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ref-db xmlns="http://www.maps.com.br/ref-db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.maps.com.br/ref-db ref-db.xsd">
+	<dependencies>
+	</dependencies>
+	<post basePath="postscript">
+	</post>
+	 <ref basePath="referencia">
+	</ref> 
+</ref-db>

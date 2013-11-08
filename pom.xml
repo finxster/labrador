@@ -191,6 +191,7 @@
   <modules>
     <module>config</module>
     <module>base</module>
+    <module>mail</module>
     <module>database</module>
     <module>web</module>
     <module>testes</module>
