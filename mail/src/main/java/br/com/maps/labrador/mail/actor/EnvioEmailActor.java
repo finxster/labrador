@@ -4,7 +4,7 @@ import jmine.tec.utils.notifier.mail.MailSender;
 
 public class EnvioEmailActor {
 
-    private MailSender mailSender;
+    private MailSender mailSender = null;
 
     public void enviaEmail() {
 
