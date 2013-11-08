@@ -16,9 +16,9 @@
 
 	<dependencies>
 	    <!-- Dependências -->
-        <dependency>
-            <groupId>jmine.tec</groupId>
-            <artifactId>jmine-tec-services-impl</artifactId>
+	    <dependency>
+            <groupId>br.com.maps.labrador</groupId>
+            <artifactId>labrador-base</artifactId>
         </dependency>
         
         <!-- Dependências de teste -->
