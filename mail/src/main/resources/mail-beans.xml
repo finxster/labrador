@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
+    <import resource="classpath:base-test-beans.xml" />
 
-    <bean id="envioEmailActor" class="br.com.maps.labrador.mail.actor.EnvioEmailActor">
-        <property name="mailSender" ref="mailSender"/>
-    </bean>
-    
-	<bean id="labradorMailController" class="br.com.maps.labrador.LabradorMailController" parent="abstractController">
-        <property name="envioEmailActor" ref="envioEmailActor" />
+    <bean id="mailPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+          <property name="placeholderPrefix" value="$mail{" />
+          <property name="location">
+             <value>classpath:mail-sender.properties</value>
+          </property>
     </bean>
 	
-	<bean id="mailSender" class="jmine.dbmonitor.mail.MailSender" lazy-init="true" depends-on="mailPropertyConfigurer">
-        <property name="locations">
-             <value>classpath:mail-sender.properties</value>
-        </property>
+	<bean id="mailSender" class="jmine.tec.utils.notifier.mail.MailSender" lazy-init="true" depends-on="mailPropertyConfigurer">
         <property name="host" value="$mail{email.host}" />
         <property name="port" value="$mail{email.port}" />
         <property name="user" value="$mail{email.user}" />
@@ -22,5 +19,13 @@
         <property name="from" value="$mail{email.from}" />
         <property name="recipientsDomain" value="$mail{email.recipients.domain}" />
         <property name="basicRecipients" value="$mail{email.basic.recipients}" />
+    </bean>
+
+    <bean id="envioEmailActor" class="br.com.maps.labrador.mail.actor.EnvioEmailActor">
+        <property name="mailSender" ref="mailSender"/>
+    </bean>
+    
+    <bean id="labradorMailController" class="br.com.maps.labrador.LabradorMailController" parent="abstractController">
+        <property name="envioEmailActor" ref="envioEmailActor" />
     </bean>
 </beans>
