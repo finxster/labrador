@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<import resource="jmine-tec-persist.xml" />
+	<import resource="jmine-tec-security-api.xml" />
+	<import resource="jmine-tec-security-impl.xml" />
+	<import resource="jmine-tec-rtm-impl.xml" />
+	<import resource="jmine-tec-report.xml" />
+
+	<import resource="base-mapping.xml" />
+	<import resource="base-services.xml" />
+	<import resource="base-exporters.xml" />
+
+	<bean id="userHelper" class="br.com.maps.labrador.helper.LabradorUserHelper">
+		<property name="securityService" ref="securityService" />
+		<property name="daoFactory" ref="daoFactory" />
+	</bean>
+
+	<bean id="emprestimoActor" class="br.com.maps.labrador.actor.EmprestimoActor">
+		<property name="userHelper" ref="userHelper" />
+		<property name="persister" ref="statelessPersister" />
+		<property name="clock" ref="wallClock" />
+		<property name="daoFactory" ref="daoFactory" />
+	</bean>
+
+	<bean id="labradorBaseController" class="br.com.maps.labrador.LabradorBaseController" parent="abstractController">
+		<property name="emprestimoActor" ref="emprestimoActor" />
+	</bean>
+
+	<bean id="auditLogManager" class="jmine.tec.persist.impl.audit.DefaultAuditLogManager">
+		<property name="authorizationManager" ref="boAuthorizationManager" />
+	</bean>
+
+	<bean id="securityService" class="jmine.tec.security.api.SecurityService">
+		<property name="systemId" value="1" />
+		<property name="frameworkIds">
+			<list>
+				<value>6</value> <!-- JMINE -->
+			</list>
+		</property>
+	</bean>
+	<bean id="diagnosticianCase" class="jmine.tec.rtm.impl.diagnostician.BeanFactoryDiagnosticianCase">
+	</bean>
+
+
+	<bean id="userDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>jmine.tec.security.impl.dao.UserDAO</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="livroDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>br.com.maps.labrador.dao.LivroDAO</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="metaCredentialDAO" factory-bean="daoFactory" factory-method="getDAOByClass">
+		<constructor-arg>
+			<value>jmine.tec.security.impl.dao.MetaCredentialDAO</value>
+		</constructor-arg>
+	</bean>
+
+	<bean class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="persisterFactory" />
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.listener.UserCredentialPersisterListener">
+					<property name="metaCredentialDAO" ref="metaCredentialDAO" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="emprestimoPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestimoPersisterListenerConfigurer" />
+	<bean id="labradorUsuarioPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.LabradorUsuarioPersisterListenerConfigurer" />
+	<bean id="emprestavelPersisterListenerConfigurer" class="br.com.maps.labrador.persister.configurer.EmprestavelPersisterListenerConfigurer" />
+	<bean id="produtoIntegracaoValidator" class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="validatorRegistry"></property>
+		<property name="registers">
+			<list>
+				<bean class="br.com.maps.labrador.validator.EmprestimoValidator" />
+			</list>
+		</property>
+	</bean>
+</beans>

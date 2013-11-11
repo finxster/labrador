@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ref-db xmlns="http://www.maps.com.br/ref-db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.maps.com.br/ref-db ref-db.xsd">
+	<dependencies>
+		<dependency>services-driver-db.xml</dependency>
+		<dependency>jmine-tec-security-impl-db.xml</dependency>
+	</dependencies>
+	<post basePath="postscript">
+		<entry type="SERVICE">security/security_client.xml</entry>
+		<entry type="SERVICE">security/chinese/chinese_wall_credential.xml</entry>
+		<entry type="SERVICE">security/credentials/metacredentials.xml</entry>
+		<entry type="SERVICE">security/credentials/url_credentials.xml</entry>
+		
+		<!-- Grupos de usuário -->
+		<entry type="SERVICE">security/groups/grupo_administrador.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_jbc.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps.xml</entry>
+		<entry type="SERVICE">security/groups/grupo_maps_tecnologia.xml</entry>
+		<entry type="SERVICE">usuarios.xml</entry>
+	</post>
+	 <ref basePath="referencia">
+		<entry type="INTEGRACAO-XML">maps/livros.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/projetores.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/mochilas.xml</entry>
+		<entry type="INTEGRACAO-XML">tecnologia/modems.xml</entry>
+	</ref> 
+</ref-db>
