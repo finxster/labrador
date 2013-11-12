@@ -18,6 +18,7 @@ import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 import br.com.maps.labrador.pages.cadastro.mochila.CadastroMochila;
 import br.com.maps.labrador.pages.cadastro.modem.CadastroModem;
 import br.com.maps.labrador.pages.cadastro.projetor.CadastroProjetor;
+import br.com.maps.labrador.pages.consulta.contato.PesquisaContato;
 import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
 import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
@@ -43,7 +44,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(CadastroMochila.class, "Base", "Cadastros", "Mochilas");
         config.addPage(CadastroModem.class, "Base", "Cadastros", "Modems");
         config.addPage(CadastroProjetor.class, "Base", "Cadastros", "Projetores");
-        config.addPage(CadastroContato.class, "Base", "Cadastros", "Contato");
+        config.addPage(CadastroContato.class, "Base", "Cadastros", "Contatos");
         config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
         config.addPage(ControleEmprestimo.class, "Empréstimos", "Livros", "Emprestar");
         config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
@@ -53,6 +54,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(PesquisaModem.class, "Base", "Pesquisas", "Modems");
         config.addPage(PesquisaProjetor.class, "Base", "Pesquisas", "Projetores");
         config.addPage(PesquisaEmprestimo.class, "Base", "Pesquisas", "Empréstimos");
+        config.addPage(PesquisaContato.class, "Base", "Pesquisas", "Contatos");
 
         config.addPage(Authorization.class, "Autorização", "Autorização", "Autorizar");
         config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Autorização", "Auditoria");
