@@ -8,9 +8,9 @@ import jmine.tec.persist.impl.hibernate.RestrictionsUtils;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.maps.labrador.domain.contato.Contato;
-import br.com.maps.labrador.domain.mochila.Mochila;
 
 /**
  * DAO para {@link Contato}.
@@ -22,15 +22,20 @@ import br.com.maps.labrador.domain.mochila.Mochila;
 public class ContatoDAO extends BaseDAO<Contato> {
 
     /**
-     * Retorna uma lista de {@link Contato} através de uma String @param titulo que representa um atributo de uma {@link Mochila}
+     * Retorna uma lista de {@link Contato}
      * 
      * @param nome String utilizada na consulta
-     * @return um {@link Contato} através de uma String @param nome que representa um atributo de um {@link Contato}
+     * @param email String utilizada na consulta
+     * @return uma lista de {@link Contato}
      * @throws BeanNotFoundException
      */
-    public List<Contato> findByNome(String nome) throws BeanNotFoundException {
+    public List<Contato> findByNomeOrEmail(String nome, String email) {
         Criteria c = this.createCriteria();
         RestrictionsUtils.addRestrictionILike(c, "nome", nome, MatchMode.ANYWHERE);
+        if (email != null) {
+            Criteria criteria = c.createCriteria("email");
+            criteria.add(Restrictions.ilike("nome", email, MatchMode.ANYWHERE));
+        }
         return this.executeQuery(c);
     }
 }
