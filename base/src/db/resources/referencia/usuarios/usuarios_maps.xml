@@ -135,7 +135,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">ramon.canales</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -144,7 +144,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">rafael.volpato</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -153,7 +153,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">nilson.ivano</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -162,7 +162,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">renato.lundberg</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		
 		<service name="User" action="INCLUIR">
@@ -171,7 +171,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">kendji.shimada</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		
 		<service name="User" action="INCLUIR">
@@ -180,7 +180,15 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">sergio.petto</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Senha">68UGdq</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 		
 	</services>
@@ -291,5 +299,11 @@
 			<param name="Nome">sergio.petto</param>
 			<param name="E-mail">sergio.petto@maps.com.br</param>
 		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Nome">jurandir.jardim</param>
+			<param name="E-mail">jurandir.jardim@maps.com.br</param>
+		</service>
+  
 	</services>
 </importacao>
