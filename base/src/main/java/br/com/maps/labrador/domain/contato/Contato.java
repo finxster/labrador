@@ -2,9 +2,15 @@ package br.com.maps.labrador.domain.contato;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
 import jmine.tec.component.Documentation;
-import jmine.tec.persist.impl.annotation.DiscriminatorComment;
+import jmine.tec.persist.impl.annotation.Alias;
+import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 
 /**
  * Uma entidade que irá representar um contato em nosso sistema
@@ -13,8 +19,13 @@ import jmine.tec.persist.impl.annotation.DiscriminatorComment;
  * @created Nov 7, 2013
  */
 @Entity
-@DiscriminatorComment("CONTATO")
-public class Contato {
+@Alias("CONTATO")
+@Table(name = "CONTATO")
+@Documentation("TABELA QUE ARMAZENA OS CONTATOS DO SISTEMA")
+@SequenceGenerator(name = "SEQ_CONTAT", sequenceName = "SEQ_CONTAT")
+public class Contato extends PersistableBusinessObject {
+
+    private Long id;
 
     private String nome;
 
@@ -23,6 +34,24 @@ public class Contato {
     private String assunto;
 
     private String mensagem;
+
+    /**
+     * @return the id
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CONTAT")
+    @Documentation("CODIGO QUE IDENTIFICA UM OBJETO DO TIPO CONTATO")
+    @Column(name = "COD_CONTATO")
+    public Long getId() {
+        return this.id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     /**
      * @return the nome
