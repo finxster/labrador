@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<import resource="classpath:labrador-web.xml" />
+
+	<bean id="menuCreator" class="jmine.tec.web.wicket.component.menu.MenuCreator">
+		<property name="menuId" value="menuPrincipal" />
+		<property name="menu" ref="menuApplication" />
+	</bean>
+
+	<!-- XXX (finx:20130923) isso não deveria estar aqui... -->
+	<bean id="bootstrapTemplatePanelsFactory" class="br.com.maps.labrador.factory.LabradorTemplatePanelsFactory">
+		<property name="menuCreator" ref="menuCreator" />
+	</bean>
+
+	<bean id="menuApplication" class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigBootstrapMenuAdapter">
+		<constructor-arg>
+			<bean class="jmine.tec.web.wicket.component.menu.cfg.MenuConfigMergerFactoryBean">
+				<constructor-arg>
+					<list>
+						<ref bean="menuApplicationBase" />
+					</list>
+				</constructor-arg>
+				<constructor-arg>
+					<value type="java.lang.Boolean">true</value>
+				</constructor-arg>
+			</bean>
+		</constructor-arg>
+	</bean>
+
+	<bean id="menuApplicationBase" class="br.com.maps.labrador.LabradorMenuCreator" />
+
+	<bean id="applicationBean" class="br.com.maps.labrador.LabradorApplication">
+		<property name="authorizationStrategy" ref="securityServiceAuthorizationStrategy" />
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="rtmController" ref="rtmController"></property>
+		<property name="beanWirer" ref="webBeanWirer" />
+		<property name="style" value="bootstrap" />
+		<property name="locale">
+			<bean class="java.util.Locale">
+				<constructor-arg index="0" value="pt" />
+				<constructor-arg index="1" value="BR" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="securityFilter" class="br.com.maps.labrador.ApplicationSecurityFilter">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/login"></property>
+		<property name="permissionDeniedUrl" value="/accessDenied"></property>
+	</bean>
+
+	<bean id="buildInfo" class="jmine.tec.web.wicket.component.buildinfo.BuildInfo">
+		<property name="filename" value="buildInfo-group-web.properties" />
+	</bean>
+
+	<bean id="disabledChineseWallEntitiesList" class="jmine.tec.utils.factory.HierarchyClassListFactoryBean">
+		<constructor-arg>
+			<value>jmine.tec.persist.impl.authorization.Authorizable</value>
+		</constructor-arg>
+	</bean>
+
+</beans>
