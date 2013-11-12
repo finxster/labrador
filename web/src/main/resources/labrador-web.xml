@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<import resource="classpath:jmine-tec-web-wicket.xml" />
+
+	<bean class="jmine.tec.utils.register.Registrar">
+		<property name="receiver" ref="wicketFormComponentFactory" />
+		<property name="registers">
+			<list>
+				<bean class="jmine.tec.web.wicket.component.factory.impl.Select2EntityFactory">
+					<constructor-arg index="0" value="jmine.tec.persist.impl.bussobj.PersistableBusinessObject" />
+				</bean>
+				<bean class="jmine.tec.web.wicket.component.factory.impl.Select2EnumFactory" />
+				<bean class="jmine.tec.web.wicket.component.factory.impl.Select2ApacheEnumFactory" />
+				<bean class="jmine.tec.web.wicket.component.factory.impl.Select2AutoCompleteFactory">
+					<constructor-arg index="0" value="jmine.tec.persist.impl.bussobj.AuthPersistableBusinessObject" />
+				</bean>
+				<bean class="jmine.tec.web.wicket.component.factory.impl.BootstrapDateTextFieldFactory" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

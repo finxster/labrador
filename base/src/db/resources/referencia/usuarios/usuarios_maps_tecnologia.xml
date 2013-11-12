@@ -1,0 +1,20 @@
+<importacao>
+	<services name="Usuarios do sistema">
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">tecnologia</param>
+			<param name="Senha">tecnologia</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">tecnologia</param>
+			<param name="Grupo">MAPS_TECNOLOGIA</param>
+		</service>
+	</services>
+
+	<services name="Usuários do labrador">
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">tecnologia</param>
+			<param name="Nome">tecnologia</param>
+			<param name="E-mail">tecnologia@maps.com.br</param>
+		</service>
+	</services>
+</importacao>
