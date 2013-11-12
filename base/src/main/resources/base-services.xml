@@ -16,6 +16,7 @@
 						<value>br.com.maps.labrador.service.incluir.ModemService</value>
 						<value>br.com.maps.labrador.service.incluir.ProjetorService</value>
 						<value>br.com.maps.labrador.service.incluir.DevolucaoEmprestimoService</value>
+						<value>br.com.maps.labrador.service.incluir.ContatoService</value>
 						
 						<value>br.com.maps.labrador.service.alterar.RelogioService</value>
 						
