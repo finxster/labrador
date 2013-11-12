@@ -45,6 +45,7 @@
 	<bean id="securityManager" class="jmine.tec.web.servlet.security.HttpApplicationSecurityManager">
 		<property name="securityService" ref="securityService" />
 		<property name="transactionalController" ref="transactionalController" />
+		<property name="userDataLogger" ref="userDataLogger" />
 	</bean>
 
 	<bean id="transactionManager" class="jmine.tec.persist.impl.spring.transaction.PartitionTransactionManager">

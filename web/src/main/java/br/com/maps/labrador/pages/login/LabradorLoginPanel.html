@@ -213,6 +213,39 @@ code {
 						O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="http://inova.maps.com.br/">Inova Maps</a>. O Labrador foi desenvolvido com o <a
 							href="http://jmine.com.br" target="_blank">Jmine</a>.
 					</p>
+					<p class="muted credit">Fale conosco:
+					<form class="form-horizontal" wicket:id="formContato">
+						<div class="control-group">
+							<label class="control-label" for="nome">Nome</label>
+							<div class="controls">
+								<input type="text" id="nome" placeholder="Nome" wicket:id="nome" required />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="email">E-mail</label>
+							<div class="controls">
+								<input type="text" id="email" placeholder="E-mail" wicket:id="email" required />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="assunto">Assunto</label>
+							<div class="controls">
+								<input type="text" id="assunto" placeholder="Assunto" wicket:id="assunto"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="mensagem">Mensagem</label>
+							<div class="controls">
+								<textarea rows="3" id="mensagem" placeholder="Mensagem"  wicket:id="mensagem" required/>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" wicket:id="gravar">Enviar</button>
+							</div>
+						</div>
+					</form>
+					</p>
 				</div>
 			</div>
 
