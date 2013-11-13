@@ -15,11 +15,13 @@
 	<packaging>jar</packaging>
 
 	<dependencies>
-	    <!-- Dependências -->
+	    <!-- Dependências labrador -->
 	    <dependency>
             <groupId>br.com.maps.labrador</groupId>
             <artifactId>labrador-base</artifactId>
         </dependency>
+        
+        <!-- Dependências Jmine -->
         
         <!-- Dependências de teste -->
         <dependency>
@@ -30,6 +32,12 @@
         <dependency>
             <groupId>jmine.tec</groupId>
             <artifactId>jmine-tec-services-impl</artifactId>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>jmine.tec</groupId>
+            <artifactId>jmine-tec-security-impl</artifactId>
             <scope>test</scope>
             <type>test-jar</type>
         </dependency>
