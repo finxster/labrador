@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -13,8 +14,9 @@ import javax.persistence.Transient;
 
 import jmine.tec.component.Documentation;
 import jmine.tec.persist.impl.annotation.Alias;
-import jmine.tec.persist.impl.annotation.Index;
 import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
+
+import org.hibernate.validator.NotNull;
 
 /**
  * Classe que representa um email para ser enviado.
@@ -22,10 +24,9 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
  * @author fabio.sakiyama
  * @date Nov 8, 2013
  */
-@SuppressWarnings("serial")
-@Table(name = "EMAIL")
-@Alias("EML")
 @Entity
+@Table(name = "EMAIL")
+@Alias("EMAIL")
 @Documentation("TABELA QUE GUARDA OS EMAILS A ENVIAR")
 @SequenceGenerator(name = "SEQ_EMAIL", sequenceName = "SEQ_EMAIL")
 public class Email extends PersistableBusinessObject implements Serializable {
@@ -46,10 +47,9 @@ public class Email extends PersistableBusinessObject implements Serializable {
      * @return O id do email
      */
     @Id
-    @Index(name = "IX_EML_EMPRESA")
-    @GeneratedValue(generator = "SEQ_EMAIL")
-    @Documentation("ID")
-    @Column(name = "PK_EMAIL")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_EMAIL")
+    @Documentation("CODIGO DO EMPRESTIMO")
+    @Column(name = "COD_EMPRESTIMO")
     public Long getId() {
         return this.id;
     }
@@ -68,7 +68,8 @@ public class Email extends PersistableBusinessObject implements Serializable {
      * 
      * @return o assunto do email
      */
-    @Column(name = "ASSUNTO")
+    @NotNull
+    @Column(name = "ASSUNTO", nullable = false)
     @Documentation("ASSUNTO")
     public String getAssunto() {
         return this.assunto;
@@ -88,7 +89,8 @@ public class Email extends PersistableBusinessObject implements Serializable {
      * 
      * @return o corpo do email
      */
-    @Column(name = "CORPO")
+    @NotNull
+    @Column(name = "CORPO", nullable = false)
     @Documentation("CORPO")
     public String getCorpo() {
         return this.corpo;
@@ -108,7 +110,8 @@ public class Email extends PersistableBusinessObject implements Serializable {
      * 
      * @return os destinatários do email
      */
-    @Column(name = "DESTINATARIOS")
+    @NotNull
+    @Column(name = "DESTINATARIOS", nullable = false)
     @Documentation("DESTINATARIOS")
     public String getDestinatarios() {
         return this.destinatarios;
@@ -128,6 +131,7 @@ public class Email extends PersistableBusinessObject implements Serializable {
      * 
      * @return o anexo do email
      */
+    // XXX fabio.sakiyama manter transient ou usar blobs?
     @Transient
     public File getAnexo() {
         return this.anexo;
