@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>jmine.tec.pom</groupId>
+        <artifactId>jmine-tec-pom</artifactId>
+        <version>3.0.1.2</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.com.maps.labrador</groupId>
+    <artifactId>labrador-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Labrador - Parent Pom</name>
+    <url>http://www.jmine.com.br</url>
+    <packaging>pom</packaging>
+
+    <properties>
+        <encoding>UTF-8</encoding>
+        <maven.compile.encoding>UTF-8</maven.compile.encoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jetty.version>6.1.25</jetty.version>
+        <jmine-tec-version>W6-3.0.5.2</jmine-tec-version>
+        
+        <!-- Configurações do refdb -->
+        <refDbPluginVersion>1.1.17</refDbPluginVersion>
+    </properties>
+    
+    <repositories>
+        <repository>
+            <id>jmine</id>
+            <url>http://repo.jmine.com.br/repo</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>jmine-plugins</id>
+            <url>http://repo.jmine.com.br/repo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+            <testResource>
+                <directory>src/db/resources</directory>
+            </testResource>
+        </testResources>
+    </build>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
+                <type>test-jar</type>
+                <scope>test</scope>
+            </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-base</artifactId>
+                <version>${project.version}</version>
+                <type>db</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-config</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+	    <dependency>
+                <groupId>br.com.maps.labrador</groupId>
+                <artifactId>labrador-testes</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.jms</groupId>
+                <artifactId>jms</artifactId>
+                <version>1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>1.1</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>jmine.tec</groupId>
+                <artifactId>jmine-tec-all</artifactId>
+                <version>${jmine-tec-version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+<!-- dependências externas -->          
+<dependency>
+  <groupId>de.agilecoders.wicket</groupId>
+  <artifactId>wicket-bootstrap-core</artifactId>
+  <version>0.8.4</version>
+</dependency>
+
+<dependency>
+  <groupId>de.agilecoders.wicket</groupId>
+  <artifactId>wicket-bootstrap-extensions</artifactId>
+  <version>0.8.4</version>
+</dependency>
+
+<dependency>
+  <groupId>de.agilecoders.wicket</groupId>
+  <artifactId>wicket-bootstrap-samples</artifactId>
+  <version>0.8.4</version>
+</dependency>
+
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>servlet-api</artifactId>
+    <version>3.0</version>
+</dependency>
+
+                        <dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-jquery-ui</artifactId>
+                                <version>6.9.2</version>
+             <!--               <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions> -->                        
+</dependency>
+
+
+<dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-core</artifactId>
+                                <version>6.9.2</version>
+                                <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions>
+                        </dependency>
+                        <dependency>
+                                <groupId>org.odlabs.wiquery</groupId>
+                                <artifactId>wiquery-core</artifactId>
+                                <version>6.9.2</version>
+                                <type>test-jar</type>
+                                <exclusions>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-core</artifactId>
+                                        </exclusion>
+                                        <exclusion>
+                                                <groupId>org.apache.wicket</groupId>
+                                                <artifactId>wicket-util</artifactId>
+                                        </exclusion>
+                                </exclusions>
+                        </dependency>
+<dependency>
+<groupId>org.apache.wicket</groupId>
+<artifactId>wicket-request</artifactId>
+<version>6.10.0</version>
+</dependency>
+
+</dependencies>
+    </dependencyManagement>
+
+  <modules>
+    <module>config</module>
+    <module>base</module>
+    <module>database</module>
+    <module>web</module>
+    <module>testes</module>
+  </modules>
+</project>

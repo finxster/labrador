@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="mappingResources" class="jmine.tec.persist.impl.hibernate.PersistableClassListFactory" depends-on="emprestavelChineseWallFilterDefinitionRegistry" lazy-init="false">
+		<property name="name" value="mappingResources" />
+		<property name="dependencies">
+			<list>
+				<ref bean="securityMappingResources" />
+				<ref bean="rtmMappingResources" />
+			</list>
+
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value type="java.lang.Class">jmine.tec.persist.impl.audit.domain.AuditProperty</value>
+				<value type="java.lang.Class">jmine.tec.persist.impl.audit.domain.AuditValuedProperty</value>
+				<value type="java.lang.Class">jmine.tec.persist.impl.audit.domain.AuditVersion</value>
+				<value type="java.lang.Class">jmine.tec.persist.impl.audit.domain.AuditEntity</value>
+			</list>
+		</property>
+		<property name="packageToScan" value="br.com.maps.labrador" />
+	</bean>
+
+
+	<bean id="emprestavelChineseWallFilterDefinition" class="org.springframework.orm.hibernate3.FilterDefinitionFactoryBean">
+		<property name="filterName" value="emprestavelChineseWallFilter" />
+		<property name="defaultFilterCondition"
+			value="COD_EMPRESTAVEL in ( SELECT cwei.COD_ENTITY FROM $SCHEMA_NAME$.CREDENTIAL_ENTITY_ID cwei
+            JOIN $SCHEMA_NAME$.CREDENTIAL cred ON cwei.COD_CREDENTIAL = cred.COD_CREDENTIAL where cred.TYPE_CREDENTIAL = 2 AND
+            cred.ENTITY_NAME = 'EMPRESTAVEL' AND cred.COD_CREDENTIAL IN ( :credentialId))" />
+		<property name="parameterTypes">
+			<props>
+				<prop key="credentialId">long</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="emprestavelChineseWallFilterDefinitionRegistry" class="jmine.tec.utils.register.Registrar" lazy-init="false">
+		<property name="receiver" ref="chineseWallFilterRegistry" />
+		<property name="registers">
+			<list>
+				<ref bean="emprestavelChineseWallFilterDefinition" />
+			</list>
+		</property>
+	</bean>
+
+</beans>
