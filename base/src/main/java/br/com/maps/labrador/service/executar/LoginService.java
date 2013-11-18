@@ -29,7 +29,7 @@ public class LoginService {
      */
     @Execution
     public void execute() throws ServiceExecutionException {
-        this.userHelper.setLabradorUsuario(labradorUsuario);
+        this.userHelper.setLabradorUsuario(this.labradorUsuario);
     }
 
     /**
@@ -43,7 +43,7 @@ public class LoginService {
     /**
      * @param userHelper the userHelper to set
      */
-    @Injected
+    @Injected(name = "userHelper")
     public void setUserHelper(StaticLabradorUserHelper userHelper) {
         this.userHelper = userHelper;
     }

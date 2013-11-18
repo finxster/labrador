@@ -74,7 +74,7 @@
 					<descriptors>
 						<descriptor>base-db.xml</descriptor>
 					</descriptors>
-					<beanFactory>base-refdb-beans.xml</beanFactory>
+					<beanFactory>labrador-database-refdb.xml</beanFactory>
 					<includeActions>true</includeActions>
 					<dbResources>src/db/resources/</dbResources>
 					<hibernateDrop>false</hibernateDrop>
