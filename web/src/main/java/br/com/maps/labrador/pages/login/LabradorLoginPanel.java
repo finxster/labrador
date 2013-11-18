@@ -12,7 +12,6 @@ import jmine.tec.security.api.SecurityService;
 import jmine.tec.security.api.UserDataLogger;
 import jmine.tec.security.web.WebSecurityContext;
 import jmine.tec.security.web.WebSecurityManager;
-import jmine.tec.web.wicket.component.border.ControlGroup;
 import jmine.tec.web.wicket.security.SecureSession;
 import jmine.tec.web.wicket.security.UserDetails;
 import jmine.tec.web.wicket.upperCase.field.NoUpperCasePasswordTextField;
@@ -20,7 +19,6 @@ import jmine.tec.web.wicket.upperCase.field.NoUpperCaseTextFieldImpl;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.feedback.FeedbackMessage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
@@ -43,7 +41,7 @@ public class LabradorLoginPanel extends Panel {
     @SpringBean(name = "upperCaseLogin")
     private Boolean upperCaseLogin;
 
-    @SpringBean(name = "userDataLogger")
+    @SpringBean(name = "labradorDataLogger")
     private UserDataLogger userDataLogger;
 
     private final String systemName;
@@ -119,12 +117,12 @@ public class LabradorLoginPanel extends Panel {
                     HttpServletResponse response = (HttpServletResponse) this.getResponse().getContainerResponse();
                     WebSecurityContext context = new WebSecurityContext(request, response);
                     Subject subject;
-                    subject = securityManager.login(modelObject.getUsername(), modelObject.getPassword(), context);
+                    subject = LabradorLoginPanel.this.securityManager.login(modelObject.getUsername(), modelObject.getPassword(), context);
                     if (subject != null) {
-                        securityManager.storeSubject(context, subject);
+                        LabradorLoginPanel.this.securityManager.storeSubject(context, subject);
                         secureSession.setSubject(subject);
-                        this.setResponsePage(getResponsePage());
-                        logUserLoginData(secureSession.getId(), modelObject.getUsername());
+                        this.setResponsePage(LabradorLoginPanel.this.getResponsePage());
+                        LabradorLoginPanel.this.logUserLoginData(secureSession.getId(), modelObject.getUsername());
                     } else {
                         throw new SecurityException(PAGES_MAIN_LOGIN_DENIED.create());
                     }
@@ -138,16 +136,16 @@ public class LabradorLoginPanel extends Panel {
         };
         form.setModel(new CompoundPropertyModel<UserDetails>(userDetails));
 
-//        form.add(new Label("systemName", this.systemName));
+        // form.add(new Label("systemName", this.systemName));
 
-//        ControlGroup userControlGroup = new ControlGroup("user.control-group");
-//        userControlGroup.add(this.getUsernameField());
-//        form.add(userControlGroup);
+        // ControlGroup userControlGroup = new ControlGroup("user.control-group");
+        // userControlGroup.add(this.getUsernameField());
+        // form.add(userControlGroup);
         form.add(this.getUsernameField());
 
-//        ControlGroup passControlGroup = new ControlGroup("pass.control-group");
-//        passControlGroup.add(this.getPasswordField());
-//        form.add(passControlGroup);
+        // ControlGroup passControlGroup = new ControlGroup("pass.control-group");
+        // passControlGroup.add(this.getPasswordField());
+        // form.add(passControlGroup);
         form.add(this.getPasswordField());
 
         return form;

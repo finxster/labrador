@@ -24,6 +24,7 @@
 				<prop key="database.hibernate.default_schema">public</prop>
 
 				<!-- Configurações de banco em memória -->
+
 				<prop key="database.hibernate.dialect">jmine.tec.persist.environment.db.dialect.H2SequenceDialect</prop>
 				<prop key="datasource.driverClassName">org.h2.Driver</prop>
 				<prop key="datasource.url">jdbc:h2:mem:loadeddb;LOCK_MODE=3;MVCC=TRUE;AUTO_SERVER=TRUE;LOG=0</prop>
@@ -45,6 +46,11 @@
 	<bean id="securityManager" class="jmine.tec.web.servlet.security.HttpApplicationSecurityManager">
 		<property name="securityService" ref="securityService" />
 		<property name="transactionalController" ref="transactionalController" />
+		<property name="userDataLogger" ref="userDataLogger"></property>
+	</bean>
+
+	<bean id="labradorDataLogger" class="jmine.tec.security.impl.UserDataLogger">
+		<property name="controller" ref="persistenceController" />
 	</bean>
 
 	<bean id="transactionManager" class="jmine.tec.persist.impl.spring.transaction.PartitionTransactionManager">
