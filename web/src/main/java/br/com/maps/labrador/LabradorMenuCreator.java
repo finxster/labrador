@@ -14,6 +14,7 @@ import br.com.maps.labrador.pages.cadastro.contato.CadastroContato;
 import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.controle.ControleEmprestimo;
 import br.com.maps.labrador.pages.cadastro.emprestimo.devolucao.CadastroDevolucaoEmprestimo;
+import br.com.maps.labrador.pages.cadastro.jogo.CadastroJogo;
 import br.com.maps.labrador.pages.cadastro.livro.CadastroLivro;
 import br.com.maps.labrador.pages.cadastro.mochila.CadastroMochila;
 import br.com.maps.labrador.pages.cadastro.modem.CadastroModem;
@@ -45,6 +46,7 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(CadastroModem.class, "Base", "Cadastros", "Modems");
         config.addPage(CadastroProjetor.class, "Base", "Cadastros", "Projetores");
         config.addPage(CadastroContato.class, "Base", "Cadastros", "Contatos");
+        config.addPage(CadastroJogo.class, "Base", "Cadastros", "Jogos");
         config.addPage(CadastroEmprestimo.class, "Empréstimos", "Livros", "Tomar emprestado");
         config.addPage(ControleEmprestimo.class, "Empréstimos", "Livros", "Emprestar");
         config.addPage(CadastroDevolucaoEmprestimo.class, "Empréstimos", "Livros", "Devolver");
