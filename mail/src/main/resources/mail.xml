@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- imports externos -->
+
+    <!-- imports de outros módulos do labrador -->
+    <import resource="classpath:base-refdb-beans.xml" />
+
+    <!-- imports do próprio módulo -->
+    <import resource="classpath:mail-beans.xml" />
+    <import resource="classpath:mail-mapping.xml" />
+</beans>

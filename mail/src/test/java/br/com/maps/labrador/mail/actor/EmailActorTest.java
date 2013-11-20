@@ -25,7 +25,7 @@ public class EmailActorTest extends DefaultRefDBTestCase {
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "mail-beans.xml";
+        return "mail.xml";
     }
 
     /**
