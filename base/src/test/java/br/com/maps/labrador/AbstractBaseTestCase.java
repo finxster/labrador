@@ -6,7 +6,7 @@ import jmine.tec.persist.test.junit4.DBTestCase;
 /**
  * AbstractCore TestCase
  */
-@DBEnv(refdb = "base-db.xml", spring = "base-test-beans.xml")
+@DBEnv(refdb = "labrador-base-db.xml", spring = "labrador-base-test-beans.xml")
 public abstract class AbstractBaseTestCase extends DBTestCase {
 
 }

@@ -11,7 +11,7 @@ public abstract class BOBaseTestCase<T extends PersistableBusinessObject> extend
      */
     @Override
     protected String[] getResourcesBaseReferencia() {
-        return new String[]{ "base-db.xml" };
+        return new String[]{ "labrador-base-db.xml" };
     }
 
     /**
@@ -21,7 +21,7 @@ public abstract class BOBaseTestCase<T extends PersistableBusinessObject> extend
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "base-test-beans.xml";
+        return "labrador-base-test-beans.xml";
     }
 
     /**

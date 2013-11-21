@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ref-db xmlns="http://www.maps.com.br/ref-db" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.maps.com.br/ref-db ref-db.xsd">
     <dependencies>
-        <dependency>base-db.xml</dependency>
+        <dependency>labrador-base-db.xml</dependency>
     </dependencies>
 </ref-db>
