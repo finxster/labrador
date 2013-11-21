@@ -72,7 +72,7 @@
 				<version>${refDbPluginVersion}</version>
 				<configuration>
 					<descriptors>
-						<descriptor>base-db.xml</descriptor>
+						<descriptor>labrador-base-db.xml</descriptor>
 					</descriptors>
 					<beanFactory>labrador-database-refdb.xml</beanFactory>
 					<includeActions>true</includeActions>

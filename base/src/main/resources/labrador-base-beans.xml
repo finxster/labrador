@@ -7,9 +7,9 @@
 	<import resource="jmine-tec-rtm-impl.xml" />
 	<import resource="jmine-tec-report.xml" />
 
-	<import resource="base-mapping.xml" />
-	<import resource="base-services.xml" />
-	<import resource="base-exporters.xml" />
+	<import resource="labrador-base-mapping.xml" />
+	<import resource="labrador-base-services.xml" />
+	<import resource="labrador-base-exporters.xml" />
 
 	<bean id="userHelper" class="br.com.maps.labrador.helper.LabradorUserHelper">
 		<property name="securityService" ref="securityService" />
