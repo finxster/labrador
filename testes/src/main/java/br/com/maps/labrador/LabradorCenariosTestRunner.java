@@ -13,8 +13,8 @@ public class LabradorCenariosTestRunner {
      * @param args args
      */
     public static void main(String[] args) {
-        TestRunnerStarter starter = new TestRunnerStarter("teste-beans.xml", "teste-db.xml");
-        starter.setRuntimeXMLs(new String[]{ "teste-test-runner-runtime.xml" });
+        TestRunnerStarter starter = new TestRunnerStarter("labrador-teste-beans.xml", "labrador-teste-db.xml");
+        starter.setRuntimeXMLs(new String[]{ "labrador-teste-test-runner-runtime.xml" });
         starter.start();
     }
 }
