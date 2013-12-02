@@ -21,7 +21,7 @@ public abstract class BOBaseTestCase<T extends PersistableBusinessObject> extend
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "labrador-base-test-beans.xml";
+        return "labrador-base-test.xml";
     }
 
     /**
