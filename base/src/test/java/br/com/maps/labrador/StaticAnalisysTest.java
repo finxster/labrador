@@ -42,7 +42,7 @@ public class StaticAnalisysTest extends AbstractBOStaticAnalysisTest {
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "labrador-base-test-beans.xml";
+        return "labrador-base-test.xml";
     }
 
 }
