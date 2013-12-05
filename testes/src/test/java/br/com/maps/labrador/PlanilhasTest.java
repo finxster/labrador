@@ -97,7 +97,7 @@ public class PlanilhasTest extends ServicesIntegrationTestCase {
      */
     @Override
     protected final String getSpringMainXMLFilename() {
-        return "labrador-teste-beans.xml";
+        return "labrador-teste.xml";
     }
 
     @Override
