@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Imports Externos -->
+	<import resource="classpath:jmine-tec-test.xml" />
+	<import resource="classpath:jmine-tec-services-impl-test-services.xml" />
+	
+	<!-- Imports de outros módulos -->
+	 
+	<!-- Imports do próprio módulo -->
+	<import resource="classpath:labrador-base.xml" />
+	<import resource="classpath:labrador-base-test-beans.xml"/>
+</beans>
