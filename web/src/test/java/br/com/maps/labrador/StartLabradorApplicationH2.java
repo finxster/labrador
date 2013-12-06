@@ -76,7 +76,7 @@ public final class StartLabradorApplicationH2 {
      * @throws Exception e
      */
     public static void main(String[] args) throws Exception {
-        prepareEnvironment("base-test-beans.xml", "labrador-base-db.xml", ReferenceDatabaseDescriptionType.REFERENCE);
+        prepareEnvironment("labrador-base-test.xml", "labrador-base-db.xml", ReferenceDatabaseDescriptionType.REFERENCE);
 
         stopPreviousServer();
         server = new Server();

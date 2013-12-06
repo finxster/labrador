@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!-- Imports externos -->
+	<import resource="jmine-tec-persist.xml" />
+	<import resource="jmine-tec-security-api.xml" />
+	<import resource="jmine-tec-security-impl.xml" />
+	<import resource="jmine-tec-rtm-impl.xml" />
+	<import resource="jmine-tec-report.xml" />
+	
+	<!-- Imports de outros módulos -->
+
+	<!-- Imports do próprio módulo -->
+	<import resource="labrador-base-beans.xml" />
+	<import resource="labrador-base-mapping.xml" />
+	<import resource="labrador-base-services.xml" />
+	<import resource="labrador-base-exporters.xml" />
+</beans>

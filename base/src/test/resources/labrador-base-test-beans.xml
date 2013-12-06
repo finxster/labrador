@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-
-	<import resource="classpath:jmine-tec-test.xml" />
-	<import resource="classpath:labrador-base-beans.xml" />
-	<import resource="classpath:labrador-base-mapping.xml" />
-	<import resource="classpath:jmine-tec-services-impl-test-services.xml" />
-
 	<bean id="wallClock" class="jmine.tec.utils.date.StoppedClock" />
 
 	<bean id="userHelper" class="br.com.maps.labrador.helper.StaticLabradorUserHelper">
 		<property name="securityService" ref="securityService" />
 		<property name="daoFactory" ref="daoFactory" />
 	</bean>
-
 </beans>
