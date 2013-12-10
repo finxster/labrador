@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
-
+<wicket:head>
+  <wicket:link>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </wicket:link>
+</wicket:head>
 <head>
 </head>
-
 <body>
 	<wicket:panel>
-
-		<style type="text/css">
-
-/* Sticky footer styles
-      -------------------------------------------------- */
-html,body {
-	height: 100%;
-	/* The html and body elements cannot have any padding or margin. */
-}
-
-/* Wrapper for page content to push down footer */
-#wrap {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	/* Negative indent footer by it's height */
-	margin: 0 auto -60px;
-}
-
-/* Set the fixed height of the footer here */
-#push,#footer {
-	height: 60px;
-}
-
-#footer {
-	background-color: #f5f5f5;
-}
-
-/* Lastly, apply responsive CSS fixes as necessary */
-@media ( max-width : 767px) {
-	#footer {
-		margin-left: -20px;
-		margin-right: -20px;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
-
-/* Custom page CSS
-      -------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-#wrap>.container {
-	
-}
-
-.container .credit {
-	margin: 20px 0;
-}
-
-code {
-	font-size: 80%;
-}
-</style>
 		<!-- Part 1: Wrap all page content here -->
 		<div id="wrap">
 
@@ -213,7 +163,11 @@ code {
 						O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="http://inova.maps.com.br/">Inova Maps</a>. O Labrador foi desenvolvido com o <a
 							href="http://jmine.com.br" target="_blank">Jmine</a>.
 					</p>
-					<p class="muted credit">Fale conosco:
+				</div> <!-- fim div container -->
+			</div> <!-- fim div footer -->
+
+			<div class="contato">
+				<p class="muted credit">Fale conosco:</p>
 					<form class="form-horizontal" wicket:id="formContato">
 						<div class="control-group">
 							<label class="control-label" for="nome">Nome</label>
@@ -245,9 +199,7 @@ code {
 							</div>
 						</div>
 					</form>
-					</p>
-				</div>
-			</div>
+			</div> <!-- fim div contato -->
 
 		</div>
 		<!-- /container -->
@@ -267,7 +219,6 @@ code {
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
-
 
 	</wicket:panel>
 </body>
