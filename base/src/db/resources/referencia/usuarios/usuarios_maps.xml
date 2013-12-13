@@ -182,12 +182,40 @@
 			<param name="Usuário">sergio.petto</param>
 			<param name="Grupo">MAPS</param>
 		</service>
+
 		<service name="User" action="INCLUIR">
 			<param name="Usuário">jurandir.jardim</param>
 			<param name="Senha">68UGdq</param>
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">jurandir.jardim</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Senha">2rEIhP</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Senha">9eq4o6</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
+			<param name="Senha">9Br4us</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
 			<param name="Grupo">MAPS</param>
 		</service>
 		
@@ -304,6 +332,20 @@
 			<param name="Nome">jurandir.jardim</param>
 			<param name="E-mail">jurandir.jardim@maps.com.br</param>
 		</service>
-  
+  		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Nome">juarez.silva</param>
+			<param name="E-mail">juarez.silva@maps.com.br</param>
+		</service>
+  		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Nome">jose.silva</param>
+			<param name="E-mail">jose.silva@maps.com.br</param>
+		</service>
+  		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
+			<param name="Nome">rodrigo.miguele</param>
+			<param name="E-mail">rodrigo.miguele@maps.com.br</param>
+		</service>
 	</services>
 </importacao>
