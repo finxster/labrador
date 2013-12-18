@@ -49,10 +49,88 @@ code {
 	font-size: 80%;
 }
 
+/* Formulário Contato */
+
+.formContato ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.formContato li {
+	float: left;
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+.formContato li label {
+	display: block;
+	font-size: 14px;
+	color: #333333;
+	margin-bottom: 5px;
+}
+
+.formContato li input {
+	width: 93%;
+	height: 36px;
+	border: 1px solid #d9d9d9;
+	padding-left: 2%;
+}
+
+.formContato li textarea {
+	width: 93%;
+	border: 1px solid #d9d9d9;
+	height: 150px;
+	padding: 2% 0 0 2%;
+}
+
+.formContato button {
+	text-align: center;
+	color: #666666;
+	text-decoration:none;
+	display: block;
+	background: #c7e888;
+	width: 97%;
+	border: 1px solid #d9d9d9;
+	font-size: 14px;
+	padding: 10px 0;
+	cursor: pointer;
+}
+
+.formContato ::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ccc;
+}
+.formContato :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ccc;
+}
+.formContato ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ccc;
+}
+.formContato :-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ccc;
+}
+
 .contato {
-	border: 1px solid;
-	width: 760px;
-	margin:	0 auto;         
+	max-width: 1150px;
+	margin: 0px auto;
+	height: 450px;
 	text-align:left; /* "remédio" para o hack do IE */ 
 }
+
+.contato h2 {
+	font-size: 60px;
+	font-weight: 100;
+	font-family: 'Roboto',sans-serif;
+    color: #99cc00;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.rodapeContato {
+	border: 1px solid;
+	
+}
+
+
+
 	
