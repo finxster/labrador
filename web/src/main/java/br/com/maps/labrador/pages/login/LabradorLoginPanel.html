@@ -166,41 +166,45 @@
 				</div> <!-- fim div container -->
 			</div> <!-- fim div footer -->
 
+			
 			<div class="contato">
-				<p class="muted credit">Fale conosco:</p>
-					<form class="form-horizontal" wicket:id="formContato">
-						<div class="control-group">
-							<label class="control-label" for="nome">Nome</label>
-							<div class="controls">
-								<input type="text" id="nome" placeholder="Nome" wicket:id="nome" required />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="email">E-mail</label>
-							<div class="controls">
-								<input type="text" id="email" placeholder="E-mail" wicket:id="email" required />
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="assunto">Assunto</label>
-							<div class="controls">
-								<input type="text" id="assunto" placeholder="Assunto" wicket:id="assunto"/>
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="mensagem">Mensagem</label>
-							<div class="controls">
-								<textarea rows="3" id="mensagem" placeholder="Mensagem"  wicket:id="mensagem" required/>
-							</div>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-								<button type="submit" class="btn" wicket:id="gravar">Enviar</button>
-							</div>
-						</div>
-					</form>
+				<h2>Contato</h2>
+				<form class="formContato" wicket:id="formContato">
+				<ul>
+			        <li>
+            			<label>Nome</label>
+						<input type="text" id="nome" placeholder="Nome" wicket:id="nome" required />
+					</li>
+					<li>
+            			<label>E-mail</label>
+						<input type="text" id="email" placeholder="E-mail" wicket:id="email" required />
+					</li>
+					<li>
+            			<label>Mensagem</label>
+						<textarea rows="3" id="mensagem" placeholder="Mensagem"  wicket:id="mensagem" required />
+					</li>
+					<li>
+            			<label>Assunto</label>
+						<input type="text" id="assunto" placeholder="Assunto" wicket:id="assunto" />
+					</li>
+					<li></li><li></li>
+					<li>
+						<button type="submit" class="btn" wicket:id="gravar">Enviar</button>
+					</li>
+			    </ul>
+				</form>
 			</div> <!-- fim div contato -->
+			
+			
+			<div id="footer">
+				<div class="container">
+					<p class="muted credit">
+						 Nos contate também através de e-mail: <a href="mailto:labrador@maps.com.br">labrador@maps.com.br</a>
+					</p>
+				</div> <!-- fim div container -->
+			</div> <!-- fim div footer -->
 
+		
 		</div>
 		<!-- /container -->
 		<!-- Le javascript
