@@ -80,16 +80,16 @@ code {
 .formContato li textarea {
 	width: 93%;
 	border: 1px solid #d9d9d9;
-	height: 150px;
+	height: 100px;
 	padding: 2% 0 0 2%;
 }
 
 .formContato button {
 	text-align: center;
-	color: #666666;
+	color: #fff;
 	text-decoration:none;
 	display: block;
-	background: #c7e888;
+	background: #006CCC;
 	width: 97%;
 	border: 1px solid #d9d9d9;
 	font-size: 14px;
@@ -113,22 +113,21 @@ code {
 .contato {
 	max-width: 1150px;
 	margin: 0px auto;
-	height: 450px;
-	text-align:left; /* "remédio" para o hack do IE */ 
+	height: 500px;
+	text-align: left; /* "remédio" para o hack do IE */ 
 }
 
 .contato h2 {
 	font-size: 60px;
 	font-weight: 100;
 	font-family: 'Roboto',sans-serif;
-    color: #99cc00;
+    color: #2c2e7f;
     margin-bottom: 30px;
     margin-top: 50px;
 }
 
 .rodapeContato {
 	border: 1px solid;
-	
 }
 
 

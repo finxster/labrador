@@ -34,6 +34,7 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import br.com.maps.labrador.domain.contato.Contato;
 import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
@@ -95,8 +96,12 @@ public class LabradorLoginPanel extends Panel {
 
         TextField<String> email = new TextField<String>("email");
         email.setRequired(true);
+        email.add(new EmailAddressValidator());
         formContato.add(email);
-        formContato.add(new TextField<String>("assunto"));
+
+        TextField<String> assunto = new TextField<String>("assunto");
+        assunto.setRequired(true);
+        formContato.add(assunto);
 
         TextArea<String> mensagem = new TextArea<String>("mensagem");
         mensagem.setRequired(true);
