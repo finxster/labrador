@@ -22,7 +22,7 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
 @Alias("CONTAT")
 @Table(name = "CONTAT")
 @Documentation("TABELA QUE ARMAZENA OS CONTATOS DO SISTEMA")
-@SequenceGenerator(name = "SEQ_CONT", sequenceName = "SEQ_CONT")
+@SequenceGenerator(name = "SEQ_CONTAT", sequenceName = "SEQ_CONTAT")
 public class Contato extends PersistableBusinessObject {
 
     private Long id;
@@ -39,7 +39,7 @@ public class Contato extends PersistableBusinessObject {
      * @return the id
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CONT")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CONTAT")
     @Documentation("CODIGO QUE IDENTIFICA UM OBJETO DO TIPO CONTATO")
     @Column(name = "COD_CONTAT")
     public Long getId() {
