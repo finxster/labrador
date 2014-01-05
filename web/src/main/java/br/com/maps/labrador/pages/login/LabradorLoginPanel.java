@@ -28,12 +28,14 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 import br.com.maps.labrador.domain.contato.Contato;
 import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
@@ -89,20 +91,27 @@ public class LabradorLoginPanel extends Panel {
         Contato contato = dao.createBean();
 
         Form<Contato> formContato = new Form<Contato>("formContato", new CompoundPropertyModel<Contato>(contato));
-        TextField<String> nome = new TextField<String>("nome");
+
+        final FeedbackPanel feedback = new FeedbackPanel("feedback");
+        feedback.setOutputMarkupId(true);
+
+        this.add(feedback);
+
+        TextField<String> nome = new TextField<String>("nome", Model.of(""));
+        TextField<String> email = new TextField<String>("email", Model.of(""));
+        TextField<String> assunto = new TextField<String>("assunto", Model.of(""));
+        TextArea<String> mensagem = new TextArea<String>("mensagem", Model.of(""));
+
         nome.setRequired(true);
-        formContato.add(nome);
-
-        TextField<String> email = new TextField<String>("email");
         email.setRequired(true);
-        formContato.add(email);
-
-        TextField<String> assunto = new TextField<String>("assunto");
         assunto.setRequired(true);
-        formContato.add(assunto);
-
-        TextArea<String> mensagem = new TextArea<String>("mensagem");
         mensagem.setRequired(true);
+
+        email.add(EmailAddressValidator.getInstance());
+
+        formContato.add(nome);
+        formContato.add(email);
+        formContato.add(assunto);
         formContato.add(mensagem);
 
         AjaxSubmitLink gravar = new AjaxSubmitLink("gravar", formContato) {
@@ -110,10 +119,18 @@ public class LabradorLoginPanel extends Panel {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 Contato contato = (Contato) form.getDefaultModelObject();
                 LabradorLoginPanel.this.persister.save(contato);
+                target.add(feedback);
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget target, Form<?> form) {
+                target.add(feedback);
             }
         };
+
         formContato.add(gravar);
         this.add(formContato);
+        formContato.setOutputMarkupId(true);
     }
 
     /**
