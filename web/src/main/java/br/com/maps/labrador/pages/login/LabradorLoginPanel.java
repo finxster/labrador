@@ -97,15 +97,20 @@ public class LabradorLoginPanel extends Panel {
 
         this.add(feedback);
 
-        TextField<String> nome = new TextField<String>("nome", Model.of(""));
-        TextField<String> email = new TextField<String>("email", Model.of(""));
-        TextField<String> assunto = new TextField<String>("assunto", Model.of(""));
-        TextArea<String> mensagem = new TextArea<String>("mensagem", Model.of(""));
+        final TextField<String> nome = new TextField<String>("nome");
+        final TextField<String> email = new TextField<String>("email");
+        final TextField<String> assunto = new TextField<String>("assunto");
+        final TextArea<String> mensagem = new TextArea<String>("mensagem");
 
         nome.setRequired(true);
         email.setRequired(true);
         assunto.setRequired(true);
         mensagem.setRequired(true);
+
+        nome.setOutputMarkupId(true);
+        email.setOutputMarkupId(true);
+        assunto.setOutputMarkupId(true);
+        mensagem.setOutputMarkupId(true);
 
         email.add(EmailAddressValidator.getInstance());
 
@@ -119,7 +124,18 @@ public class LabradorLoginPanel extends Panel {
             protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
                 Contato contato = (Contato) form.getDefaultModelObject();
                 LabradorLoginPanel.this.persister.save(contato);
+                this.success("Obrigado! Entraremos em contato");
                 target.add(feedback);
+                System.out.println("O contato: " + contato.getNome() + " foi salvo");
+
+                DAO<Contato> dao = LabradorLoginPanel.this.daoFactory.getDAOByEntityType(Contato.class);
+                Contato novoContato = dao.createBean();
+                form.setDefaultModel(new CompoundPropertyModel<Contato>(novoContato));
+
+                target.add(nome);
+                target.add(email);
+                target.add(assunto);
+                target.add(mensagem);
             }
 
             @Override
