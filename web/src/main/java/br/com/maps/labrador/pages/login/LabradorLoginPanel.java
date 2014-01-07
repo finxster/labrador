@@ -99,24 +99,20 @@ public class LabradorLoginPanel extends Panel {
 
         final TextField<String> nome = new TextField<String>("nome");
         final TextField<String> email = new TextField<String>("email");
-        final TextField<String> assunto = new TextField<String>("assunto");
         final TextArea<String> mensagem = new TextArea<String>("mensagem");
 
         nome.setRequired(true);
         email.setRequired(true);
-        assunto.setRequired(true);
         mensagem.setRequired(true);
 
         nome.setOutputMarkupId(true);
         email.setOutputMarkupId(true);
-        assunto.setOutputMarkupId(true);
         mensagem.setOutputMarkupId(true);
 
         email.add(EmailAddressValidator.getInstance());
 
         formContato.add(nome);
         formContato.add(email);
-        formContato.add(assunto);
         formContato.add(mensagem);
 
         AjaxSubmitLink gravar = new AjaxSubmitLink("gravar", formContato) {
@@ -134,7 +130,6 @@ public class LabradorLoginPanel extends Panel {
 
                 target.add(nome);
                 target.add(email);
-                target.add(assunto);
                 target.add(mensagem);
             }
 
