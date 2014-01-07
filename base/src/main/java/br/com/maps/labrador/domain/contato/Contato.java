@@ -31,8 +31,6 @@ public class Contato extends PersistableBusinessObject {
 
     private String email;
 
-    private String assunto;
-
     private String mensagem;
 
     /**
@@ -83,22 +81,6 @@ public class Contato extends PersistableBusinessObject {
      */
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    /**
-     * @return the assunto
-     */
-    @Documentation("ASSUNTO DO CONTATO")
-    @Column(name = "ASSUNTO")
-    public String getAssunto() {
-        return this.assunto;
-    }
-
-    /**
-     * @param assunto the assunto to set
-     */
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
     }
 
     /**

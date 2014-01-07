@@ -65,7 +65,6 @@ public class PesquisaContato extends CrudModelPage<PesquisaContatoFilter, Contat
     protected void addResultTableColumns(ReportTableBuilder<Contato> table) {
         table.addStringColumn("nome", "Nome", "nome");
         table.addStringColumn("email", "E-mail", "email");
-        table.addStringColumn("assunto", "Assunto", "assunto");
         table.addStringColumn("mensagem", "Mensagem", "mensagem");
 
     }
