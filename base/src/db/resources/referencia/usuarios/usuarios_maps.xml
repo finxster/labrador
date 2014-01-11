@@ -218,7 +218,15 @@
 			<param name="Usuário">rodrigo.miguele</param>
 			<param name="Grupo">MAPS</param>
 		</service>
-		
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Senha">7aacyT</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
 	</services>
 
 	<services name="Usuários do labrador">
@@ -332,20 +340,25 @@
 			<param name="Nome">jurandir.jardim</param>
 			<param name="E-mail">jurandir.jardim@maps.com.br</param>
 		</service>
-  		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">juarez.silva</param>
 			<param name="Nome">juarez.silva</param>
 			<param name="E-mail">juarez.silva@maps.com.br</param>
 		</service>
-  		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">jose.silva</param>
 			<param name="Nome">jose.silva</param>
 			<param name="E-mail">jose.silva@maps.com.br</param>
 		</service>
-  		<service name="LabradorUsuario" action="INCLUIR">
+		<service name="LabradorUsuario" action="INCLUIR">
 			<param name="Usuário">rodrigo.miguele</param>
 			<param name="Nome">rodrigo.miguele</param>
 			<param name="E-mail">rodrigo.miguele@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Nome">israel.crisanto</param>
+			<param name="E-mail">israel.crisanto@maps.com.br</param>
 		</service>
 	</services>
 </importacao>
