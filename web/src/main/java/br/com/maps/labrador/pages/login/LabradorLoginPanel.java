@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import jmine.tec.persist.api.DAO;
+import jmine.tec.persist.api.DAOFactory;
+import jmine.tec.persist.api.persister.StatelessPersister;
 import jmine.tec.security.api.SecurityException;
 import jmine.tec.security.api.SecurityService;
 import jmine.tec.security.api.UserDataLogger;
@@ -18,17 +21,23 @@ import jmine.tec.web.wicket.upperCase.field.NoUpperCasePasswordTextField;
 import jmine.tec.web.wicket.upperCase.field.NoUpperCaseTextFieldImpl;
 
 import org.apache.wicket.Page;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.feedback.FeedbackMessage;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
+import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.protocol.http.servlet.ServletWebRequest;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.validator.EmailAddressValidator;
 
+import br.com.maps.labrador.domain.contato.Contato;
 import br.com.maps.labrador.pages.consulta.emprestavel.ConsultaEmprestavel;
 
 public class LabradorLoginPanel extends Panel {
@@ -43,6 +52,12 @@ public class LabradorLoginPanel extends Panel {
 
     @SpringBean(name = "labradorDataLogger")
     private UserDataLogger userDataLogger;
+
+    @SpringBean(name = "daoFactory")
+    private DAOFactory daoFactory;
+
+    @SpringBean(name = "hotPersister")
+    private StatelessPersister<Contato> persister;
 
     private final String systemName;
 
@@ -68,6 +83,65 @@ public class LabradorLoginPanel extends Panel {
     protected void onInitialize() {
         super.onInitialize();
         this.generateComponents();
+        this.generateComponentsContato();
+    }
+
+    private void generateComponentsContato() {
+        DAO<Contato> dao = this.daoFactory.getDAOByEntityType(Contato.class);
+        Contato contato = dao.createBean();
+
+        Form<Contato> formContato = new Form<Contato>("formContato", new CompoundPropertyModel<Contato>(contato));
+
+        final FeedbackPanel feedback = new FeedbackPanel("feedback");
+        feedback.setOutputMarkupId(true);
+
+        this.add(feedback);
+
+        final TextField<String> nome = new TextField<String>("nome");
+        final TextField<String> email = new TextField<String>("email");
+        final TextArea<String> mensagem = new TextArea<String>("mensagem");
+
+        nome.setRequired(true);
+        email.setRequired(true);
+        mensagem.setRequired(true);
+
+        nome.setOutputMarkupId(true);
+        email.setOutputMarkupId(true);
+        mensagem.setOutputMarkupId(true);
+
+        email.add(EmailAddressValidator.getInstance());
+
+        formContato.add(nome);
+        formContato.add(email);
+        formContato.add(mensagem);
+
+        AjaxSubmitLink gravar = new AjaxSubmitLink("gravar", formContato) {
+            @Override
+            protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+                Contato contato = (Contato) form.getDefaultModelObject();
+                LabradorLoginPanel.this.persister.save(contato);
+                this.success("Obrigado! Entraremos em contato");
+                target.add(feedback);
+                System.out.println("O contato: " + contato.getNome() + " foi salvo");
+
+                DAO<Contato> dao = LabradorLoginPanel.this.daoFactory.getDAOByEntityType(Contato.class);
+                Contato novoContato = dao.createBean();
+                form.setDefaultModel(new CompoundPropertyModel<Contato>(novoContato));
+
+                target.add(nome);
+                target.add(email);
+                target.add(mensagem);
+            }
+
+            @Override
+            protected void onError(AjaxRequestTarget target, Form<?> form) {
+                target.add(feedback);
+            }
+        };
+
+        formContato.add(gravar);
+        this.add(formContato);
+        formContato.setOutputMarkupId(true);
     }
 
     /**

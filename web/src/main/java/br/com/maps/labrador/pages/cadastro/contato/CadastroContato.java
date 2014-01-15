@@ -70,7 +70,6 @@ public class CadastroContato extends FormPage<Contato> {
 
         components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
         components.add(ComponentHelper.createLabeledTextField("email", "E-mail", this.getEntity(), true));
-        components.add(ComponentHelper.createLabeledTextField("assunto", "Assunto", this.getEntity(), true));
         components.add(ComponentHelper.createLabeledTextField("mensagem", "Mensagem", this.getEntity(), true));
 
         return components;
