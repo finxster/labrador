@@ -17,6 +17,7 @@ import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
 import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
 import br.com.maps.labrador.pages.consulta.modem.PesquisaModem;
 import br.com.maps.labrador.pages.consulta.projetor.PesquisaProjetor;
+import br.com.maps.labrador.pages.main.LabradorMain;
 
 /**
  * Starting point menu creator
@@ -31,7 +32,9 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
     @Override
     protected MenuConfig createMenuConfig() {
         MenuConfig config = new MenuConfig();
-
+        
+        config.addPage(LabradorMain.class, "Principal");
+        
         // add menu here
         config.addPage(CadastroLivro.class, "Cadastros", "Livros");
         config.addPage(CadastroMochila.class, "Cadastros", "Mochilas");

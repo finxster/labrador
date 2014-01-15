@@ -26,6 +26,9 @@
 						<value>br.com.maps.labrador.service.validar.EmprestimoService</value>
 						<value>br.com.maps.labrador.service.validar.LivroService</value>
 						<value>br.com.maps.labrador.service.validar.StatusEmprestimoService</value>
+						<value>br.com.maps.labrador.service.validar.MochilaService</value>
+						<value>br.com.maps.labrador.service.validar.ModemService</value>
+						<value>br.com.maps.labrador.service.validar.ProjetorService</value>
 						
 						<value>br.com.maps.labrador.service.excluir.LabradorUsuarioService</value>
 						<value>br.com.maps.labrador.service.excluir.LivroService</value>

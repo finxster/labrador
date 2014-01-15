@@ -85,20 +85,19 @@ public class LabradorApplication extends JMineWicketWebApplication {
         IResourceSettings resourceSettings = this.getResourceSettings();
         resourceSettings.getResourceFinders().add(0, new WebApplicationPath(this.getServletContext(), "/"));
         resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
-
-        Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
-        ImageMapper imageMapper = null;
-        while (it.hasNext()) {
-            IRequestMapper next = it.next();
-            if (next instanceof ImageMapper) {
-                imageMapper = (ImageMapper) next;// ((SystemMapper) this.getRootRequestMapper()).remove(next);
-            }
-        }
-        if (imageMapper != null) {
-            ((SystemMapper) this.getRootRequestMapper()).remove(imageMapper);
-        }
-
-        ((SystemMapper) this.getRootRequestMapper()).add(new LabradorImageMapper("images", ImageResources.class));
+        
+//        Iterator<IRequestMapper> it = ((SystemMapper) this.getRootRequestMapper()).iterator();
+//        ImageMapper imageMapper = null;
+//        while (it.hasNext()) {
+//            IRequestMapper next = it.next();
+//            if (next instanceof ImageMapper) {
+//                imageMapper = (ImageMapper) next;
+//            }
+//        }
+//        if (imageMapper != null) {
+//            ((SystemMapper) this.getRootRequestMapper()).remove(imageMapper);
+//        }
+        
     }
 
     /**

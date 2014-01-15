@@ -73,7 +73,7 @@ public class ConsultaEmprestavel extends BaseListPage<ConsultaEmprestavelFilter,
 
         List<EmprestavelVO> vos = new ArrayList<EmprestavelVO>();
         for (AbstractEmprestavel emprestavel : emprestaveis) {
-            vos.add(new EmprestavelVO(emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel.getLocalizacao()
+            vos.add(new EmprestavelVO(emprestavel.getId(), emprestavel.getNome(), emprestavel.getProprietario().getNome(), emprestavel.getLocalizacao()
                     .getNome(), emprestavel.getStatus().toString()));
         }
 
