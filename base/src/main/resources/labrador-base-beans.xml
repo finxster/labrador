@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-	<import resource="jmine-tec-persist.xml" />
-	<import resource="jmine-tec-security-api.xml" />
-	<import resource="jmine-tec-security-impl.xml" />
-	<import resource="jmine-tec-rtm-impl.xml" />
-	<import resource="jmine-tec-report.xml" />
-
-	<import resource="base-mapping.xml" />
-	<import resource="base-services.xml" />
-	<import resource="base-exporters.xml" />
-
 	<bean id="userHelper" class="br.com.maps.labrador.helper.LabradorUserHelper">
 		<property name="securityService" ref="securityService" />
 		<property name="daoFactory" ref="daoFactory" />

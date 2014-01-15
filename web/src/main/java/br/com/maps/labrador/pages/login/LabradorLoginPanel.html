@@ -1,212 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
+<wicket:head>
+  <wicket:link>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </wicket:link>
+</wicket:head>
 <head>
 </head>
-
 <body>
-    <wicket:panel>
+	<wicket:panel>
+		<!-- Part 1: Wrap all page content here -->
+		<div id="wrap">
 
-   <style type="text/css">
+			<div class="navbar navbar-fixed-top">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="logo_produto pull-left" href="#"></a>
+						<div class="nav-collapse collapse">
 
-      /* Sticky footer styles
-      -------------------------------------------------- */
-
-      html,
-      body {
-        height: 100%;
-        /* The html and body elements cannot have any padding or margin. */
-      }
-
-      /* Wrapper for page content to push down footer */
-      #wrap {
-        min-height: 100%;
-        height: auto !important;
-        height: 100%;
-        /* Negative indent footer by it's height */
-        margin: 0 auto -60px;
-      }
-
-      /* Set the fixed height of the footer here */
-      #push,
-      #footer {
-        height: 60px;
-      }
-      #footer {
-        background-color: #f5f5f5;
-      }
-
-      /* Lastly, apply responsive CSS fixes as necessary */
-      @media (max-width: 767px) {
-        #footer {
-          margin-left: -20px;
-          margin-right: -20px;
-          padding-left: 20px;
-          padding-right: 20px;
-        }
-      }
-
-
-
-      /* Custom page CSS
-      -------------------------------------------------- */
-      /* Not required for template or sticky footer method. */
-
-      #wrap > .container {
-      }
-      .container .credit {
-        margin: 20px 0;
-      }
-
-      code {
-        font-size: 80%;
-      }
-
-    </style>
-    <!-- Part 1: Wrap all page content here -->
-    <div id="wrap">
-    
- <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-      <div class="container">
-          <a class="logo_produto pull-left" href="#"></a>
-          <div class="nav-collapse collapse">
-                                        
-            <form class="navbar-form pull-right" wicket:id="securityForm" name="form_login">
-                            <input type="text" class="span2" wicket:id="username" maxlength="100" placeholder="E-mail ou Usuário" />
-                            <input type="password" class="span2" wicket:id="password" maxlength="128" placeholder="Senha" size="10" />
-                            <input id="botaoLogin" class="btn btn-primary login_button" type="submit" name="efetuarLogin"value="Entrar" />
-            </form>
-          </div><!--/.nav-collapse -->
-          </div>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <!-- Main hero unit for a primary marketing message or call to action -->
-      <div class="hero-unit">
-        <h1>Cadê minhas coisas?</h1>
-        <p>Gostamos de colecionar coisas. Não nos importamos em emprestar nossas coisas. E agora vamos conseguir saber pra quem essas coisas foram emprestadas!</p>
-        <p><a href="#principal" class="btn btn-primary btn-large">Saiba mais &raquo;</a></p>
-      </div>
-
-      <!-- Example row of columns -->
-        <div class="row-fluid">
-			<div class="span12">
-				<ul class="thumbnails">
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="Livros" src="images/labrador_livros_01.png" style="width:360px; height:120px" />
-							<div class="caption">
-								<h3>Livros</h3>
-								<p>O Labrador faz todo o controle dos seus livros, sabendo exatamente pra quem você emprestou.</p>
-								<p><a class="btn" href="#livros">Saiba mais &raquo;</a></p>
-							</div>
+							<form class="navbar-form pull-right" wicket:id="securityForm" name="form_login">
+								<input type="text" class="span2" wicket:id="username" maxlength="100" placeholder="E-mail ou Usuário" /> <input type="password" class="span2" wicket:id="password" maxlength="128"
+									placeholder="Senha" size="10" /> <input id="botaoLogin" class="btn btn-primary login_button" type="submit" name="efetuarLogin" value="Entrar" />
+							</form>
 						</div>
-					</li>
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="Equipamentos" src="images/labrador_computador_01.png"  style="width:360px; height:120px"/>
-							<div class="caption">
-								<h3>Equipamentos</h3>
-								<p>Controle de projetores, modems e mochilas e outros equipamentos que possam ser emprestados.</p>
-                                <p><a class="btn" href="#equipamentos">Saiba mais &raquo;</a></p>
-							</div>
-						</div>
-					</li>
-					<li class="span4">
-						<div class="thumbnail">
-							<img alt="300x200" src="images/labrador_inova.png" style="width:360px; height:120px" />
-							<div class="caption">
-								<h3>Inova Maps</h3>
-								<p>Conheça o que é o Inova Maps, e como surgiu o Labrador.</p>
-                                <p><a class="btn" href="#inova">Saiba mais &raquo;</a></p>
-							</div>
-						</div>
-					</li>
-				</ul>
-<!--                 
-                <div id="principal">
-                <br /><br />
-                </div>
-				<div class="page-header">
-					<h1>Controle de empréstimos <small>Como o Labrador pode te ajudar a gerenciar suas coisas.</small></h1>
+						<!--/.nav-collapse -->
+					</div>
 				</div>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
-<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
-<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
-<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
-<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
-                <div id="livros">
-                <br /><br />
-                </div>
-                <div class="page-header">
-                    <h1>Livros <small>Gerenciamento de livros.</small></h1>
-                </div>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
-<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
-<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
-<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
-<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
-                <div id="equipamentos">
-                <br /><br />
-                </div>
-                <div class="page-header">
-                    <h1>Equipamentos <small>Gerenciamento de equipamentos.</small></h1>
-                </div>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
-<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
-<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
-<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
-<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
-                <div id="inova">
-                <br /><br />
-                </div>
-                <div class="page-header" id="inova">
-                    <h1>Inova Maps <small>O que é o Inova Maps?</small></h1>
-                </div>
-<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac tempor nibh, a tristique elit. Vivamus eget velit eget nulla eleifend tempor. Maecenas vulputate, orci ac fermentum scelerisque, magna sem pulvinar lacus, ut feugiat nisl eros id odio. Duis tincidunt, lacus vel imperdiet dignissim, nisl nunc blandit eros, auctor sodales diam leo at ligula. Praesent condimentum turpis est, nec tristique mi tincidunt sit amet. Nullam nec vestibulum est. Mauris commodo, nisi ac aliquet sodales, odio dolor pretium tellus, tincidunt mollis lectus velit sagittis felis. Suspendisse quis nisl ante. Curabitur et posuere neque.</p>
-<p class="lead">In hac habitasse platea dictumst. Fusce ac mauris quis nunc porttitor aliquet. Nunc convallis aliquam lorem. Nullam ac elementum quam. Vivamus tristique orci leo. Quisque tempus arcu ac ipsum tincidunt ornare. Aliquam scelerisque erat nec ante tempor dignissim. Etiam dictum placerat justo, id venenatis eros. Pellentesque in dui nulla. Etiam at felis sit amet magna ornare venenatis. Vivamus et aliquet dui, vitae interdum sem.</p>
-<p class="lead">Etiam convallis, elit faucibus viverra accumsan, purus massa pellentesque eros, quis placerat dui purus sed odio. Curabitur in hendrerit mi. Ut tincidunt tincidunt lacinia. Vivamus sodales leo ut nisi suscipit consequat. Aliquam erat volutpat. Nulla eget eros dapibus, sodales felis sit amet, vehicula enim. Donec id sapien mollis, pharetra felis et, pharetra ligula. Cras eleifend lectus aliquam, dictum nunc sit amet, elementum quam. Quisque at nunc a dolor egestas pellentesque. Maecenas mattis turpis nisi, non fermentum nulla venenatis eu.</p>
-<p class="lead">Nullam a eleifend lacus. Vivamus nec nisl ultricies, suscipit arcu vel, interdum est. Vestibulum magna dui, laoreet id massa et, adipiscing ultricies elit. Proin rutrum dui sem, et eleifend diam lacinia ac. Etiam interdum nibh ultricies metus placerat dapibus. Vivamus vitae tortor in mauris lacinia pharetra. Donec pretium fermentum porttitor. Morbi fermentum diam id mauris gravida pulvinar.</p>
-<p class="lead">Cras consectetur ultrices ipsum, sollicitudin varius eros imperdiet interdum. Vivamus vulputate nec dui suscipit laoreet. Phasellus id mauris semper, ornare massa vel, tincidunt ante. Aliquam interdum semper justo eu tincidunt. Integer id libero et justo ullamcorper bibendum malesuada in tellus. Nullam malesuada, est quis scelerisque fermentum, odio diam semper mauris, a interdum quam neque at sem. Cras rutrum felis in ultrices congue. In ut dolor ornare, lobortis quam eu, varius nulla.</p>
-           -->  </div>
+			</div>
 
-        </div>
+			<div class="container">
 
-      <hr>
-</div> <!-- wrap -->
+				<!-- Main hero unit for a primary marketing message or call to action -->
+				<div class="hero-unit">
+					<h1>Cadê minhas coisas?</h1>
+					<p>Gostamos de colecionar coisas. Não nos importamos em emprestar nossas coisas. E agora vamos conseguir saber pra quem essas coisas foram emprestadas!</p>
+					<p>
+						<a href="#principal" class="btn btn-primary btn-large">Saiba mais &raquo;</a>
+					</p>
+				</div>
 
-      <div id="footer">
-          <div class="container">
-            <p class="muted credit">
-                O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="#">Inova Maps</a>. O Labrador foi desenvolvido com o <a href="http://www.jmine.com.br" target="_blank">Jmine</a>.
-            </p>
-          </div>
-      </div>
+				<!-- Example row of columns -->
+				<div class="row-fluid">
+					<div class="span12">
+						<ul class="thumbnails">
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="Livros" src="images/labrador_livros_01.png" style="width: 360px; height: 120px" />
+									<div class="caption">
+										<h3>Livros e Equipamentos</h3>
+										<p>O Labrador faz todo o controle de seus objetos sabendo exatamente pra quem você emprestou.</p>
+										<p>
+											<a class="btn" href="#livros">Saiba mais &raquo;</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="300x200" src="images/labrador_inova.png" style="width: 360px; height: 120px" />
+									<div class="caption">
+										<h3>Inova Maps</h3>
+										<p>Conheça o que é o Inova Maps, e como surgiu o Labrador.</p>
+										<p>
+											<a class="btn" href="#inova">Saiba mais &raquo;</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="Equipamentos" src="images/labrador_computador_01.png" style="width: 360px; height: 120px" />
+									<div class="caption">
+										<h3>Entre em contato</h3>
+										<p>Entre em contato com as pessoas que colaboram com esse projeto.</p>
+										<p>
+											<a class="btn" href="#contato">Saiba mais &raquo;</a>
+										</p>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div id="principal">
+							<br /> <br />
+						</div>
+						<div class="page-header">
+							<h1>
+								Como assim?! <small>Como o Labrador pode te ajudar a gerenciar suas coisas.</small>
+							</h1>
+						</div>
+						<p class="lead">O Labrador foi desenvolvido por pessoas que gostam de compartilhar suas coisas, sejam elas livros, jogos, filmes, ou qualquer outro objeto que se possa imaginar. Ou seja, a
+							sua necessidade é a mesma que a nossa! Com uma interface simples e inteligente, é possível descobrir com quem está aquele item que você emprestou, até mesmo todo o histórico de empréstimos
+							desse objeto. E se o problema é procurar algo específico, então conte conosco! Com uma incrível busca utilizando algoritmos otimizados, conseguimos achar exatamente o que você está procurando e
+							aonde se encontra!</p>
+						<p class="lead">Encontrou algum problema?! Ótimo! Você pode ajudar!</p>
+						<p class="lead">
+							Cadastre o ocorrido no nosso <a href="https://bitbucket.org/maps-labrador/labrador/issues">JIRA</a>, ou envie um e-mail para <a href="mailto:labrador@maps.com.br">labrador@maps.com.br</a>!
+						</p>
+						<p class="lead">
+							Quer participar da nossa comunidade? Entre no nosso grupo de discussões, o <a href="https://groups.google.com/forum/#!forum/labrador-community">labrador-community@googlegroups.com</a>.
+						</p>
+						<div id="livros">
+							<br /> <br />
+						</div>
+						<div class="page-header">
+							<h1>
+								Livros e Equipamentos <small>Gerenciamento.</small>
+							</h1>
+						</div>
+						<p class="lead">
+							Labrador foi concebido para gerenciar o empréstimo de livros, então este é o ponto mais desenvolvido do sistema. Atualmente trabalhamos a integração com o <a href="http://isbndb.com">isbndb.com</a>,
+							utilizando o ISBN, caso necessário, para o cadastro e busca de livros. Queremos continuar evoluindo e temos planos para nos integrar com mais sites, como por exemplo o <a
+								href="http://www.worldcat.org/">worldcat.org</a> e a <a href="http://www.amazon.com/">amazon.com</a>.
+						</p>
+						<p class="lead">Durante o desenvolvimento, percebemos que não são apenas itens pessoais que são difíceis de se gerenciar. Itens corporativos também são um grande problema! Controles manuais
+							para verificar quem está com certo equipamento, estatísticas de uso de determinado equipamento... isso tudo pode ficar no passado!</p>
+						<p class="lead">Por exemplo, sua empresa tem um projetor a ser compartilhado por várias áreas? Saiba rapidamente onde está e quem pegou emprestado!</p>
+						<p class="lead">
+							<b>Além de resolver os problemas da sua coleção pessoal, também podemos dar uma ótima solução para sua empresa, grupo, time!!</b>
+						</p>
+						<div id="inova">
+							<br /> <br />
+						</div>
+						<div class="page-header" id="inova">
+							<h1>
+								Inova Maps <small>O que é o Inova Maps?</small>
+							</h1>
+						</div>
+						<p class="lead">Mas como tudo isso começou?!</p>
+						<p class="lead">A Maps, empresa em que trabalhamos, lançou um programa de inovação no início de 2013. Isso significa que todos os colaboradores da empresa enviaram idéias, discutiram e
+							votaram publicamente em propostas que podiam inovar a <a href="http://www.maps.com.br">MAPS</a> usando nosso framework. De todas essas idéias, dez foram pré-selecionadas por um comitê interno formado para esse propósito para uma
+							próxima etapa. Dentre muitas discussões, formaram-se sete grandes finalistas. Essas sete ideias passaram por um processo de apresentações públicas curtas, para que os colaboradores pudessem
+							escolher quais seriam desenvolvidas. Após votação popular, quatro idéias foram as grandes "vencedoras", e o Labrador foi uma delas!</p>
+						<p class="lead">Foram oferecidas quatro horas do nosso expediente por semana, por oito semanas, para desenvolver um <a href="http://en.wikipedia.org/wiki/Minimum_viable_product">MVP</a> (minimum viable product) da nossa idéia. Após o término das oito
+							semanas, eis que temos o Labrador no ar!</p>
+						<p class="lead">Nosso objetivo com o Labrador é divulgar o framework de desenvolvimento em java <a href="http://www.jmine.com.br">Jmine</a>, provando que a MAPS não é apenas referência no setor de mercado financeiro, mas é
+							também referência como uma empresa de tecnologia aplicada.</p>
+						<p class="lead">E, é claro, também queremos ajudar todo mundo que já esqueceu que amigo ficou com sua cópia autografada de Harry Potter!</p>
+						
+						<div id="contato">
+							<br /> <br />
+						</div>
+						<div class="page-header">
+							<h1>
+								Contato  <small>Entre em contato conosco.</small>
+							</h1>
+						</div> <!-- fim page-header Contato -->
+						<ul class="feedbackPanel" wicket:id="feedback"> 
+ 							<li class="feedbackPanelERROR"> 
+ 							<span class="feedbackPanelERROR">Field 'Username' is required.</span> 
+ 							</li> 
+						</ul>
+						<div class="contact">
+		    				<!--  <h3>Entre em contato conosco</h3>  -->
+		    				<div class="row margin-top">
+		        				<div class="col-contato-esquerda">
+		            				<h4>Quem Somos</h4>
+		            				<p>A MAPS é uma organização criada e administrada por profissionais das áreas de finanças, matemática e tecnologia, 
+		            				desenvolvendo produtos e serviços para empresas do segmento financeiro.</p><br />
+		            				<p>A MAPS acompanha de perto as principais transformações nos mercados, nas áreas de Finanças e Tecnologia, 
+		            				aplicando aos seus produtos e serviços as melhores práticas e inovações decorrentes deste monitoramento, oferecendo
+		            				aos seus clientes as mais completas soluções para seus negócios.</p><br />
+		            				<p>A MAPS conta com uma equipe de profissionais com grande vivência no mercado financeiro, 
+		            				larga experiência no comando de atividades críticas em importantes instituições no Brasil, 
+		            				dentre estas algumas com controle acionário estrangeiro.</p><br />
 
-    </div> <!-- /container -->
-    <!-- Le javascript
+				            			<div class="col-contato-esquerda">
+					            			<div class="responsive-bottom">
+						          				<h5>Endereço</h5>
+						        		 		<p>Rua Afonso Celso, 552 <br />Vila Mariana São Paulo - Brasil</p>
+					            			</div>
+			            				</div>
+			            				<div class="col-contato-esquerda">
+					            			<div class="responsive-bottom">
+						          				<h5>Email</h5>
+						        		 		<p><a href="mailto:labrador@maps.com.br">labrador@maps.com.br</a></p>
+					            			</div>
+			            				</div>
+		        				</div>
+		        				
+		        			<div class="col-contato-direita">
+		            		<form class="formContato" wicket:id="formContato">
+					            <div class="form-group">
+						            <label>Name <span class="required">*</span></label>
+						            <input class="form-control" type="text" id="nome" placeholder="Nome" wicket:id="nome" required />
+					            </div>
+				
+					            <div class="form-group">
+						            <label>E-mail <span class="required">*</span></label>
+						            <input class="form-control" type="text" id="email" placeholder="E-mail" wicket:id="email" required />
+					            </div>
+				
+					            <div class="form-group">
+						            <label>Mensagem <span class="required">*</span></label>
+						            <textarea rows="3" class="form-control" id="mensagem" placeholder="Mensagem"  wicket:id="mensagem" required />
+					            </div>
+					            <button type="submit" class="btn-contato" wicket:id="gravar">Enviar</button>
+		            		</form>
+		        			</div>
+		    			</div><!-- /.row -->
+		
+					</div><!-- fim div class contact -->
+					</div>
+				</div>
+				<hr />
+			</div> <!-- /container -->
+						<div id="footer" class="footer">
+							<div class="container">
+							<p class="muted credit">
+								O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="http://inova.maps.com.br/">Inova Maps</a>. O Labrador foi desenvolvido com o <a
+								href="http://jmine.com.br" target="_blank">Jmine</a>.
+							</p>
+							</div> <!-- fim div container -->
+						</div> <!-- fim div footer -->
+
+		</div><!-- wrap -->
+		
+		
+		<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-alert.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tooltip.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-popover.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-button.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
-    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="http://getbootstrap.com/2.3.2/assets/js/jquery.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-alert.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-modal.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tab.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-tooltip.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-popover.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-button.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
+		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
 
-
-    </wicket:panel>
+	</wicket:panel>
 </body>
 </html>

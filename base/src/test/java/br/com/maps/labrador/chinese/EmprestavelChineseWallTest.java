@@ -188,7 +188,7 @@ public class EmprestavelChineseWallTest extends DefaultRefDBTestCase {
      */
     @Override
     protected String getSpringMainXMLFilename() {
-        return "base-test-beans.xml";
+        return "labrador-base-test.xml";
     }
 
     /**
@@ -196,6 +196,6 @@ public class EmprestavelChineseWallTest extends DefaultRefDBTestCase {
      */
     @Override
     protected String[] getResourcesBaseReferencia() {
-        return new String[]{ "base-db.xml" };
+        return new String[]{ "labrador-base-db.xml" };
     }
 }

@@ -1,8 +1,8 @@
 package br.com.maps.labrador.listener;
 
 import jmine.tec.component.annotations.Unmodifiable;
-import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.api.dao.BeanNotFoundException;
+import jmine.tec.persist.impl.dao.BaseDAO;
 import jmine.tec.persist.impl.persister.listener.AbstractPersisterListener;
 import jmine.tec.persist.impl.persister.listener.PersisterListener;
 import jmine.tec.security.impl.domain.MetaCredential;
@@ -26,10 +26,10 @@ public class UserCredentialPersisterListener extends AbstractPersisterListener<U
         super.beforeInsert(bean);
 
         try {
-            MetaCredential meta = this.metaCredentialDAO.findByNaturalKey("JMINE_WEB_APP_USER");
+            MetaCredential meta = this.metaCredentialDAO.findByNaturalKey("USUARIO");
             bean.getCredentials().addAll(meta.getCredentials());
         } catch (BeanNotFoundException e) {
-            throw new IllegalStateException("A meta credential JMINE_WEB_APP_USER deveria existir.");
+            throw new IllegalStateException("A meta credential USUARIO deveria existir.");
         }
     }
 

@@ -1,5 +1,7 @@
 package br.com.maps.labrador;
 
+import images.ImageResources;
+
 import java.util.Iterator;
 
 import jmine.tec.rtm.impl.RtmController;
@@ -55,7 +57,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
 
         // desligando modo debug
         this.getDebugSettings().setDevelopmentUtilitiesEnabled(false);
-//        this.getDebugSettings().setAjaxDebugModeEnabled(false);
+        this.getDebugSettings().setAjaxDebugModeEnabled(false);
 
         // configuração do wicket-bootstrap
         Bootstrap.install(Application.get(), new BootstrapSettings());
@@ -64,7 +66,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
         this.getApplicationSettings().setAccessDeniedPage(AccessDeniedPage.class);
         IResourceSettings resourceSettings = this.getResourceSettings();
         // resourceSettings.addResourceFolder("");
-        // resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
+        resourceSettings.setCachingStrategy(new FilenameWithVersionResourceCachingStrategy(new LastModifiedResourceVersion()));
 
         this.mountPage("logout", Logout.class);
         this.mountPage("login", LabradorLogin.class);
@@ -97,7 +99,7 @@ public class LabradorApplication extends JMineWicketWebApplication {
 //        }
         
     }
-    
+
     /**
      * {@inheritDoc}
      */

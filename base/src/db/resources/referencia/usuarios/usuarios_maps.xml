@@ -135,7 +135,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">ramon.canales</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -144,7 +144,7 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">rafael.volpato</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
 		<service name="User" action="INCLUIR">
@@ -153,9 +153,80 @@
 		</service>
 		<service name="UserGroup" action="INCLUIR">
 			<param name="Usuário">nilson.ivano</param>
-			<param name="Grupo">USUARIO</param>
+			<param name="Grupo">MAPS</param>
 		</service>
 
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Senha">14LeTH</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Senha">0Q4fFt</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Senha">2jltkk</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Senha">68UGdq</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+		
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Senha">2rEIhP</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Senha">9eq4o6</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
+			<param name="Senha">9Br4us</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
+			<param name="Grupo">MAPS</param>
+		</service>
+
+		<service name="User" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Senha">7aacyT</param>
+		</service>
+		<service name="UserGroup" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Grupo">USUARIO</param>
+		</service>
 	</services>
 
 	<services name="Usuários do labrador">
@@ -248,6 +319,46 @@
 			<param name="Usuário">nilson.ivano</param>
 			<param name="Nome">nilson.ivano</param>
 			<param name="E-mail">nilson.ivano@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">renato.lundberg</param>
+			<param name="Nome">renato.lundberg</param>
+			<param name="E-mail">renato.lundberg@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">kendji.shimada</param>
+			<param name="Nome">kendji.shimada</param>
+			<param name="E-mail">kendji.shimada@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">sergio.petto</param>
+			<param name="Nome">sergio.petto</param>
+			<param name="E-mail">sergio.petto@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jurandir.jardim</param>
+			<param name="Nome">jurandir.jardim</param>
+			<param name="E-mail">jurandir.jardim@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">juarez.silva</param>
+			<param name="Nome">juarez.silva</param>
+			<param name="E-mail">juarez.silva@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">jose.silva</param>
+			<param name="Nome">jose.silva</param>
+			<param name="E-mail">jose.silva@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">rodrigo.miguele</param>
+			<param name="Nome">rodrigo.miguele</param>
+			<param name="E-mail">rodrigo.miguele@maps.com.br</param>
+		</service>
+		<service name="LabradorUsuario" action="INCLUIR">
+			<param name="Usuário">israel.crisanto</param>
+			<param name="Nome">israel.crisanto</param>
+			<param name="E-mail">israel.crisanto@maps.com.br</param>
 		</service>
 	</services>
 </importacao>

@@ -6,6 +6,8 @@ import java.util.List;
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
 import jmine.tec.web.wicket.pages.form.FormPage;
@@ -25,7 +27,7 @@ import br.com.maps.labrador.domain.modem.Modem;
  * 
  * @author laercio.duarte
  */
-
+@Secure(id = "URL_EDIT_MODEM", permissionType = UrlPermission.class)
 public class CadastroModem extends FormPage<Modem> {
 
     @SpringBean(name = "daoFactory")
@@ -70,8 +72,8 @@ public class CadastroModem extends FormPage<Modem> {
         List<Component> components = new ArrayList<Component>();
 
         components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
-        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(getEntity()
-                .getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
+        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this
+                .getEntity().getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
 
         return components;
 

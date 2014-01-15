@@ -5,15 +5,15 @@ import java.util.List;
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.report.impl.table.ReportTableBuilder;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.pages.form.CrudModelPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Page;
-import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 import br.com.maps.labrador.dao.EmprestimoDAO;
 import br.com.maps.labrador.domain.emprestimo.Emprestimo;
-import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
 
 /**
  * Tela de pesquisa de Empréstimos.
@@ -21,6 +21,7 @@ import br.com.maps.labrador.pages.cadastro.emprestimo.CadastroEmprestimo;
  * @author finx
  * @created Aug 27, 2013
  */
+@Secure(id = "URL_LIST_EMPRESTIMO", permissionType = UrlPermission.class)
 public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, Emprestimo> {
 
     /**
@@ -35,7 +36,7 @@ public class PesquisaEmprestimo extends CrudModelPage<PesquisaEmprestimoFilter, 
      */
     public List<Emprestimo> search(DAOFactory daoFactory) {
         EmprestimoDAO dao = daoFactory.getDAOByClass(EmprestimoDAO.class);
-        PesquisaEmprestimoFilter m = getModel();
+        PesquisaEmprestimoFilter m = this.getModel();
         return dao.findByLivro(m.getLivro());
     }
 

@@ -1,34 +1,31 @@
-package br.com.maps.labrador.pages.cadastro.mochila;
+package br.com.maps.labrador.pages.cadastro.contato;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import jmine.tec.component.exception.MessageCreator;
-import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
 import jmine.tec.security.api.annotation.Secure;
 import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.ComponentHelper;
-import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
 import jmine.tec.web.wicket.pages.form.FormPage;
 import jmine.tec.web.wicket.pages.form.FormType;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-import br.com.maps.labrador.domain.emprestavel.LocalizacaoEmprestavel;
-import br.com.maps.labrador.domain.mochila.Mochila;
+import br.com.maps.labrador.domain.contato.Contato;
 
 /**
- * Tela para cadastro de mochilas
+ * Tela para cadastro de contato
  * 
  * @author laercio.duarte
+ * @created Nov 7, 2013
  */
-@Secure(id = "URL_EDIT_MOCHILA", permissionType = UrlPermission.class)
-public class CadastroMochila extends FormPage<Mochila> {
+@Secure(id = "URL_EDIT_CONTATO", permissionType = UrlPermission.class)
+public class CadastroContato extends FormPage<Contato> {
 
     @SpringBean(name = "daoFactory")
     private DAOFactory daoFactory;
@@ -41,7 +38,7 @@ public class CadastroMochila extends FormPage<Mochila> {
      * @param entity entidade que deve ser associado a página
      * @param formType tipo do formulario da página
      */
-    public CadastroMochila(Page sourcePage, PageParameters sourcePageParameters, Mochila entity, FormType formType) {
+    public CadastroContato(Page sourcePage, PageParameters sourcePageParameters, Contato entity, FormType formType) {
         super(sourcePage, sourcePageParameters, entity, formType);
     }
 
@@ -50,7 +47,7 @@ public class CadastroMochila extends FormPage<Mochila> {
      * 
      * @param sourcePageParameters {@link PageParameters}
      */
-    public CadastroMochila(PageParameters sourcePageParameters) {
+    public CadastroContato(PageParameters sourcePageParameters) {
         super(sourcePageParameters);
     }
 
@@ -60,7 +57,7 @@ public class CadastroMochila extends FormPage<Mochila> {
      * @param pageParameters {@link PageParameters}
      * @param pageInstance página de origem.
      */
-    public CadastroMochila(PageParameters pageParameters, Page pageInstance) {
+    public CadastroContato(PageParameters pageParameters, Page pageInstance) {
         super(pageParameters, pageInstance);
     }
 
@@ -72,23 +69,10 @@ public class CadastroMochila extends FormPage<Mochila> {
         List<Component> components = new ArrayList<Component>();
 
         components.add(ComponentHelper.createLabeledTextField("nome", "Nome", this.getEntity(), true));
-        components.add(ComponentHelper.createLabeledField("localizacao", "Localização", String.class, new PropertyModel<String>(this
-                .getEntity().getLocalizacao(), "nome"), true, BootstrapInputWidth.MEDIUM));
+        components.add(ComponentHelper.createLabeledTextField("email", "E-mail", this.getEntity(), true));
+        components.add(ComponentHelper.createLabeledTextField("mensagem", "Mensagem", this.getEntity(), true));
 
         return components;
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected Mochila createEntity() {
-        Mochila mochila = super.createEntity();
-        DAO<LocalizacaoEmprestavel> dao = this.daoFactory.getDAOByEntityType(LocalizacaoEmprestavel.class);
-        LocalizacaoEmprestavel localizacao = dao.createBean();
-        mochila.setLocalizacao(localizacao);
-        return mochila;
     }
 
     /**

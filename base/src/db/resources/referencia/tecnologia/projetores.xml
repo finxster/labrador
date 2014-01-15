@@ -1,7 +1,7 @@
 <importacao>
 	<services name="Projetores">
 		<service name="Login" action="EXECUTAR">
-			<param name="Usuário">tecnologia</param>
+			<param name="Usuário">laercio</param>
 		</service>
 		<service name="Projetor" action="INCLUIR">
 			<param name="Nome">Projetor 01</param>

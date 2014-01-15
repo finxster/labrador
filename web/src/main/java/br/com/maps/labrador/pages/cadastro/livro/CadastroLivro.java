@@ -6,6 +6,8 @@ import java.util.List;
 import jmine.tec.component.exception.MessageCreator;
 import jmine.tec.persist.api.DAO;
 import jmine.tec.persist.api.DAOFactory;
+import jmine.tec.security.api.annotation.Secure;
+import jmine.tec.security.api.authorization.UrlPermission;
 import jmine.tec.web.wicket.ComponentHelper;
 import jmine.tec.web.wicket.behavior.OnBlurAjaxBehavior;
 import jmine.tec.web.wicket.bootstrap.BootstrapInputWidth;
@@ -33,6 +35,7 @@ import br.com.maps.labrador.helper.IsbnDBHelper;
  * @author diego.ferreira
  * @created Aug 28, 2013
  */
+@Secure(id = "URL_EDIT_LIVRO", permissionType = UrlPermission.class)
 public class CadastroLivro extends FormPage<Livro> {
 
     @SpringBean(name = "daoFactory")
