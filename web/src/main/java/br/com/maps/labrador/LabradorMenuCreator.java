@@ -14,6 +14,7 @@ import br.com.maps.labrador.pages.cadastro.projetor.CadastroProjetor;
 import br.com.maps.labrador.pages.consulta.contato.PesquisaContato;
 import br.com.maps.labrador.pages.consulta.emprestimo.PesquisaEmprestimo;
 import br.com.maps.labrador.pages.consulta.livro.PesquisaLivro;
+import br.com.maps.labrador.pages.consulta.logacesso.ConsultaUserAccessData;
 import br.com.maps.labrador.pages.consulta.mochila.PesquisaMochila;
 import br.com.maps.labrador.pages.consulta.modem.PesquisaModem;
 import br.com.maps.labrador.pages.consulta.projetor.PesquisaProjetor;
@@ -49,6 +50,8 @@ public class LabradorMenuCreator extends AbstractMenuConfigFactoryBean {
         config.addPage(PesquisaModem.class, "Consultas", "Modems");
         config.addPage(PesquisaProjetor.class, "Consultas", "Projetores");
         config.addPage(PesquisaContato.class, "Consultas", "Contato");
+
+        config.addPage(ConsultaUserAccessData.class, "Infra", "Logs de Acesso");
 
         // config.addPage(Authorization.class, "Autorização", "Autorizar");
         // config.addPage(ConsultaTrilhaAuditoria.class, "Autorização", "Auditoria");
