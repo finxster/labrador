@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/" xml:lang="en" lang="en">
-
+<wicket:head>
+  <wicket:link>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+  </wicket:link>
+</wicket:head>
 <head>
 </head>
-
 <body>
 	<wicket:panel>
-
-		<style type="text/css">
-
-/* Sticky footer styles
-      -------------------------------------------------- */
-html,body {
-	height: 100%;
-	/* The html and body elements cannot have any padding or margin. */
-}
-
-/* Wrapper for page content to push down footer */
-#wrap {
-	min-height: 100%;
-	height: auto !important;
-	height: 100%;
-	/* Negative indent footer by it's height */
-	margin: 0 auto -60px;
-}
-
-/* Set the fixed height of the footer here */
-#push,#footer {
-	height: 60px;
-}
-
-#footer {
-	background-color: #f5f5f5;
-}
-
-/* Lastly, apply responsive CSS fixes as necessary */
-@media ( max-width : 767px) {
-	#footer {
-		margin-left: -20px;
-		margin-right: -20px;
-		padding-left: 20px;
-		padding-right: 20px;
-	}
-}
-
-/* Custom page CSS
-      -------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-#wrap>.container {
-	
-}
-
-.container .credit {
-	margin: 20px 0;
-}
-
-code {
-	font-size: 80%;
-}
-</style>
 		<!-- Part 1: Wrap all page content here -->
 		<div id="wrap">
 
@@ -98,22 +48,10 @@ code {
 								<div class="thumbnail">
 									<img alt="Livros" src="images/labrador_livros_01.png" style="width: 360px; height: 120px" />
 									<div class="caption">
-										<h3>Livros</h3>
-										<p>O Labrador faz todo o controle dos seus livros, sabendo exatamente pra quem você emprestou.</p>
+										<h3>Livros e Equipamentos</h3>
+										<p>O Labrador faz todo o controle de seus objetos sabendo exatamente pra quem você emprestou.</p>
 										<p>
 											<a class="btn" href="#livros">Saiba mais &raquo;</a>
-										</p>
-									</div>
-								</div>
-							</li>
-							<li class="span4">
-								<div class="thumbnail">
-									<img alt="Equipamentos" src="images/labrador_computador_01.png" style="width: 360px; height: 120px" />
-									<div class="caption">
-										<h3>Equipamentos</h3>
-										<p>Controle de projetores, modems e mochilas e outros equipamentos que possam ser emprestados.</p>
-										<p>
-											<a class="btn" href="#equipamentos">Saiba mais &raquo;</a>
 										</p>
 									</div>
 								</div>
@@ -126,6 +64,18 @@ code {
 										<p>Conheça o que é o Inova Maps, e como surgiu o Labrador.</p>
 										<p>
 											<a class="btn" href="#inova">Saiba mais &raquo;</a>
+										</p>
+									</div>
+								</div>
+							</li>
+							<li class="span4">
+								<div class="thumbnail">
+									<img alt="Equipamentos" src="images/labrador_computador_01.png" style="width: 360px; height: 120px" />
+									<div class="caption">
+										<h3>Entre em contato</h3>
+										<p>Entre em contato com as pessoas que colaboram com esse projeto.</p>
+										<p>
+											<a class="btn" href="#contato">Saiba mais &raquo;</a>
 										</p>
 									</div>
 								</div>
@@ -155,7 +105,7 @@ code {
 						</div>
 						<div class="page-header">
 							<h1>
-								Livros <small>Gerenciamento de livros.</small>
+								Livros e Equipamentos <small>Gerenciamento.</small>
 							</h1>
 						</div>
 						<p class="lead">
@@ -163,14 +113,6 @@ code {
 							utilizando o ISBN, caso necessário, para o cadastro e busca de livros. Queremos continuar evoluindo e temos planos para nos integrar com mais sites, como por exemplo o <a
 								href="http://www.worldcat.org/">worldcat.org</a> e a <a href="http://www.amazon.com/">amazon.com</a>.
 						</p>
-						<div id="equipamentos">
-							<br /> <br />
-						</div>
-						<div class="page-header">
-							<h1>
-								Equipamentos <small>Gerenciamento de equipamentos.</small>
-							</h1>
-						</div>
 						<p class="lead">Durante o desenvolvimento, percebemos que não são apenas itens pessoais que são difíceis de se gerenciar. Itens corporativos também são um grande problema! Controles manuais
 							para verificar quem está com certo equipamento, estatísticas de uso de determinado equipamento... isso tudo pode ficar no passado!</p>
 						<p class="lead">Por exemplo, sua empresa tem um projetor a ser compartilhado por várias áreas? Saiba rapidamente onde está e quem pegou emprestado!</p>
@@ -195,23 +137,86 @@ code {
 						<p class="lead">Nosso objetivo com o Labrador é divulgar o framework de desenvolvimento em java <a href="http://www.jmine.com.br">Jmine</a>, provando que a MAPS não é apenas referência no setor de mercado financeiro, mas é
 							também referência como uma empresa de tecnologia aplicada.</p>
 						<p class="lead">E, é claro, também queremos ajudar todo mundo que já esqueceu que amigo ficou com sua cópia autografada de Harry Potter!</p>
+						
+						<div id="contato">
+							<br /> <br />
+						</div>
+						<div class="page-header">
+							<h1>
+								Contato  <small>Entre em contato conosco.</small>
+							</h1>
+						</div> <!-- fim page-header Contato -->
+						<ul class="feedbackPanel" wicket:id="feedback"> 
+ 							<li class="feedbackPanelERROR"> 
+ 							<span class="feedbackPanelERROR">Field 'Username' is required.</span> 
+ 							</li> 
+						</ul>
+						<div class="contact">
+		    				<!--  <h3>Entre em contato conosco</h3>  -->
+		    				<div class="row margin-top">
+		        				<div class="col-contato-esquerda">
+		            				<h4>Quem Somos</h4>
+		            				<p>A MAPS é uma organização criada e administrada por profissionais das áreas de finanças, matemática e tecnologia, 
+		            				desenvolvendo produtos e serviços para empresas do segmento financeiro.</p><br />
+		            				<p>A MAPS acompanha de perto as principais transformações nos mercados, nas áreas de Finanças e Tecnologia, 
+		            				aplicando aos seus produtos e serviços as melhores práticas e inovações decorrentes deste monitoramento, oferecendo
+		            				aos seus clientes as mais completas soluções para seus negócios.</p><br />
+		            				<p>A MAPS conta com uma equipe de profissionais com grande vivência no mercado financeiro, 
+		            				larga experiência no comando de atividades críticas em importantes instituições no Brasil, 
+		            				dentre estas algumas com controle acionário estrangeiro.</p><br />
+
+				            			<div class="col-contato-esquerda">
+					            			<div class="responsive-bottom">
+						          				<h5>Endereço</h5>
+						        		 		<p>Rua Afonso Celso, 552 <br />Vila Mariana São Paulo - Brasil</p>
+					            			</div>
+			            				</div>
+			            				<div class="col-contato-esquerda">
+					            			<div class="responsive-bottom">
+						          				<h5>Email</h5>
+						        		 		<p><a href="mailto:labrador@maps.com.br">labrador@maps.com.br</a></p>
+					            			</div>
+			            				</div>
+		        				</div>
+		        				
+		        			<div class="col-contato-direita">
+		            		<form class="formContato" wicket:id="formContato">
+					            <div class="form-group">
+						            <label>Name <span class="required">*</span></label>
+						            <input class="form-control" type="text" id="nome" placeholder="Nome" wicket:id="nome" required />
+					            </div>
+				
+					            <div class="form-group">
+						            <label>E-mail <span class="required">*</span></label>
+						            <input class="form-control" type="text" id="email" placeholder="E-mail" wicket:id="email" required />
+					            </div>
+				
+					            <div class="form-group">
+						            <label>Mensagem <span class="required">*</span></label>
+						            <textarea rows="3" class="form-control" id="mensagem" placeholder="Mensagem"  wicket:id="mensagem" required />
+					            </div>
+					            <button type="submit" class="btn-contato" wicket:id="gravar">Enviar</button>
+		            		</form>
+		        			</div>
+		    			</div><!-- /.row -->
+		
+					</div><!-- fim div class contact -->
 					</div>
 				</div>
 				<hr />
-			</div>
-			<!-- wrap -->
+			</div> <!-- /container -->
+						<div id="footer" class="footer">
+							<div class="container">
+							<p class="muted credit">
+								O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="http://inova.maps.com.br/">Inova Maps</a>. O Labrador foi desenvolvido com o <a
+								href="http://jmine.com.br" target="_blank">Jmine</a>.
+							</p>
+							</div> <!-- fim div container -->
+						</div> <!-- fim div footer -->
 
-			<div id="footer">
-				<div class="container">
-					<p class="muted credit">
-						O Labrador foi concebido entre Agosto e Outubro de 2013 sendo parte do programa <a href="http://inova.maps.com.br/">Inova Maps</a>. O Labrador foi desenvolvido com o <a
-							href="http://jmine.com.br" target="_blank">Jmine</a>.
-					</p>
-				</div>
-			</div>
-
-		</div>
-		<!-- /container -->
+		</div><!-- wrap -->
+		
+		
 		<!-- Le javascript
     ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
@@ -228,7 +233,6 @@ code {
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-carousel.js"></script>
 		<script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-typeahead.js"></script>
-
 
 	</wicket:panel>
 </body>

@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+.contact {
+	padding: 0 0 10px 35px;
+}
+
+.contact h3 {
+	text-align: center;
+}
+
+.contact .title {
+	margin-top: 70px;
+}
+
+.contact a {
+	color: #000;
+}
+
+.contact a:hover {
+	color: #d9534f;
+}
+
+.contact p {
+	font: 14px/20px Arial,Helvetica,Verdana,Geneva,sans-serif !important;
+}
+
+.col-contato-esquerda{
+	margin: 10px auto 0 auto;
+	float: left;
+ 	width: 50%; 
+}
+
+.col-contato-direita{
+	margin: 10px auto 0 50px;
+	float: left;
+ 	width: 44%; 
+}
+
+.form-control{
+	display:block;
+	width:100%;
+	height:39px;
+	padding:6px 12px;
+	font-size:14px;
+	line-height:1.428571429;
+	vertical-align:middle;
+	background-image:none;
+	border:1px solid #ccc;
+	border-radius:4px;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+	-webkit-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s
+}
+
+.contact input.form-control, textarea.form-control {
+	margin: 0;
+	font-style: italic;
+	height: 39px;
+	border-width: 2px;
+}
+
+.contact textarea.form-control {
+	width: 98%;
+	height: 130px;
+}
+
+
+.form-control:focus{
+	border-color:#66afe9;
+	outline:0;
+	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6);
+	box-shadow:inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(102,175,233,0.6)
+}
+
+
+.form-group{
+	margin-bottom:15px
+}
+
+.form-group label{
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.footer {
+	background-color: #F5F5F5;
+	height: 100px;
+	padding: 20px 0 0 0;
+}
+
+.btn-contato {
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 10px 12px;
+	background-color: #006CCC;
+	background-image: none;
+	border-color: #006CCC;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	color: #FFFFFF;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 1.42857;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-moz-user-select: none;
+}	
+
+

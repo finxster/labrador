@@ -19,8 +19,8 @@ import jmine.tec.persist.impl.bussobj.PersistableBusinessObject;
  * @created Nov 7, 2013
  */
 @Entity
-@Alias("CONTATO")
-@Table(name = "CONTATO")
+@Alias("CONTAT")
+@Table(name = "CONTAT")
 @Documentation("TABELA QUE ARMAZENA OS CONTATOS DO SISTEMA")
 @SequenceGenerator(name = "SEQ_CONTAT", sequenceName = "SEQ_CONTAT")
 public class Contato extends PersistableBusinessObject {
@@ -31,8 +31,6 @@ public class Contato extends PersistableBusinessObject {
 
     private String email;
 
-    private String assunto;
-
     private String mensagem;
 
     /**
@@ -41,7 +39,7 @@ public class Contato extends PersistableBusinessObject {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CONTAT")
     @Documentation("CODIGO QUE IDENTIFICA UM OBJETO DO TIPO CONTATO")
-    @Column(name = "COD_CONTATO")
+    @Column(name = "COD_CONTAT")
     public Long getId() {
         return this.id;
     }
@@ -83,22 +81,6 @@ public class Contato extends PersistableBusinessObject {
      */
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    /**
-     * @return the assunto
-     */
-    @Documentation("ASSUNTO DO CONTATO")
-    @Column(name = "ASSUNTO")
-    public String getAssunto() {
-        return this.assunto;
-    }
-
-    /**
-     * @param assunto the assunto to set
-     */
-    public void setAssunto(String assunto) {
-        this.assunto = assunto;
     }
 
     /**
