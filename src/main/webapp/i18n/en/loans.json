@@ -1,0 +1,25 @@
+{
+    "labradorApp": {
+        "loans" : {
+            "home": {
+                "title": "Loans",
+                "createLabel": "Create a new Loans",
+                "createOrEditLabel": "Create or edit a Loans",
+                "search": "Search for Loans"
+            },
+            "created": "A new Loans is created with identifier {{ param }}",
+            "updated": "A Loans is updated with identifier {{ param }}",
+            "deleted": "A Loans is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Loans {{ id }}?"
+            },
+            "detail": {
+                "title": "Loans"
+            },
+            "loanDate": "Loan Date",
+            "returnDate": "Return Date",
+            "bone": "Bone",
+            "taker": "Taker"
+        }
+    }
+}

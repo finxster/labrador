@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "owner",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "BoneStatus",
+            "fieldValues": "BORROWED,AVAILABLE"
+        }
+    ],
+    "changelogDate": "20170117201041",
+    "entityTableName": "bone",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no"
+}

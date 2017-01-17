@@ -1,0 +1,12 @@
+version: '2'
+services:
+    labrador-postgresql:
+        container_name: labrador-postgresql
+        image: postgres:9.4
+        # volumes:
+        #     - ~/volumes/jhipster/Labrador/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=Labrador
+            - POSTGRES_PASSWORD=L@br@dorDB2k17
+        ports:
+            - 5432:5432

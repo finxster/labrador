@@ -1,0 +1,25 @@
+{
+    "labradorApp": {
+        "bone" : {
+            "home": {
+                "title": "Bones",
+                "createLabel": "Create a new Bone",
+                "createOrEditLabel": "Create or edit a Bone",
+                "search": "Search for Bone"
+            },
+            "created": "A new Bone is created with identifier {{ param }}",
+            "updated": "A Bone is updated with identifier {{ param }}",
+            "deleted": "A Bone is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Bone {{ id }}?"
+            },
+            "detail": {
+                "title": "Bone"
+            },
+            "name": "Name",
+            "description": "Description",
+            "status": "Status",
+            "owner": "Owner"
+        }
+    }
+}

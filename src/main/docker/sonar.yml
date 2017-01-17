@@ -1,0 +1,8 @@
+version: '2'
+services:
+    labrador-sonar:
+        container_name: labrador-sonar
+        image: sonarqube:6.1-alpine
+        ports:
+            - 9000:9000
+            - 9092:9092

@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "isbn10",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isbn13",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "author",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pCompany",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170117201042",
+    "entityTableName": "book",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

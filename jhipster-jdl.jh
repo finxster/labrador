@@ -1,0 +1,47 @@
+// Equivalent to AbstractEmprestavel
+entity Bone {
+	name String
+    description String
+    status BoneStatus    
+}
+
+enum BoneStatus {
+	BORROWED, AVAILABLE
+}
+
+entity Book {
+	isbn10 String
+    isbn13 String	
+	author String
+    pCompany String	
+}
+
+entity Loans {    
+    loanDate ZonedDateTime
+    returnDate ZonedDateTime	
+}
+
+relationship OneToOne {
+	Loans{bone} to Bone
+}
+
+relationship ManyToOne {
+	Bone{owner} to User,
+    Loans{taker} to User
+}
+
+// Set pagination options
+paginate Bone, Loans with infinite-scroll
+
+
+
+
+
+
+
+
+
+
+
+
+

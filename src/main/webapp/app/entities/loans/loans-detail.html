@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="labradorApp.loans.detail.title">Loans</span> {{vm.loans.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="labradorApp.loans.loanDate">Loan Date</span></dt>
+        <dd>
+            <span>{{vm.loans.loanDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="labradorApp.loans.returnDate">Return Date</span></dt>
+        <dd>
+            <span>{{vm.loans.returnDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="labradorApp.loans.bone">Bone</span></dt>
+        <dd>
+            <a ui-sref="bone-detail({id:vm.loans.bone.id})">{{vm.loans.bone.id}}</a>
+        </dd>
+        <dt><span data-translate="labradorApp.loans.taker">Taker</span></dt>
+        <dd>
+            {{vm.loans.taker.id}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="loans-detail.edit({id:vm.loans.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>
